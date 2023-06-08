@@ -2,7 +2,7 @@
 #### Here you may see the contents of my projects and just in general stuff about me. 
 
 **Links**
-- Discord: laughs#7527
+- Discord: [laughs#7527](https://discordapp.com/users/617140289311735818)
 - Github: [jeebuscrossaint](https://github.com/jeebuscrossaint)
 - Youtube: [Lowlag](https://www.youtube.com/channel/UCrCjUHBjU-tvKaap-dzvkJA)
 - Linktree: [Includes everything above.](https://linktr.ee/ahpl) 
