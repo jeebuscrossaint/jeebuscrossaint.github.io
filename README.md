@@ -14,6 +14,9 @@
 - Honestly just getting to know more about the computer, a good goal right now for me is to make my own operating system at some point, seems daunting but I think I got it.
 - *Scholarly Plans Below*
 - Graduate highschool (this one should hopefully be quite easy) Class of 2025.
-- Make this an actual website instead of a .md file like it is right now.
+
+```json
+"Make this an actual website instead of a .md file like it is right now."
+```
 
 - **My daily work operating system is EndeavorOS just an an Arch based distribution along with hyprland, a wayland compositor that doesn't sacrifice on its looks.**
