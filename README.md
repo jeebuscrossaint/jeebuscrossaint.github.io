@@ -13,13 +13,13 @@
 - Learning some web development. I find this stuff very interesting and would like to learn more just for the heck of it.
 - Honestly just getting to know more about the computer, a good goal right now for me is to make my own operating system at some point, seems daunting but I think I got it.
 
-```CSS
+```css
  *Scholarly Plans Below*
 ```
 
 - Graduate highschool (this one should hopefully be quite easy) Class of 2025.
 
-```JSON
+```json
 "Make this an actual website instead of a .md file like it is right now."
 ```
 
