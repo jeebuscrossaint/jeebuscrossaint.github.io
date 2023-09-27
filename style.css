@@ -10,21 +10,20 @@ h1 {
   font-weight: bold;
   font-size: 30px;
   text-align: center;
-  text-shadow: #00ff00;
-  color: #FFFFFF;
+  color: #00ff00;
 }
 
 h2 {
   font-weight: bold;
   font-size: 20px;
   text-align: center;
-  text-stroke: 3px solid #00ff00;
+  color: #00ff00;
 }
 
 h3 {
   font-weight: bold;
   font-size: 15px;
-  text-shadow: #00ff00;
+  color: #0000FF;
 }
 
 .links {
