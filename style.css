@@ -1,5 +1,6 @@
 * {
   font-family: Source Code Pro;
+  text-shadow: 
 }
 
 body {
@@ -48,11 +49,12 @@ h3 {
   text-shadow: #00ff00;
 }
 
-div {
-  p {
-    font-weight: bold;
-    font-size: 15;
-  }
+.drive {
+  color: #0000FF;
+  font-weight: bold;
 }
 
+p {
+  font-weight: bold;
+}
 
