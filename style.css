@@ -1,6 +1,5 @@
 * {
   font-family: Source Code Pro;
-  text-shadow: 
 }
 
 body {
@@ -12,6 +11,7 @@ h1 {
   font-size: 30px;
   text-align: center;
   color: #00ff00;
+  background: black;
 }
 
 h2 {
@@ -19,17 +19,19 @@ h2 {
   font-size: 20px;
   text-align: center;
   color: #00ff00;
+  background: black;
 }
 
 h3 {
   font-weight: bold;
   font-size: 15px;
-  color: #0000FF;
+  color: #;
   text-align: center;
+  background: black;
 }
 
 .links {
-  color: #0000FF;
+  color: #ff0000;
   text-shadow: #FFFFFF;
   text-align: center;
 }
@@ -53,7 +55,7 @@ h3 {
 }
 
 .drive {
-  color: #0000FF;
+  color: #ff0000;
   font-weight: bold;
   font-size: 15px;
 }
