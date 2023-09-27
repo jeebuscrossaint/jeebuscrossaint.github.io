@@ -1,78 +1,20 @@
 * {
-  font-family: Roboto Mono Medium;
-  font-size: 14px;
-  background-color: #000000;
-  text-align: center;
+  font-family: Source Code Pro;
+  color: #FFFFFF;
 }
+
+body {
+  background-image: url("hnnd164yyq281.png")
+}
+
 h1 {
-  border-radius: 20px;
-  color: #FFF;
-}
-
-p {
-  /* border: 3px solid white;*/
-  border-radius: 8px;
-  /* trolling radii */
-  color: #FF8276;
-  padding: 5px;
-
-}﻿
-
-p {:
-  text-align: center;
-  color: #FF8276
-
-}
-
-a {
-  color:#FF8276;
-}
-
-a {
-  color:#FF8276;
-}
-
-a {
-  color:#FF8276;
-}
-
-a {
-  color:#FF8276;
-}
-
-p {
-  color:#FF8276;
-}
-
-p {
-  color:#FF8276;
-}
-
-p {
-  color:#000;
-}
-
-p {
   font-weight: bold;
+  font-size: 30px;
 }
 
-p {
-  color:#FF8276;
-}
-
-p {
+h2 {
   font-weight: bold;
+  font-size: 20px;
 }
 
-p {
-  color:#FF8276;
-}
-
-p {
-  font-weight:bold;
-}
-
-p {
-  color:#FF8276;
-}
 
