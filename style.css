@@ -5,6 +5,8 @@
 
 body {
   background-image: url("hnnd164yyq281.png")
+  background-size: cover;
+  background-contain: no-repeat;
 }
 
 h1 {
@@ -22,8 +24,31 @@ h3 {
   font-size: 15px;
 }
 
-a {
+div {
   color: #ADD8E6;
+}
+
+p {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+div {
+  p {
+    color: #FFFFFF;
+  }
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+div {
+  p {
+    font-weight: bold;
+    font-size: 15;
+  }
 }
 
 
