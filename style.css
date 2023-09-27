@@ -1,7 +1,5 @@
 * {
   font-family: Source Code Pro;
-  color: #FFFFFF;
-  text-shadow: #00ff00;
 }
 
 body {
@@ -12,26 +10,30 @@ h1 {
   font-weight: bold;
   font-size: 30px;
   text-align: center;
+  text-shadow: #00ff00;
 }
 
 h2 {
   font-weight: bold;
   font-size: 20px;
   text-align: center;
+  text-shadow: #00ff00;
 }
 
 h3 {
   font-weight: bold;
   font-size: 15px;
+  text-shadow: #00ff00;
 }
 
 .links {
-  color: #ADD8E6;
+  color: #0000FF;
+  text-shadow: #FFFFFF;
 }
 
 p {
-  text-decoration: underline;
-  font-weight: bold;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 div {
@@ -43,6 +45,7 @@ div {
 h3 {
   font-weight: bold;
   font-size: 15px;
+  text-shadow: #00ff00;
 }
 
 div {
