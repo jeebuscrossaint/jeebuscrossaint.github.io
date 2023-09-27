@@ -11,13 +11,14 @@ h1 {
   font-size: 30px;
   text-align: center;
   text-shadow: #00ff00;
+  color: #FFFFFF;
 }
 
 h2 {
   font-weight: bold;
   font-size: 20px;
   text-align: center;
-  text-shadow: #00ff00;
+  text-stroke: 3px solid #00ff00;
 }
 
 h3 {
