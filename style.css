@@ -36,7 +36,7 @@ h3 {
 div
   {
   .links {
-  text-shadow: #FFFFFF;
+  color: #FFFFFF;
   text-align: center;
   }
 }
@@ -77,3 +77,8 @@ h3 {
   font-weight: bold;
 }
 
+div {
+  .hire {
+    color: #FFF000;
+  }
+}
