@@ -1,10 +1,10 @@
 * {
   font-family: Source Code Pro;
   text-stroke: 2px peru;
-  text-shadow: 2px 0 black,
-               0 -2px black,
-               -2px 0 black,
-               0 2px black;
+  text-shadow: 2px 0 peru,
+               0 -2px peru,
+               -2px 0 peru,
+               0 2px peru;
 }
 
 body {
@@ -35,10 +35,13 @@ h3 {
   background: 1px black;
 }
 
-.links {
+div
+  {
+  .links {
   color: #ff0000;
   text-shadow: #FFFFFF;
   text-align: center;
+  }
 }
 
 p {
