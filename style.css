@@ -80,5 +80,6 @@ h3 {
 div {
   .hire {
     color: #FFF000;
+    text-align: left;
   }
 }
