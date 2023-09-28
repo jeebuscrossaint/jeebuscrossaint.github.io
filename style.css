@@ -55,9 +55,11 @@ h3 {
 }
 
 .drive {
+  p{
   color: #ff0000;
   font-weight: bold;
   font-size: 15px;
+   }
 }
 
 .campus {
