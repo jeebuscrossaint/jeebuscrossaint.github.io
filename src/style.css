@@ -11,7 +11,7 @@ html {
 }
 
 .project {
-    border: 1px solid #000;
+    border: 1px solid var(--text-color);
     margin: 10px;
     padding: 20px;
     flex-basis: calc(50% - 20px);
@@ -21,7 +21,7 @@ html {
 /* Set the background image and blur it */
 body::after {
     content: "";
-    background: url('../assets/hnnd164yyq281.png');
+    background: var(--bg-image); /* Add semicolon here */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -41,31 +41,120 @@ body::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
-    background-color: black;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     padding: 20px;
     text-align: center;
-    border-radius: 10px; /* Add this line */
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
 }
 
 /* Style the navigation bar */
 .navbar {
-    background-color: #333;
+    background-color: var(--navbar-bg-color);
     overflow: hidden;
+    border-bottom: 3px solid #00FF00;
 }
 
 /* Style the navigation links */
 .navbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: var(--navbar-text-color);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: background-color 0.5s ease;
 }
 
 /* Change the color of links on hover */
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: var(--navbar-text-color);
+    color: var(--bg-color);
+}
+
+/* Light theme */
+:root[data-theme='light'] {
+    --bg-color: white;
+    --text-color: black;
+    --navbar-bg-color: #f2f2f2;
+    --navbar-text-color: #333;
+    --bg-image: url('../assets/lightbg.png');
+    --box-shadow: 0 0 10px black;
+}
+
+/* Dark theme */
+:root[data-theme='dark'] {
+    --bg-color: black;
+    --text-color: white;
+    --navbar-bg-color: #333;
+    --navbar-text-color: #f2f2f2;
+    --bg-image: url('../assets/darkbg.png');
+    --box-shadow: none;
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--navbar-bg-color);
+}
+
+.navbar a {
+    color: var(--navbar-text-color);
+}
+
+/* Style the switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Style the switch slider */
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
