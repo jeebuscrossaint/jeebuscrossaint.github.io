@@ -1,15 +1,16 @@
-// Get the theme toggle button
+// Get the theme toggle input and icon
 var themeToggle = document.getElementById('theme-toggle');
+var themeIcon = document.getElementById('theme-icon');
 
 // Set the initial theme based on local storage or default to 'dark'
 var currentTheme = localStorage.getItem('theme') || 'dark';
 document.documentElement.setAttribute('data-theme', currentTheme);
 
-// Update the button text based on the current theme
-themeToggle.textContent = currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+// Update the icon based on the current theme
+themeIcon.className = currentTheme === 'dark' ? 'fas fa-moon slider round' : 'far fa-sun slider round';
 
-// Add an event listener to the button to toggle the theme
-themeToggle.addEventListener('click', function() {
+// Add an event listener to the input to toggle the theme
+themeToggle.addEventListener('change', function() {
     var currentTheme = document.documentElement.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
@@ -17,6 +18,6 @@ themeToggle.addEventListener('click', function() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 
-    // Update the button text
-    themeToggle.textContent = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    // Update the icon
+    themeIcon.className = newTheme === 'dark' ? 'fas fa-moon slider round' : 'far fa-sun slider round';
 });

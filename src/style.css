@@ -53,7 +53,7 @@ body::after {
 .navbar {
     background-color: var(--navbar-bg-color);
     overflow: hidden;
-    border-bottom: 3px solid #00FF00;
+    /*border-bottom: 3px solid #00FF00; */
 }
 
 /* Style the navigation links */
@@ -81,6 +81,9 @@ body::after {
     --navbar-text-color: #333;
     --bg-image: url('../assets/lightbg.png');
     --box-shadow: 0 0 10px black;
+    --switch-color: white; /* do this */
+    --switch-color: black;
+    --icon-color: black;
 }
 
 /* Dark theme */
@@ -91,6 +94,9 @@ body::after {
     --navbar-text-color: #f2f2f2;
     --bg-image: url('../assets/darkbg.png');
     --box-shadow: none;
+    --switch-color: black; /* do this */
+    --switch-color: white;
+    --icon-color: white;
 }
 body {
     background-color: var(--bg-color);
@@ -129,6 +135,8 @@ body {
     bottom: 0;
     background-color: #ccc;
     transition: .4s;
+    background-color: var(--switch-color);
+    color: var(--icon-color);
 }
 
 .slider:before {
@@ -143,7 +151,7 @@ body {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: var(--switch-color);
 }
 
 input:checked + .slider:before {
