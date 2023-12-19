@@ -1,9 +1,7 @@
-/* Enable smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Style the project boxes */
 .projects {
     display: flex;
     flex-wrap: wrap;
@@ -18,10 +16,9 @@ html {
     box-sizing: border-box;
 }
 
-/* Set the background image and blur it */
 body::after {
     content: "";
-    background: var(--bg-image); /* Add semicolon here */
+    background: var(--bg-image); 
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -35,7 +32,6 @@ body::after {
     z-index: -1;
 }
 
-/* Create a centered text box with a black background */
 .centered-text {
     position: absolute;
     top: 50%;
@@ -49,14 +45,11 @@ body::after {
     box-shadow: var(--box-shadow);
 }
 
-/* Style the navigation bar */
 .navbar {
     background-color: var(--navbar-bg-color);
     overflow: hidden;
-    /*border-bottom: 3px solid #00FF00; */
 }
 
-/* Style the navigation links */
 .navbar a {
     float: left;
     display: block;
@@ -67,13 +60,11 @@ body::after {
     transition: background-color 0.5s ease;
 }
 
-/* Change the color of links on hover */
 .navbar a:hover {
     background-color: var(--navbar-text-color);
     color: var(--bg-color);
 }
 
-/* Light theme */
 :root[data-theme='light'] {
     --bg-color: white;
     --text-color: black;
@@ -81,12 +72,11 @@ body::after {
     --navbar-text-color: #333;
     --bg-image: url('../assets/lightbg.png');
     --box-shadow: 0 0 10px black;
-    --switch-color: white; /* do this */
+    --switch-color: white; 
     --switch-color: black;
     --icon-color: black;
 }
 
-/* Dark theme */
 :root[data-theme='dark'] {
     --bg-color: black;
     --text-color: white;
@@ -94,7 +84,7 @@ body::after {
     --navbar-text-color: #f2f2f2;
     --bg-image: url('../assets/darkbg.png');
     --box-shadow: none;
-    --switch-color: black; /* do this */
+    --switch-color: black; 
     --switch-color: white;
     --icon-color: white;
 }
@@ -111,7 +101,6 @@ body {
     color: var(--navbar-text-color);
 }
 
-/* Style the switch */
 .switch {
     position: relative;
     display: inline-block;
@@ -119,7 +108,6 @@ body {
     height: 34px;
 }
 
-/* Style the switch slider */
 .switch input { 
     opacity: 0;
     width: 0;
@@ -158,7 +146,6 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }
