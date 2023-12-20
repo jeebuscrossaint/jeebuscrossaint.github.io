@@ -111,6 +111,7 @@ body {
     display: inline-block;
     width: 60px;
     height: 34px;
+    margin: 5px 10px 0 0;
 }
 
 .switch input { 
@@ -157,4 +158,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+#cursor {
+    color: #0f0; 
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+    text-shadow: 
+        -1px 0 1px rgba(255, 255, 255, 0.1),
+        0 1px 1px rgba(255, 255, 255, 0.1),
+        1px 0 1px rgba(255, 255, 255, 0.1),
+        0 -1px 1px rgba(255, 255, 255, 0.1),
+        -2px 0 1px rgba(255, 255, 255, 0.3),
+        0 2px 1px rgba(255, 255, 255, 0.3),
+        2px 0 1px rgba(255, 255, 255, 0.3),
+        0 -2px 1px rgba(255, 255, 255, 0.3);
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
 }
