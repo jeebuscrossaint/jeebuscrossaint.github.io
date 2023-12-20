@@ -79,6 +79,8 @@ body::after {
     --switch-color: black;
     --icon-color: black;
     --slider-circle-color: white;
+    --h1-color: #000;
+    --navbar-border-color: rgb(0, 0, 0);
 }
 
 :root[data-theme='dark'] {
@@ -92,6 +94,8 @@ body::after {
     --switch-color: white;
     --icon-color: white;
     --slider-circle-color: black;
+    --h1-color: #fff;
+    --navbar-border-color: rgb(255, 255, 255);
 }
 body {
     background-color: var(--bg-color);
@@ -100,6 +104,9 @@ body {
 
 .navbar {
     background-color: var(--navbar-bg-color);
+    border-bottom: 2px solid var(--navbar-border-color); 
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .navbar a {
@@ -165,7 +172,7 @@ input:checked + .slider:before {
 }
 
 h1 {
-    color: #fff;
+    color: var(--h1-color);
     text-align: center;
     text-shadow: 
         -1px 0 1px rgba(255, 255, 255, 0.1),

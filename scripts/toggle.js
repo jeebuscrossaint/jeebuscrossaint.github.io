@@ -15,3 +15,4 @@ themeToggle.addEventListener('change', function() {
 
     themeIcon.className = newTheme === 'dark' ? 'fas fa-moon slider round' : 'far fa-sun slider round';
 });
+
