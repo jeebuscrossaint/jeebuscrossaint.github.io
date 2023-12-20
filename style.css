@@ -73,7 +73,7 @@ body::after {
     --text-color: black;
     --navbar-bg-color: #f2f2f2;
     --navbar-text-color: #333;
-    --bg-image: url('../assets/lightbg.png');
+    --bg-image: url('assets/lightbg.png');
     --box-shadow: 0 0 10px black;
     --switch-color: white; 
     --switch-color: black;
@@ -88,7 +88,7 @@ body::after {
     --text-color: white;
     --navbar-bg-color: #333;
     --navbar-text-color: #f2f2f2;
-    --bg-image: url('../assets/darkbg.png');
+    --bg-image: url('assets/darkbg.png');
     --box-shadow: none;
     --switch-color: black; 
     --switch-color: white;
@@ -103,14 +103,30 @@ body {
 }
 
 .navbar {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--navbar-bg-color);
-    border-bottom: 2px solid var(--navbar-border-color); 
+    border: 2px solid var(--navbar-border-color); 
     border-radius: 10px;
     overflow: hidden;
+    justify-content: space-between;
+}
+
+@keyframes colorChange {
+    0% { -webkit-text-stroke-color: #0000ff; }
+    50% { -webkit-text-stroke-color: #00ff00; }
+    100% { -webkit-text-stroke-color: #ff0000; }
 }
 
 .navbar a {
     color: var(--navbar-text-color);
+}
+
+.navbar a:nth-child(5) {
+    font-weight: bold;
+    margin: 0 auto;
+    -webkit-text-stroke-width: 1px;
+    animation: colorChange 2s infinite alternate;
 }
 
 .switch {
