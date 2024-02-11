@@ -20,17 +20,19 @@ body::after {
     content: "";
     background: var(--bg-image); 
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Keep the background image fixed while scrolling */
     background-position: center center;
     background-size: cover;
     filter: blur(8px);
     -webkit-filter: blur(8px);
-    position: absolute;
+    position: fixed; /* Ensure the background image stays fixed */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
 }
+
 
 .centered-text {
     position: absolute;
@@ -203,5 +205,99 @@ h1 {
 
 body {
     font-family: 'Ubuntu', sans-serif;
+}
+
+.project-sections {
+    position: absolute;
+    top: calc(50% + 100px); /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%; /* Adjust as needed */
+}
+
+.project {
+    width: calc(50% - 20px); /* Adjust as needed */
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Added for hover effect */
+    border: none; /* Removed the black border */
+}
+
+.project h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center; /* Added to center the text */
+}
+
+.project p {
+    font-size: 18px;
+}
+
+.project:hover {
+    transform: translateY(-5px); /* Added for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Added for hover effect */
+}
+
+:root[data-theme='light'] .project {
+    background-color: white;
+    color: black;
+}
+
+:root[data-theme='dark'] .project {
+    background-color: #000000;
+    color: white;
+}
+
+:root {
+    --hover-color-light: rgba(0, 0, 0, 0.2); /* Light mode hover color */
+    --hover-color-dark: rgba(255, 255, 255, 0.2); /* Dark mode hover color */
+}
+
+.project:hover {
+    transform: translateY(-5px); /* Added for hover effect */
+    box-shadow: 0 6px 12px var(--hover-color-light); /* Light mode hover effect */
+}
+
+:root[data-theme='dark'] .project:hover {
+    box-shadow: 0 6px 12px var(--hover-color-dark); /* Dark mode hover effect */
+}
+
+/* Define scrollbar colors for light and dark mode */
+:root {
+    --scrollbar-thumb-light: #888; /* Light mode scrollbar thumb color */
+    --scrollbar-track-light: #f2f2f2; /* Light mode scrollbar track color */
+    --scrollbar-thumb-dark: #555; /* Dark mode scrollbar thumb color */
+    --scrollbar-track-dark: #333; /* Dark mode scrollbar track color */
+}
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+/* Customize the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-light); /* Set default color based on light mode */
+    border-radius: 0px; /* Border radius of the scrollbar thumb */
+}
+
+/* Customize the scrollbar track */
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-light); /* Set default color based on light mode */
+}
+
+/* Dark mode styles */
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-dark); /* Set color for dark mode */
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-dark); /* Set color for dark mode */
 }
 
