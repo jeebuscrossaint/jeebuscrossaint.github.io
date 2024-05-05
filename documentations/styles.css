@@ -1,9 +1,23 @@
 :root {
-    background: #000;
+    background: #1e1e1e;
     color: #fff;
     font-family: Source Code Pro, monospace;
 }
 
 h1 {
     text-align: center;
+}
+
+#sidebar {
+    position: fixed;
+    width: 10%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    padding: 2%;
+    overflow: auto;
+}
+
+body {
+    margin-left: 22%;
 }
