@@ -14,8 +14,11 @@ website in progress, just markdown for now.
 *Hgh School Diploma, Expected Graduation: May 2025*
 
 ## Skills
+
 **Programming:** C/C++, Rust, Go, JavaScript, TypeScript, HTML/CSS, Shell
+
 **Tools:** Visual Studio Code, NeoVim, Docker, Git, AI-LLMs, Node.js, Rustup, Bun.js
+
 **Operating Systems:** Debian, Arch, Proxmox, Gentoo, Alpine, Windows, FreeBSD, OpenBSD, Rasbpian
 
 ## Professional Experience
