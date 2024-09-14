@@ -1,5 +1,7 @@
 # Resume
-`website in progress, just markdown for now`
+```json
+website in progress, just markdown for now!
+```
 +(561) 603 2661 | apatel6ty@protonmail.com | [linkedin](https://www.linkedin.com/in/amarnath-patel-772b56286/) | [github](github.com/jeebuscrossaint)
 
 ## Education
@@ -28,6 +30,14 @@
 - Building an AI powered student assistant for writing, grant funded by Florida Atlantic University, along with 6 other students.
 
 ## Projects
-**[Schedulix]
+**[Schedulix](https://github.com/YamanDevelopment/Schedulix)**  October 2023
+- Tool for students to generate a schedule for their semester based on multiple parameters.
+- 1st Place in the Night Hacks 2023 hackathon.
+**[Mleko-czekoladowe-os](https://github.com/jeebuscrossaint/mleko-czekoladowe-os)**  October 2023 - Present
+- Operating system developed by me for fun, little functionality but taught me a lot
+**[Constrict](https://github.com/jeebuscrossaint/constrict)**  June 2024
+- A simplistic build system, akin to make but not as fleshed out.
+**[Yavafetch](https://github.com/jeebuscrossaint/Yavafetch)**  May 2024
+- Neofetch inspired fetch utility in JavaScript, with 0 dependencies on NPM, working for Windows.
 
-
+```Thank you for reading.```
