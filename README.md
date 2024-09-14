@@ -10,6 +10,7 @@ website in progress, just markdown for now.
 **Florida Atlantic University**  August 2021 - Present
 *Bachelor of Science in Computer Science, Minor in Cybersecurity, Expected Graduation: Fall 2025*
 - Embedded Systems, Operating Systems, Artifical Intelligence, Web Development
+
 **Florida Atlantic University High School**  August 2021 - Present
 *Hgh School Diploma, Expected Graduation: May 2025*
 
