@@ -2,7 +2,7 @@
 layout: default
 ---
 
-As a passionate computer engineering major and high school student right now, I have decided to make many personal projects, most incomplete as of now. Here is the place to read all about them and me.
+As a passionate computer engineering major and high school student right now, I have decided to make many personal projects, most incomplete as of now. Here is the place to read all about them and me. You can click on the titles to read more about each project, or you can scroll down to read about me.
 
 ## Projects 
 (ordered by how complete they are)
@@ -82,3 +82,28 @@ ____
 ### [weather-app](projects/weather-app.md)
 
 A simple weather app website that I made to learn how to use APIs. ~WIP
+
+____
+
+### [apatel.co](projects/apatel.co.md)
+
+My personal website. ~WIP
+
+____
+
+```c++
+
+#include <iostream>
+
+int main() {
+    std::cout << "Thanks for reading!";
+    return 0;
+}
+
+```
+
+```bash
+$ gcc thanks.cpp -o thanks
+$ ./thanks
+Thanks for reading!
+```
