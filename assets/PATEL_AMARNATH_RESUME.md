@@ -116,3 +116,5 @@ ____
 </div>
 
 - Neofetch inspired fetch utility in JavaScript, with 0 dependencies on NPM, working for Windows.
+
+____
