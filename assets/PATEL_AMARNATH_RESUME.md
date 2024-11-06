@@ -5,6 +5,8 @@
     <p>PHONE NUMBER REDACTED | <a href="mailto:apatel6ty@protonmail.com">apatel6ty@protonmail.com</a> | <a href="https://jeebuscrossaint.github.io">jeebuscrossaint.github.io</a></p>
 </div>
 
+____
+
 <div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
     <div style="font-size: 1.3em;">
         <p>EDUCATION</p>
@@ -26,6 +28,8 @@
 
 *High-school Diploma*
 
+____
+
 <div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
     <div style="font-size: 1.3em;">
         <p>SKILLS</p>
@@ -37,6 +41,8 @@
 **Tools:** Visual Studio Code, NeoVim, Git, Docker, AI-ML, Node.js, Rustup, CMake, Bun.js
 
 **Operating Systems:** Debian, Arch, Proxmox, Gentoo, Alpine, Windows, Free/Open/NetBSD, Raspbian
+
+____
 
 <div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
     <div style="font-size: 1.3em;">
@@ -73,6 +79,8 @@
 </div>
 
 - Building an AI powered student assistant for writing, *research grant funded* by Florida Atlantic University.
+
+____
 
 <div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
     <div style="font-size: 1.3em;">
