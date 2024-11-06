@@ -18,6 +18,8 @@ Just run the command Yavafetch in your terminal and you will see the information
 
 It is MIT licensed, and published on the NPM registry. You can find the source code on [GitHub](github.com/jeebuscrossaint/Yavafetch).
 
+____
+
 ### index.js (main entry point)
 
 We start off with a bunch of imports from the relative modules of the program. These modules are responsible for getting the information about the system and printing it to the console. They are the actual logic. The main entry point is responsible for calling these functions and printing the information to the console.
@@ -103,3 +105,87 @@ async function main() {
 
 main();
 ```
+____
+
+
+### arch.js
+
+Incredibly simple code. Just returns the architecture Node identifies.
+
+```javascript
+
+const os = require('os');
+
+function arch() {
+    return os.arch();
+}
+
+module.exports = { arch };
+```
+
+____
+
+### ascii.js
+
+Also super simple, simply console logs the ASCII art.
+
+```javascript
+
+function printAsciiArt() {
+    console.log(`
+    _____.___.                    _____       __         .__     
+    \\__  |   |____ ___  _______ _/ ____\\_____/  |_  ____ |  |__  
+     /   |   \\__  \\\\  \\/ /\\__  \\\\   __\\/ __ \\   __\\/ ___\\|  |  \\ 
+     \\____   |/ __ \\\\   /  / __ \\|  | \\  ___/|  | \\  \\___|   Y  \\
+     / ______(____  /\\_/  (____  /__|  \\___  >__|  \\___  >___|  /
+     \\/           \\/  
+    `);
+}
+
+module.exports = { printAsciiArt };
+```
+____
+
+### battery.js
+
+A module that is finally a little more complex. We can get the battery information of the system using some shell code and then parsing it.
+
+```javascript
+
+const { exec } = require('child_process'); // Importing the exec function from the child_process module
+
+function getBatteryInfo() {
+    return new Promise((resolve, reject) => {
+        exec('wmic path Win32_Battery get EstimatedChargeRemaining, BatteryStatus', (error, stdout) => { // Executing the command to get battery information
+            if (error) {
+                reject(`Error: ${error.message}`);
+                return;
+            }
+
+            const lines = stdout.trim().split('\n'); // Splitting the output into lines
+            const batteryInfo = lines[1].trim().split(/\s{2,}/); // Splitting the second line into the battery information
+
+            const chargeRemaining = parseInt(batteryInfo[1]); // Parsing the charge remaining
+            const batteryStatus = parseInt(batteryInfo[0]); // Parsing the battery status
+
+            let result;
+            if (chargeRemaining >= 0 && batteryStatus !== 0) {
+                const status = batteryStatus === 2 ? 'Connected' : 'Disconnected'; // Checking if the battery is connected or disconnected
+                result = `${chargeRemaining}% [${status}]`; // Creating the result string of the battery information
+            } else {
+                result = 'Battery information not available'; // If the battery information is not available
+            }
+
+            // Check if result is undefined before resolving
+            resolve(result ? result : 'Battery information not available'); // Resolving the promise with the battery information
+        });
+    });
+}
+
+module.exports = { getBatteryInfo };
+```
+
+____
+
+### cpuInfo.js
+
