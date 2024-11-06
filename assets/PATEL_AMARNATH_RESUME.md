@@ -5,7 +5,12 @@
     <p>PHONE NUMBER REDACTED | <a href="mailto:apatel6ty@protonmail.com">apatel6ty@protonmail.com</a> | <a href="https://jeebuscrossaint.github.io">jeebuscrossaint.github.io</a></p>
 </div>
 
-$ \textbf{EDUCATION} $
+<div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+    <div style="font-size: 1.3em;">
+        <p>EDUCATION</p>
+    </div>
+</div>
+
 <div style="display: flex; justify-content: space-between;">
     <strong>Florida Atlantic University</strong>
     <strong><span>August 2021 - Present</span></strong>
@@ -21,7 +26,11 @@ $ \textbf{EDUCATION} $
 
 *High-school Diploma*
 
-$ \textbf{SKILLS} $
+<div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+    <div style="font-size: 1.3em;">
+        <p>SKILLS</p>
+    </div>
+</div>
 
 **Languages:** C/C++, Rust, Go, JavaScript/TypeScript, HTML/CSS, Shell(Bash/Fish/Powershell), VHDL, LaTeX
 
@@ -29,7 +38,12 @@ $ \textbf{SKILLS} $
 
 **Operating Systems:** Debian, Arch, Proxmox, Gentoo, Alpine, Windows, Free/Open/NetBSD, Raspbian
 
-$ \textbf{PROFESSIONAL EXPERIENCE} $
+<div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+    <div style="font-size: 1.3em;">
+        <p>PROFESSIONAL EXPERIENCE</p>
+    </div>
+</div>
+
 <div style="display: flex; justify-content: space-between;">
     <strong>Learning Assistant - Florida Atlantic University Employee</strong>
     <strong><span>August 2024 - Present</span></strong>
@@ -60,7 +74,11 @@ $ \textbf{PROFESSIONAL EXPERIENCE} $
 
 - Building an AI powered student assistant for writing, *research grant funded* by Florida Atlantic University.
 
-$ \textbf{PROJECTS} $
+<div style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+    <div style="font-size: 1.3em;">
+        <p>PROJECTS</p>
+    </div>
+</div>
 
 <div style="display: flex; justify-content: space-between;">
     <strong>UniUtils</strong>
