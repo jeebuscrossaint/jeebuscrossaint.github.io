@@ -91,6 +91,9 @@ My personal website. ~WIP
 
 ____
 
+## Resume
+My resume can be found [here](assets/PATEL_AMARNATH_RESUME.md).
+
 ```c++
 
 #include <iostream>
@@ -103,7 +106,7 @@ int main() {
 ```
 
 ```bash
-$ gcc thanks.cpp -o thanks
+$ c++ thanks.cpp -o thanks
 $ ./thanks
 Thanks for reading!
 ```
