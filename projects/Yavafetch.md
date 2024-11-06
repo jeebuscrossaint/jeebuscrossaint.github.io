@@ -189,3 +189,39 @@ ____
 
 ### cpuInfo.js
 
+Simple module like the architecture module. Just returns the CPU information that Node manages to find. 
+
+```javascript
+
+const os = require('os'); // Importing the os module
+
+function cpuInfo() {
+    const cpus = os.cpus(); // initializing the cpus object
+    const cpuModel = cpus[0].model.replace(/\s+/g, ' ').trim(); // model of the cpu parsed
+    const cpuSpeed = cpus[0].speed; // mhz of the cpu
+    const cpuCores = cpus.length; // amount of cores
+    return `CPU:${cpuModel} @ ${cpuSpeed} MHz (${cpuCores} cores)`;
+}
+
+module.exports = { cpuInfo };
+```
+
+____
+
+### disk.js
+
+This file is a little more lenghty and complex. It is still simple, but its about 100 lines so I'm not going to put a lot of code here, rather just talk about it.
+
+So firstly of coures we import exec from child_process and os from node. We then have a function that formats the bytes of a disk which basically counts how many bytes a disk has and then converts it to a human readable format.
+
+```javascript
+
+const units = ['B', 'KiB', 'MiB', 'GiB', 'TiB']; // array of reasonable units
+    let unit = 0;
+    while (bytes >= 1024 && unit < units.length - 1) { // if the amount of bytes is greater than 1024 and the unit is less than the length of the units array
+        bytes /= 1024; // divide the bytes by 1024
+        unit++; // increment the unit
+    }
+    return `${bytes.toFixed(2)} ${units[unit]}`; // return the bytes in a human readable format
+```
+
