@@ -2,6 +2,7 @@
 layout: default
 ---
 
+## You can click on the project name to see more about it.
 
 ### [Advanced Experimental Vehicles Software](projects/AEV.md)
 
