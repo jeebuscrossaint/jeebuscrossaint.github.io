@@ -15,6 +15,65 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: #0d1117;
+            color: #f0f6fc;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid #666;
+            color: #666;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: #0066cc;
+            color: #0066cc;
+        }
+
+        body.dark .theme-toggle {
+            border-color: #8b949e;
+            color: #8b949e;
+        }
+
+        body.dark .theme-toggle:hover {
+            border-color: #238636;
+            color: #238636;
+        }
+
+        body.dark h1,
+        body.dark h2,
+        body.dark h3,
+        body.dark p {
+            color: #f0f6fc;
+        }
+
+        body.dark h3 {
+            color: #8b949e;
+        }
+
+        body.dark .subtitle {
+            color: #8b949e;
+        }
+
+        body.dark p {
+            color: #c9d1d9;
+        }
+
+        body.dark .status {
+            background-color: #161b22;
+            border-left: 4px solid #238636;
         }
 
         h1 {
@@ -133,6 +192,8 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    
     <h1>amarnath patel</h1>
     <div class="subtitle">computer engineering student at the University of Central Florida</div>
     
@@ -168,6 +229,99 @@
             <img src="https://img.shields.io/badge/Resume-FF5722?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Resume">
         </a>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                button.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('themeSource', 'manual');
+            } else {
+                button.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+                localStorage.setItem('themeSource', 'manual');
+            }
+        }
+
+        function getTimeBasedTheme() {
+            const hour = new Date().getHours();
+            // Dark mode from 6 PM to 6 AM
+            return (hour >= 18 || hour < 6) ? 'dark' : 'light';
+        }
+
+        function getSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            
+            if (theme === 'dark') {
+                body.classList.add('dark');
+                button.textContent = '☀️';
+            } else {
+                body.classList.remove('dark');
+                button.textContent = '🌙';
+            }
+        }
+
+        function updateThemeBasedOnConditions() {
+            const savedThemeSource = localStorage.getItem('themeSource');
+            
+            // If user manually set theme, don't auto-update
+            if (savedThemeSource === 'manual') {
+                return;
+            }
+            
+            // Try system preference first, then fall back to time-based
+            let preferredTheme = getSystemTheme();
+            if (!window.matchMedia) {
+                preferredTheme = getTimeBasedTheme();
+            }
+            
+            applyTheme(preferredTheme);
+            localStorage.setItem('theme', preferredTheme);
+        }
+
+        // Load theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const savedThemeSource = localStorage.getItem('themeSource');
+            
+            if (savedTheme && savedThemeSource === 'manual') {
+                // User manually set theme - respect their choice
+                applyTheme(savedTheme);
+            } else {
+                // Auto-detect theme based on system/time
+                updateThemeBasedOnConditions();
+                localStorage.setItem('themeSource', 'auto');
+            }
+        });
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+                const savedThemeSource = localStorage.getItem('themeSource');
+                if (savedThemeSource !== 'manual') {
+                    updateThemeBasedOnConditions();
+                }
+            });
+        }
+
+        // Update theme every hour for time-based switching (only if auto mode)
+        setInterval(function() {
+            const savedThemeSource = localStorage.getItem('themeSource');
+            if (savedThemeSource === 'auto' && !window.matchMedia) {
+                updateThemeBasedOnConditions();
+            }
+        }, 60 * 60 * 1000); // Check every hour
+    </script>
 
 </body>
 </html>
