@@ -3,98 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amarnath Patel - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Amarnath Patel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin: 2em 0 1em 0;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            margin: 1.5em 0 0.5em 0;
+            font-weight: 500;
+            color: #666;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 1em;
+            color: #333;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 2em;
+        }
+
+        .entry {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8em;
+            font-size: 1em;
+        }
+
+        .entry img {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .social-links {
+            margin-top: 2em;
+        }
+
+        .social-links a {
+            margin-right: 15px;
+            color: #0066cc;
+        }
+
+        .tech-stack {
+            color: #666;
+            font-size: 0.95em;
+            margin: 1em 0;
+        }
+
+        .status {
+            background-color: #f0f8ff;
+            border-left: 4px solid #0066cc;
+            padding: 12px 16px;
+            margin: 2em 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <nav class="nav">
-                <div class="nav-brand">
-                    <h1>Amarnath Patel</h1>
-                    <span class="subtitle">Computer Engineering Student</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="main">
-            <section id="about" class="hero">
-                <div class="hero-content">
-                    <h2>Obligatory blurb</h2>
-                    <p class="intro">
-                        I am an 18-year-old college student attending the University of Central Florida. 
-                        I'm pursuing a degree in Computer Engineering, Electrical Engineering, or Photonics 
-                        Science & Engineering (or possibly a double major), with potential graduation in 
-                        Fall 2027 for a single major or 2028/2029 for a double major. I'm considering a 
-                        math minor. <strong>I am currently in the market for an internship</strong> and 
-                        am actively applying to many places.
-                    </p>
-                    
-                    <p>
-                        I started at UCF as a freshman with 108 credits, 81 of which transferred in. 
-                        I completed AI research with a group of 5 others from August 2024 to March 2025, 
-                        <em>funded by a research grant from Florida Atlantic University Office of 
-                        Undergraduate Inquiries</em>, where we presented our findings in March 2025.
-                    </p>
-                    
-                    <p>
-                        I previously worked as a Learning Assistant at Florida Atlantic University 
-                        (August 2024 - May 2025), approved for Calculus I/II and Precalculus & 
-                        Trigonometry courses. I was also involved with the FAU High School Advanced 
-                        Experimental Vehicles club, where we built a solar car from scratch and 
-                        worked on go-kart projects.
-                    </p>
-                    
-                    <p>
-                        I love working on engineering projects, as I know that I will further my career 
-                        with them and learn more about the field(s) that I dedicate myself to.
-                    </p>
-                </div>
-            </section>
-
-            <section class="quick-links">
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Projects</h3>
-                        <p>Check out my latest engineering and programming projects</p>
-                        <a href="projects.html" class="btn btn-primary">View Projects</a>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Resume</h3>
-                        <p>My experience, education, and skills</p>
-                        <a href="resume.html" class="btn btn-secondary">View Resume</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="code-example">
-                <h3>Thanks for visiting!</h3>
-                <div class="code-block">
-                    <pre><code class="cpp">#include &lt;iostream&gt;
-
-int main() {
-    std::cout &lt;&lt; "Thanks for reading!";
-    return 0;
-}</code></pre>
-                </div>
-                <div class="terminal-output">
-                    <pre><code class="bash">$ c++ thanks.cpp -o thanks
-$ ./thanks
-Thanks for reading!</code></pre>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2025 Amarnath Patel. Built with pure HTML & CSS.</p>
-        </footer>
+    <h1>amarnath patel</h1>
+    <div class="subtitle">computer engineering student at ucf</div>
+    
+    <p>I'm an 18-year-old engineering student pursuing Computer Engineering, Electrical Engineering, or Photonics Science & Engineering. Started at UCF with 108 credits (81 transferred), targeting graduation Fall 2027 for single major or 2028/2029 for double major.</p>
+    
+    <div class="status">
+        <strong>Currently seeking internship opportunities</strong> - actively applying to engineering and software development positions.
     </div>
+
+    <h3>experience</h3>
+    <p>Completed AI research (Aug 2024 - Mar 2025) with 5-person team, funded by FAU research grant. Previously worked as Learning Assistant at FAU for Calculus I/II and Precalculus courses. Built solar car with FAU Advanced Experimental Vehicles club - won "Highest Engineering Excellence" at 2024 Solar Car Challenge.</p>
+
+    <h3>tech stack</h3>
+    <div class="tech-stack">c++, javascript, typescript, python, go, rust, react, node.js, electron</div>
+
+    <h2>projects</h2>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint/AEV">Advanced Experimental Vehicles Software</a>
+    </div>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint/UniUtils">UniUtils</a>
+    </div>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint/oh-my-gossh">oh-my-gossh</a>
+    </div>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint/Constrict">Constrict</a>
+    </div>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint/Yavafetch">Yavafetch</a>
+    </div>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint">view all projects →</a>
+    </div>
+
+    <h2>links</h2>
+
+    <div class="entry">
+        <img src="https://github.com/favicon.ico" alt="">
+        <a href="https://github.com/jeebuscrossaint">github</a>
+        jeebuscrossaint
+    </div>
+
+    <div class="entry">
+        <img src="https://linkedin.com/favicon.ico" alt="">
+        <a href="https://linkedin.com/in/amarnath-patel">linkedin</a>
+        amarnath-patel
+    </div>
+
+    <div class="entry">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Im00IDQgMTYgMTZtLTE2IDAgMTYtMTYiLz48L3N2Zz4=" alt="">
+        <a href="mailto:amarnath@example.com">email</a>
+        amarnath@example.com
+    </div>
+
+    <div class="entry">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNiIgeD0iMiIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJtMjIgNy01IDMtNS0zIi8+PC9zdmc+" alt="">
+        <a href="assets/resume.pdf">resume</a>
+        pdf
+    </div>
+
 </body>
 </html>
