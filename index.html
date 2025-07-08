@@ -84,6 +84,33 @@
             color: #666;
             font-size: 0.95em;
             margin: 1em 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+
+        .tech-stack img {
+            height: 28px;
+        }
+
+        .links-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin: 1em 0;
+        }
+
+        .links-section a {
+            text-decoration: none;
+        }
+
+        .links-section img {
+            height: 28px;
+            transition: transform 0.2s ease;
+        }
+
+        .links-section a:hover img {
+            transform: translateY(-2px);
         }
 
         .status {
@@ -107,7 +134,7 @@
 </head>
 <body>
     <h1>amarnath patel</h1>
-    <div class="subtitle">computer engineering student at ucf</div>
+    <div class="subtitle">computer engineering student at the University of Central Florida</div>
     
     <p>I'm an 18-year-old engineering student pursuing Computer Engineering, Electrical Engineering, or Photonics Science & Engineering. Started at UCF with 108 credits (81 transferred), targeting graduation Fall 2027 for single major or 2028/2029 for double major.</p>
     
@@ -115,35 +142,31 @@
         <strong>Currently seeking internship opportunities</strong> - actively applying to engineering and software development positions.
     </div>
 
-    <h3>experience</h3>
-    <p>Completed AI research (Aug 2024 - Mar 2025) with 5-person team, funded by FAU research grant. Previously worked as Learning Assistant at FAU for Calculus I/II and Precalculus courses. Built solar car with FAU Advanced Experimental Vehicles club - won "Highest Engineering Excellence" at 2024 Solar Car Challenge.</p>
-
     <h3>tech stack</h3>
-    <div class="tech-stack">C, C++, Nix, Rust, Zig, Powershell, *NIX Shell (tcsh, bash)</div>
+    <div class="tech-stack">
+        <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C">
+        <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++">
+        <img src="https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white" alt="Rust">
+        <img src="https://img.shields.io/badge/Zig-%23F7A41D.svg?style=for-the-badge&logo=zig&logoColor=white" alt="Zig">
+        <img src="https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white" alt="PowerShell">
+        <img src="https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Shell">
+        <img src="https://img.shields.io/badge/NIXOS-5277C3.svg?style=for-the-badge&logo=NixOS&logoColor=white" alt="Nix">
+    </div>
     <h2>links</h2>
 
-    <div class="entry">
-        <img src="https://github.com/favicon.ico" alt="">
-        <a href="https://github.com/jeebuscrossaint">github</a>
-        jeebuscrossaint
-    </div>
-
-    <div class="entry">
-        <img src="https://linkedin.com/favicon.ico" alt="">
-        <a href="https://linkedin.com/in/amarnath-patel">linkedin</a>
-        amarnath-patel
-    </div>
-
-    <div class="entry">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Im00IDQgMTYgMTZtLTE2IDAgMTYtMTYiLz48L3N2Zz4=" alt="">
-        <a href="mailto:amarnath@example.com">email</a>
-        amarnath@example.com
-    </div>
-
-    <div class="entry">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNiIgeD0iMiIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJtMjIgNy01IDMtNS0zIi8+PC9zdmc+" alt="">
-        <a href="assets/resume.pdf">resume</a>
-        pdf
+    <div class="links-section">
+        <a href="https://github.com/jeebuscrossaint" target="_blank">
+            <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+        </a>
+        <a href="https://linkedin.com/in/amarnath-patel" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+        </a>
+        <a href="mailto:apatel6ty@protonmail.com">
+            <img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white" alt="ProtonMail">
+        </a>
+        <a href="assets/resume.pdf" target="_blank">
+            <img src="https://img.shields.io/badge/Resume-FF5722?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Resume">
+        </a>
     </div>
 
 </body>
