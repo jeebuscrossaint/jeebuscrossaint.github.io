@@ -7,7 +7,7 @@
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
   #v(0.2em)
   #text(size: 11pt)[
-     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://jeebuscrossaint.github.io/")[#text(fill: blue)[#underline[jeebuscrossaint.github.io]]]
+     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]]
   ]
 ]
 
