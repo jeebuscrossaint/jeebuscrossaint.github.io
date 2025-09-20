@@ -32,7 +32,7 @@
   [Computer Science coursework - High School Diploma], [August 2021 - May 2025]
 )
 #v(0.1em)
-- Background in Embedded Systems, UNIX systems, Web Development, AI/LLMs, OS development & quantum computing
+- Background in Embedded Systems, UNIX systems, Web Development, AI/LLMs
 - Relevant Coursework: Data Structures and Algorithms, Computer Logic Design, Matrix Theory, C & C++ programming, Deep Learning, Computer Architecture
 #v(0.25em)
 #text(size: 11pt, weight: "bold")[SKILLS]
