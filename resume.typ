@@ -43,28 +43,28 @@ C/C++, Nix, Rust, Zig, Verilog, Shell (Fish, Bash, tcsh), Helix, Docker, Git, AI
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
-  [*IEEE UCF CPU Project - Kernel Development Team*], [August 2025 - Present]
+  [*IEEE UCF CPU Project - Kernel Development Team Member*], [August 2025 - Present]
 )
-- Developing kernel-level software for RISC-V CPU built from scratch, porting Doom and Quake to custom hardware architecture
+- Developing kernel-level software for RISC-V CPU built from scratch, porting Doom and Quake to custom hardware architecture with 40 other members.
 #v(0.2em)
 #grid(
   columns: (1fr, auto),
   [*Learning Assistant - Employee*], [August 2024 - May 2025]
 )
-- Assisted undergraduate students with learning calculus. Part-time position (10h/week).
+- Assisted 70 undergraduate students with learning calculus. Part-time position (10h/week).
 #v(0.2em)
 #grid(
   columns: (1fr, auto),
   [*Advanced Experimental Vehicles - Programmer, Leader, Builder*], [November 2023 - May 2025]
 )
 - Developed Electron app using Raspberry Pi 5 for monitoring and controlling solar car systems
-- Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence"
+- Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence" with 20 other people.
 #v(0.2em)
 #grid(
   columns: (1fr, auto),
-  [*Chameleon Research Project - Programmer*], [January 2024 - March 2025]
+  [*FAU Grant-Funded AI Safety Research Project*], [January 2024 - March 2025]
 )
-- Developed AI/LLM powered research project for writing, grant funded by Florida Atlantic University with HPC access
+- Developed AI/LLM powered research project for writing, grant funded by Florida Atlantic University with HPC access with 5 members.
 #v(0.25em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(0.1em)
