@@ -43,6 +43,12 @@ C/C++, Nix, Rust, Zig, Verilog, Shell (Fish, Bash, tcsh), Helix, Docker, Git, AI
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
+  [*UCF Astrophotonics Lab - Undergraduate Researcher*], [October 2025 - Present]
+)
+- Conducting research under Dr. Eikenberry in collaborative laboratory spanning Photonics and Physics departments.
+#v(0.2em)
+#grid(
+  columns: (1fr, auto),
   [*IEEE UCF CPU Project - Kernel Development Team Member*], [August 2025 - Present]
 )
 - Developing kernel-level software for RISC-V CPU built from scratch, porting Doom and Quake to custom hardware architecture with 40 other members.
@@ -78,4 +84,4 @@ C/C++, Nix, Rust, Zig, Verilog, Shell (Fish, Bash, tcsh), Helix, Docker, Git, AI
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/limebar")[#text(fill: blue)[#underline[limebar]]]*], [December 2024 - March 2025]
 )
-- Wayland graphical status bar using pango, cairo, xdg-shell-client protocol and wlr-layer-shell-unstable
+- Lightweight Wayland status bar inspired by lemonbar, featuring stdin-based block parsing, customizable geometry, fonts, colors, and alignment options using cairo/pango rendering with xdg-shell and wlr-layer-shell protocols
