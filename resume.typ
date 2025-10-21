@@ -19,10 +19,11 @@
 )
 #grid(
   columns: (1fr, auto),
-  [Electrical Engineering, Photonics Science and Engineering, Computational Physics], [August 2025 - Present]
+  [Photonics Science and Engineering, Computational Physics, Math Coursework], [August 2025 - Present]
 )
+- Pursuing double major in PSE & Computational Physics with substantial math coursework (8 courses)
 - Relevant Coursework: Geometric Optics, Modern Physics
-#v(0.1em)
+#v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*Florida Atlantic University*], [*3.65 GPA*]
@@ -31,10 +32,10 @@
   columns: (1fr, auto),
   [Computer Science coursework - High School Diploma (108 Credit Hours)], [August 2021 - May 2025]
 )
-#v(0.1em)
+#v(0.05em)
 - Background in Embedded Systems, UNIX systems, Web Development, AI/LLMs
-- Relevant Coursework: Data Structures and Algorithms, Computer Logic Design, Matrix Theory, C & C++ programming, Deep Learning, Computer Architecture
-#v(0.15em)
+- Relevant Coursework: Data Structures and Algorithms, Computer Logic Design, Matrix Theory, C & C++ programming, Deep Learning, Computer Architecture, Calculus I-III, Differential Equations
+#v(0.1em)
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(0.05em)
 *Programming Languages:* C/C++, Rust, Zig, Verilog, Shell (Fish, Bash, tcsh)
@@ -43,7 +44,7 @@
 
 *Operating Systems:* Linux Distributions, BSD, Windows, OpenSolaris
 
-#v(0.15em)
+#v(0.1em)
 #text(size: 11pt, weight: "bold")[PROFESSIONAL EXPERIENCE]
 #v(0.05em)
 #grid(
@@ -76,7 +77,7 @@
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 - March 2025]
 )
 - Developed AI/LLM powered research project for writing, grant funded by Florida Atlantic University with HPC access with 5 members.
-#v(0.15em)
+#v(0.1em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(0.05em)
 #grid(
@@ -89,4 +90,4 @@
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/limebar")[#text(fill: blue)[#underline[limebar]]]*], [December 2024 - March 2025]
 )
-- Lightweight Wayland status bar inspired by lemonbar, featuring stdin-based block parsing, customizable geometry, fonts, colors, and alignment options using cairo/pango rendering with xdg-shell and wlr-layer-shell protocols
+- Lightweight Wayland status bar inspired by lemonbar with stdin-based block parsing, customizable geometry, fonts, colors, and alignment using cairo/pango rendering with xdg-shell and wlr-layer-shell protocols
