@@ -19,9 +19,9 @@
 )
 #grid(
   columns: (1fr, auto),
-  [Photonics Science and Engineering, Computational Physics, Math Coursework], [August 2025 - Present]
+  [Photonics Science and Engineering, Computational Physics], [August 2025 - Present]
 )
-- Pursuing double major in PSE & Computational Physics with substantial math coursework (8 courses)
+- Pursuing double major in PSE & Computational Physics
 - Relevant Coursework: Geometric Optics, Modern Physics
 #v(0.05em)
 #grid(
