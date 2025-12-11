@@ -26,7 +26,7 @@
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
-  [*Florida Atlantic University*], [*3.65 GPA*]
+  [*Florida Atlantic University*], [*3.71 GPA*]
 )
 #grid(
   columns: (1fr, auto),
