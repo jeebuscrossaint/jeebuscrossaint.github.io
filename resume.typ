@@ -5,7 +5,7 @@
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
   #v(0.1em)
   #text(size: 11pt)[
-     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] | +1 561-603-2661
+     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] | #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]] | +1 561-603-2661
   ]
 ]
 #v(0.2em)
@@ -14,8 +14,9 @@
 #text(size: 11pt, weight: "bold")[EDUCATION]
 #v(0.1em)
 #grid(
-  columns: (1fr, auto),
-  [*University of Central Florida*], [*Undergraduate Student*]
+  columns: (1fr, auto, auto),
+  column-gutter: 1em,
+  [*University of Central Florida*], [*Undergraduate Student*], [*4.00 GPA*]
 )
 #grid(
   columns: (1fr, auto),
@@ -26,21 +27,21 @@
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
-  [*Florida Atlantic University*], [*3.71 GPA*]
+  [*Florida Atlantic University*], [*3.66 GPA*]
 )
 #grid(
   columns: (1fr, auto),
-  [Computer Science coursework - High School Diploma (108 Credit Hours)], [August 2021 - May 2025]
+  [Computer Science coursework - High School Diploma (111 Credit Hours)], [August 2021 - May 2025]
 )
 #v(0.05em)
-- Background in Embedded Systems, UNIX systems, Web Development, AI/LLMs
+- Background in Embedded Systems, UNIX systems
 - Relevant Coursework: Data Structures and Algorithms, Computer Logic Design, Matrix Theory, C & C++ programming, Deep Learning, Computer Architecture, Calculus I-III, Differential Equations
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(0.05em)
-*Programming Languages:* C/C++, Rust, Zig, Verilog, Shell (Fish, Bash, tcsh)
+*Programming Languages:* C/C++, Python, CUDA, Shell (Fish, Bash, tcsh)
 
-*Tools & Frameworks:* Nix, Helix, Docker, Git, AI-LLMs, Rustup, CMake, Proxmox
+*Tools & Frameworks:* Nix, Helix, Docker, Git, AI-LLMs, XMake, CMake, Proxmox
 
 *Operating Systems:* Linux Distributions, BSD, Windows, OpenSolaris
 
