@@ -1,9 +1,9 @@
 function toggleTheme() {
     const body = document.body;
     const button = document.querySelector('.theme-toggle');
-    
+
     body.classList.toggle('dark');
-    
+
     if (body.classList.contains('dark')) {
         button.textContent = '☀️';
         localStorage.setItem('theme', 'dark');
@@ -16,7 +16,7 @@ function toggleTheme() {
 function applyTheme(theme) {
     const body = document.body;
     const button = document.querySelector('.theme-toggle');
-    
+
     if (theme === 'dark') {
         body.classList.add('dark');
         button.textContent = '☀️';
@@ -27,7 +27,7 @@ function applyTheme(theme) {
 }
 
 // Load saved theme on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         applyTheme(savedTheme);
