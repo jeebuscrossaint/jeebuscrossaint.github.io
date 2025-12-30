@@ -56,7 +56,7 @@ body.dark h3 {
 }
 
 body.dark .subtitle {
-    color: #a0a0a0;
+    color: #fff;
 }
 
 body.dark p {
@@ -85,7 +85,7 @@ h3 {
     font-size: 1.1em;
     margin: 1.5em 0 0.5em 0;
     font-weight: 500;
-    color: #666;
+    color: #fff;
 }
 
 p {
