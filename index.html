@@ -10,179 +10,340 @@
         content="Amarnath Patel, photonics science engineering, computational physics, UCF, software developer, C++, Rust, Zig, internship, embedded systems, RISC-V, kernel development" />
     <meta name="author" content="Amarnath Patel" />
     <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apatel.co/" />
     <meta property="og:title" content="Amarnath Patel - Engineering Student & Developer" />
     <meta property="og:description"
         content="PSE & Computational Physics student at UCF seeking engineering and software development internships. Experience in C/C++, Rust, embedded systems, and AI/ML." />
     <meta property="og:site_name" content="Amarnath Patel" />
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content="https://apatel.co/" />
     <meta property="twitter:title" content="Amarnath Patel - Engineering Student & Developer" />
     <meta property="twitter:description"
         content="PSE & Computational Physics student at UCF seeking engineering and software development internships." />
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://apatel.co/" />
-
-    <title>
-        Amarnath Patel - Engineering Student & Developer | UCF PSE &
-        Computational Physics
-    </title>
+    <title>Amarnath Patel - Engineering Student & Developer | UCF PSE & Computational Physics</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Amarnath Patel",
-                "url": "https://apatel.co",
-                "email": "apatel6ty@protonmail.com",
-                "jobTitle": "Engineering Student",
-                "alumniOf": {
-                    "@type": "EducationalOrganization",
-                    "name": "University of Central Florida"
-                },
-                "knowsAbout": [
-                    "Photonics Science Engineering",
-                    "Computational Physics",
-                    "Software Development",
-                    "C++",
-                    "Rust",
-                    "Embedded Systems"
-                ],
-                "sameAs": [
-                    "https://github.com/jeebuscrossaint",
-                    "https://linkedin.com/in/amarnath-patel"
-                ]
+        body.dark {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: #0066cc;
+            color: #0066cc;
+        }
+
+        body.dark .theme-toggle {
+            border-color: #666;
+            color: #999;
+        }
+
+        body.dark .theme-toggle:hover {
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        body.dark h1,
+        body.dark h2,
+        body.dark h3,
+        body.dark p {
+            color: #0f0;
+        }
+
+        body.dark h3 {
+            color: #a0a0a0;
+        }
+
+        body.dark .subtitle {
+            color: #fff;
+        }
+
+        body.dark p {
+            color: #fff;
+        }
+
+        body.dark .status {
+            background-color: #000;
+            border-left: 4px solid #0f0;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            font-weight: 300;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin: 2em 0 1em 0;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            margin: 1.5em 0 0.5em 0;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #0052a3;
+            text-decoration: underline;
+        }
+
+        body.dark a {
+            color: #4da6ff;
+        }
+
+        body.dark a:hover {
+            color: #66b3ff;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 2em;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .badge:hover {
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .links-section .badge:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin: 1em 0;
+        }
+
+        .links-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin: 1em 0;
+        }
+
+        .status {
+            background-color: #f0f4ff;
+            border-left: 4px solid #0066cc;
+            padding: 16px 20px;
+            margin: 2em 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ::selection {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+
+        body.dark ::selection {
+            background-color: #4da6ff;
+            color: #000000;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
             }
-        </script>
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Amarnath Patel",
+            "url": "https://apatel.co",
+            "email": "apatel6ty@protonmail.com",
+            "jobTitle": "Engineering Student",
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "University of Central Florida"
+            },
+            "knowsAbout": [
+                "Photonics Science Engineering",
+                "Computational Physics",
+                "Software Development",
+                "C++",
+                "Rust",
+                "Embedded Systems"
+            ],
+            "sameAs": [
+                "https://github.com/jeebuscrossaint",
+                "https://linkedin.com/in/amarnath-patel"
+            ]
+        }
+    </script>
 </head>
 
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">
-        🌙
-    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌙</button>
 
     <header>
         <h1>amarnath patel</h1>
         <div class="subtitle">
-            Photonics/Optics and Computational Physics student at the
-            University of Central Florida.
+            Photonics/Optics and Computational Physics student at the University of Central Florida.
         </div>
     </header>
 
     <main>
         <section aria-label="About">
             <p>
-                I'm an 18-year-old engineering student pursuing a double
-                major in
+                I'm an 18-year-old engineering student pursuing a double major in
                 <strong>Photonics Science & Engineering</strong> and
-                <strong>Computational Physics</strong>. Started at
-                <strong>UCF</strong> with 111 credits, targeting graduation
-                Spring 2029. I have experience with programming from my time
-                dually enrolled at
-                <strong>Florida Atlantic University</strong> through high
-                school, where I took many CS/CpE related courses including
-                <strong>C & C++</strong>, <strong>DSA</strong>,
-                <strong>linear algebra</strong>, &
+                <strong>Computational Physics</strong>. Started at <strong>UCF</strong> with 111 credits, targeting
+                graduation Spring 2029. I have experience with programming from my time dually enrolled at
+                <strong>Florida Atlantic University</strong> through high school, where I took many CS/CpE related
+                courses including <strong>C & C++</strong>, <strong>DSA</strong>, <strong>linear algebra</strong>, &
                 <strong>computer architecture</strong>.
             </p>
         </section>
 
         <div class="status">
-            <strong>Currently seeking internship opportunities</strong> -
-            actively applying to <strong>engineering</strong> and
-            <strong>software development</strong> positions.
+            <strong>Currently seeking internship opportunities</strong> - actively applying to
+            <strong>engineering</strong> and <strong>software development</strong> positions.
         </div>
 
         <section aria-label="Contact and Links">
             <h2>links</h2>
             <div class="links-section">
-                <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener noreferrer"
-                    aria-label="GitHub Profile">
-                    <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"
-                        alt="GitHub Profile" />
-                </a>
-                <a href="https://linkedin.com/in/amarnath-patel" target="_blank" rel="noopener noreferrer"
-                    aria-label="LinkedIn Profile">
-                    <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"
-                        alt="LinkedIn Profile" />
-                </a>
-                <a href="mailto:apatel6ty@protonmail.com" aria-label="Email Contact">
-                    <img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white"
-                        alt="Email Contact" />
-                </a>
-                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download Resume PDF">
-                    <img src="https://img.shields.io/badge/Resume-FF5722?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"
-                        alt="Resume PDF Download" />
-                </a>
+                <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener noreferrer" class="badge"
+                    style="background-color: #121011;">github</a>
+                <a href="https://linkedin.com/in/amarnath-patel" target="_blank" rel="noopener noreferrer" class="badge"
+                    style="background-color: #0077B5;">linkedin</a>
+                <a href="mailto:apatel6ty@protonmail.com" class="badge" style="background-color: #8B89CC;">email</a>
+                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="badge"
+                    style="background-color: #FF5722;">resume</a>
             </div>
         </section>
 
         <section aria-label="Technical Skills">
             <h2>technical skills</h2>
             <div class="tech-stack">
-                <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white"
-                    alt="C Programming Language" />
-                <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"
-                    alt="C++ Programming Language" />
-                <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"
-                    alt="Python Programming Language" />
-                <img src="https://img.shields.io/badge/OCaml-%23E98407.svg?style=for-the-badge&logo=ocaml&logoColor=white"
-                    alt="OCaml Programming Language" />
-                <img src="https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white"
-                    alt="PowerShell Scripting" />
-                <img src="https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white"
-                    alt="Shell Scripting" />
-                <img src="https://img.shields.io/badge/OpenBSD-%23FCC624.svg?style=for-the-badge&logo=openbsd&logoColor=black"
-                    alt="OpenBSD Operating System" />
-                <img src="https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white"
-                    alt="Proxmox Virtualization" />
-                <img src="https://img.shields.io/badge/NixOS-5277C3.svg?style=for-the-badge&logo=nixos&logoColor=white"
-                    alt="NixOS" />
+                <span class="badge" style="background-color: #00599C;">c</span>
+                <span class="badge" style="background-color: #00599C;">c++</span>
+                <span class="badge" style="background-color: #3670A0;">python</span>
+                <span class="badge" style="background-color: #E98407;">ocaml</span>
+                <span class="badge" style="background-color: #5391FE;">powershell</span>
+                <span class="badge" style="background-color: #121011;">shell</span>
+                <span class="badge" style="background-color: #FCC624; color: #000;">openbsd</span>
+                <span class="badge" style="background-color: #E57000;">proxmox</span>
+                <span class="badge" style="background-color: #5277C3;">nixos</span>
             </div>
         </section>
 
         <section aria-label="Affiliates">
             <h2>goat tier mentions</h2>
-            <p>
-                people i went to high school with who also did cool stuff:
-            </p>
+            <p>people i went to high school with who also did cool stuff:</p>
             <ul style="list-style: none; padding-left: 0">
-                <li>
-                    <a href="https://zachl.tech" target="_blank" rel="noopener noreferrer">zachary lopez</a>
+                <li><a href="https://zachl.tech" target="_blank" rel="noopener noreferrer">zachary lopez</a></li>
+                <li><a href="https://jcamille.dev" target="_blank" rel="noopener noreferrer">jossaya camille</a></li>
+                <li><a href="https://str1ke.codes" target="_blank" rel="noopener noreferrer">thandi menelas</a></li>
+                <li><a href="https://github.com/eoghanmc22" target="_blank" rel="noopener noreferrer">eoghan mcivor</a>
                 </li>
-                <li>
-                    <a href="https://jcamille.dev" target="_blank" rel="noopener noreferrer">jossaya camille</a>
+                <li><a href="https://makaip.com" target="_blank" rel="noopener noreferrer">jason (makai) pindell</a>
                 </li>
-                <li>
-                    <a href="https://str1ke.codes" target="_blank" rel="noopener noreferrer">thandi menelas</a>
+                <li><a href="https://alexcastronovo.com" target="_blank" rel="noopener noreferrer">alex castronovo</a>
                 </li>
-                <li>
-                    <a href="https://github.com/eoghanmc22" target="_blank" rel="noopener noreferrer">eoghan mcivor</a>
-                </li>
-                <li>
-                    <a href="https://makaip.com" target="_blank" rel="noopener noreferrer">jason (makai) pindell</a>
-                </li>
-                <li>
-                    <a href="https://alexcastronovo.com" target="_blank" rel="noopener noreferrer">alex castronovo</a>
-                </li>
-                <li>
-                    <a href="https://github.com/Valenciola" target="_blank" rel="noopener noreferrer">valerie
-                        fils-aime</a>
-                </li>
+                <li><a href="https://github.com/Valenciola" target="_blank" rel="noopener noreferrer">valerie
+                        fils-aime</a></li>
             </ul>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                button.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                button.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function applyTheme(theme) {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            if (theme === 'dark') {
+                body.classList.add('dark');
+                button.textContent = '☀️';
+            } else {
+                body.classList.remove('dark');
+                button.textContent = '🌙';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            }
+        });
+    </script>
 </body>
 
 </html>
