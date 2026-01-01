@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Blog post by Amarnath Patel - PSE & Computational Physics student at UCF" />
+    <title>Blog Post - Amarnath Patel</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='system-ui, -apple-system, sans-serif' font-size='18' font-weight='700' font-style='italic' fill='%23fff' text-anchor='middle'>ap</text></svg>" type="image/svg+xml" />
+    
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
+    <style id="hljs-theme-light" media="print">
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css');
+    </style>
+    <style id="hljs-theme-dark" media="print">
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css');
+    </style>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: #0066cc;
+            color: #0066cc;
+        }
+
+        body.dark .theme-toggle {
+            border-color: #666;
+            color: #999;
+        }
+
+        body.dark .theme-toggle:hover {
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2em;
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #0052a3;
+            text-decoration: underline;
+        }
+
+        body.dark .back-link {
+            color: #4da6ff;
+        }
+
+        body.dark .back-link:hover {
+            color: #66b3ff;
+        }
+
+        #markdown-content {
+            margin-top: 2em;
+        }
+
+        #markdown-content h1,
+        #markdown-content h2,
+        #markdown-content h3,
+        #markdown-content h4,
+        #markdown-content h5,
+        #markdown-content h6 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+
+        body.dark #markdown-content h1,
+        body.dark #markdown-content h2 {
+            color: #0f0;
+        }
+
+        body.dark #markdown-content h3,
+        body.dark #markdown-content h4,
+        body.dark #markdown-content h5,
+        body.dark #markdown-content h6 {
+            color: #a0a0a0;
+        }
+
+        #markdown-content p {
+            margin-bottom: 1em;
+        }
+
+        #markdown-content a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        #markdown-content a:hover {
+            color: #0052a3;
+            text-decoration: underline;
+        }
+
+        body.dark #markdown-content a {
+            color: #4da6ff;
+        }
+
+        body.dark #markdown-content a:hover {
+            color: #66b3ff;
+        }
+
+        /* Inline code */
+        #markdown-content code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        body.dark #markdown-content code {
+            background-color: #1a1a1a;
+        }
+
+        /* Code blocks - let highlight.js handle all styling */
+        #markdown-content pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5em 0;
+            border: 1px solid #e1e4e8;
+        }
+
+        body.dark #markdown-content pre {
+            background-color: #161b22;
+            border-color: #30363d;
+        }
+
+        #markdown-content pre code {
+            background-color: transparent !important;
+            padding: 0;
+            display: block;
+        }
+
+        #markdown-content blockquote {
+            border-left: 4px solid #0066cc;
+            padding-left: 16px;
+            margin-left: 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        body.dark #markdown-content blockquote {
+            border-left-color: #0f0;
+            color: #a0a0a0;
+        }
+
+        #markdown-content ul,
+        #markdown-content ol {
+            margin: 1em 0;
+            padding-left: 2em;
+        }
+
+        #markdown-content li {
+            margin-bottom: 0.5em;
+        }
+
+        #markdown-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 1em 0;
+        }
+
+        #markdown-content hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 2em 0;
+        }
+
+        body.dark #markdown-content hr {
+            border-top-color: #333;
+        }
+
+        ::selection {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+
+        body.dark ::selection {
+            background-color: #4da6ff;
+            color: #000000;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌙</button>
+
+    <a href="index.html" class="back-link">← back to home</a>
+
+    <div id="markdown-content">
+        <p>Loading post...</p>
+    </div>
+
+    <!-- Load libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Load additional language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/nix.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            const lightTheme = document.getElementById('hljs-theme-light');
+            const darkTheme = document.getElementById('hljs-theme-dark');
+            
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                button.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+                lightTheme.media = 'print';
+                darkTheme.media = 'all';
+            } else {
+                button.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+                lightTheme.media = 'all';
+                darkTheme.media = 'print';
+            }
+        }
+
+        function applyTheme(theme) {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            const lightTheme = document.getElementById('hljs-theme-light');
+            const darkTheme = document.getElementById('hljs-theme-dark');
+            
+            if (theme === 'dark') {
+                body.classList.add('dark');
+                button.textContent = '☀️';
+                lightTheme.media = 'print';
+                darkTheme.media = 'all';
+            } else {
+                body.classList.remove('dark');
+                button.textContent = '🌙';
+                lightTheme.media = 'all';
+                darkTheme.media = 'print';
+            }
+        }
+
+        // Get post name from URL parameter
+        function getPostName() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('post') || 'default';
+        }
+
+        // Fetch and render markdown
+        async function loadMarkdown() {
+            try {
+                const postName = getPostName();
+                const markdownFile = `posts/${postName}.md`;
+                
+                const response = await fetch(markdownFile);
+                if (!response.ok) {
+                    throw new Error(`Post not found: ${postName}`);
+                }
+                const markdown = await response.text();
+                
+                // Parse markdown to HTML
+                const html = marked.parse(markdown);
+                document.getElementById('markdown-content').innerHTML = html;
+                
+                // Apply syntax highlighting to all code blocks
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+                
+            } catch (error) {
+                document.getElementById('markdown-content').innerHTML = 
+                    `<p style="color: #ff4444;">Error loading post: ${error.message}</p>
+                    <p>Make sure the post exists in the posts/ folder.</p>`;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            }
+            loadMarkdown();
+        });
+    </script>
+</body>
+
+</html>

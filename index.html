@@ -5,16 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Amarnath Patel - PSE & Computational Physics student at UCF seeking engineering and software development internships. Experience in C/C++, Rust, Zig, embedded systems, and AI/ML." />
+        content="Amarnath Patel - PSE & Computational Physics student at UCF seeking engineering and software development internships. Experience in C/C++, and AI/ML." />
     <meta name="keywords"
-        content="Amarnath Patel, photonics science engineering, computational physics, UCF, software developer, C++, Rust, Zig, internship, embedded systems, RISC-V, kernel development" />
+        content="Amarnath Patel, photonics science engineering, computational physics, UCF, software developer, C++, C, internship" />
     <meta name="author" content="Amarnath Patel" />
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apatel.co/" />
     <meta property="og:title" content="Amarnath Patel - Engineering Student & Developer" />
     <meta property="og:description"
-        content="PSE & Computational Physics student at UCF seeking engineering and software development internships. Experience in C/C++, Rust, embedded systems, and AI/ML." />
+        content="PSE & Computational Physics student at UCF seeking engineering and software development internships. Experience in C/C++, and AI/ML." />
     <meta property="og:site_name" content="Amarnath Patel" />
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content="https://apatel.co/" />
@@ -188,6 +188,46 @@
             border-radius: 0 8px 8px 0;
         }
 
+        .blog-posts {
+            list-style: none;
+            padding: 0;
+            margin: 1em 0;
+        }
+
+        .blog-posts li {
+            margin-bottom: 1em;
+            padding: 12px;
+            border-left: 2px solid #0066cc;
+            transition: border-color 0.2s ease;
+        }
+
+        .blog-posts li:hover {
+            border-left-color: #0052a3;
+        }
+
+        body.dark .blog-posts li {
+            border-left-color: #0f0;
+        }
+
+        body.dark .blog-posts li:hover {
+            border-left-color: #4da6ff;
+        }
+
+        .blog-posts a {
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        .blog-date {
+            font-size: 0.85em;
+            color: #666;
+            margin-left: 0.5em;
+        }
+
+        body.dark .blog-date {
+            color: #999;
+        }
+
         ::selection {
             background-color: #0066cc;
             color: #ffffff;
@@ -225,8 +265,6 @@
                 "Computational Physics",
                 "Software Development",
                 "C++",
-                "Rust",
-                "Embedded Systems"
             ],
             "sameAs": [
                 "https://github.com/jeebuscrossaint",
@@ -278,6 +316,13 @@
             </div>
         </section>
 
+        <section aria-label="Blog Posts">
+            <h2>blog</h2>
+            <ul class="blog-posts" id="blog-list">
+                <li>Loading posts...</li>
+            </ul>
+        </section>
+
         <section aria-label="Technical Skills">
             <h2>technical skills</h2>
             <div class="tech-stack">
@@ -313,6 +358,34 @@
     </main>
 
     <script>
+        // Blog posts configuration - add posts here
+        const BLOG_POSTS = [
+            {
+                title: "A guide to getting Clangd to work on NixOS",
+                file: "c-cpp-nixos-clangd-guide",
+                date: "2026-01-01"
+            },
+            // Add more posts here as you create them
+        ];
+
+        // Load blog posts
+        function loadBlogPosts() {
+            const blogList = document.getElementById('blog-list');
+            
+            if (BLOG_POSTS.length === 0) {
+                blogList.innerHTML = '<li>No posts yet. Check back soon!</li>';
+                return;
+            }
+
+            blogList.innerHTML = BLOG_POSTS.map(post => `
+                <li>
+                    <a href="post.html?post=${post.file}">${post.title}</a>
+                    <span class="blog-date">${post.date}</span>
+                </li>
+            `).join('');
+        }
+
+        // Theme toggle functionality
         function toggleTheme() {
             const body = document.body;
             const button = document.querySelector('.theme-toggle');
@@ -343,6 +416,7 @@
             if (savedTheme) {
                 applyTheme(savedTheme);
             }
+            loadBlogPosts();
         });
     </script>
 </body>
