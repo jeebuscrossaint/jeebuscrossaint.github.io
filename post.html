@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Blog post by Amarnath Patel - PSE & Computational Physics student at UCF" />
     <title>Blog Post - Amarnath Patel</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='system-ui, -apple-system, sans-serif' font-size='18' font-weight='700' font-style='italic' fill='%23fff' text-anchor='middle'>ap</text></svg>" type="image/svg+xml" />
-    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='system-ui, -apple-system, sans-serif' font-size='18' font-weight='700' font-style='italic' fill='%23fff' text-anchor='middle'>ap</text></svg>"
+        type="image/svg+xml" />
+
     <!-- Highlight.js for syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+        media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+        media="(prefers-color-scheme: light)">
     <style id="hljs-theme-light" media="print">
         @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css');
     </style>
     <style id="hljs-theme-dark" media="print">
         @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css');
     </style>
-    
+
     <style>
         body {
             margin: 0;
@@ -243,7 +247,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/nix.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
+
     <script>
         // Theme toggle functionality
         function toggleTheme() {
@@ -251,7 +255,7 @@
             const button = document.querySelector('.theme-toggle');
             const lightTheme = document.getElementById('hljs-theme-light');
             const darkTheme = document.getElementById('hljs-theme-dark');
-            
+
             body.classList.toggle('dark');
             if (body.classList.contains('dark')) {
                 button.textContent = '☀️';
@@ -271,7 +275,7 @@
             const button = document.querySelector('.theme-toggle');
             const lightTheme = document.getElementById('hljs-theme-light');
             const darkTheme = document.getElementById('hljs-theme-dark');
-            
+
             if (theme === 'dark') {
                 body.classList.add('dark');
                 button.textContent = '☀️';
@@ -296,24 +300,24 @@
             try {
                 const postName = getPostName();
                 const markdownFile = `posts/${postName}.md`;
-                
+
                 const response = await fetch(markdownFile);
                 if (!response.ok) {
                     throw new Error(`Post not found: ${postName}`);
                 }
                 const markdown = await response.text();
-                
+
                 // Parse markdown to HTML
                 const html = marked.parse(markdown);
                 document.getElementById('markdown-content').innerHTML = html;
-                
+
                 // Apply syntax highlighting to all code blocks
                 document.querySelectorAll('pre code').forEach((block) => {
                     hljs.highlightBlock(block);
                 });
-                
+
             } catch (error) {
-                document.getElementById('markdown-content').innerHTML = 
+                document.getElementById('markdown-content').innerHTML =
                     `<p style="color: #ff4444;">Error loading post: ${error.message}</p>
                     <p>Make sure the post exists in the posts/ folder.</p>`;
             }
