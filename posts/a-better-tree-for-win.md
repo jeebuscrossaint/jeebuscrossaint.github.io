@@ -88,12 +88,12 @@ tree [options] [directory...]
 Let's see the difference in action. Here's the default Windows tree command output:
 
 **Default Windows Tree:**
-![Default Windows Tree Output](assets/tree-default.png)
+![Default Windows Tree Output](posts/assets/tree-default.png)
 
 And here's the improved tree command with better formatting and features:
 
 **Better Tree (Linux-style):**
-![Better Tree Output](assets/tree-better.png)
+![Better Tree Output](posts/assets/tree-better.png)
 
 As you can see, the improved version offers:
 - **Better visual hierarchy** with clearer indentation and line graphics
