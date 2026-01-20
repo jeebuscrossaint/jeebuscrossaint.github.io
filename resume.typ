@@ -22,8 +22,7 @@
   columns: (1fr, auto),
   [Photonics Science and Engineering, Computational Physics], [August 2025 - Present]
 )
-- Pursuing double major in PSE & Computational Physics
-- Relevant Coursework: Geometric Optics, Modern Physics
+- Relevant Coursework: Geometric Optics, Matrix & Linear Algebra, Quantum Information Processing, Discrete Computational Structures, Introduction to Theoretical Methods for Physics, Statistical Methods 1
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
@@ -39,9 +38,9 @@
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(0.05em)
-*Programming Languages:* C/C++, Python, CUDA, Shell (Fish, Bash, tcsh)
+*Programming Languages:* C/C++, Python, Shell (Fish, Bash, tcsh, Powershell)
 
-*Tools & Frameworks:* Nix, Helix, Docker, Git, AI-LLMs, XMake, CMake, Proxmox
+*Tools & Frameworks:* Nix, Helix, Docker, Git, AI-LLMs, XMake, CMake, Proxmox, Tailscale
 
 *Operating Systems:* Linux Distributions, BSD, Windows, OpenSolaris
 
@@ -80,15 +79,15 @@
 - Developed AI/LLM powered research project for writing, grant funded by Florida Atlantic University with HPC access with 5 members.
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
+#v(0.1em)
+#grid(
+  columns: (1fr, auto),
+  [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]]*], [November 2025]
+)
+- Developed Python SDK wrapper for IR beam profiling camera enabling automated data acquisition, real-time beam analysis, and FITS output for optical instrumentation research
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/YamanDevelopment/UniUtils")[#text(fill: blue)[#underline[UniUtils]]]*], [October 2023 - November 2024]
 )
 - Schedule generation tool for students with classroom finder functionality. 1st Place at Night Hacks 2023 hackathon, submitted to ShellHacks
-#v(0.1em)
-#grid(
-  columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/limebar")[#text(fill: blue)[#underline[limebar]]]*], [December 2024 - March 2025]
-)
-- Lightweight Wayland status bar inspired by lemonbar with stdin-based block parsing, customizable geometry, fonts, colors, and alignment using cairo/pango rendering with xdg-shell and wlr-layer-shell protocols
