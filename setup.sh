@@ -39,6 +39,7 @@ parse_args() {
                 exit 1
                 ;;
         esac
+        # shellcheck disable=SC2317
         shift
     done
 }
@@ -72,7 +73,7 @@ check_deps() {
     # Install missing dependencies
     if [ -n "$missing_deps" ]; then
         echo "Installing missing dependencies:$missing_deps"
-        sudo pacman -S --noconfirm $missing_deps || {
+        sudo pacman -S --noconfirm "$missing_deps" || {
             echo "${RED}Failed to install dependencies${NC}" >&2
             exit 1
         }
@@ -195,7 +196,7 @@ setup_chaotic_aur() {
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOF
     
-    sudo tee -a /etc/pacman.conf < "$temp_conf" >/dev/null || {
+    sudo cat "$temp_conf" | sudo tee -a /etc/pacman.conf >/dev/null || {
         echo "${RED}Failed to update pacman.conf${NC}" >&2
         exit 1
     }
@@ -247,12 +248,6 @@ configure_pacman() {
 # Main function
 main() {
     parse_args "$@"
-    
-    if [ $DRY_RUN -eq 1 ]; then
-        echo "=== DRY RUN MODE ==="
-        echo "No actual changes will be made"
-        echo ""
-    fi
     
     echo "A.S.S. - Arch Setup Script"
     echo ""
