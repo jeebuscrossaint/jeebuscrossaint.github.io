@@ -20,7 +20,7 @@
 )
 #grid(
   columns: (1fr, auto),
-  [Photonics Science and Engineering, Computational Physics], [August 2025 - Present]
+  [Physics (Optics & Lasers), Mathematics, Computer Science Minor], [August 2025 - Present]
 )
 - Relevant Coursework: Geometric Optics, Matrix & Linear Algebra, Quantum Information Processing, Discrete Computational Structures, Introduction to Theoretical Methods for Physics, Statistical Methods 1
 #v(0.05em)
