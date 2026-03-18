@@ -1,5 +1,5 @@
 #set page(margin: (x: 0.8in, y: 0.5in))
-#set text(font: "New Computer Modern", size: 9.5pt)
+#set text(font: "Libertinus Serif", size: 9.5pt)
 #set par(justify: true)
 #align(center)[
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
@@ -71,13 +71,13 @@
   columns: (1fr, auto),
   [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]] - Programmer, Leader, Builder*], [November 2023 - May 2025]
 )
-- Developed Electron app on Raspberry Pi 5 for monitoring solar car systems; won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
+- Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds; won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 - March 2025]
 )
-- Developed AI/LLM powered research project for writing, grant funded by Florida Atlantic University with HPC access with 5 members.
+- Evaluated coherence and detection metrics (BERT NSP, GPT-2 perplexity, RoBERTa, LSA) for identifying AI-generated text; presented findings at the Wilkes Honors College Symposium; grant-funded with HPC access.
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(0.05em)
