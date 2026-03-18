@@ -40,7 +40,7 @@
 #v(0.05em)
 *Programming Languages:* C/C++, Python, Shell (Fish, Bash, tcsh, Powershell)
 
-*Tools & Frameworks:* Nix, Helix, Docker, Git, AI-LLMs, XMake, CMake, Proxmox, Tailscale
+*Tools & Frameworks:* Helix, Docker, Git, AI-LLMs, XMake, CMake, Proxmox, Tailscale
 
 *Operating Systems:* Linux Distributions, BSD, Windows, OpenSolaris
 
@@ -52,6 +52,16 @@
   [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
 )
 - Developing software for control systems and data acquisition for optical instrumentation and astronomical applications under Dr. Eikenberry spanning Photonics & Physics departments.
+#v(0.1em)
+#grid(
+  columns: (1fr, auto),
+  [*UCF Physics Department - Paid Undergraduate Research Assistant*], [March 2026 - Present]
+)
+#grid(
+  columns: (1fr, auto),
+  [Physics Education Research under Dr. Zhongzhou Chen], []
+)
+- Building ESTELA, a Tauri desktop application for browsing, previewing, and assembling exams from AI-generated isomorphic physics problem banks; project funded by NSF-2421299 and Gates Foundation INV-076932.
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
