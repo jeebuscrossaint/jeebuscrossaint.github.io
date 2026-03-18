@@ -1,18 +1,18 @@
-#set page(margin: (x: 0.8in, y: 0.8in))
-#set text(font: "New Computer Modern", size: 10pt)
+#set page(margin: (x: 0.8in, y: 0.5in))
+#set text(font: "New Computer Modern", size: 9.5pt)
 #set par(justify: true)
 #align(center)[
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
   #v(0.1em)
-  #text(size: 11pt)[
+  #text(size: 10.5pt)[
      #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] | #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]] | +1 561-603-2661
   ]
 ]
-#v(0.2em)
+#v(0.15em)
 #line(length: 100%, stroke: 0.5pt)
-#v(0.1em)
+#v(0.05em)
 #text(size: 11pt, weight: "bold")[EDUCATION]
-#v(0.1em)
+#v(0.05em)
 #grid(
   columns: (1fr, auto, auto),
   column-gutter: 1em,
@@ -22,7 +22,7 @@
   columns: (1fr, auto),
   [Physics (Optics & Lasers), Mathematics, Computer Science Minor], [August 2025 - Present]
 )
-- Relevant Coursework: Geometric Optics, Matrix & Linear Algebra, Quantum Information Processing, Discrete Computational Structures, Introduction to Theoretical Methods for Physics, Statistical Methods 1
+- Relevant Coursework: Geometric Optics, Matrix & Linear Algebra, Quantum Information Processing, Discrete Computational Structures, Theoretical Methods for Physics, Statistical Methods 1
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
@@ -32,9 +32,7 @@
   columns: (1fr, auto),
   [Computer Science coursework - High School Diploma (111 Credit Hours)], [August 2021 - May 2025]
 )
-#v(0.05em)
-- Background in Embedded Systems, UNIX systems
-- Relevant Coursework: Data Structures and Algorithms, Computer Logic Design, Matrix Theory, C & C++ programming, Deep Learning, Computer Architecture, Calculus I-III, Differential Equations
+- Relevant Coursework: Data Structures and Algorithms, Computer Logic Design, Matrix Theory, C & C++, Deep Learning, Computer Architecture, Calculus I-III, Differential Equations
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(0.05em)
@@ -49,39 +47,32 @@
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
-)
-- Developing software for control systems and data acquisition for optical instrumentation and astronomical applications under Dr. Eikenberry spanning Photonics & Physics departments.
-#v(0.1em)
-#grid(
-  columns: (1fr, auto),
   [*UCF Physics Department - Paid Undergraduate Research Assistant*], [March 2026 - Present]
 )
 #grid(
-  columns: (1fr, auto),
-  [Physics Education Research under Dr. Zhongzhou Chen], []
+  columns: (1fr,),
+  [Physics Education Research under Dr. Zhongzhou Chen]
 )
-- Building ESTELA, a Tauri desktop application for browsing, previewing, and assembling exams from AI-generated isomorphic physics problem banks; project funded by NSF-2421299 and Gates Foundation INV-076932.
-#v(0.1em)
+- Developing ESTELA, an automated multi-version exam generation system for AI-assisted isomorphic physics problem banks, supporting scalable and equitable assessment infrastructure for introductory STEM courses; funded by NSF-2421299 and Gates Foundation INV-076932.
+#v(0.05em)
 #grid(
   columns: (1fr, auto),
-  [*IEEE UCF CPU Project - Kernel Development Team Member*], [August 2025 - Present]
+  [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
 )
-- Developing kernel-level software for RISC-V CPU built from scratch, porting Doom and Quake to custom hardware architecture with 40 other members.
-#v(0.1em)
+- Developing software for control systems and data acquisition for optical instrumentation and astronomical applications under Dr. Eikenberry spanning Photonics & Physics departments.
+#v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*Teaching Assistant - Employee*], [August 2024 - May 2025]
 )
 - Assisted 70 undergraduate students with learning calculus. Part-time position (10h/week).
-#v(0.1em)
+#v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]] - Programmer, Leader, Builder*], [November 2023 - May 2025]
 )
-- Developed Electron app using Raspberry Pi 5 for monitoring and controlling solar car systems
-- Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence" with 20 other people.
-#v(0.1em)
+- Developed Electron app on Raspberry Pi 5 for monitoring solar car systems; won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
+#v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 - March 2025]
@@ -89,15 +80,21 @@
 - Developed AI/LLM powered research project for writing, grant funded by Florida Atlantic University with HPC access with 5 members.
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
-#v(0.1em)
+#v(0.05em)
+#grid(
+  columns: (1fr, auto),
+  [*ESTELA - Problem Bank Visualizer & Exam Generator*], [March 2026 - Present]
+)
+- Built in Rust (Tauri) with a vanilla JS frontend; parses YAML problem banks, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
+#v(0.05em)
+#grid(
+  columns: (1fr, auto),
+  [*Photonic Lantern Digital Holography Automation*], [January 2026 - Present]
+)
+- Automated end-to-end data acquisition and processing pipeline for characterizing photonic lanterns via digital holography; orchestrates a tunable IR laser, fiber optic switch, motorized polarization controller, and GigE InGaAs camera, with FFT-based fringe extraction and LP mode decomposition.
+#v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]]*], [November 2025]
 )
-- Developed Python SDK wrapper for IR beam profiling camera enabling automated data acquisition, real-time beam analysis, and FITS output for optical instrumentation research
-#v(0.05em)
-#grid(
-  columns: (1fr, auto),
-  [*#link("https://github.com/YamanDevelopment/UniUtils")[#text(fill: blue)[#underline[UniUtils]]]*], [October 2023 - November 2024]
-)
-- Schedule generation tool for students with classroom finder functionality. 1st Place at Night Hacks 2023 hackathon, submitted to ShellHacks
+- Developed Python SDK wrapper for IR beam profiling camera enabling automated data acquisition, real-time beam analysis, and FITS output for optical instrumentation research.
