@@ -77,7 +77,7 @@
   columns: (1fr, auto),
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 - March 2025]
 )
-- Evaluated coherence and detection metrics (BERT NSP, GPT-2 perplexity, RoBERTa, LSA) for identifying AI-generated text; presented findings at the Wilkes Honors College Symposium; grant-funded with HPC access.
+- Evaluated 10+ coherence and detection approaches (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) for identifying AI-generated text; presented findings at the Wilkes Honors College Symposium; grant-funded with HPC access.
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(0.05em)
@@ -85,13 +85,13 @@
   columns: (1fr, auto),
   [*ESTELA - Problem Bank Visualizer & Exam Generator*], [March 2026 - Present]
 )
-- Built in Rust (Tauri) with a vanilla JS frontend; parses YAML problem banks, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
+- Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
   [*Photonic Lantern Digital Holography Automation*], [January 2026 - Present]
 )
-- Automated end-to-end data acquisition and processing pipeline for characterizing photonic lanterns via digital holography; orchestrates a tunable IR laser, fiber optic switch, motorized polarization controller, and GigE InGaAs camera, with FFT-based fringe extraction and LP mode decomposition.
+- Automated end-to-end data acquisition and processing pipeline for characterizing photonic lanterns via digital holography; orchestrates 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps, with FFT-based fringe extraction and 7-mode LP decomposition.
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
