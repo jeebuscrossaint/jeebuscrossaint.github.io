@@ -77,7 +77,7 @@
   columns: (1fr, auto),
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 - March 2025]
 )
-- Evaluated 10+ coherence and detection approaches (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) for identifying AI-generated text; presented findings at the Wilkes Honors College Symposium; grant-funded with HPC access.
+- Benchmarked 10+ coherence and detection methods (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences; identified GPT-2 perplexity as the strongest discriminator (3.3× gap between coherent and incoherent text; BERT NSP failed to distinguish) and characterized a fundamental quality–evasion tradeoff across all humanization approaches; presented at Wilkes Honors College Symposium.
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(0.05em)
