@@ -95,6 +95,12 @@
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
+  [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: blue)[#underline[PolyOculus]]]*], [January 2026 - Present]
+)
+- Developing control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation as part of ongoing astrophotonics research at UCF CREOL
+#v(0.05em)
+#grid(
+  columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]]*], [November 2025]
 )
 - Developed Python SDK wrapper for IR beam profiling camera enabling automated data acquisition, real-time beam analysis, and FITS output for optical instrumentation research.
