@@ -36,14 +36,20 @@
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(0.05em)
-*Programming Languages:* C/C++, Python, Shell (Fish, Bash, tcsh, Powershell)
+*Programming Languages:* C/C++, Rust, Python, Shell (Fish, Bash, tcsh)
 
-*Tools & Frameworks:* Helix, Docker, Git, AI-LLMs, XMake, CMake, Proxmox, Tailscale
+*Tools & Frameworks:* Docker, Git, CMake, XMake, NumPy, SciPy, INDI
 
-*Operating Systems:* Linux Distributions, BSD, Windows, OpenSolaris
+*Operating Systems:* Linux Distributions, BSD, Windows
 
 #v(0.1em)
 #text(size: 11pt, weight: "bold")[PROFESSIONAL EXPERIENCE]
+#v(0.05em)
+#grid(
+  columns: (1fr, auto),
+  [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
+)
+- Conducting research at the intersection of photonics and observational astronomy under Dr. Stephen Eikenberry, developing instrumentation software across a multi-device lab environment spanning CREOL and the UCF Physics Department.
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
@@ -54,12 +60,6 @@
   [Physics Education Research under Dr. Zhongzhou Chen]
 )
 - Developing ESTELA, an automated multi-version exam generation system for AI-assisted isomorphic physics problem banks, supporting scalable and equitable assessment infrastructure for introductory STEM courses; funded by NSF-2421299 and Gates Foundation INV-076932.
-#v(0.05em)
-#grid(
-  columns: (1fr, auto),
-  [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
-)
-- Conducting research at the intersection of photonics and observational astronomy under Dr. Stephen Eikenberry, developing instrumentation software across a multi-device lab environment spanning CREOL and the UCF Physics Department.
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
