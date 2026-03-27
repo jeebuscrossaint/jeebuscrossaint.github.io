@@ -214,11 +214,11 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 #grid(
   columns: (1fr, auto),
-  [Lockheed Martin Award — "Highest Level of Engineering Excellence," AEV Competition], [2025]
+  [Lockheed Martin Award — "Highest Level of Engineering Excellence," AEV Competition], [2024]
 )
 #grid(
   columns: (1fr, auto),
-  [2nd Place in Division, Advanced Experimental Vehicles Competition], [2025]
+  [2nd Place in Division, Advanced Experimental Vehicles Competition], [2024]
 )
 #grid(
   columns: (1fr, auto),
