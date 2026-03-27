@@ -49,7 +49,7 @@
   columns: (1fr, auto),
   [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
 )
-- Conducting research at the intersection of photonics and observational astronomy under Dr. Stephen Eikenberry, developing instrumentation software across a multi-device lab environment spanning CREOL and the UCF Physics Department.
+- Developing instrumentation and automation software for astrophotonics research under Dr. Stephen Eikenberry; primary outputs include a digital holography pipeline characterizing photonic lanterns via 7-mode LP decomposition (4-instrument orchestration across 1540–1570 nm) and PolyOculus, control software for an 8-telescope photometric observation array.
 #v(0.05em)
 #grid(
   columns: (1fr, auto),
