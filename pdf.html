@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Writing by Amarnath Patel" />
-    <title>writing // apatel.co</title>
+    <title>pdf viewer // apatel.co</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='22' font-family='monospace' font-size='11' fill='%237799ff' text-anchor='middle'>ap</text></svg>" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { background-image: var(--tile); background-repeat: repeat; overscroll-behavior: none; }
@@ -19,7 +17,6 @@
             --muted:#334466;--label:#6677aa;--sep:#1a1a55;--cursor:#5566aa;
             --scroll:#1a2266;--sel:#2233aa;--head-bdr:#1a2288;
         }
-
         body {
             background-image: var(--tile);
             background-repeat: repeat;
@@ -27,194 +24,123 @@
             font-size: 14px;
             color: var(--text);
             padding: 10px 8px 24px;
+            min-height: 100vh;
         }
-
-        #wrap {
-            width: min(1140px, 97vw);
-            margin: 0 auto;
-        }
-
-        a         { color: var(--primary); text-decoration: none; }
-        a:visited { color: var(--primary); }
-        a:hover   { color: #ffffff; text-decoration: underline; }
+        #wrap { width: min(1280px, 97vw); margin: 0 auto; }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { color: #fff; text-decoration: underline; }
 
         /* ── HEADER ── */
         #header {
-            background: var(--hdr-bg);
-            border: 2px solid var(--border);
-            border-bottom: none;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: var(--hdr-bg); border: 2px solid var(--border); border-bottom: none;
+            padding: 8px 14px; display: flex; align-items: center; justify-content: space-between;
         }
-        #header .site-title {
-            font-family: 'VT323', monospace;
-            font-size: 52px;
-            color: var(--primary);
-            letter-spacing: 2px;
-        }
+        .site-title { font-family: 'VT323', monospace; font-size: 52px; color: var(--primary); letter-spacing: 2px; }
 
         /* ── NAV ── */
         #nav {
-            background: var(--nav-bg);
-            border: 2px solid var(--border);
-            border-top: 1px solid var(--head-bdr);
-            padding: 5px 12px;
-            margin-bottom: 6px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 3px;
+            background: var(--nav-bg); border: 2px solid var(--border); border-top: 1px solid var(--head-bdr);
+            padding: 5px 12px; margin-bottom: 6px; font-size: 14px;
+            display: flex; align-items: center; gap: 2px; flex-wrap: wrap;
         }
         #nav a { color: var(--label); }
-        #nav a:hover { color: var(--primary); }
-        #nav .sep { color: var(--sep); }
+        #nav a:hover { color: var(--primary); text-decoration: none; }
+        #nav .sep { color: var(--sep); margin: 0 2px; }
 
-        /* ── POST BOX ── */
-        .box { border: 1px solid var(--border); }
-        .box-head {
-            background: linear-gradient(90deg, var(--head1) 0%, var(--head2) 100%);
-            color: var(--label);
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 9px;
-            border-bottom: 1px solid var(--head-bdr);
+        /* ── TOOLBAR ── */
+        #toolbar {
+            background: var(--hdr-bg); border: 1px solid var(--border); border-bottom: none;
+            padding: 5px 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+        }
+        #toolbar .tool-label {
+            font-family: 'VT323', monospace; font-size: 24px; color: var(--primary);
+            letter-spacing: 1px; flex: 1;
+        }
+        #toolbar .tool-info {
+            font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted);
+        }
+        .tool-btn {
+            background: var(--head2); border: 1px solid var(--border); color: var(--label);
+            padding: 4px 12px; font-family: 'VT323', monospace; font-size: 20px;
+            cursor: pointer; letter-spacing: 1px; line-height: 1;
+        }
+        .tool-btn:hover { background: var(--head1); color: var(--primary); }
+        #zoom-val {
+            font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted);
+            width: 50px; text-align: center;
+        }
+        #dl-btn {
+            background: var(--head2); border: 1px solid var(--border); color: var(--primary);
+            padding: 4px 14px; font-family: 'VT323', monospace; font-size: 20px;
+            cursor: pointer; text-decoration: none; letter-spacing: 1px; line-height: 1;
+            display: inline-flex; align-items: center;
+        }
+        #dl-btn:hover { background: var(--head1); color: #fff; }
+
+        /* ── PDF AREA ── */
+        #pdf-wrap {
+            border: 1px solid var(--border);
+        }
+        #pdf-container {
+            background: #1a1a1a;
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 12px;
+            min-height: 400px;
         }
-        .box-body {
-            background: var(--box-bg);
-            padding: 20px 22px;
+        .pdf-page-wrap {
+            position: relative;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.8);
         }
-
-        /* ── POST CONTENT ── */
-        #post-content h1 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: clamp(20px, 4vw, 30px);
-            font-weight: bold;
-            color: var(--primary);
-            margin: 0 0 1rem;
-            line-height: 1.25;
-        }
-        #post-content h2 {
-            font-family: Tahoma, sans-serif;
-            font-size: 12px;
-            color: var(--label);
-            font-weight: bold;
-            border-bottom: 1px solid var(--head-bdr);
-            padding-bottom: 2px;
-            margin: 1.8rem 0 .7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        #post-content h3 {
-            font-size: 11px;
-            color: var(--muted);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 1.4rem 0 .5rem;
-        }
-        #post-content h4, #post-content h5, #post-content h6 {
-            font-size: 11px;
-            color: var(--muted);
-            font-weight: bold;
-            margin: 1.2rem 0 .4rem;
-        }
-        #post-content p {
-            font-size: 15px;
-            color: var(--text);
-            line-height: 1.8;
-            margin: 0 0 .8em;
-        }
-        #post-content strong { color: var(--primary); font-weight: bold; }
-        #post-content em { font-style: italic; }
-        #post-content a { color: var(--primary); }
-        #post-content a:hover { color: #fff; text-decoration: underline; }
-
-        #post-content code {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: .87em;
-            background: var(--head2);
-            color: var(--label);
-            padding: 1px 5px;
-            border: 1px solid var(--head-bdr);
-        }
-        #post-content pre {
-            margin: 1em 0;
-            border: 1px solid var(--head-bdr);
-            overflow-x: auto;
-        }
-        #post-content pre code {
-            background: transparent;
-            border: none;
-            padding: 0;
+        .pdf-page-wrap canvas {
             display: block;
-            font-size: .86em;
         }
-        #post-content blockquote {
-            margin: 1em 0;
-            padding: .5rem .8rem;
-            border-left: 3px solid var(--border);
-            background: var(--head2);
+        .page-label {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Courier New', monospace;
+            font-size: 9px;
+            color: #444;
+            white-space: nowrap;
         }
-        #post-content blockquote p { color: var(--muted); font-style: italic; }
-        #post-content ul, #post-content ol {
-            margin: .6em 0 .9em 1.3em;
-            color: var(--text);
-        }
-        #post-content li { font-size: 15px; margin-bottom: .2em; line-height: 1.7; }
-        #post-content hr { border: none; border-top: 1px solid var(--head-bdr); margin: 1.2rem 0; }
-        #post-content img {
-            max-width: 100%; height: auto;
-            border: 1px solid var(--head-bdr);
-            margin: 1em 0; display: block;
-        }
-        #post-content table {
-            width: 100%; border-collapse: collapse; margin: 1em 0;
-            font-family: 'Courier New', monospace; font-size: 11px;
-        }
-        #post-content th {
-            text-align: left; padding: .3rem .5rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--muted); font-size: 10px;
-            letter-spacing: 1px; text-transform: uppercase;
-        }
-        #post-content td {
-            padding: .3rem .5rem;
-            border-bottom: 1px solid var(--head-bdr);
+        #pdf-status {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
             color: var(--muted);
+            padding: 40px;
+            text-align: center;
+        }
+        #pdf-status.error { color: #aa3333; }
+        #progress-bar {
+            width: 200px; height: 4px;
+            background: var(--head2); border: 1px solid var(--border);
+            margin: 8px auto 0;
+        }
+        #progress-fill {
+            height: 100%; background: var(--primary);
+            width: 0%; transition: width 0.2s;
         }
 
         /* ── FOOTER ── */
         #footer {
-            background: var(--hdr-bg);
-            border: 1px solid var(--head-bdr);
-            border-top: none;
-            padding: 5px 10px;
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            color: var(--sep);
+            background: var(--hdr-bg); border: 1px solid var(--head-bdr); border-top: none;
+            padding: 4px 10px; display: flex; justify-content: space-between;
+            font-family: 'Courier New', monospace; font-size: 9px; color: var(--sep);
         }
-        #footer a { color: var(--muted); }
-        #footer a:hover { color: var(--primary); }
 
-        .loading { color: var(--muted); font-family: 'Courier New', monospace; font-size: 12px; }
-        .load-err { color: #882222; }
-
-        @media (max-width: 820px) { #wrap { width: 100%; } body { padding: 4px; } }
-        ::selection { background: var(--sel); color: #fff; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #000015; }
         ::-webkit-scrollbar-thumb { background: var(--scroll); }
+        ::selection { background: var(--sel); color: #fff; }
+
+        @media (max-width: 940px) { #wrap { width: 100%; } }
     </style>
     <script>
+    // ── THEME (same engine as index.html) ──
     const TILES=['0064_small.gif','037.gif','040.gif','10042.png','128.png','13096.png','132.png','133.png','13665.png','137.png','139.png','16825.png','16974.png','18078.png','201.jpg','20318.png','20446.png','22348.png','23295.png','24517.png','24817.png','2bfbg.jpg','31689.png','32623.png','3727.png','4193.png','4sq.gif','547.png','6741.png','7527.png','8388.png','926glitter.gif','Amethyst.jpg','anachdruk28background.gif','angelica2.jpg','anicolors.gif','anigdstar.gif','animated_background.gif','animate.gif','anisnow.gif','anisparkle.gif','anistars.gif','ani_starwht.gif','ani_whstar.gif','aniwhtspin.gif','ankh.gif','apple.gif','aquagalaxy_small.gif','aqua.gif','autumnleavemove.gif','azulestrellas.gif','b15.gif','b17.gif','b1.gif','b2.gif','b4g.gif','b4.gif','b5.gif','b6.gif','b7.gif','b8.gif','bac13.gif','bac20.gif','bac22.gif','bac5.gif','back82.gif','backdourado1.gif','backgrnd.gif','background038.gif','Background064.gif','background1.gif','background2.gif','Background4.gif','background.gif','backstar.gif','bats.gif','bbcbg.jpg','bck-bluewave.jpg','bck-cloudtile.jpg','bck-crackle.gif','bck-grid.gif','bck-mindwarp.jpg','bck-pnklightning.jpg','bck-starnight.gif','beaniebabiesbg.gif','beehive.png','bg54.gif','bg55.gif','bg6.jpg','bg_blueasterisk.gif','bg_bluesnowflake.gif','bgbluespots.gif','bg_bluestripe.gif','bg_bluewhiteflowers.gif','bgclearbubbles.gif','bg_clouds.jpg','bg_greensnowflake.gif','bgif001.gif','bgif003.gif','bgif010.gif','bgif014.gif','bgif016.gif','bgif017.gif','bgif020.gif','bgif021.gif','bgif023.gif','bgif025.gif','bgif026.gif','bgif031.gif','bgif055.gif','bgif072.gif','bgif083.gif','bgif088.gif','bgif093.gif','bgif094.gif','bgif095.gif','bgif096.gif','bgif100.gif','bg_limeleaf.gif','bg_limestripe.gif','bg_multipyramids.gif','bg_navajoblanket.gif','bg_orangeredstripe.gif','bg_pastelnavajoblanket.gif','bg_peachgreenflowers.gif','bg_peachgreenyellowblue.gif','bg_peachsnowflake.gif','bg_periwinkle.teardrop.jpg','bg_pinklace.gif','bg_prettyinpink.gif','bg_purplewindpaper.gif','bg_rainbowankh.gif','bg_redposey.gif','bg_sheep.gif','bgskulls.gif','bg_sky2.gif','bg_starrynight.gif','bg_tinyblueflowers.gif','bg_tinypeachflowers.gif','bg_whitegreenvine.gif','bg_whiteyellowflowers.gif','bg_yellowat.gif','bg_yellowlace.gif','bg_yellowpeachflowers.gif','bg_yellowposey.gif','bg_yellowsnowflake.gif','bg_yellowzinnia.jpg','bk021.gif','bk024.gif','bk052.gif','bk064.gif','bkg3.gif','bkgtile.gif','Black_and_White_floor_tile.jpg','black.jpg','blacksilk.png','blacktxt.png','blackwavy.png','blfrbg.jpg','blkmysticbg.gif','blkwarp.gif','blobz.gif','bl_pkpuf.jpg','bludiag.jpg','bluebrick.gif','bluecyber.webp','bluedots.png','blueghosts.gif','bluelace.gif','bluesparkle.gif','bluewater.jpg','Blue_Web.jpg','bluey.jpg','blulights.gif','blu_pink.jpg','bones.gif','bowsbows.gif','brilloazul1.gif','brillofuxia.gif','brillolila.gif','brilloverde.gif','bubble1.gif','bubble2.gif','bubble4.gif','bubbles1.gif','bubbles2.png','bubbles.gif','bubblespurplebg.jpg','bubbling.gif','bubcastle.gif','bubred3.gif','bunnycarrot.gif','butterflies1.gif','butterflysparkle.gif','ca727375c7fbda0aaf61778ee8e53f57db87e3ea.jpg','cashmoney.png','catcolors.gif','catenvelope.gif','cateyes.gif','catghost.png','catmoons.jpg','catpink.png','cats.jpg','cbg.gif','cdbg.gif','celesestrellas.gif','chess.gif','chip.png','circles.gif','clocks.png','clouds.png','cloudynite.gif','cloudystars.gif','cntrylaneheartstileback.gif','colors.gif','comp009.jpg','comp014.gif','comp016.gif','comp020.gif','comp021.gif','cool.webp','cottonlikebg.gif','crayons.gif','creepy.gif','crystalized.gif','cubicblue.jpg','cubicyello.jpg','d9fd2615c7942f0bdc6ed3d68178e1b56abd4dc1.jpg','daisy.jpg','diamond.gif','dkgraytexture.gif','dra212.gif','ec55e316fd188c482259f49c2111965ffb1bb3d5.png','eyes.png','fairies.jpg','feathers.gif','fence.gif','firebackground.gif','firesplotch.png','firey.jpg','fish.png','flashstar.gif','flowersblue.png','flowers.webp','flowerzdark.png','flowerz.png','Fon12.gif','fondo_purplestars.gif','frame_02_delay-0.6s.gif','frame_03_delay-0.6s.gif','frame_09_delay-0.6s.gif','frame_10_delay-0.6s.gif','frame_11_delay-0.6s.gif','funkypink.gif','gdsback.jpg','gdspur.jpg','ghosts.png','gifbground-804-0004.gif','gifbground-804-0005.gif','gifbground-804-0009.gif','gifbground-804-0010.gif','gifbground-804-0013.gif','gifbground-804-0014.gif','glitchy2.jpg','glitchy3.jpg','glitchy4.jpg','glitchy.jpg','glitterblock2.gif','gmbg.gif','gmcbg.jpg','goldglitter.gif','goldmusicbg.gif','goldsatinbg.gif','goldsilkbg.gif','goldstars.gif','grass.png','graybat.png','graybrickwall.gif','greengrid.jpg','greenlo.gif','greenmarble.jpg','greensatinbg.gif','greenscreen.gif','greensilk.jpg','greentexturebg.gif','greentrip.jpg','greeny.jpg','greyinkblot.jpg','greytile01.jpg','grid_anti.gif','gridnew.gif','grnbubble.gif','grntreesbg.gif','gskbg.jpg','gwbg.jpg','heartgrid.gif','heartpinkpas.gif','heartsbloo.gif','heartsparkle.gif','heartstring.gif','Horiz_Bar.jpg','image004.gif','image005.gif','image009.gif','image010.gif','Image27.gif','L4.gif','labg.jpg','lavchk.gif','leafart.gif','leavesbg.gif','lightblue.gif','lightblueweave.gif','lightning.gif','lilac.gif','litepnksilkbg.gif','logo.gif','lsbbg.jpg','lubg.jpg','Maple_Leaves.jpg','marbleshine.gif','medbluesatinbg.gif','misc002.jpg','misc006.jpg','misc058.gif','misc059.gif','misc064.gif','misc072.gif','misc080.gif','misc082.gif','misc084.gif','misc148.jpg','misc181.jpg','misc255.gif','misc302.gif','misc326.jpg','misc328.jpg','misc341.jpg','MoonBG.gif','moonglitter.gif','moonplanets.png','move_heart.gif','multi029.jpg','multi048.gif','multi086.jpg','multi131.jpg','multi137.jpg','multi175.jpg','multi221.gif','multi259.jpg','multicolorpastelflw.gif','Multi-Hued_Rock.jpg','mushroombow.gif','ncbg.jpg','neato.png','neocities1.gif','neocities2.gif','neocities3.gif','neocities4.gif','neocities5.gif','neocities6.gif','nightskystar.gif','nightstars.gif','noise.gif','num.gif','nurple-static-bright.gif','ornate.png','page_background_animated_04.gif','palmtreesblack.jpg','palmtreespink.jpg','pap12.gif','paper.jpg','party.gif','pastelblue.png','pastels2.gif','pastels.gif','pastelstarz.gif','paws1.gif','peachesbg.gif','pearlheartbg.gif','pentbck2.jpg','piedra-ndego.gif','Pine_.jpg','pink024.jpg','pink042.jpg','pink044.jpg','pink060.jpg','pink093.jpg','pinkblockbg.gif','pinkcubebg.gif','pinkgoop.png','pinkhazebg.gif','pinkhrtsbg.gif','pinkmarblebg.gif','pinkmush.gif','pinkspark.gif','pinkstars.gif','pinkstuccobg.gif','pinktile.gif','pinkwhtswirlbg.gif','pinky.jpg','pizzasliceswhtbg.gif','pmbg.jpg','ponies.gif','pplheartsss.gif','ppl-roses.png','pplstar.gif','prettybubbles.gif','prrbg.jpg','psbbg.jpg','psbg1.jpg','Psycho_1.jpg','pumkpin.gif','pumpkincheck.png','purnballbac.gif','purpbubbles.gif','purpdimond.gif','purpleanimstar.gif','purplecirclesbg.gif','purplegalaxy.png','Purple.jpg','purplelightning.gif','purplemarble2.jpg','purplerosesblkbg.gif','purplesatinbg.gif','purple-skellycat.png','purplesky.gif','purplestars.gif','purpletxt.png','purpleweb.gif','purpskybg.jpg','purpswirl.gif','PWRoses2.gif','pyramid.gif','Qbert.jpg','qq164.gif','rainbow.gif','rainbowprism.gif','rainbowstr.gif','rainbowswirl.png','rainbowy.png','raindrops.webp','rbowcolorsmusicnotes.gif','rbowlinebg.gif','rdbg.jpg','redbrick.png','redcross.jpg','red.gif','redheart.gif','redneonlinesbg.gif','redrosesblkbg.gif','redsatin1.jpg','redsatinswirlbg.gif','redsilk.jpg','redskulls.jpg','redsparkle.gif','redswirlbg.gif','redweavebg.gif','redweb.gif','rippleblue.jpg','roesbudtrelbg.gif','roses.gif','rrbg.gif','ruututausta.gif','saftextr.jpg','sakura.gif','sandcrittersbg.gif','sandy.gif','sandy.jpg','sc22.gif','silkywater.png','skeletons.jpg','skulls1.gif','skulls.jpg','skylo.gif','sky.png','skystarlight.gif','slt1.gif','smileys02.gif','smileys03.gif','smoke.gif','smokeypurple.gif','snow.gif','sora5.gif','sparklebackground.gif','sparkly.gif','spoopy.jpg','spots.png','square.gif','stagback1.gif','stagback2.gif','starbub2.gif','stars2.gif','stars3.gif','stars4.gif','stars5.gif','stars6.webp','starsagain.gif','starsforever.gif','stars.gif','starsrbowbg.gif','static.jpg','stbg1.jpg','strawbee.png','strmoonbck2.jpg','strmoonbck4.jpg','sunbg.gif','swirlblack1.jpg','swirl.gif','swirltile.jpg','tdnbg.jpg','tealdragonbg.gif','tealgrey.gif','tealsilkbg.gif','textureblue02.jpg','tiles.gif','transfondo2.gif','trees.png','trippystars.png','tumblr_inline_ml2g0lBiCI1qz4rgp540.gif','tumblr_inline_mlkwolhobQ1r53miq.png','tumblr_inline_mlkxr4nUiK1r53miq.png','tumblr_inline_mlkxsmQayT1r53miq540.gif','tumblr_inline_mll0keW1Af1r53miq540.gif','tumblr_inline_mll0knNCnX1r53miq540.gif','tumblr_inline_mqgagaPYfb1qz4rgp540.gif','ud1.gif','ud2.gif','ud3.gif','ud4.gif','ud5.gif','underwater.gif','valentinebg.gif','vgrid.jpg','w902.gif','wall_06.gif','wall.jpg','Warning.jpg','warp.gif','water2.webp','water3.jpg','water4.jpg','water6.jpg','water7.jpg','waterfunky.jpg','water.jpg','waterlo.gif','water.png','whitesatin2.jpg','whitesatin3.jpg','whtbluediamondbg.gif','whtbrickwallbg.gif','whtsatinbg.gif','whtsatinswirlbg.gif','whtsilkdesign.gif','whtsparkle.gif','wicker.jpg','wildbluegraybg.gif','wildlitebluesatinbg.gif','wildpurpleweb.gif','witchbg04.gif','wlbg1.jpg','wmnbg.jpg','wolfblkbg.gif','wp15.gif','wp24.gif','wp25.gif','wpbg.jpg','xmas.png','yellowbrick.png','yellow.png','yellowstars.gif'];
     function hsl(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1))),x=v=>Math.round(v*255).toString(16).padStart(2,'0');return'#'+x(f(0))+x(f(8))+x(f(4));}
     function buildScheme(hue){return{primary:hsl(hue,80,72),border:hsl(hue,65,28),head1:hsl(hue,55,10),head2:hsl(hue,45,4),boxBg:hsl(hue,60,3),hdrBg:hsl(hue,70,2),navBg:hsl(hue,65,3),text:hsl(hue,22,52),muted:hsl(hue,35,20),label:hsl(hue,45,38),sep:hsl(hue,45,10),cursor:hsl(hue,55,38),scroll:hsl(hue,45,16),sel:hsl(hue,65,22),headBdr:hsl(hue,55,16)};}
@@ -236,91 +162,183 @@
 <div id="header">
     <div>
         <span class="site-title">apatel.co</span>
-        <span style="font-family:'Courier New',monospace;font-size:10px;color:var(--muted);margin-left:8px">// writing</span>
+        <span style="font-family:'Courier New',monospace;font-size:10px;color:var(--muted);margin-left:8px">// <span id="hdr-filename">pdf viewer</span></span>
     </div>
     <img id="hdr-badge" src="" width="88" height="31" alt="" style="image-rendering:pixelated;">
 </div>
 
 <div id="nav">
-    <a href="index.html">&larr; back to index</a>
-    <span class="sep">//</span>
-    <a href="mailto:apatel6ty@protonmail.com">email</a>
-    <span class="sep">//</span>
-    <a href="https://github.com/jeebuscrossaint">github</a>
-    <span class="sep">//</span>
-    <a href="friends.html">links</a>
-    <span class="sep">//</span>
+    <a href="index.html">home</a><span class="sep">//</span>
+    <a href="index.html#writing">writing</a><span class="sep">//</span>
+    <a href="friends.html">links</a><span class="sep">//</span>
+    <a href="pdf.html?file=resume.pdf" id="nav-resume">résumé</a><span class="sep">//</span>
+    <a href="pdf.html?file=cv.pdf" id="nav-cv">cv</a><span class="sep">//</span>
+    <a href="https://github.com/jeebuscrossaint" target="_blank">github</a><span class="sep">//</span>
+    <a href="mailto:apatel6ty@protonmail.com">email</a><span class="sep">//</span>
     <a href="credits.html">credits</a>
 </div>
 
-<div class="box">
-    <div class="box-head">
-        <span id="post-title-label">post</span>
-        <span style="font-weight:normal;color:#334466;font-size:9px;letter-spacing:0" id="post-slug-label"></span>
-    </div>
-    <div class="box-body">
-        <div id="post-content">
-            <p class="loading">loading post...</p>
+<div id="toolbar">
+    <span class="tool-label" id="doc-title">loading...</span>
+    <span class="tool-info" id="page-info"></span>
+    <button class="tool-btn" id="btn-zoom-out">[ − ]</button>
+    <span id="zoom-val">100%</span>
+    <button class="tool-btn" id="btn-zoom-in">[ + ]</button>
+    <button class="tool-btn" id="btn-zoom-fit">fit</button>
+    <a class="tool-btn" id="dl-btn" href="#" download>↓ download</a>
+</div>
+
+<div id="pdf-wrap">
+    <div id="pdf-container">
+        <div id="pdf-status">
+            loading pdf...
+            <div id="progress-bar"><div id="progress-fill"></div></div>
         </div>
     </div>
 </div>
 
 <div id="footer">
     <a href="index.html">&larr; back</a>
-    <a href="#top">^ top</a>
+    <span id="footer-info" style="color:var(--sep)"></span>
 </div>
 
-</div>
+</div><!-- end wrap -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/nix.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 (function(){
-    const post = new URLSearchParams(window.location.search).get('post');
-    const area = document.getElementById('post-content');
-    const slugLabel = document.getElementById('post-slug-label');
-    if (!post) {
-        document.title = 'writing // apatel.co';
-        document.getElementById('post-title-label').textContent = 'writing';
-        area.innerHTML = `
-            <div class="post-entry">
-                <div class="post-date">2025-03-15</div>
-                <div class="post-title"><a href="post.html?post=c-cpp-nixos-clangd-guide">Getting clangd to work on NixOS</a></div>
-                <div class="post-desc">fixing the "vector file not found" and iostream errors once and for all</div>
-            </div>
-            <div class="post-entry">
-                <div class="post-date">2025-01-20</div>
-                <div class="post-title"><a href="post.html?post=a-better-tree-for-win">The built-in Windows tree command is trash</a></div>
-                <div class="post-desc">and here's how to replace it with something actually good</div>
-            </div>`;
-        return;
-    }
-    if (slugLabel) slugLabel.textContent = 'posts/' + post + '.md';
-    if (window.location.protocol === 'file:') {
-        area.innerHTML = '<p class="loading load-err">error: posts require a web server — open via <a href="https://apatel.co">apatel.co</a> or run a local server.</p>';
-        return;
+    // ── Config ──
+    const params   = new URLSearchParams(window.location.search);
+    const pdfFile  = params.get('file') || 'resume.pdf';
+    const label    = pdfFile.replace(/\.pdf$/i, '');
+    // Always fetch from the live site so it works locally and in production
+    const pdfUrl   = 'https://apatel.co/' + pdfFile;
+
+    // Update UI labels
+    document.title = label + ' // apatel.co';
+    document.getElementById('hdr-filename').textContent = label;
+    document.getElementById('doc-title').textContent    = label;
+    document.getElementById('dl-btn').href              = pdfUrl;
+    document.getElementById('dl-btn').download          = pdfFile;
+    document.getElementById('footer-info').textContent  = pdfFile;
+
+    // Highlight current nav link
+    const navR = document.getElementById('nav-resume');
+    const navC = document.getElementById('nav-cv');
+    if (pdfFile === 'resume.pdf' && navR) navR.style.color = 'var(--primary)';
+    if (pdfFile === 'cv.pdf'     && navC) navC.style.color = 'var(--primary)';
+
+    // ── PDF.js setup ──
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const container    = document.getElementById('pdf-container');
+    const statusEl     = document.getElementById('pdf-status');
+    const progressFill = document.getElementById('progress-fill');
+    const pageInfo     = document.getElementById('page-info');
+    const zoomVal      = document.getElementById('zoom-val');
+
+    let scale     = 1.5;
+    let pdfDoc    = null;
+    let rendering = false;
+
+    function setStatus(msg, isError) {
+        statusEl.textContent = msg;
+        statusEl.className   = isError ? 'error' : '';
     }
 
-    fetch('posts/' + post + '.md')
-        .then(r => { if (!r.ok) throw new Error('post not found: ' + post); return r.text(); })
-        .then(md => {
-            area.innerHTML = marked.parse(md);
-            area.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
-            const h1 = area.querySelector('h1');
-            if (h1) {
-                document.title = h1.textContent + ' // apatel.co';
-                const lbl = document.getElementById('post-title-label');
-                if (lbl) lbl.textContent = h1.textContent;
+    async function renderPage(page, wrap) {
+        const viewport = page.getViewport({ scale });
+        const canvas   = document.createElement('canvas');
+        canvas.width   = viewport.width;
+        canvas.height  = viewport.height;
+        const ctx      = canvas.getContext('2d');
+        await page.render({ canvasContext: ctx, viewport }).promise;
+        // replace placeholder canvas if present
+        const existing = wrap.querySelector('canvas');
+        if (existing) wrap.replaceChild(canvas, existing);
+        else wrap.insertBefore(canvas, wrap.querySelector('.page-label'));
+    }
+
+    async function renderAll() {
+        if (rendering) return;
+        rendering = true;
+        const wraps = container.querySelectorAll('.pdf-page-wrap');
+        for (const wrap of wraps) {
+            const pageNum = parseInt(wrap.dataset.page, 10);
+            const page    = await pdfDoc.getPage(pageNum);
+            await renderPage(page, wrap);
+        }
+        rendering = false;
+    }
+
+    async function loadPDF() {
+        try {
+            const loadingTask = pdfjsLib.getDocument({
+                url: pdfUrl,
+                cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                cMapPacked: true,
+            });
+
+            loadingTask.onProgress = (p) => {
+                if (p.total) {
+                    const pct = Math.round((p.loaded / p.total) * 100);
+                    progressFill.style.width = pct + '%';
+                }
+            };
+
+            pdfDoc = await loadingTask.promise;
+            const n = pdfDoc.numPages;
+
+            pageInfo.textContent = n + (n === 1 ? ' page' : ' pages');
+
+            // Build page placeholders
+            container.innerHTML = '';
+            for (let i = 1; i <= n; i++) {
+                const wrap  = document.createElement('div');
+                wrap.className   = 'pdf-page-wrap';
+                wrap.dataset.page = i;
+                // placeholder canvas
+                const ph = document.createElement('canvas');
+                ph.width  = 600; ph.height = 800;
+                wrap.appendChild(ph);
+                const lbl = document.createElement('div');
+                lbl.className   = 'page-label';
+                lbl.textContent = `page ${i} / ${n}`;
+                wrap.appendChild(lbl);
+                container.appendChild(wrap);
             }
-        })
-        .catch(err => {
-            area.innerHTML = '<p class="loading load-err">error: ' + err.message + '</p>';
-        });
+
+            await renderAll();
+
+        } catch(e) {
+            setStatus('error loading pdf: ' + e.message, true);
+        }
+    }
+
+    // ── Zoom controls ──
+    function updateZoom(newScale) {
+        scale = Math.max(0.5, Math.min(3.0, newScale));
+        zoomVal.textContent = Math.round(scale * 100 / 1.5 * 100) + '%';
+        renderAll();
+    }
+
+    document.getElementById('btn-zoom-in').addEventListener('click',  () => updateZoom(scale + 0.25));
+    document.getElementById('btn-zoom-out').addEventListener('click', () => updateZoom(scale - 0.25));
+    document.getElementById('btn-zoom-fit').addEventListener('click', () => {
+        // fit to wrap width
+        const wrapW = document.getElementById('pdf-wrap').clientWidth - 40;
+        if (pdfDoc) {
+            pdfDoc.getPage(1).then(p => {
+                const vp = p.getViewport({ scale: 1 });
+                updateZoom(wrapW / vp.width);
+            });
+        }
+    });
+
+    loadPDF();
 })();
 </script>
-
 <script>
 (function(){
     const B='https://cyber.dabamos.de/88x31/';

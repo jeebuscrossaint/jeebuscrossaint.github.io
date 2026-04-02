@@ -3,230 +3,62 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Writing by Amarnath Patel" />
-    <title>writing // apatel.co</title>
+    <title>credits // apatel.co</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='22' font-family='monospace' font-size='11' fill='%237799ff' text-anchor='middle'>ap</text></svg>" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { background-image: var(--tile); background-repeat: repeat; overscroll-behavior: none; }
         :root {
             --primary:#99aaff;--border:#2233aa;--head1:#111166;--head2:#080840;
             --box-bg:#03031a;--hdr-bg:#000022;--nav-bg:#05051e;--text:#8890b8;
-            --muted:#334466;--label:#6677aa;--sep:#1a1a55;--cursor:#5566aa;
+            --muted:#5a6e90;--label:#8aabcf;--sep:#1a1a55;--cursor:#5566aa;
             --scroll:#1a2266;--sel:#2233aa;--head-bdr:#1a2288;
         }
+        body { background-image:var(--tile);background-repeat:repeat;font-family:Tahoma,Verdana,Arial,sans-serif;font-size:14px;color:var(--text);padding:10px 8px 24px; }
+        #wrap { width:min(1140px,97vw);margin:0 auto; }
+        a { color:var(--primary);text-decoration:none; }
+        a:hover { color:#fff;text-decoration:underline; }
+        #header { background:var(--hdr-bg);border:2px solid var(--border);border-bottom:none;padding:10px 16px;display:flex;align-items:center;justify-content:space-between; }
+        .site-title { font-family:'VT323',monospace;font-size:52px;color:var(--primary);letter-spacing:2px; }
+        #nav { background:var(--nav-bg);border:2px solid var(--border);border-top:1px solid var(--head-bdr);padding:5px 12px;margin-bottom:6px;font-size:14px;display:flex;align-items:center;gap:2px;flex-wrap:wrap; }
+        #nav a { color:var(--label); }
+        #nav a:hover { color:var(--primary);text-decoration:none; }
+        #nav .sep { color:var(--sep);margin:0 2px; }
+        .box { border:1px solid var(--border);margin-bottom:6px; }
+        .box-head { background:linear-gradient(90deg,var(--head1) 0%,var(--head2) 100%);color:var(--label);font-size:13px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;padding:4px 9px;border-bottom:1px solid var(--head-bdr); }
+        .box-body { background:var(--box-bg);padding:12px 14px;color:var(--text);line-height:1.6; }
 
-        body {
-            background-image: var(--tile);
-            background-repeat: repeat;
-            font-family: Tahoma, Verdana, Arial, sans-serif;
-            font-size: 14px;
-            color: var(--text);
-            padding: 10px 8px 24px;
-        }
+        .credits-table { width:100%;border-collapse:collapse; }
+        .credits-table tr { border-bottom:1px dashed var(--head2); }
+        .credits-table tr:last-child { border-bottom:none; }
+        .credits-table td { padding:8px 6px;vertical-align:top; }
+        .cr-name { white-space:nowrap;padding-right:16px; }
+        .cr-name a { font-family:'VT323',monospace;font-size:22px;color:var(--primary); }
+        .cr-name a:hover { color:#fff; }
+        .cr-count { font-family:'Courier New',monospace;font-size:11px;color:var(--muted);white-space:nowrap;padding-right:16px; }
+        .cr-desc { font-size:13px;color:var(--muted); }
 
-        #wrap {
-            width: min(1140px, 97vw);
-            margin: 0 auto;
-        }
-
-        a         { color: var(--primary); text-decoration: none; }
-        a:visited { color: var(--primary); }
-        a:hover   { color: #ffffff; text-decoration: underline; }
-
-        /* ── HEADER ── */
-        #header {
-            background: var(--hdr-bg);
-            border: 2px solid var(--border);
-            border-bottom: none;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        #header .site-title {
-            font-family: 'VT323', monospace;
-            font-size: 52px;
-            color: var(--primary);
-            letter-spacing: 2px;
-        }
-
-        /* ── NAV ── */
-        #nav {
-            background: var(--nav-bg);
-            border: 2px solid var(--border);
-            border-top: 1px solid var(--head-bdr);
-            padding: 5px 12px;
-            margin-bottom: 6px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 3px;
-        }
-        #nav a { color: var(--label); }
-        #nav a:hover { color: var(--primary); }
-        #nav .sep { color: var(--sep); }
-
-        /* ── POST BOX ── */
-        .box { border: 1px solid var(--border); }
-        .box-head {
-            background: linear-gradient(90deg, var(--head1) 0%, var(--head2) 100%);
-            color: var(--label);
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 9px;
-            border-bottom: 1px solid var(--head-bdr);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .box-body {
-            background: var(--box-bg);
-            padding: 20px 22px;
-        }
-
-        /* ── POST CONTENT ── */
-        #post-content h1 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: clamp(20px, 4vw, 30px);
-            font-weight: bold;
-            color: var(--primary);
-            margin: 0 0 1rem;
-            line-height: 1.25;
-        }
-        #post-content h2 {
-            font-family: Tahoma, sans-serif;
-            font-size: 12px;
-            color: var(--label);
-            font-weight: bold;
-            border-bottom: 1px solid var(--head-bdr);
-            padding-bottom: 2px;
-            margin: 1.8rem 0 .7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        #post-content h3 {
-            font-size: 11px;
-            color: var(--muted);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 1.4rem 0 .5rem;
-        }
-        #post-content h4, #post-content h5, #post-content h6 {
-            font-size: 11px;
-            color: var(--muted);
-            font-weight: bold;
-            margin: 1.2rem 0 .4rem;
-        }
-        #post-content p {
-            font-size: 15px;
-            color: var(--text);
-            line-height: 1.8;
-            margin: 0 0 .8em;
-        }
-        #post-content strong { color: var(--primary); font-weight: bold; }
-        #post-content em { font-style: italic; }
-        #post-content a { color: var(--primary); }
-        #post-content a:hover { color: #fff; text-decoration: underline; }
-
-        #post-content code {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: .87em;
-            background: var(--head2);
-            color: var(--label);
-            padding: 1px 5px;
-            border: 1px solid var(--head-bdr);
-        }
-        #post-content pre {
-            margin: 1em 0;
-            border: 1px solid var(--head-bdr);
-            overflow-x: auto;
-        }
-        #post-content pre code {
-            background: transparent;
-            border: none;
-            padding: 0;
-            display: block;
-            font-size: .86em;
-        }
-        #post-content blockquote {
-            margin: 1em 0;
-            padding: .5rem .8rem;
-            border-left: 3px solid var(--border);
-            background: var(--head2);
-        }
-        #post-content blockquote p { color: var(--muted); font-style: italic; }
-        #post-content ul, #post-content ol {
-            margin: .6em 0 .9em 1.3em;
-            color: var(--text);
-        }
-        #post-content li { font-size: 15px; margin-bottom: .2em; line-height: 1.7; }
-        #post-content hr { border: none; border-top: 1px solid var(--head-bdr); margin: 1.2rem 0; }
-        #post-content img {
-            max-width: 100%; height: auto;
-            border: 1px solid var(--head-bdr);
-            margin: 1em 0; display: block;
-        }
-        #post-content table {
-            width: 100%; border-collapse: collapse; margin: 1em 0;
-            font-family: 'Courier New', monospace; font-size: 11px;
-        }
-        #post-content th {
-            text-align: left; padding: .3rem .5rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--muted); font-size: 10px;
-            letter-spacing: 1px; text-transform: uppercase;
-        }
-        #post-content td {
-            padding: .3rem .5rem;
-            border-bottom: 1px solid var(--head-bdr);
-            color: var(--muted);
-        }
-
-        /* ── FOOTER ── */
-        #footer {
-            background: var(--hdr-bg);
-            border: 1px solid var(--head-bdr);
-            border-top: none;
-            padding: 5px 10px;
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            color: var(--sep);
-        }
-        #footer a { color: var(--muted); }
-        #footer a:hover { color: var(--primary); }
-
-        .loading { color: var(--muted); font-family: 'Courier New', monospace; font-size: 12px; }
-        .load-err { color: #882222; }
-
-        @media (max-width: 820px) { #wrap { width: 100%; } body { padding: 4px; } }
-        ::selection { background: var(--sel); color: #fff; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000015; }
-        ::-webkit-scrollbar-thumb { background: var(--scroll); }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:#000015; }
+        ::-webkit-scrollbar-thumb { background:var(--scroll); }
+        ::selection { background:var(--sel);color:#fff; }
     </style>
     <script>
     const TILES=['0064_small.gif','037.gif','040.gif','10042.png','128.png','13096.png','132.png','133.png','13665.png','137.png','139.png','16825.png','16974.png','18078.png','201.jpg','20318.png','20446.png','22348.png','23295.png','24517.png','24817.png','2bfbg.jpg','31689.png','32623.png','3727.png','4193.png','4sq.gif','547.png','6741.png','7527.png','8388.png','926glitter.gif','Amethyst.jpg','anachdruk28background.gif','angelica2.jpg','anicolors.gif','anigdstar.gif','animated_background.gif','animate.gif','anisnow.gif','anisparkle.gif','anistars.gif','ani_starwht.gif','ani_whstar.gif','aniwhtspin.gif','ankh.gif','apple.gif','aquagalaxy_small.gif','aqua.gif','autumnleavemove.gif','azulestrellas.gif','b15.gif','b17.gif','b1.gif','b2.gif','b4g.gif','b4.gif','b5.gif','b6.gif','b7.gif','b8.gif','bac13.gif','bac20.gif','bac22.gif','bac5.gif','back82.gif','backdourado1.gif','backgrnd.gif','background038.gif','Background064.gif','background1.gif','background2.gif','Background4.gif','background.gif','backstar.gif','bats.gif','bbcbg.jpg','bck-bluewave.jpg','bck-cloudtile.jpg','bck-crackle.gif','bck-grid.gif','bck-mindwarp.jpg','bck-pnklightning.jpg','bck-starnight.gif','beaniebabiesbg.gif','beehive.png','bg54.gif','bg55.gif','bg6.jpg','bg_blueasterisk.gif','bg_bluesnowflake.gif','bgbluespots.gif','bg_bluestripe.gif','bg_bluewhiteflowers.gif','bgclearbubbles.gif','bg_clouds.jpg','bg_greensnowflake.gif','bgif001.gif','bgif003.gif','bgif010.gif','bgif014.gif','bgif016.gif','bgif017.gif','bgif020.gif','bgif021.gif','bgif023.gif','bgif025.gif','bgif026.gif','bgif031.gif','bgif055.gif','bgif072.gif','bgif083.gif','bgif088.gif','bgif093.gif','bgif094.gif','bgif095.gif','bgif096.gif','bgif100.gif','bg_limeleaf.gif','bg_limestripe.gif','bg_multipyramids.gif','bg_navajoblanket.gif','bg_orangeredstripe.gif','bg_pastelnavajoblanket.gif','bg_peachgreenflowers.gif','bg_peachgreenyellowblue.gif','bg_peachsnowflake.gif','bg_periwinkle.teardrop.jpg','bg_pinklace.gif','bg_prettyinpink.gif','bg_purplewindpaper.gif','bg_rainbowankh.gif','bg_redposey.gif','bg_sheep.gif','bgskulls.gif','bg_sky2.gif','bg_starrynight.gif','bg_tinyblueflowers.gif','bg_tinypeachflowers.gif','bg_whitegreenvine.gif','bg_whiteyellowflowers.gif','bg_yellowat.gif','bg_yellowlace.gif','bg_yellowpeachflowers.gif','bg_yellowposey.gif','bg_yellowsnowflake.gif','bg_yellowzinnia.jpg','bk021.gif','bk024.gif','bk052.gif','bk064.gif','bkg3.gif','bkgtile.gif','Black_and_White_floor_tile.jpg','black.jpg','blacksilk.png','blacktxt.png','blackwavy.png','blfrbg.jpg','blkmysticbg.gif','blkwarp.gif','blobz.gif','bl_pkpuf.jpg','bludiag.jpg','bluebrick.gif','bluecyber.webp','bluedots.png','blueghosts.gif','bluelace.gif','bluesparkle.gif','bluewater.jpg','Blue_Web.jpg','bluey.jpg','blulights.gif','blu_pink.jpg','bones.gif','bowsbows.gif','brilloazul1.gif','brillofuxia.gif','brillolila.gif','brilloverde.gif','bubble1.gif','bubble2.gif','bubble4.gif','bubbles1.gif','bubbles2.png','bubbles.gif','bubblespurplebg.jpg','bubbling.gif','bubcastle.gif','bubred3.gif','bunnycarrot.gif','butterflies1.gif','butterflysparkle.gif','ca727375c7fbda0aaf61778ee8e53f57db87e3ea.jpg','cashmoney.png','catcolors.gif','catenvelope.gif','cateyes.gif','catghost.png','catmoons.jpg','catpink.png','cats.jpg','cbg.gif','cdbg.gif','celesestrellas.gif','chess.gif','chip.png','circles.gif','clocks.png','clouds.png','cloudynite.gif','cloudystars.gif','cntrylaneheartstileback.gif','colors.gif','comp009.jpg','comp014.gif','comp016.gif','comp020.gif','comp021.gif','cool.webp','cottonlikebg.gif','crayons.gif','creepy.gif','crystalized.gif','cubicblue.jpg','cubicyello.jpg','d9fd2615c7942f0bdc6ed3d68178e1b56abd4dc1.jpg','daisy.jpg','diamond.gif','dkgraytexture.gif','dra212.gif','ec55e316fd188c482259f49c2111965ffb1bb3d5.png','eyes.png','fairies.jpg','feathers.gif','fence.gif','firebackground.gif','firesplotch.png','firey.jpg','fish.png','flashstar.gif','flowersblue.png','flowers.webp','flowerzdark.png','flowerz.png','Fon12.gif','fondo_purplestars.gif','frame_02_delay-0.6s.gif','frame_03_delay-0.6s.gif','frame_09_delay-0.6s.gif','frame_10_delay-0.6s.gif','frame_11_delay-0.6s.gif','funkypink.gif','gdsback.jpg','gdspur.jpg','ghosts.png','gifbground-804-0004.gif','gifbground-804-0005.gif','gifbground-804-0009.gif','gifbground-804-0010.gif','gifbground-804-0013.gif','gifbground-804-0014.gif','glitchy2.jpg','glitchy3.jpg','glitchy4.jpg','glitchy.jpg','glitterblock2.gif','gmbg.gif','gmcbg.jpg','goldglitter.gif','goldmusicbg.gif','goldsatinbg.gif','goldsilkbg.gif','goldstars.gif','grass.png','graybat.png','graybrickwall.gif','greengrid.jpg','greenlo.gif','greenmarble.jpg','greensatinbg.gif','greenscreen.gif','greensilk.jpg','greentexturebg.gif','greentrip.jpg','greeny.jpg','greyinkblot.jpg','greytile01.jpg','grid_anti.gif','gridnew.gif','grnbubble.gif','grntreesbg.gif','gskbg.jpg','gwbg.jpg','heartgrid.gif','heartpinkpas.gif','heartsbloo.gif','heartsparkle.gif','heartstring.gif','Horiz_Bar.jpg','image004.gif','image005.gif','image009.gif','image010.gif','Image27.gif','L4.gif','labg.jpg','lavchk.gif','leafart.gif','leavesbg.gif','lightblue.gif','lightblueweave.gif','lightning.gif','lilac.gif','litepnksilkbg.gif','logo.gif','lsbbg.jpg','lubg.jpg','Maple_Leaves.jpg','marbleshine.gif','medbluesatinbg.gif','misc002.jpg','misc006.jpg','misc058.gif','misc059.gif','misc064.gif','misc072.gif','misc080.gif','misc082.gif','misc084.gif','misc148.jpg','misc181.jpg','misc255.gif','misc302.gif','misc326.jpg','misc328.jpg','misc341.jpg','MoonBG.gif','moonglitter.gif','moonplanets.png','move_heart.gif','multi029.jpg','multi048.gif','multi086.jpg','multi131.jpg','multi137.jpg','multi175.jpg','multi221.gif','multi259.jpg','multicolorpastelflw.gif','Multi-Hued_Rock.jpg','mushroombow.gif','ncbg.jpg','neato.png','neocities1.gif','neocities2.gif','neocities3.gif','neocities4.gif','neocities5.gif','neocities6.gif','nightskystar.gif','nightstars.gif','noise.gif','num.gif','nurple-static-bright.gif','ornate.png','page_background_animated_04.gif','palmtreesblack.jpg','palmtreespink.jpg','pap12.gif','paper.jpg','party.gif','pastelblue.png','pastels2.gif','pastels.gif','pastelstarz.gif','paws1.gif','peachesbg.gif','pearlheartbg.gif','pentbck2.jpg','piedra-ndego.gif','Pine_.jpg','pink024.jpg','pink042.jpg','pink044.jpg','pink060.jpg','pink093.jpg','pinkblockbg.gif','pinkcubebg.gif','pinkgoop.png','pinkhazebg.gif','pinkhrtsbg.gif','pinkmarblebg.gif','pinkmush.gif','pinkspark.gif','pinkstars.gif','pinkstuccobg.gif','pinktile.gif','pinkwhtswirlbg.gif','pinky.jpg','pizzasliceswhtbg.gif','pmbg.jpg','ponies.gif','pplheartsss.gif','ppl-roses.png','pplstar.gif','prettybubbles.gif','prrbg.jpg','psbbg.jpg','psbg1.jpg','Psycho_1.jpg','pumkpin.gif','pumpkincheck.png','purnballbac.gif','purpbubbles.gif','purpdimond.gif','purpleanimstar.gif','purplecirclesbg.gif','purplegalaxy.png','Purple.jpg','purplelightning.gif','purplemarble2.jpg','purplerosesblkbg.gif','purplesatinbg.gif','purple-skellycat.png','purplesky.gif','purplestars.gif','purpletxt.png','purpleweb.gif','purpskybg.jpg','purpswirl.gif','PWRoses2.gif','pyramid.gif','Qbert.jpg','qq164.gif','rainbow.gif','rainbowprism.gif','rainbowstr.gif','rainbowswirl.png','rainbowy.png','raindrops.webp','rbowcolorsmusicnotes.gif','rbowlinebg.gif','rdbg.jpg','redbrick.png','redcross.jpg','red.gif','redheart.gif','redneonlinesbg.gif','redrosesblkbg.gif','redsatin1.jpg','redsatinswirlbg.gif','redsilk.jpg','redskulls.jpg','redsparkle.gif','redswirlbg.gif','redweavebg.gif','redweb.gif','rippleblue.jpg','roesbudtrelbg.gif','roses.gif','rrbg.gif','ruututausta.gif','saftextr.jpg','sakura.gif','sandcrittersbg.gif','sandy.gif','sandy.jpg','sc22.gif','silkywater.png','skeletons.jpg','skulls1.gif','skulls.jpg','skylo.gif','sky.png','skystarlight.gif','slt1.gif','smileys02.gif','smileys03.gif','smoke.gif','smokeypurple.gif','snow.gif','sora5.gif','sparklebackground.gif','sparkly.gif','spoopy.jpg','spots.png','square.gif','stagback1.gif','stagback2.gif','starbub2.gif','stars2.gif','stars3.gif','stars4.gif','stars5.gif','stars6.webp','starsagain.gif','starsforever.gif','stars.gif','starsrbowbg.gif','static.jpg','stbg1.jpg','strawbee.png','strmoonbck2.jpg','strmoonbck4.jpg','sunbg.gif','swirlblack1.jpg','swirl.gif','swirltile.jpg','tdnbg.jpg','tealdragonbg.gif','tealgrey.gif','tealsilkbg.gif','textureblue02.jpg','tiles.gif','transfondo2.gif','trees.png','trippystars.png','tumblr_inline_ml2g0lBiCI1qz4rgp540.gif','tumblr_inline_mlkwolhobQ1r53miq.png','tumblr_inline_mlkxr4nUiK1r53miq.png','tumblr_inline_mlkxsmQayT1r53miq540.gif','tumblr_inline_mll0keW1Af1r53miq540.gif','tumblr_inline_mll0knNCnX1r53miq540.gif','tumblr_inline_mqgagaPYfb1qz4rgp540.gif','ud1.gif','ud2.gif','ud3.gif','ud4.gif','ud5.gif','underwater.gif','valentinebg.gif','vgrid.jpg','w902.gif','wall_06.gif','wall.jpg','Warning.jpg','warp.gif','water2.webp','water3.jpg','water4.jpg','water6.jpg','water7.jpg','waterfunky.jpg','water.jpg','waterlo.gif','water.png','whitesatin2.jpg','whitesatin3.jpg','whtbluediamondbg.gif','whtbrickwallbg.gif','whtsatinbg.gif','whtsatinswirlbg.gif','whtsilkdesign.gif','whtsparkle.gif','wicker.jpg','wildbluegraybg.gif','wildlitebluesatinbg.gif','wildpurpleweb.gif','witchbg04.gif','wlbg1.jpg','wmnbg.jpg','wolfblkbg.gif','wp15.gif','wp24.gif','wp25.gif','wpbg.jpg','xmas.png','yellowbrick.png','yellow.png','yellowstars.gif'];
     function hsl(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1))),x=v=>Math.round(v*255).toString(16).padStart(2,'0');return'#'+x(f(0))+x(f(8))+x(f(4));}
-    function buildScheme(hue){return{primary:hsl(hue,80,72),border:hsl(hue,65,28),head1:hsl(hue,55,10),head2:hsl(hue,45,4),boxBg:hsl(hue,60,3),hdrBg:hsl(hue,70,2),navBg:hsl(hue,65,3),text:hsl(hue,22,52),muted:hsl(hue,35,20),label:hsl(hue,45,38),sep:hsl(hue,45,10),cursor:hsl(hue,55,38),scroll:hsl(hue,45,16),sel:hsl(hue,65,22),headBdr:hsl(hue,55,16)};}
+    function buildScheme(hue,viv){viv=Math.max(0,Math.min(1,viv===undefined?0.5:viv));const s=28+viv*48,acc=(hue+20+viv*35)%360;return{primary:hsl(acc,60+viv*25,62+viv*12),border:hsl(hue,s*0.85,20+viv*14),head1:hsl(hue,s*0.70,7+viv*7),head2:hsl(hue,s*0.55,3+viv*3),boxBg:hsl(hue,s*0.75,2+viv*4),hdrBg:hsl(hue,s*0.90,1+viv*2),navBg:hsl(hue,s*0.75,2+viv*3),text:hsl(hue,12+viv*16,47+viv*11),muted:hsl(hue,18+viv*20,35+viv*13),label:hsl(hue,28+viv*24,53+viv*9),sep:hsl(hue,s*0.65,7+viv*6),cursor:hsl(acc,48+viv*22,36+viv*10),scroll:hsl(hue,s*0.55,12+viv*6),sel:hsl(hue,s*0.70,15+viv*9),headBdr:hsl(hue,s*0.65,12+viv*7)};}
     function applyScheme(p){const r=document.documentElement.style;r.setProperty('--primary',p.primary);r.setProperty('--border',p.border);r.setProperty('--head1',p.head1);r.setProperty('--head2',p.head2);r.setProperty('--box-bg',p.boxBg);r.setProperty('--hdr-bg',p.hdrBg);r.setProperty('--nav-bg',p.navBg);r.setProperty('--text',p.text);r.setProperty('--muted',p.muted);r.setProperty('--label',p.label);r.setProperty('--sep',p.sep);r.setProperty('--cursor',p.cursor);r.setProperty('--scroll',p.scroll);r.setProperty('--sel',p.sel);r.setProperty('--head-bdr',p.headBdr);}
     function hashHue(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return Math.abs(h)%360;}
     const tile=TILES[Math.floor(Math.random()*TILES.length)];
     const BASE='https://sadhost.neocities.org/images/tiles/';
     const tileUrl=BASE+tile;
-    applyScheme(buildScheme(hashHue(tile)));
+    applyScheme(buildScheme(hashHue(tile),0.5));
     document.documentElement.style.setProperty('--tile',`url('${tileUrl}')`);
     const _img=new Image();_img.crossOrigin='anonymous';
-    _img.onload=function(){try{const c=document.createElement('canvas');c.width=c.height=12;const ctx=c.getContext('2d');ctx.drawImage(_img,0,0,12,12);const d=ctx.getImageData(0,0,12,12).data;let ss=0,cs=0,n=0;for(let i=0;i<d.length;i+=4){const r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),dl=mx-mn;if(dl<0.12||mx<0.08)continue;let h;if(mx===r)h=((g-b)/dl+6)%6;else if(mx===g)h=(b-r)/dl+2;else h=(r-g)/dl+4;h*=60;ss+=Math.sin(h*Math.PI/180);cs+=Math.cos(h*Math.PI/180);n++;}if(n>8)applyScheme(buildScheme((Math.atan2(ss,cs)*180/Math.PI+360)%360));}catch(e){}};
+    _img.onload=function(){try{const c=document.createElement('canvas');c.width=c.height=24;const ctx=c.getContext('2d');ctx.drawImage(_img,0,0,24,24);const d=ctx.getImageData(0,0,24,24).data;let ss=0,cs=0,sat=0,n=0;for(let i=0;i<d.length;i+=4){const r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),dl=mx-mn;if(dl<0.06||mx<0.06)continue;let h;if(mx===r)h=((g-b)/dl+6)%6;else if(mx===g)h=(b-r)/dl+2;else h=(r-g)/dl+4;h*=60;const s=dl/mx;ss+=Math.sin(h*Math.PI/180)*s;cs+=Math.cos(h*Math.PI/180)*s;sat+=s;n++;}if(n>12){const raw=(Math.atan2(ss,cs)*180/Math.PI+360)%360,shift=(hashHue(tile)%50)-25,hue=(raw+shift+360)%360,viv=Math.min(1,sat/n*2.2);applyScheme(buildScheme(hue,viv));}}catch(e){}};
     _img.src=tileUrl;
     </script>
 </head>
@@ -236,91 +68,90 @@
 <div id="header">
     <div>
         <span class="site-title">apatel.co</span>
-        <span style="font-family:'Courier New',monospace;font-size:10px;color:var(--muted);margin-left:8px">// writing</span>
+        <span style="font-family:'Courier New',monospace;font-size:10px;color:var(--muted);margin-left:8px">// credits</span>
     </div>
     <img id="hdr-badge" src="" width="88" height="31" alt="" style="image-rendering:pixelated;">
 </div>
 
 <div id="nav">
-    <a href="index.html">&larr; back to index</a>
-    <span class="sep">//</span>
-    <a href="mailto:apatel6ty@protonmail.com">email</a>
-    <span class="sep">//</span>
-    <a href="https://github.com/jeebuscrossaint">github</a>
-    <span class="sep">//</span>
-    <a href="friends.html">links</a>
-    <span class="sep">//</span>
-    <a href="credits.html">credits</a>
+    <a href="index.html">home</a><span class="sep">//</span>
+    <a href="post.html">writing</a><span class="sep">//</span>
+    <a href="friends.html">links</a><span class="sep">//</span>
+    <a href="pdf.html?file=resume.pdf">résumé</a><span class="sep">//</span>
+    <a href="pdf.html?file=cv.pdf">cv</a><span class="sep">//</span>
+    <a href="https://github.com/jeebuscrossaint" target="_blank">github</a><span class="sep">//</span>
+    <a href="mailto:apatel6ty@protonmail.com">email</a><span class="sep">//</span>
+    <a href="credits.html" style="color:var(--primary)">credits</a>
 </div>
 
 <div class="box">
-    <div class="box-head">
-        <span id="post-title-label">post</span>
-        <span style="font-weight:normal;color:#334466;font-size:9px;letter-spacing:0" id="post-slug-label"></span>
-    </div>
+    <div class="box-head">:: directly used ::</div>
     <div class="box-body">
-        <div id="post-content">
-            <p class="loading">loading post...</p>
-        </div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;font-family:'Courier New',monospace">
+            assets and tools that are actively loaded or used on this site.
+        </p>
+        <table class="credits-table">
+            <tr>
+                <td class="cr-name"><a href="https://sadhost.neocities.org/images/tiles/" target="_blank">sadhost.neocities.org</a></td>
+                <td class="cr-count">~826 tiles</td>
+                <td class="cr-desc">the massive archive of tiled backgrounds used on every page. animated gifs, pixel art, textures — all of it.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://cyber.dabamos.de/88x31/" target="_blank">cyber.dabamos.de/88x31</a></td>
+                <td class="cr-count">4540 badges</td>
+                <td class="cr-desc">the definitive archive of 88×31 pixel badges. the footer row of little stickers on every page.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://blinkies.cafe" target="_blank">blinkies.cafe</a></td>
+                <td class="cr-count">283 blinkies</td>
+                <td class="cr-desc">animated blinkie GIFs in the sidebar. each one is a tiny piece of y2k web nostalgia.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://fonts.google.com/specimen/VT323" target="_blank">VT323 (google fonts)</a></td>
+                <td class="cr-count">1 font</td>
+                <td class="cr-desc">the monospace terminal font used for headers and the site title. looks like it belongs on a CRT.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://pages.github.com" target="_blank">github pages</a></td>
+                <td class="cr-count">—</td>
+                <td class="cr-desc">free static site hosting. no servers, no backend, no build step — just files.</td>
+            </tr>
+        </table>
     </div>
 </div>
 
-<div id="footer">
-    <a href="index.html">&larr; back</a>
-    <a href="#top">^ top</a>
+<div class="box">
+    <div class="box-head">:: inspiration ::</div>
+    <div class="box-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;font-family:'Courier New',monospace">
+            sites and communities that shaped the aesthetic and approach of this site.
+        </p>
+        <table class="credits-table">
+            <tr>
+                <td class="cr-name"><a href="https://neocities.org" target="_blank">neocities.org</a></td>
+                <td class="cr-count">—</td>
+                <td class="cr-desc">the web revival hosting platform. basically the reason any of this exists. bring back personal homepages.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://sadgrl.online" target="_blank">sadgrl.online</a></td>
+                <td class="cr-count">—</td>
+                <td class="cr-desc">webmastery resources, layout guides, and old web tutorials. great starting point if you want to build your own.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://melonland.net" target="_blank">melonland.net</a></td>
+                <td class="cr-count">—</td>
+                <td class="cr-desc">indie web forum and community. good place to find people who still care about making things on the internet.</td>
+            </tr>
+            <tr>
+                <td class="cr-name"><a href="https://fructisfans.neocities.org/Links" target="_blank">fructisfans / links</a></td>
+                <td class="cr-count">—</td>
+                <td class="cr-desc">a well-curated hub of old web resources — backgrounds, blinkies, guestbooks, webrings, tools. packed with stuff.</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/nix.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-(function(){
-    const post = new URLSearchParams(window.location.search).get('post');
-    const area = document.getElementById('post-content');
-    const slugLabel = document.getElementById('post-slug-label');
-    if (!post) {
-        document.title = 'writing // apatel.co';
-        document.getElementById('post-title-label').textContent = 'writing';
-        area.innerHTML = `
-            <div class="post-entry">
-                <div class="post-date">2025-03-15</div>
-                <div class="post-title"><a href="post.html?post=c-cpp-nixos-clangd-guide">Getting clangd to work on NixOS</a></div>
-                <div class="post-desc">fixing the "vector file not found" and iostream errors once and for all</div>
-            </div>
-            <div class="post-entry">
-                <div class="post-date">2025-01-20</div>
-                <div class="post-title"><a href="post.html?post=a-better-tree-for-win">The built-in Windows tree command is trash</a></div>
-                <div class="post-desc">and here's how to replace it with something actually good</div>
-            </div>`;
-        return;
-    }
-    if (slugLabel) slugLabel.textContent = 'posts/' + post + '.md';
-    if (window.location.protocol === 'file:') {
-        area.innerHTML = '<p class="loading load-err">error: posts require a web server — open via <a href="https://apatel.co">apatel.co</a> or run a local server.</p>';
-        return;
-    }
-
-    fetch('posts/' + post + '.md')
-        .then(r => { if (!r.ok) throw new Error('post not found: ' + post); return r.text(); })
-        .then(md => {
-            area.innerHTML = marked.parse(md);
-            area.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
-            const h1 = area.querySelector('h1');
-            if (h1) {
-                document.title = h1.textContent + ' // apatel.co';
-                const lbl = document.getElementById('post-title-label');
-                if (lbl) lbl.textContent = h1.textContent;
-            }
-        })
-        .catch(err => {
-            area.innerHTML = '<p class="loading load-err">error: ' + err.message + '</p>';
-        });
-})();
-</script>
-
 <script>
 (function(){
     const B='https://cyber.dabamos.de/88x31/';
