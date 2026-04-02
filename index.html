@@ -685,7 +685,7 @@ if (tn && document.currentTile) tn.textContent = document.currentTile;
     const footerEl = document.querySelector('.footer-badges');
     const hdrImg   = document.getElementById('hdr-badge');
 
-    if (blinkEl)  { pick(BADGES, 16).forEach(f => blinkEl.appendChild(imgBadge(f))); }
+    if (blinkEl)  { pick(BADGES, 18).forEach(f => blinkEl.appendChild(imgBadge(f))); }
     if (badgeEl)  { pick(BADGES, 40).forEach(f => badgeEl.appendChild(imgBadge(f))); }
     if (footerEl) { pick(BADGES, 40).forEach(f => footerEl.appendChild(imgBadge(f))); }
     if (hdrImg)   { hdrImg.src = BADGE_BASE + pick(BADGES, 1)[0]; hdrImg.onerror=function(){ this.src=BADGE_BASE+'linux.gif'; }; }
