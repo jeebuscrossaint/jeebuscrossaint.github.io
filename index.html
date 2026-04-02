@@ -1,436 +1,696 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Amarnath Patel - Physics (Optics & Lasers) & Mathematics student with CS minor at UCF seeking engineering and software development internships. Experience in C/C++, and AI/ML." />
-    <meta name="keywords"
-        content="Amarnath Patel, physics, optics, lasers, mathematics, computer science, UCF, software developer, C++, C, internship" />
-    <meta name="author" content="Amarnath Patel" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://apatel.co/" />
-    <meta property="og:title" content="Amarnath Patel - Engineering Student & Developer" />
-    <meta property="og:description"
-        content="Physics (Optics & Lasers) & Mathematics student with CS minor at UCF seeking engineering and software development internships. Experience in C/C++, and AI/ML." />
-    <meta property="og:site_name" content="Amarnath Patel" />
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:url" content="https://apatel.co/" />
-    <meta property="twitter:title" content="Amarnath Patel - Engineering Student & Developer" />
-    <meta property="twitter:description"
-        content="Physics (Optics & Lasers) & Mathematics student with CS minor at UCF seeking engineering and software development internships." />
-    <link rel="canonical" href="https://apatel.co/" />
-    <title>Amarnath Patel - Engineering Student & Developer | UCF Physics & Mathematics</title>
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='16' y='23' font-family='system-ui, -apple-system, sans-serif' font-size='18' font-weight='700' font-style='italic' fill='%23fff' text-anchor='middle'>ap</text></svg>"
-        type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="amarnath patel's corner of the internet" />
+    <title>amarnath patel // apatel.co</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='22' font-family='monospace' font-size='11' fill='%237799ff' text-anchor='middle'>ap</text></svg>" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { background-image: var(--tile); background-repeat: repeat; overscroll-behavior: none; }
+
+        /* ── DEFAULT THEME (space/blue) — overridden by JS before first paint ── */
+        :root {
+            --primary:  #99aaff;
+            --border:   #2233aa;
+            --head1:    #111166;
+            --head2:    #080840;
+            --box-bg:   #03031a;
+            --hdr-bg:   #000022;
+            --nav-bg:   #05051e;
+            --text:     #8890b8;
+            --muted:    #5a6e90;
+            --label:    #8aabcf;
+            --sep:      #1a1a55;
+            --cursor:   #5566aa;
+            --scroll:   #1a2266;
+            --sel:      #2233aa;
+            --head-bdr: #1a2288;
+        }
+
         body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-image: var(--tile);
+            background-repeat: repeat;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            font-size: 14px;
+            color: var(--text);
+            padding: 10px 8px 20px;
         }
 
-        body.dark {
-            background-color: #000;
-            color: #fff;
-        }
+        #wrap { width: min(1140px, 97vw); margin: 0 auto; }
 
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: 1px solid #000;
-            color: #000;
+        a         { color: var(--primary); text-decoration: none; }
+        a:visited { color: var(--primary); filter: brightness(0.75); }
+        a:hover   { color: #ffffff; text-decoration: underline; }
+
+        /* ── HEADER ── */
+        #header {
+            background: var(--hdr-bg);
+            border: 2px solid var(--border);
+            border-bottom: none;
             padding: 10px 14px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: #0066cc;
-            color: #0066cc;
-        }
-
-        body.dark .theme-toggle {
-            border-color: #666;
-            color: #999;
-        }
-
-        body.dark .theme-toggle:hover {
-            border-color: #ffffff;
-            color: #ffffff;
-        }
-
-        body.dark h1,
-        body.dark h2,
-        body.dark h3,
-        body.dark p {
-            color: #0f0;
-        }
-
-        body.dark h3 {
-            color: #a0a0a0;
-        }
-
-        body.dark .subtitle {
-            color: #fff;
-        }
-
-        body.dark p {
-            color: #fff;
-        }
-
-        body.dark .status {
-            background-color: #000;
-            border-left: 4px solid #0f0;
-            color: #fff;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.2em;
-            font-weight: 300;
-        }
-
-        h2 {
-            font-size: 1.2em;
-            margin: 2em 0 1em 0;
-            font-weight: 500;
-        }
-
-        h3 {
-            font-size: 1.1em;
-            margin: 1.5em 0 0.5em 0;
-            font-weight: 500;
-            color: #fff;
-        }
-
-        p {
-            font-size: 1em;
-            margin-bottom: 1em;
-        }
-
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: #0052a3;
-            text-decoration: underline;
-        }
-
-        body.dark a {
-            color: #4da6ff;
-        }
-
-        body.dark a:hover {
-            color: #66b3ff;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 2em;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            font-weight: 500;
-            color: white !important;
-            text-decoration: none;
-        }
-
-        .badge:hover {
-            text-decoration: none !important;
-            color: white !important;
-        }
-
-        .links-section .badge:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        .tech-stack {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5em;
-            margin: 1em 0;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
         }
-
-        .links-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5em;
-            margin: 1em 0;
+        .site-title {
+            font-family: 'VT323', monospace;
+            font-size: 52px;
+            color: var(--primary);
+            letter-spacing: 2px;
+            line-height: 1;
         }
-
-        .status {
-            background-color: #f0f4ff;
-            border-left: 4px solid #0066cc;
-            padding: 16px 20px;
-            margin: 2em 0;
-            font-style: italic;
-            border-radius: 0 8px 8px 0;
+        .site-sub {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 3px;
+            font-family: 'Courier New', monospace;
         }
+        .header-gifs { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
 
-        .blog-posts {
-            list-style: none;
-            padding: 0;
-            margin: 1em 0;
+        /* ── NAV ── */
+        #nav {
+            background: var(--nav-bg);
+            border: 2px solid var(--border);
+            border-top: 1px solid var(--head-bdr);
+            padding: 5px 12px;
+            margin-bottom: 6px;
+            font-size: 14px;
+            display: flex; align-items: center; gap: 2px; flex-wrap: wrap;
         }
+        #nav a { color: var(--label); }
+        #nav a:hover { color: var(--primary); text-decoration: none; }
+        #nav .sep { color: var(--sep); margin: 0 2px; }
 
-        .blog-posts li {
-            margin-bottom: 1em;
-            padding: 12px;
-            border-left: 2px solid #0066cc;
-            transition: border-color 0.2s ease;
+        /* ── LAYOUT ── */
+        #layout { display: flex; gap: 6px; align-items: stretch; }
+        #sidebar { width: 250px; flex-shrink: 0; }
+        #main { flex: 1; min-width: 0; }
+
+        /* ── BOX ── */
+        .box { border: 1px solid var(--border); margin-bottom: 6px; }
+        #sidebar .box:last-child, #main .box:last-child { margin-bottom: 0; }
+        .box-head {
+            background: linear-gradient(90deg, var(--head1) 0%, var(--head2) 100%);
+            color: var(--label);
+            font-size: 13px; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px;
+            padding: 4px 9px;
+            border-bottom: 1px solid var(--head-bdr);
         }
-
-        .blog-posts li:hover {
-            border-left-color: #0052a3;
+        .box-body {
+            background: var(--box-bg);
+            padding: 8px 10px;
+            color: var(--text);
+            line-height: 1.55;
         }
+        .box-body a { color: var(--primary); }
+        .box-body a:hover { color: #fff; text-decoration: underline; }
 
-        body.dark .blog-posts li {
-            border-left-color: #0f0;
+        /* ── SIDEBAR ── */
+        .about-name {
+            font-family: 'VT323', monospace; font-size: 26px;
+            color: var(--primary); display: block; margin-bottom: 4px;
         }
-
-        body.dark .blog-posts li:hover {
-            border-left-color: #4da6ff;
+        .about-row { color: var(--muted); font-size: 13px; line-height: 1.7; }
+        .about-row span { color: var(--label); }
+        .currently-label { color: var(--muted); font-size: 12px; font-family: 'Courier New', monospace; }
+        .currently-val   { color: var(--label); font-size: 13px; margin-bottom: 3px; }
+        .counter-wrap { text-align: center; padding: 4px 0; }
+        .counter-label { font-size: 12px; color: var(--muted); font-family: 'Courier New', monospace; letter-spacing: 1px; }
+        .counter-num {
+            font-family: 'VT323', monospace; font-size: 36px;
+            color: var(--cursor); letter-spacing: 3px; display: block; margin: 2px 0;
         }
+        .blinkies { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+        .badges   { display: flex; flex-wrap: wrap; gap: 3px; }
+        .badge-img { display: block; image-rendering: pixelated; }
 
-        .blog-posts a {
-            font-size: 1.05em;
-            font-weight: 500;
+/* ── MAIN ── */
+        .welcome-text { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 6px; }
+        .welcome-text:last-child { margin-bottom: 0; }
+        .post-entry { border-bottom: 1px dashed var(--head2); padding: 6px 0; }
+        .post-entry:first-child { padding-top: 0; }
+        .post-entry:last-child  { border-bottom: none; padding-bottom: 0; }
+        .post-date  { font-family: 'Courier New', monospace; font-size: 12px; color: var(--muted); }
+        .post-title { font-size: 14px; margin: 1px 0; }
+        .post-desc  { font-size: 12px; color: var(--muted); }
+        .links-table { width: 100%; border-collapse: collapse; }
+        .links-table td { padding: 3px 0; vertical-align: top; }
+        .links-table .lk { color: var(--muted); font-size: 12px; padding-right: 10px; white-space: nowrap; }
+        .links-section-head {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--muted); padding-top: 8px !important; font-family: 'Courier New', monospace;
         }
+        .siteinfo { font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted); line-height: 1.9; }
+        .siteinfo span { color: var(--label); }
 
-        .blog-date {
-            font-size: 0.85em;
-            color: #666;
-            margin-left: 0.5em;
+        /* ── FOOTER ── */
+        #footer {
+            background: var(--hdr-bg); border: 1px solid var(--head-bdr);
+            padding: 8px 10px; margin-top: 5px; text-align: center;
         }
+        .footer-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px; margin-bottom: 7px; }
+        .footer-copy { font-family: 'Courier New', monospace; font-size: 12px; color: var(--primary); text-align: center; }
+        .footer-copy a { color: var(--primary); }
+        .footer-copy a:hover { color: #ffffff; }
 
-        body.dark .blog-date {
-            color: #999;
-        }
+        /* ── COLOR TRANSITIONS (smooth update when pixel analysis returns) ── */
+        body, .box, .box-head, .box-body, #header, #nav, #footer,
+        #sidebar, #main, a { transition: background-color 0.4s, border-color 0.4s, color 0.4s; }
 
-        ::selection {
-            background-color: #0066cc;
-            color: #ffffff;
-        }
-
-        body.dark ::selection {
-            background-color: #4da6ff;
-            color: #000000;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 15px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-        }
+        /* ── MISC ── */
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        .cur { animation: blink 1.1s step-end infinite; color: var(--cursor); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000015; }
+        ::-webkit-scrollbar-thumb { background: var(--scroll); }
+        ::selection { background: var(--sel); color: #fff; }
     </style>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Amarnath Patel",
-            "url": "https://apatel.co",
-            "email": "apatel6ty@protonmail.com",
-            "jobTitle": "Engineering Student",
-            "alumniOf": {
-                "@type": "EducationalOrganization",
-                "name": "University of Central Florida"
-            },
-            "knowsAbout": [
-                "Physics",
-                "Optics",
-                "Lasers",
-                "Mathematics",
-                "Computer Science",
-                "Software Development",
-                "C++",
-            ],
-            "sameAs": [
-                "https://github.com/jeebuscrossaint",
-                "https://linkedin.com/in/amarnath-patel"
-            ]
-        }
-    </script>
-</head>
-
-<body>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌙</button>
-
-    <header>
-        <h1>amarnath patel</h1>
-        <div class="subtitle">
-            Physics (Optics & Lasers) and Mathematics student with a Computer Science minor at the University of Central Florida.
-            Research programmer at UCF's Astrophotonics Lab (CREOL & Physics Department). Undergraduate Research Assistant in the UCF Physics Department under Dr. Zhongzhou Chen.
-        </div>
-    </header>
-
-    <main>
-        <section aria-label="About">
-            <p>
-                I'm an 19-year-old engineering student pursuing a double major in
-                <strong>Physics (Optics & Lasers)</strong> and
-                <strong>Mathematics</strong> with a <strong>Computer Science</strong> minor. Started at <strong>UCF</strong> with 111 credits, targeting
-                graduation Spring 2029. I have experience with programming from my time dually enrolled at
-                <strong>Florida Atlantic University</strong> through high school, where I took many CS/CpE related
-                courses including <strong>C & C++</strong>, <strong>DSA</strong>, <strong>linear algebra</strong>, &
-                <strong>computer architecture</strong>.
-            </p>
-        </section>
-
-        <div class="status">
-            <strong>Currently seeking internship opportunities</strong> - actively applying to
-            <strong>engineering</strong> and <strong>software development</strong> positions.
-        </div>
-
-        <section aria-label="Contact and Links">
-            <h2>links (click these!)</h2>
-            <div class="links-section">
-                <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener noreferrer" class="badge"
-                    style="background-color: #121011;">github</a>
-                <a href="https://linkedin.com/in/amarnath-patel" target="_blank" rel="noopener noreferrer" class="badge"
-                    style="background-color: #0077B5;">linkedin</a>
-                <a href="mailto:apatel6ty@protonmail.com" class="badge" style="background-color: #8B89CC;">email</a>
-                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="badge"
-                    style="background-color: #FF5722;">resume</a>
-                <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="badge"
-                    style="background-color: #6D28D9;">cv</a>
-            </div>
-        </section>
-
-        <section aria-label="Blog Posts">
-            <h2>blog</h2>
-            <ul class="blog-posts" id="blog-list">
-                <li>Loading posts...</li>
-            </ul>
-        </section>
-
-        <section aria-label="Technical Skills">
-            <h2>technical skills</h2>
-            <div class="tech-stack">
-                <span class="badge" style="background-color: #00599C;">c</span>
-                <span class="badge" style="background-color: #00599C;">c++</span>
-                <span class="badge" style="background-color: #3670A0;">python</span>
-                <span class="badge" style="background-color: #E98407;">ocaml</span>
-                <span class="badge" style="background-color: #5391FE;">powershell</span>
-                <span class="badge" style="background-color: #121011;">shell</span>
-                <span class="badge" style="background-color: #FCC624; color: #000;">openbsd</span>
-                <span class="badge" style="background-color: #E57000;">proxmox</span>
-                <span class="badge" style="background-color: #FCC624; color: #000;">linux</span>
-            </div>
-        </section>
-
-        <section aria-label="Affiliates">
-            <h2>goat tier mentions</h2>
-            <p>people i went to high school with who also did cool stuff:</p>
-            <ul style="list-style: none; padding-left: 0">
-                <li><a href="https://zachl.tech" target="_blank" rel="noopener noreferrer">zachary lopez</a></li>
-                <li><a href="https://jcamille.dev" target="_blank" rel="noopener noreferrer">jossaya camille</a></li>
-                <li><a href="https://str1ke.codes" target="_blank" rel="noopener noreferrer">thandi menelas</a></li>
-                <li><a href="https://github.com/eoghanmc22" target="_blank" rel="noopener noreferrer">eoghan mcivor</a>
-                </li>
-                <li><a href="https://makaip.com" target="_blank" rel="noopener noreferrer">jason (makai) pindell</a>
-                </li>
-                <li><a href="https://alexcastronovo.com" target="_blank" rel="noopener noreferrer">alex castronovo</a>
-                </li>
-                <li><a href="https://github.com/Valenciola" target="_blank" rel="noopener noreferrer">valerie
-                        fils-aime</a></li>
-            </ul>
-        </section>
-    </main>
 
     <script>
-        // Blog posts configuration - add posts here
-        const BLOG_POSTS = [
-            {
-                title: "Windows built in tree command sucks, so I replaced it",
-                file: "a-better-tree-for-win",
-                date: "2026-01-03"
-            },
-            {
-                title: "A guide to getting Clangd to work on NixOS",
-                file: "c-cpp-nixos-clangd-guide",
-                date: "2026-01-01"
-            },
-            // Add more posts here as you create them
-        ];
+    // ── THEME ENGINE ─────────────────────────────────────────────────────────
+    // Runs synchronously before first paint — no flash of unstyled content.
 
-        // Load blog posts
-        function loadBlogPosts() {
-            const blogList = document.getElementById('blog-list');
+    const TILES = [
+      '0064_small.gif','037.gif','040.gif','10042.png','128.png','13096.png',
+      '132.png','133.png','13665.png','137.png','139.png','16825.png','16974.png',
+      '18078.png','201.jpg','20318.png','20446.png','22348.png','23295.png','24517.png',
+      '24817.png','2bfbg.jpg','31689.png','32623.png','3727.png','4193.png','4sq.gif',
+      '547.png','6741.png','7527.png','8388.png','926glitter.gif','Amethyst.jpg',
+      'anachdruk28background.gif','angelica2.jpg','anicolors.gif','anigdstar.gif',
+      'animated_background.gif','animate.gif','anisnow.gif','anisparkle.gif',
+      'anistars.gif','ani_starwht.gif','ani_whstar.gif','aniwhtspin.gif','ankh.gif',
+      'apple.gif','aquagalaxy_small.gif','aqua.gif','autumnleavemove.gif',
+      'azulestrellas.gif','b15.gif','b17.gif','b1.gif','b2.gif','b4g.gif','b4.gif',
+      'b5.gif','b6.gif','b7.gif','b8.gif','bac13.gif','bac20.gif','bac22.gif',
+      'bac5.gif','back82.gif','backdourado1.gif','backgrnd.gif','background038.gif',
+      'Background064.gif','background1.gif','background2.gif','Background4.gif',
+      'background.gif','backstar.gif','bats.gif','bbcbg.jpg','bck-bluewave.jpg',
+      'bck-cloudtile.jpg','bck-crackle.gif','bck-grid.gif','bck-mindwarp.jpg',
+      'bck-pnklightning.jpg','bck-starnight.gif','beaniebabiesbg.gif','beehive.png',
+      'bg54.gif','bg55.gif','bg6.jpg','bg_blueasterisk.gif','bg_bluesnowflake.gif',
+      'bgbluespots.gif','bg_bluestripe.gif','bg_bluewhiteflowers.gif',
+      'bgclearbubbles.gif','bg_clouds.jpg','bg_greensnowflake.gif','bgif001.gif',
+      'bgif003.gif','bgif010.gif','bgif014.gif','bgif016.gif','bgif017.gif',
+      'bgif020.gif','bgif021.gif','bgif023.gif','bgif025.gif','bgif026.gif',
+      'bgif031.gif','bgif055.gif','bgif072.gif','bgif083.gif','bgif088.gif',
+      'bgif093.gif','bgif094.gif','bgif095.gif','bgif096.gif','bgif100.gif',
+      'bg_limeleaf.gif','bg_limestripe.gif','bg_multipyramids.gif',
+      'bg_navajoblanket.gif','bg_orangeredstripe.gif','bg_pastelnavajoblanket.gif',
+      'bg_peachgreenflowers.gif','bg_peachgreenyellowblue.gif','bg_peachsnowflake.gif',
+      'bg_periwinkle.teardrop.jpg','bg_pinklace.gif','bg_prettyinpink.gif',
+      'bg_purplewindpaper.gif','bg_rainbowankh.gif','bg_redposey.gif','bg_sheep.gif',
+      'bgskulls.gif','bg_sky2.gif','bg_starrynight.gif','bg_tinyblueflowers.gif',
+      'bg_tinypeachflowers.gif','bg_whitegreenvine.gif','bg_whiteyellowflowers.gif',
+      'bg_yellowat.gif','bg_yellowlace.gif','bg_yellowpeachflowers.gif',
+      'bg_yellowposey.gif','bg_yellowsnowflake.gif','bg_yellowzinnia.jpg',
+      'bk021.gif','bk024.gif','bk052.gif','bk064.gif','bkg3.gif','bkgtile.gif',
+      'Black_and_White_floor_tile.jpg','black.jpg','blacksilk.png','blacktxt.png',
+      'blackwavy.png','blfrbg.jpg','blkmysticbg.gif','blkwarp.gif','blobz.gif',
+      'bl_pkpuf.jpg','bludiag.jpg','bluebrick.gif','bluecyber.webp','bluedots.png',
+      'blueghosts.gif','bluelace.gif','bluesparkle.gif','bluewater.jpg','Blue_Web.jpg',
+      'bluey.jpg','blulights.gif','blu_pink.jpg','bones.gif','bowsbows.gif',
+      'brilloazul1.gif','brillofuxia.gif','brillolila.gif','brilloverde.gif',
+      'bubble1.gif','bubble2.gif','bubble4.gif','bubbles1.gif','bubbles2.png',
+      'bubbles.gif','bubblespurplebg.jpg','bubbling.gif','bubcastle.gif','bubred3.gif',
+      'bunnycarrot.gif','butterflies1.gif','butterflysparkle.gif',
+      'ca727375c7fbda0aaf61778ee8e53f57db87e3ea.jpg','cashmoney.png','catcolors.gif',
+      'catenvelope.gif','cateyes.gif','catghost.png','catmoons.jpg','catpink.png',
+      'cats.jpg','cbg.gif','cdbg.gif','celesestrellas.gif','chess.gif','chip.png',
+      'circles.gif','clocks.png','clouds.png','cloudynite.gif','cloudystars.gif',
+      'cntrylaneheartstileback.gif','colors.gif','comp009.jpg','comp014.gif',
+      'comp016.gif','comp020.gif','comp021.gif','cool.webp','cottonlikebg.gif',
+      'crayons.gif','creepy.gif','crystalized.gif','cubicblue.jpg','cubicyello.jpg',
+      'd9fd2615c7942f0bdc6ed3d68178e1b56abd4dc1.jpg','daisy.jpg','diamond.gif',
+      'dkgraytexture.gif','dra212.gif','ec55e316fd188c482259f49c2111965ffb1bb3d5.png',
+      'eyes.png','fairies.jpg','feathers.gif','fence.gif','firebackground.gif',
+      'firesplotch.png','firey.jpg','fish.png','flashstar.gif','flowersblue.png',
+      'flowers.webp','flowerzdark.png','flowerz.png','Fon12.gif','fondo_purplestars.gif',
+      'frame_02_delay-0.6s.gif','frame_03_delay-0.6s.gif','frame_09_delay-0.6s.gif',
+      'frame_10_delay-0.6s.gif','frame_11_delay-0.6s.gif','funkypink.gif',
+      'gdsback.jpg','gdspur.jpg','ghosts.png','gifbground-804-0004.gif',
+      'gifbground-804-0005.gif','gifbground-804-0009.gif','gifbground-804-0010.gif',
+      'gifbground-804-0013.gif','gifbground-804-0014.gif','glitchy2.jpg','glitchy3.jpg',
+      'glitchy4.jpg','glitchy.jpg','glitterblock2.gif','gmbg.gif','gmcbg.jpg',
+      'goldglitter.gif','goldmusicbg.gif','goldsatinbg.gif','goldsilkbg.gif',
+      'goldstars.gif','grass.png','graybat.png','graybrickwall.gif','greengrid.jpg',
+      'greenlo.gif','greenmarble.jpg','greensatinbg.gif','greenscreen.gif',
+      'greensilk.jpg','greentexturebg.gif','greentrip.jpg','greeny.jpg',
+      'greyinkblot.jpg','greytile01.jpg','grid_anti.gif','gridnew.gif','grnbubble.gif',
+      'grntreesbg.gif','gskbg.jpg','gwbg.jpg','heartgrid.gif','heartpinkpas.gif',
+      'heartsbloo.gif','heartsparkle.gif','heartstring.gif','Horiz_Bar.jpg',
+      'image004.gif','image005.gif','image009.gif','image010.gif','Image27.gif',
+      'L4.gif','labg.jpg','lavchk.gif','leafart.gif','leavesbg.gif','lightblue.gif',
+      'lightblueweave.gif','lightning.gif','lilac.gif','litepnksilkbg.gif','logo.gif',
+      'lsbbg.jpg','lubg.jpg','Maple_Leaves.jpg','marbleshine.gif',
+      'medbluesatinbg.gif','misc002.jpg','misc006.jpg','misc058.gif','misc059.gif',
+      'misc064.gif','misc072.gif','misc080.gif','misc082.gif','misc084.gif',
+      'misc148.jpg','misc181.jpg','misc255.gif','misc302.gif','misc326.jpg',
+      'misc328.jpg','misc341.jpg','MoonBG.gif','moonglitter.gif','moonplanets.png',
+      'move_heart.gif','multi029.jpg','multi048.gif','multi086.jpg','multi131.jpg',
+      'multi137.jpg','multi175.jpg','multi221.gif','multi259.jpg',
+      'multicolorpastelflw.gif','Multi-Hued_Rock.jpg','mushroombow.gif','ncbg.jpg',
+      'neato.png','neocities1.gif','neocities2.gif','neocities3.gif','neocities4.gif',
+      'neocities5.gif','neocities6.gif','nightskystar.gif','nightstars.gif','noise.gif',
+      'num.gif','nurple-static-bright.gif','ornate.png','page_background_animated_04.gif',
+      'palmtreesblack.jpg','palmtreespink.jpg','pap12.gif','paper.jpg','party.gif',
+      'pastelblue.png','pastels2.gif','pastels.gif','pastelstarz.gif','paws1.gif',
+      'peachesbg.gif','pearlheartbg.gif','pentbck2.jpg','piedra-ndego.gif','Pine_.jpg',
+      'pink024.jpg','pink042.jpg','pink044.jpg','pink060.jpg','pink093.jpg',
+      'pinkblockbg.gif','pinkcubebg.gif','pinkgoop.png','pinkhazebg.gif',
+      'pinkhrtsbg.gif','pinkmarblebg.gif','pinkmush.gif','pinkspark.gif','pinkstars.gif',
+      'pinkstuccobg.gif','pinktile.gif','pinkwhtswirlbg.gif','pinky.jpg',
+      'pizzasliceswhtbg.gif','pmbg.jpg','ponies.gif','pplheartsss.gif','ppl-roses.png',
+      'pplstar.gif','prettybubbles.gif','prrbg.jpg','psbbg.jpg','psbg1.jpg',
+      'Psycho_1.jpg','pumkpin.gif','pumpkincheck.png','purnballbac.gif','purpbubbles.gif',
+      'purpdimond.gif','purpleanimstar.gif','purplecirclesbg.gif','purplegalaxy.png',
+      'Purple.jpg','purplelightning.gif','purplemarble2.jpg','purplerosesblkbg.gif',
+      'purplesatinbg.gif','purple-skellycat.png','purplesky.gif','purplestars.gif',
+      'purpletxt.png','purpleweb.gif','purpskybg.jpg','purpswirl.gif','PWRoses2.gif',
+      'pyramid.gif','Qbert.jpg','qq164.gif','rainbow.gif','rainbowprism.gif',
+      'rainbowstr.gif','rainbowswirl.png','rainbowy.png','raindrops.webp',
+      'rbowcolorsmusicnotes.gif','rbowlinebg.gif','rdbg.jpg','redbrick.png',
+      'redcross.jpg','red.gif','redheart.gif','redneonlinesbg.gif','redrosesblkbg.gif',
+      'redsatin1.jpg','redsatinswirlbg.gif','redsilk.jpg','redskulls.jpg',
+      'redsparkle.gif','redswirlbg.gif','redweavebg.gif','redweb.gif','rippleblue.jpg',
+      'roesbudtrelbg.gif','roses.gif','rrbg.gif','ruututausta.gif','saftextr.jpg',
+      'sakura.gif','sandcrittersbg.gif','sandy.gif','sandy.jpg','sc22.gif',
+      'silkywater.png','skeletons.jpg','skulls1.gif','skulls.jpg','skylo.gif',
+      'sky.png','skystarlight.gif','slt1.gif','smileys02.gif','smileys03.gif',
+      'smoke.gif','smokeypurple.gif','snow.gif','sora5.gif','sparklebackground.gif',
+      'sparkly.gif','spoopy.jpg','spots.png','square.gif','stagback1.gif',
+      'stagback2.gif','starbub2.gif','stars2.gif','stars3.gif','stars4.gif',
+      'stars5.gif','stars6.webp','starsagain.gif','starsforever.gif','stars.gif',
+      'starsrbowbg.gif','static.jpg','stbg1.jpg','strawbee.png','strmoonbck2.jpg',
+      'strmoonbck4.jpg','sunbg.gif','swirlblack1.jpg','swirl.gif','swirltile.jpg',
+      'tdnbg.jpg','tealdragonbg.gif','tealgrey.gif','tealsilkbg.gif',
+      'textureblue02.jpg','tiles.gif','transfondo2.gif','trees.png','trippystars.png',
+      'tumblr_inline_ml2g0lBiCI1qz4rgp540.gif','tumblr_inline_mlkwolhobQ1r53miq.png',
+      'tumblr_inline_mlkxr4nUiK1r53miq.png','tumblr_inline_mlkxsmQayT1r53miq540.gif',
+      'tumblr_inline_mll0keW1Af1r53miq540.gif','tumblr_inline_mll0knNCnX1r53miq540.gif',
+      'tumblr_inline_mqgagaPYfb1qz4rgp540.gif','ud1.gif','ud2.gif','ud3.gif',
+      'ud4.gif','ud5.gif','underwater.gif','valentinebg.gif','vgrid.jpg','w902.gif',
+      'wall_06.gif','wall.jpg','Warning.jpg','warp.gif','water2.webp','water3.jpg',
+      'water4.jpg','water6.jpg','water7.jpg','waterfunky.jpg','water.jpg',
+      'waterlo.gif','water.png','whitesatin2.jpg','whitesatin3.jpg',
+      'whtbluediamondbg.gif','whtbrickwallbg.gif','whtsatinbg.gif',
+      'whtsatinswirlbg.gif','whtsilkdesign.gif','whtsparkle.gif','wicker.jpg',
+      'wildbluegraybg.gif','wildlitebluesatinbg.gif','wildpurpleweb.gif',
+      'witchbg04.gif','wlbg1.jpg','wmnbg.jpg','wolfblkbg.gif','wp15.gif','wp24.gif',
+      'wp25.gif','wpbg.jpg','xmas.png','yellowbrick.png','yellow.png','yellowstars.gif'
+    ];
 
-            if (BLOG_POSTS.length === 0) {
-                blogList.innerHTML = '<li>No posts yet. Check back soon!</li>';
-                return;
-            }
+    function hsl(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1))),x=v=>Math.round(v*255).toString(16).padStart(2,'0');return'#'+x(f(0))+x(f(8))+x(f(4));}
 
-            blogList.innerHTML = BLOG_POSTS.map(post => `
-                <li>
-                    <a href="post.html?post=${post.file}">${post.title}</a>
-                    <span class="blog-date">${post.date}</span>
-                </li>
-            `).join('');
+    function buildScheme(hue, viv) {
+      // viv 0–1: how vivid/saturated the source tile is.
+      // Low viv (dark/grey tile)  → subtle, muted palette.
+      // High viv (colourful tile) → punchy, saturated palette.
+      viv = Math.max(0, Math.min(1, viv === undefined ? 0.5 : viv));
+      const s = 28 + viv * 48;           // base sat  28–76
+      // Accent hue: shift primary/links slightly off the background hue
+      // — amount varies per tile so links aren't always the same relationship
+      const acc = (hue + 20 + viv * 35) % 360;
+      return {
+        primary: hsl(acc,  60 + viv*25, 62 + viv*12),   // links / site title accent
+        border:  hsl(hue,  s*0.85,      20 + viv*14),
+        head1:   hsl(hue,  s*0.70,       7 + viv*7),
+        head2:   hsl(hue,  s*0.55,       3 + viv*3),
+        boxBg:   hsl(hue,  s*0.75,       2 + viv*4),
+        hdrBg:   hsl(hue,  s*0.90,       1 + viv*2),
+        navBg:   hsl(hue,  s*0.75,       2 + viv*3),
+        text:    hsl(hue,  12 + viv*16,  47 + viv*11),
+        muted:   hsl(hue,  18 + viv*20,  35 + viv*13),
+        label:   hsl(hue,  28 + viv*24,  53 + viv*9),
+        sep:     hsl(hue,  s*0.65,        7 + viv*6),
+        cursor:  hsl(acc,  48 + viv*22,  36 + viv*10),
+        scroll:  hsl(hue,  s*0.55,       12 + viv*6),
+        sel:     hsl(hue,  s*0.70,       15 + viv*9),
+        headBdr: hsl(hue,  s*0.65,       12 + viv*7)
+      };
+    }
+
+    function applyScheme(pal){
+      const r=document.documentElement.style;
+      r.setProperty('--primary',pal.primary); r.setProperty('--border',pal.border);
+      r.setProperty('--head1',pal.head1);     r.setProperty('--head2',pal.head2);
+      r.setProperty('--box-bg',pal.boxBg);    r.setProperty('--hdr-bg',pal.hdrBg);
+      r.setProperty('--nav-bg',pal.navBg);    r.setProperty('--text',pal.text);
+      r.setProperty('--muted',pal.muted);     r.setProperty('--label',pal.label);
+      r.setProperty('--sep',pal.sep);         r.setProperty('--cursor',pal.cursor);
+      r.setProperty('--scroll',pal.scroll);   r.setProperty('--sel',pal.sel);
+      r.setProperty('--head-bdr',pal.headBdr);
+    }
+
+    // Hash fallback for instant initial render (no network needed)
+    function hashHue(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return Math.abs(h)%360;}
+
+    const tile = TILES[Math.floor(Math.random() * TILES.length)];
+    const BASE = 'https://sadhost.neocities.org/images/tiles/';
+    const tileUrl = BASE + tile;
+
+    // Apply hash-based fallback immediately so page renders without flash
+    applyScheme(buildScheme(hashHue(tile), 0.5));
+    document.documentElement.style.setProperty('--tile', `url('${tileUrl}')`);
+    document.currentTile = tile;
+
+    // Then fetch the actual image, sample pixels, extract dominant hue + vividness
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      try {
+        const c = document.createElement('canvas');
+        c.width = c.height = 24; // 576px — more representative sample than 12x12
+        const ctx = c.getContext('2d');
+        ctx.drawImage(img, 0, 0, 24, 24);
+        const d = ctx.getImageData(0, 0, 24, 24).data;
+        // Saturation-weighted circular mean — vivid pixels steer the hue more
+        let sinS = 0, cosS = 0, satSum = 0, n = 0;
+        for (let i = 0; i < d.length; i += 4) {
+          const r = d[i]/255, g = d[i+1]/255, b = d[i+2]/255;
+          const max = Math.max(r,g,b), min = Math.min(r,g,b), delta = max - min;
+          if (delta < 0.06 || max < 0.06) continue; // skip near-black / near-grey
+          let h;
+          if (max===r) h=((g-b)/delta+6)%6;
+          else if (max===g) h=(b-r)/delta+2;
+          else h=(r-g)/delta+4;
+          h *= 60;
+          const sat = delta / max;
+          sinS   += Math.sin(h * Math.PI/180) * sat;
+          cosS   += Math.cos(h * Math.PI/180) * sat;
+          satSum += sat;
+          n++;
         }
-
-        // Theme toggle functionality
-        function toggleTheme() {
-            const body = document.body;
-            const button = document.querySelector('.theme-toggle');
-            body.classList.toggle('dark');
-            if (body.classList.contains('dark')) {
-                button.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                button.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
+        if (n > 12) {
+          const rawHue = (Math.atan2(sinS, cosS) * 180/Math.PI + 360) % 360;
+          // Blend pixel hue with a filename-hash shift so visually similar tiles
+          // still diverge into distinct schemes across the full wheel
+          const hueShift = (hashHue(tile) % 50) - 25;
+          const hue = (rawHue + hueShift + 360) % 360;
+          const viv  = Math.min(1, (satSum / n) * 2.2); // 0–1 vividness
+          applyScheme(buildScheme(hue, viv));
         }
-
-        function applyTheme(theme) {
-            const body = document.body;
-            const button = document.querySelector('.theme-toggle');
-            if (theme === 'dark') {
-                body.classList.add('dark');
-                button.textContent = '☀️';
-            } else {
-                body.classList.remove('dark');
-                button.textContent = '🌙';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                applyTheme(savedTheme);
-            }
-            loadBlogPosts();
-        });
+        // n ≤ 12 → very dark/greyscale tile, keep hash fallback scheme
+      } catch(e) { /* CORS blocked — keep hash fallback */ }
+    };
+    img.src = tileUrl;
     </script>
-</body>
+</head>
+<body>
+<div id="wrap">
 
+<!-- ═══════════ HEADER ═══════════ -->
+<div id="header">
+    <div>
+        <div class="site-title">amarnath patel<span class="cur">_</span></div>
+        <div class="site-sub">apatel.co &nbsp;·&nbsp; UCF physics &amp; mathematics &nbsp;·&nbsp; maker of things</div>
+    </div>
+    <div class="header-gifs">
+        <img id="hdr-badge" src="" width="88" height="31" alt="" style="image-rendering:pixelated;">
+    </div>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<div id="nav">
+    ★<span class="sep">|</span>
+    <a href="index.html">home</a><span class="sep">//</span>
+    <a href="post.html">writing</a><span class="sep">//</span>
+    <a href="friends.html">links</a><span class="sep">//</span>
+    <a href="pdf.html?file=resume.pdf">résumé</a><span class="sep">//</span>
+    <a href="pdf.html?file=cv.pdf">cv</a><span class="sep">//</span>
+    <a href="https://github.com/jeebuscrossaint" target="_blank">github</a><span class="sep">//</span>
+    <a href="mailto:apatel6ty@protonmail.com">email</a><span class="sep">//</span>
+    <a href="credits.html">credits</a>
+</div>
+
+<!-- ═══════════ TWO-COLUMN LAYOUT ═══════════ -->
+<div id="layout">
+
+    <!-- ─── SIDEBAR ─── -->
+    <div id="sidebar">
+
+        <div class="box">
+            <div class="box-head">:: about me ::</div>
+            <div class="box-body">
+                <span class="about-name">jeebuscrossaint</span>
+                <div class="about-row">
+                    <span>name:</span> amarnath patel<br>
+                    <span>uni:</span> UCF<br>
+                    <span>major:</span> physics + math<br>
+                    <span>minor:</span> computer science<br>
+                    <span>os:</span> arch linux / openbsd<br>
+                    <span>editor:</span> neovim<br>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: currently ::</div>
+            <div class="box-body">
+                <div class="currently-label">research</div>
+                <div class="currently-val">astrophotonics instrumentation w/ Dr. Eikenberry @ UCF CREOL</div>
+                <div class="currently-label">also</div>
+                <div class="currently-val">physics education research w/ Dr. Chen @ UCF</div>
+                <div class="currently-label">hacking on</div>
+                <div class="currently-val">ESTELA (rust + vanilla js)</div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: visitors ::</div>
+            <div class="box-body">
+                <div class="counter-wrap">
+                    <div class="counter-label">you are visitor no.</div>
+                    <span class="counter-num" id="vis-count">——————</span>
+                    <div class="counter-label">since 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: blinkies ::</div>
+            <div class="box-body">
+                <div class="blinkies"></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: find me ::</div>
+            <div class="box-body" style="font-size:10px;line-height:1.9;padding-top:5px;padding-bottom:6px">
+                <a href="https://github.com/jeebuscrossaint">⬡ github/jeebuscrossaint</a><br>
+                <a href="mailto:apatel6ty@protonmail.com">✉ apatel6ty@protonmail.com</a><br>
+                <a href="resume.pdf">▤ résumé (pdf)</a><br>
+                <a href="cv.pdf">▤ academic cv (pdf)</a>
+            </div>
+        </div>
+
+    </div><!-- end sidebar -->
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <div id="main">
+
+        <div class="box">
+            <div class="box-head">** welcome! **</div>
+            <div class="box-body">
+                <p class="welcome-text">
+                    hey! i'm <b style="color:var(--primary)">amarnath</b> — physics &amp; mathematics student at UCF,
+                    programmer, linux nerd, and occasional tinkerer with things that blink or beep.
+                    this is my little corner of the internet.
+                </p>
+                <p class="welcome-text">
+                    i work on instrumentation software at
+                    <a href="https://creol.ucf.edu/astrophotonics/" target="_blank">UCF CREOL's astrophotonics lab</a>
+                    and on physics education research with the UCF physics department.
+                    mostly i write rust and python and break my arch install on a weekly basis.
+                </p>
+                <p class="welcome-text" style="margin-bottom:0">
+                    <span style="color:var(--muted)">this site is hand-coded HTML/CSS/JS — no frameworks, no npm, no build step.</span>
+                    you can read my <a href="#writing">writing</a>, grab my <a href="resume.pdf">résumé</a>,
+                    or just look at the badges.
+                </p>
+            </div>
+        </div>
+
+        <div class="box" id="writing">
+            <div class="box-head">:: writing ::</div>
+            <div class="box-body">
+                <div class="post-entry">
+                    <div class="post-date">2025-03-15</div>
+                    <div class="post-title"><a href="post.html?post=c-cpp-nixos-clangd-guide">Getting clangd to work on NixOS</a></div>
+                    <div class="post-desc">fixing the "vector file not found" and iostream errors once and for all</div>
+                </div>
+                <div class="post-entry">
+                    <div class="post-date">2025-01-20</div>
+                    <div class="post-title"><a href="post.html?post=a-better-tree-for-win">The built-in Windows tree command is trash</a></div>
+                    <div class="post-desc">and here's how to replace it with something actually good</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: projects ::</div>
+            <div class="box-body">
+                <table class="links-table">
+                    <tr>
+                        <td class="lk">PolyOculus</td>
+                        <td><a href="https://github.com/jeebuscrossaint/pyfocusertest" target="_blank">8-telescope array control software</a> — INDI-protocol mount control, RA/Dec slewing, backlash compensation</td>
+                    </tr>
+                    <tr>
+                        <td class="lk">ESTELA</td>
+                        <td>multi-version exam generator for physics problem banks — rust backend, vanilla JS, KaTeX math rendering, NSF/Gates funded</td>
+                    </tr>
+                    <tr>
+                        <td class="lk">gentec-camera</td>
+                        <td><a href="https://github.com/jeebuscrossaint/gentec-camera" target="_blank">python SDK</a> for Gentec IR beam profiling cameras — automated acquisition, FITS output</td>
+                    </tr>
+                    <tr>
+                        <td class="lk">holography</td>
+                        <td>automated pipeline for characterizing photonic lanterns via digital holography — 4-instrument orchestration, 7-mode LP decomposition</td>
+                    </tr>
+                    <tr>
+                        <td class="lk">AEV</td>
+                        <td><a href="https://github.com/YamanDevelopment/AEV-Software" target="_blank">advanced experimental vehicle</a> — arch linux arm on Pi 5, wireguard VPN, real-time telemetry. 2nd place + Lockheed Martin award (2024)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: friends ::</div>
+            <div class="box-body">
+                <table class="links-table">
+                    <tr><td class="lk">zachary lopez</td><td><a href="https://zachl.tech" target="_blank">zachl.tech</a></td></tr>
+                    <tr><td class="lk">jossaya camille</td><td><a href="https://jcamille.dev" target="_blank">jcamille.dev</a></td></tr>
+                    <tr><td class="lk">thandi menelas</td><td><a href="https://str1ke.codes" target="_blank">str1ke.codes</a></td></tr>
+                    <tr><td class="lk">eoghan mcivor</td><td><a href="https://github.com/eoghanmc22" target="_blank">github/eoghanmc22</a></td></tr>
+                    <tr><td class="lk">jason (makai) pindell</td><td><a href="https://makaip.com" target="_blank">makaip.com</a></td></tr>
+                    <tr><td class="lk">alex castronovo</td><td><a href="https://alexcastronovo.com" target="_blank">alexcastronovo.com</a></td></tr>
+                    <tr><td class="lk">valerie fils-aime</td><td><a href="https://github.com/Valenciola" target="_blank">github/Valenciola</a></td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-head">:: site info ::</div>
+            <div class="box-body">
+                <div class="siteinfo">
+                    hosted: <span>github pages</span><br>
+                    built with: <span>neovim + raw html/css/js</span><br>
+                    background: <span id="tile-name">loading...</span><br>
+                    tiles: <span>sadhost.neocities.org (~826 tiles)</span><br>
+                    badges: <span>cyber.dabamos.de · blinkies.cafe</span><br>
+                    fonts: <span>tahoma + VT323 (google fonts)</span><br>
+                    last updated: <span id="last-commit">...</span>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end main -->
+
+</div><!-- end layout -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div id="footer">
+    <div class="footer-badges">
+    </div>
+    <div class="footer-copy">
+        © 2025 amarnath patel &nbsp;·&nbsp; apatel.co &nbsp;·&nbsp;
+        <a href="https://github.com/jeebuscrossaint">github/jeebuscrossaint</a>
+    </div>
+</div>
+
+</div><!-- end wrap -->
+
+<script>
+// Show current tile name in site info
+const tn = document.getElementById('tile-name');
+if (tn && document.currentTile) tn.textContent = document.currentTile;
+
+// Visitor counter
+(function(){
+    const KEY = 'apc_visits';
+    let n = parseInt(localStorage.getItem(KEY) || '1337', 10);
+    n++;
+    localStorage.setItem(KEY, n);
+    const el = document.getElementById('vis-count');
+    if (el) el.textContent = String(n).padStart(6, '0');
+})();
+
+// Last commit from GitHub API
+(function(){
+    const el = document.getElementById('last-commit');
+    if (!el) return;
+    const CACHE_KEY = 'apc_last_commit_v2';
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) {
+        try {
+            const obj = JSON.parse(cached);
+            if (Date.now() - obj.ts < CACHE_TTL) { el.textContent = obj.text; return; }
+        } catch(e) {}
+    }
+    fetch('https://api.github.com/repos/jeebuscrossaint/jeebuscrossaint.github.io/commits?per_page=1')
+        .then(r => r.json())
+        .then(data => {
+            const commit = data[0].commit;
+            const date = new Date(commit.author.date);
+            const ymd = date.toISOString().slice(0, 10);
+            const msg = commit.message.split('\n')[0].slice(0, 60);
+            const text = ymd + ' — "' + msg + '"';
+            el.textContent = text;
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), text }));
+        })
+        .catch(() => { el.textContent = 'unknown'; });
+})();
+
+// ── DYNAMIC BADGES + BLINKIES ─────────────────────────────────────────────
+(function(){
+    const BADGE_BASE   = 'https://cyber.dabamos.de/88x31/';
+    const BLINKIE_BASE = 'https://blinkies.cafe/b/display/';
+
+    // All 4540 badges from cyber.dabamos.de/88x31/ (all 5 pages)
+    const BADGES = ['000010.gif','007button.gif','_01.gif','09.gif','1000wstbutton2.gif','1001ffbutton.gif','1001freenewfontsbutton.gif','100best_88x31.gif','100hot2.gif','100hot.gif','101-dogs.gif','104.gif','1080p.gif','119.gif','123clipartbtn.gif','128.gif','12.gif','12men.gif','17.gif','18.gif','19.gif','1blades.gif','1dirlogo.gif','1en8ioQ.gif','1of2.gif','2001.gif','2019.gif','21studios.gif','22-88x31.gif','23_3.gif','24bds.gif','24fun.gif','24hc.gif','256_monitor_button.gif','2hu.gif','300free.gif','311now.gif','321free.gif','321.gif','321webmaster.gif','38caution.gif','3a2.gif','3dfx_banner.gif','3dot5mmfc-button.gif','3drlink.gif','3dxbutton.gif','477351.gif','49.gif','4ever.gif','4x3_fade.gif','5star.gif','64.gif','686-1.gif','69freeware.gif','78.gif','7euro.gif','7nonsense.gif','7zip.gif','800x600a.gif','800x600_blue.gif','800x600.gif','800x600_red.gif','80s.gif','88_31_02.gif','88-31-banner.gif','88_31_chatbox.gif','88_31freedownloads.gif','88bigwave.gif','88by31.gif','88cdroms.gif','88cinemax.gif','88countries.gif','88ibet.gif','88moska.gif','88prockat2.gif','88spylog.gif','88summer.gif','88x31blank.gif','88x31_button.gif','88x31cyberslugger.gif','88x31-freegraphicscom-pastel.gif','88x31fsc.gif','88x31.gif','88x31greenmarble.gif','88x31-micro-button.gif','88x31pinkmarble.gif','88x31visitors.ws.gif','88x31whitemarble.gif','88x31-your-ad.gif','88zoo.gif','8bit.gif','90sgenzkid.gif','91.gif','98plus_2016.gif','98plusani.gif','99gifshop.gif','a1animate3.gif','a2600now.gif','a2view.gif','aaaclipbut1.gif','aa_ani.gif','aaextreme.gif','aa_logo.gif','ab03.gif','abcdir-banner6.gif','abcgiant.gif','ab.gif','aboutg.gif','abrbus.gif','abrowser.gif','absfree.gif','absoft_logo.gif','absolute_ftp.gif','absolutely.gif','ab-white.gif','ab-yr.gif','acab.gif','acapickels.gif','acaza.gif','ac-button-frobert.gif','accelerating.gif','accursed-farms-alien-blink.gif','acdsee.gif','aceftp.gif','aceplay.gif','achbus.gif','acidawards24.gif','acidfonts.gif','acid.gif','acidgloss.net.gif','acidicdarkness.gif','acidlemon.gif','acid_prod.gif','acmelogo.gif','activator.gif','activewin.gif','activeworlds.gif','addchannel.gif','addesigner.gif','addit1.gif','addmecom.gif','addme.gif','addpro.gif','adecline.gif','adlogo.gif','adobe_asanim1.gif','adobe_atmosphere.gif','adobe_authorware.gif','adobe_dreamweaver.gif','adobe_fireworks.gif','adobe_flash_get.gif','adobe_fpbutton.gif','adobe_getacro.gif','adobe_getacroread.gif','adobe_getareader.gif','adobe_getas2.gif','adobe_get_authorware.gif','adobe_getauthorware.gif','adobe_getereader.gif','adobe_getflash2.gif','adobe_getflash3.gif','adobe_getflash4.gif','adobe_getflash.gif','adobe_getflashp.gif','adobe_get_flashplayer2.gif','adobe_get_flash_player.gif','adobe_get_flashplayer.gif','adobe_get_shock_player2.gif','adobe_get_shock_player.gif','adobe_get_shockwave_20010813.gif','adobe_get_shockwave2.gif','adobe_get_shockwave_authorware.gif','adobe_get_shockwave.gif','adobe_golive2.gif','adobe_golive.gif','adobe_mwm_dir.gif','adobe_mwm_dirmw.gif','adobe_mwm_dw.gif','adobe_mwm_dwmx.gif','adobe_mwm_fla.gif','adobe_mwm_flmx.gif','adobe_mwm_fw.gif','adobe_mwm_fwmx.gif','adobe_photo.gif','adobe_svg.gif','adobesvg.gif','adultchat.gif','aedit.gif','af-boton9.gif','affcrack.gif','affection.gif','af-pixel.gif','af-psylab.gif','africapt.gif','afro.gif','afs.gif','afxbutton1.gif','agagamem.gif','agag.gif','agplv3-88x31.gif','ah.gif','aiboton.gif','aikiweb.gif','aim.gif','aimlink.gif','aimthings.gif','airmailnow.gif','akageobutton2.gif','akmmos_ban.gif','aladdinnow.gif','aldema2.gif','aleash.gif','alertra.gif','alfart.gif','alienow.gif','alienware_button.gif','alink02a.gif','allfree.gif','allfreethings.gif','alltits.gif','alohabook.gif','alpha_centauri.gif','alpha-ii.gif','altavista2.gif','altavista.gif','amatsuki.gif','amazing_free_stuff.gif','amazon2.gif','amazon3.gif','amazon4.gif','amazon5.gif','amazon-88x31.gif','amazon.gif','amd_now.gif','amd_powered.gif','americasdecline.gif','amftpnow.gif','amiga1200.gif','amigaamp.gif','amiga_anim.gif','amigademo.gif','amigaemu.gif','amiga_friendly.gif','amiga.gif','amiga-news2.gif','amiga-news.gif','amigaos.gif','amiga_power.gif','amigapow.gif','amiga_rc5.gif','amigatm.gif','amirc_now.gif','amiw2.gif','amyuoy1.gif','anarchy1.gif','anarchy.gif','anarchy-now.gif','anarchynow.gif','an-clan-88.gif','andysart.gif','angel99.gif','angelcat3.gif','angelfire.gif','angelkiss.gif','angellogo.gif','angellovebox.gif','angelz_button.gif','angy_ban2_7.gif','aniback1g.gif','anibanner.gif','anibutton.gif','anibuttonscifi.gif','anibuy3.gif','ani_face.gif','anigif.gif','anigifs.gif','anihome112g.gif','anilinkwired.gif','anilogo.gif','animag_button.gif','anima.gif','animatedbutton.gif','animation51.gif','animations-backgrounds-clipart.gif','animationshop.gif','animationstation.gif','animbat.gif','animbutton1.gif','anime100games.gif','anime100.gif','anime100green.gif','anime100red.gif','anime50.gif','animegay.gif','animeland.gif','animenation-88x31.gif','animenation.gif','animexchange.gif','animicon.gif','aninext1g.gif','ani_passale.gif','anipitstop.gif','annu.gif','anonymize.gif','another.gif','anreise.gif','anthrax.gif','antiaol.gif','anti_button.gif','anticodeandrun2.gif','anticodeandrun.gif','antifa.gif','antihentai.gif','antinazi.gif','antinft.gif','antisocialism.gif','antispicecool.gif','any1.gif','any2.gif','any88x31.gif','anybestviewed.gif','anybrow.gif','anybrowser2.gif','anybrowser3.gif','anybrowser4.gif','anybrowser5.gif','anybrowser6.gif','anybrowser7.gif','any_browser_at.gif','any_browser_enhanced.gif','any_browser.gif','anybrowser.gif','any_browser_now.gif','anydamn.gif','any.gif','anyie_anim.gif','anythingbut.gif','ao3gif.gif','aolenterprise.gif','aol.gif','aolie.gif','aolim.gif','aol_instant3.gif','aolnetfind.gif','aol-sucks.gif','aolsux.gif','aoltos_a.gif','aol-user.gif','apache-forrest.gif','apache-mod_perl.gif','apache-powered.gif','apache-thanks.gif','apc.gif','apcpagegr.gif','apc-protect.gif','apngasm.gif','aponow.gif','apple-collect2.gif','apple-collect.gif','appledust.gif','apple_fatal_error.gif','applelinks2.gif','applelinks.gif','apple_special1.gif','applestore.gif','apply_logo2.gif','apply_logo.gif','approved_508.gif','approvedasacpmember.gif','approved.gif','a-pwg-holiday.gif','aqnow.gif','arachne2.gif','arachne.gif','arachno.gif','arcadevirus_av4.gif','archivers.gif','archivorock.gif','archlinux.gif','arcnet.gif','arena.gif','arizona.gif','armed.gif','armorgames.gif','artofdawn.gif','arttoday.gif','artwanted.gif','asacp.gif','asciicat.gif','asco_88x31_3.gif','asexuals_now.gif','asswolf_banner.gif','asswolf_txt.gif','asta_small.gif','asus-clr_19970504.gif','atari.gif','atarilogo.gif','atari-read.gif','atari_times.gif','atari_webring.gif','atemplate88_31.gif','ath2404.gif','atlas.gif','atmturbo.gif','atomicans_link.gif','atomicdusticon.gif','atomicfireball.gif','atomic.gif','atomicwarriors.gif','auction88x31.gif','auron.gif','autocat.gif','auto.gif','auzzie1.gif','ava25.gif','avanow1.gif','avanow28.gif','aviation1.gif','award.gif','awch_88x31.gif','awebnow.gif','aworldr.gif','axcel.gif','aywren.gif','az01.gif','az02.gif','az03.gif','az_1.gif','b1.gif','b4j.gif','b5can_s.gif','b6.gif','babebutton.gif','babylon5.gif','backed.gif','backweb.gif','badboyznow.gif','badge.gif','baicrew.gif','ba-kimu.gif','ballbbc2.gif','ballbbc3.gif','ballbbc4.gif','ballbbc.gif','baloo.gif','ban1.gif','ban88x31-2.gif','banar7.gif','banasq.gif','ban-button.gif','bandeau.gif','bandwith_conservation_society.gif','bangg.gif','ban_i-rayum.gif','bannars.gif','banner123.gif','banner28831.gif','banner2a.gif','banner2.gif','banner5.gif','banner8831_10.gif','banner-88x31.gif','banner88x31.gif','banner-88x31-rambler-orange2.gif','bannera1ooo.gif','banner_abandonwaredos_88x31.gif','bannerbsfan.gif','bannerdelta88x31.gif','banner_mai.gif','bannermaker.gif','bannermaker-ru-88x31.gif','bannerplz.gif','bann_et.gif','bannjl1-88x31.gif','banporn.gif','banshee.gif','bans_mini3.gif','baraban.gif','battlegrounds.gif','battlemail.gif','battyville2.gif','battyville.gif','bazarpokemon.gif','bbcbnrsm.gif','bbccs.gif','bblogo.gif','bbs_face.gif','b-dark.gif','bdnow.gif','bdotcad.gif','bdtt.gif','beabut.gif','beatnik_beatnik.gif','beatnik.gif','beatnik_sonified.gif','beauty.gif','beebutton.gif','bee.gif','beekeeping_in_ukraine.gif','benis.gif','benzwarez.gif','beos_now_anim.gif','ber-88x31-1d-nopt.gif','beru.gif','best1024.gif','best800x600.gif','bestbritney.gif','bestcanada.gif','bestceleb.gif','best_chrome.gif','bestdesktop.gif','bestenjoyed.gif','besteyes2.gif','besteyes3.gif','besteyes_ani.gif','besteyesbeta.gif','besteyes.gif','best-fr-88x31.gif','best_free.gif','best.gif','bestlandscape.gif','best_ns.gif','bestromsites.gif','best_show_time_for_your_life.gif','bestviewed16bit.gif','bestviewedcomp.gif','bestviewed.gif','bestviewedlinks.gif','bestviewedopen.gif','best_viewed_with_eyes.gif','bestviewedwith.gif','best_viewed_with_monitor.gif','bestviewedyour.gif','bestview.gif','bestvw.gif','bestwithmie.gif','betsyfries.gif','bettie-gifs-3.gif','beyes.gif','bf42.gif','b_flipcode.gif','bgs.gif','bia-button3.gif','biber.gif','bid88x31.gif','biden.gif','big5.gif','biganime.gif','bigbrother.gif','bigforum.gif','biggulp.gif','bignet.gif','bikobatanari.gif','billsworld.gif','billys.gif','binkybeads.gif','bitmap.gif','bitwarden.gif','biztravel.gif','blackfactsnow.gif','blacksun_icon2.gif','blackthorn.gif','bladeenc.gif','blank.gif','blars88.gif','bLBJjuU.gif','blender.gif','blinchik.gif','blink-0.gif','blink.gif','blinkie.gif','blitzani.gif','blitzbut.gif','blizzlogo.gif','blogger_88x31.gif','blog.gif','blogrank88x31.gif','blogrank.gif','bloodcovered.gif','bloodmoon-knight.gif','bluebomber.gif','bluecat_badge.gif','bluechillies.gif','bluef00t.gif','blue.gif','bluepantsu.gif','bluesnews2.gif','bluesnews.gif','bluetogreen.gif','blue-vmu.gif','bm_sw2.gif','b_nebula.gif','bn_park.gif','bnr_01.gif','bns_acidfont.gif','bns_another.gif','bns_freddie3.gif','bns_fscbut.gif','bns_prodraw.gif','boa2.gif','boa.gif','bobbles.gif','bobbutton.gif','bob.gif','boc.gif','boing.gif','bookjacket2.gif','bookmark_this_page.gif','books.gif','boombarmusic.gif','booter_hosting_button.gif','boot.gif','bootleg64_spinbutton.gif','bootleg.gif','borealis.gif','botao08.gif','botaocg.gif','botao.gif','bouncybubbles.gif','boyband2.gif','boyband.gif','b-pm.gif','b_predeadnow.gif','braknow.gif','brave.gif','bravenet2.gif','bravenet.gif','brbutton.gif','britney.gif','broadcast.gif','brolove.gif','brow.gif','browsemoz.gif','browser.gif','browserw.gif','brunebase.gif','bsoanim.gif','bsp.gif','bst88-1.gif','btbtn01.gif','bt_fk1.gif','bt-gmg.gif','bt-gs.gif','btn6.gif','btn_shuyin_eye.gif','btn-silvercruiser.gif','bu12.gif','budgie.gif','bugland.gif','built_notepad.gif','built_with_amiga02.gif','built-with-cocoon.gif','built_with_microsoft_notepad.gif','bull.gif','bully.gif','bunbrowser.gif','burning.gif','buscamanga.gif','but6.gif','but_blinkies.gif','butjesterparty.gif','buton0.gif','button1.gif','button25.gif','button2.gif','button3.gif','button3sea.gif','button4.gif','button7.gif','buttonaban.gif','button_aq2.gif','button-devils.gif','button-dubai-omeira.gif','button-dubai-saf14.gif','button.gif','button_inta.gif','buttonmaker.gif','buttonmania.gif','button_now.gif','buttons_now.gif','buttonthree.gif','button_tibet.gif','button_tupachq1.gif','button_vote.gif','button_wip.gif','but_ulysses.gif','buyabook.gif','buycom2.gif','buycom.gif','buyebaystuff88x31.gif','bvbstar.gif','bvwe.gif','byme.gif','bynxftp.gif','byt_banner.gif','C4YSB2.gif','c64ik.gif','c88_01.gif','cab.gif','cabnow.gif','cabutton.gif','cadence_now.gif','cafe1.gif','cakes_button.gif','cal_2.gif','caldera.gif','callescustomicons.gif','calmira.gif','camtime.gif','camz28.gif','canadab.gif','canada.gif','canaltopdigital.gif','cananow.gif','candybarsnow.gif','candyshop.gif','can.gif','cannelle.gif','caos.gif','cardsbutton.gif','car.gif','carnage.gif','car-part-88x31-2.gif','cars.gif','cashclicking.gif','casino97.gif','cassette.gif','catalog_site_3a.gif','catscape2.gif','catscape3.gif','catt_banner.gif','cc-button.gif','ccbutton.gif','cc-by-nc-sa.gif','cc-by-sa.gif','cclogo3.gif','ccrc.gif','cc-some.gif','cc-somerights.gif','cdaweb.gif','cd_rom.gif','cebutton.gif','celebhoo_btn.gif','celebsitesbannersmall4.gif','celtornotlogo.gif','censor_14c.gif','cepheus.gif','cfb.gif','cfs1.gif','cfs.gif','cfvote1.gif','cgi-guestbook.gif','cgipon.gif','cgipon_re.gif','cgi-search.gif','cg_japan.gif','cgx2now.gif','cgxnowh.gif','ch-88x31.gif','chainsawed.gif','chainsaw.gif','chameleonbutton.gif','chaos.gif','chat2.gif','chat.gif','chatroom2.gif','chatroom.gif','chaz8831.gif','checker.gif','cheezit.gif','cheillina_vet.gif','chemicalz.gif','cherrie.gif','chesslinks.gif','chick_ban.gif','child.gif','childlibrary.gif','chillbanner5.gif','chillbitznow.gif','chilliwebhosting.gif','chill_pill.gif','chillsoft.gif','china.gif','chinese_8831.gif','chiplink.gif','chrischromebttn.gif','christian.gif','christnow.gif','christvote.gif','chrmevil.gif','chrome.gif','ch_to_join.gif','chtourist.gif','chub.gif','chuck1000.gif','chum.gif','church-arson-holocaust.gif','cicadoidea.gif','cinnamonoll.gif','cinni_angelbutton3.gif','cinnibutton1.gif','cis_geldverdienen.gif','clanintern2.gif','clanintern.gif','clantools.gif','classic_compatible.gif','classicgaming.gif','classmates.gif','clb1.gif','clear-text.gif','clickhere_blue.gif','click_here.gif','clickhere_red.gif','clipartclubhouse.gif','clique3.gif','cliquer.gif','cloud9.gif','cloverleaf.gif','clq.gif','clubnintendoarchives.gif','cms-88x31.gif','cnet1.gif','cnetbuyit.gif','cnet.gif','cnn.gif','cnt2.gif','cnt.gif','cocacola.gif','cocksuckingfaggot.gif','coco_cade.gif','code2.gif','code88x31_1.gif','codebrain.gif','code.gif','codeproject88x31.gif','coffee.gif','coffnow.gif','cogs.gif','coke.gif','colasoft.gif','colorfulgirl.gif','color.gif','colorhunt.gif','colorsync.gif','combatbaby.gif','comdex4.gif','cometzone.gif','compaq.gif','compx.gif','confidential.gif','connect.gif','connorbutton.gif','conrlogo.gif','construction.gif','constructor.gif','contamin.gif','cont-now.gif','convergence.gif','coolacid.gif','coolarchive.gif','coolbutton.gif','coolbuttonlogo.gif','coolbuttontool.gif','coolness08.gif','coolness09.gif','coolpage.gif','cool-shades.gif','cooltxt.gif','copy_floppy.gif','copyscape.gif','coreboot.gif','corels.gif','corp.gif','corruptedunicorn.gif','corsab.gif','cortbest.gif','cosmo.gif','cosmoplayer.gif','counter_type1.gif','couponbug.gif','covid-19.gif','cowbrow.gif','cowsuck1.gif','cowsuck.gif','cpic_now.gif','cr-88x31-1b.gif','crack13.gif','crackdesnow.gif','crackit.gif','crackman1.gif','crackman.gif','crazbutton.gif','crazyfrog.gif','creation_awz.gif','credit.gif','crescendo2.gif','crescendo3.gif','crescendo4.gif','crescendo.gif','cresmidi.gif','criu_88x31.gif','crosswinds.gif','crunchiebox.gif','crushit.gif','crystals_now.gif','cs2.gif','cs3.gif','csbanner2.gif','csbanner.gif','cs_fortress.gif','cs.gif','csi_now.gif','csnation2.gif','csnation.gif','csnation_link.gif','csnz_link.gif','csphl_link.gif','csplayer.gif','css2.gif','css3.gif','cssdif.gif','css.gif','cssvalid.gif','cs-wh-88x31.gif','ctbutton.gif','ctested.gif','cult_now.gif','culture_club.gif','cuteanimegirls.gif','cutefont.gif','cutesocks.gif','cyber-creative88.gif','cyberdog.gif','cyberliveperson.gif','cybername.gif','cyberoom.gif','cyberpatrol.gif','cyberrealmrefer.gif','cyberrose.gif','cyberrot.gif','cyberscore.gif','cybertec.gif','cybnow1.gif','cyborgu.gif','cyrano.gif','d2latino.gif','d666.gif','dabamos.gif','da.gif','dailydeath.gif','dailymp3.gif','dallas_but1.gif','dambutton.gif','danger_dhmo.gif','danielsnet_net.gif','danppun.gif','dansqbasic.gif','dark-mode.gif','darkzerobutton.gif','darkzide2.gif','darwin.gif','dataduck.gif','datingfun.gif','dating.gif','davbutton.gif','daveservermini.gif','davesite.gif','davisbutton2.gif','davisbutton.gif','dazzle.gif','db20a.gif','dball2k.gif','dbani.gif','d_bannar.gif','dbd.gif','dbf.gif','dbfire88.gif','dbhtml.gif','dbnow2.gif','dbnow.gif','dc_cgi.gif','dce.gif','dc-france-mini.gif','dchamp.gif','dcities.gif','dcnow.gif','dcs.gif','dd2.gif','ddayfrench.gif','dday.gif','ddb88x31.gif','ddc_anim1.gif','ddg.gif','ddialnowanim.gif','ddlsearch.gif','deadangel.gif','deadlands_anim.gif','deadlyprogramming.gif','dean-banner.gif','deartease.gif','debian2.gif','debian.gif','debian-powered.gif','defcon1.gif','defund_badge.gif','defusion.gif','dekdee.gif','deknam.gif','dekpi.gif','delete-twitter.gif','dell_88x31.gif','dell.gif','delphi88x31.gif','delphidev.gif','delphiplus.gif','demo88x31.gif','demon.gif','des.gif','designedbymac.gif','desk-scrap2.gif','desk-scrap.gif','desktopthemes.gif','desp-anim.gif','destinysoulmates.gif','destiny-templateshop.gif','deviantart4.gif','deviantart6.gif','deviantart8.gif','deviantart.gif','devils_button.gif','devils.gif','devolution.gif','df2.gif','dfbutton.gif','dfcenter.gif','dgmag.gif','dhmobanner1.gif','dhtml.gif','dhtmlshockcom.gif','diablo2.gif','dialpad_launch.gif','didgeridoo.gif','diff-now.gif','difm.gif','digby88.gif','digimon100.gif','digimon_terminal.gif','digitalempirebutton.gif','digitalme.gif','digiweb.gif','dilbert.gif','dingbat1.gif','dingbat.gif','direct.gif','directxnow.gif','disaster.gif','disccontent.gif','disclaimer.gif','discord2.gif','discord3.gif','discord.gif','discord-no-way.gif','discord_now.gif','discordserver.gif','div-88x31-2.gif','diva.gif','divasupport5.gif','divx.gif','djvu_badge.gif','dk64gaming.gif','dkbutton2.gif','dk.gif','dlbutton.gif','dlideli.gif','dlviscap.gif','dmc.gif','dmoz.gif','dnfbtn.gif','d_now.gif','doghouse1.gif','doingyourmom.gif','dokuwiki.gif','dolby_digital.gif','doll_palace.gif','domainsearch.gif','donate2.gif','donate.gif','donate_php.gif','donkey_kong_megasite_88x31.gif','donkeymule.gif','dontklick.gif','dontleave.gif','doom2stuff.gif','doomanim.gif','doombut.gif','doom.gif','doomrl.gif','dopefish.gif','dos.gif','dosspirit.gif','dotcomboom.gif','dotcomboom_new.gif','dotnu.gif','downline.gif','download1.gif','download.gif','downnow.gif','dp_now.gif','dp_web.gif','dragontongue.gif','drdteam.gif','dream_a_little_dream.gif','dream_balcony_banner.gif','dreamcast.gif','dream_coloured.gif','dream.gif','dream_now.gif','dreamstorming.gif','dreamworld.gif','drmario.gif','drpepper.gif','drupal2.gif','drupal-black.gif','drupal-blue.gif','drupal-gray.gif','dtccbt.gif','dtobutton.gif','dtp88x31.gif','duae.gif','dubai-button-softman2.gif','dubai-button-softman3.gif','dubailink.gif','duck.gif','duke4net.gif','dukebutanim.gif','dukenow.gif','dukeworld.gif','duvigneaud_net.gif','dye.gif','dynamiclogo3.gif','dynamiclogo4.gif','dynamiclogo.gif','dynclan.gif','dynos.gif','dyretq.gif','e2000.gif','e4df87ac.gif','eagamat2.gif','eagle88x31.gif','eam.gif','easy.gif','eat.gif','eayz.gif','ebay2.gif','ebay3.gif','ebay.gif','ebnow.gif','e-bogo.gif','ebooks.gif','ecbb.gif','ecchi.gif','echomoscow.gif','echospch.gif','eclipse.gif','e-d4.gif','eden.gif','edgen.gif','e-dos.gif','edpadico.gif','eduke32.gif','eftpbutton.gif','egproject.gif','ehbutton.gif','ehost.gif','e-hs.gif','e-htp.gif','eidosfanpage.gif','eightyeight.gif','eingetragen88-31.gif','einstein2.gif','einstein.gif','eira.gif','elektronika.gif','elitedivx.gif','elite.gif','elitetop50.gif','emacs2.gif','emacs3.gif','emacs.gif','emacsnow.gif','e-mailclub.gif','email.gif','ematek.gif','em.gif','eminem2001.gif','emma8831.gif','emmalink.gif','emporium.gif','emulacity.gif','emulate.gif','emulink.gif','emuwarez.gif','encount.gif','endedman.gif','enemies_88x31.gif','enhance.gif','entertainment.gif','enterwebs.gif','entranceorexit.gif','envit.butn.gif','eoe.gif','eorgbutton.gif','epbutton.gif','epicenter.gif','epicnow3.gif','era3.gif','eres.gif','es-88x31.gif','e-scp.gif','eseek5.gif','esheep.gif','es-now.gif','espanol.gif','esphorace.gif','espn.gif','etel_sites.gif','eucharist.gif','eudora.gif','euphobutton1.gif','europapark-de.gif','european_gnome_sanctuary.gif','eva.gif','evaicons.gif','evangelion.gif','eveonline.gif','everest.gif','everythingmac.gif','evilbtn2.gif','evilnet.gif','evo.gif','ewbutton.gif','ews.gif','ex_88x31.gif','exchangead.gif','excitepal.gif','exepress.gif','exo.gif','exosilver.gif','expressbtn.gif','extreme.gif','eyeland.gif','eyeonjoey.gif','ezfree.gif','ezgif2.gif','ezgif.gif','ezgif_now.gif','f20eed3f.gif','f355challenge.gif','facebook.gif','factory3.gif','fairlite.gif','falcom.gif','falink.gif','fa_logo.gif','false.gif','fanart.gif','fansubsnet.gif','fanta.gif','fantasy.gif','farcry.gif','fastweb.gif','fatfree.gif','fattony.gif','fav.gif','fawnest.gif','fb_button.gif','fbi-button.gif','fblycos_adbtn.gif','fbody.gif','fc72.gif','fcadaim.gif','fcbut3.gif','fcbut5.gif','FCbw.gif','fckdemocrats.gif','fckfb.gif','fckgoogle.gif','fckingwww.gif','fclip.gif','fcred.gif','fcylw1.gif','fdj.gif','fediverse.gif','fedora2.gif','fedora.gif','feed.gif','feiteclogo.gif','femboy.gif','fennergyanim.gif','ff-banner.gif','ffbut1.gif','ffiles.gif','ffiv.gif','ffixsource.gif','ff_micro.gif','ffmpeg.gif','ffrediscover.gif','ffr.gif','fftake.gif','fftf.gif','ffwarpzone.gif','fgabutton6.gif','fg-link.gif','fhbanner-88x31.gif','fhost-88x31-1a2.gif','fic002.gif','fic005.gif','fic009.gif','fic012.gif','fight-fraud-88x31.gif','figmo88.gif','figure.gif','filebasket.gif','filetransit.gif','filez.gif','finaltrash.gif','finger.gif','finger-logo-cat.gif','finger-logo-cute.gif','finger-logo-me-girl1.gif','finger-logo-me-girl.gif','finger-logo-people.gif','fingerofgod.gif','finger-sozai.gif','finsterbutton2.gif','firbutn.gif','firefox2.gif','firefox3.gif','firefox4.gif','firefoxget.gif','firefox.gif','firefoxn00bs.gif','firefoxnow.gif','firen00bs.gif','firstnews.gif','fishing.gif','fizzsea.gif','flamingo.gif','flamingtext.gif','flash202x.gif','flashpoint.gif','floppyjay.gif','fl-squall.gif','fmbutton05.gif','folder2.gif','folder.gif','fontalicious.gif','font-day.gif','fontguy.gif','font_lister_now.gif','fontseek.gif','fontshop.gif','fontsnow.gif','foobar2000.gif','forever_online.gif','forever_young.gif','forgetme5.gif','formum.gif','for_specials.gif','for_survey.gif','forteahouse.gif','fortunecity2.gif','fortunecity.gif','fosi.gif','fosters.gif','fotinia2.gif','four11.gif','fpobutton.gif','fracturednow.gif','framer-full.gif','framfull.gif','frank.gif','freakbutton.gif','freakphone.gif','free60day.gif','freeanwar.gif','freebackgrounds.gif','freebanners.gif','freebielistbutton.gif','freebies4u.gif','freebingo.gif','freebutton.gif','freebuttons.gif','freechannel.gif','freeciv.gif','free-clip-88x31.gif','freeclipart.gif','freeclip.gif','freecom.gif','freecon2.gif','freedb.gif','freedownloads.gif','freeemail.gif','free.gif','free-gifs.gif','freegraphicland.gif','freehome.gif','freekevin.gif','freelance2.gif','freeload_dl.gif','freeloader.gif','freencool.gif','freenet.gif','freenow.gif','freescreensaver.gif','freescreensaversnet.gif','free-sex.gif','freesite.gif','freesounds.gif','freespeach.gif','freestuffbin.gif','freestuffcenter.gif','freestuffcentral.gif','freestuffforyou.gif','freestuff.gif','freestuffgr.gif','freestuffshare.gif','freesubmit.gif','freetemplates.gif','freewallet2.gif','freewallpaper.gif','freeware2.gif','freeware32.gif','freeware_de.gif','freeware.gif','freewareguide2.gif','freewareguide3.gif','freewareguide.gif','freewareweb.gif','freewebbutton2.gif','free-webhosts.gif','free_worldgaming.gif','fresco.gif','freshmeat.gif','friendsforever.gif','friendship.gif','frisout.gif','frix.gif','frnow.gif','froggygif.gif','frogland.gif','frontpage.gif','frozenbanner.gif','fscbutton.gif','fscripts.gif','fsfbutton.gif','fspeech96a.gif','fspeech96.gif','fspeech.gif','fsu.gif','ft_button.gif','ftn95_logo.gif','ftp_voyager_now.gif','ftp_warez_banner_k.gif','ftp_warez_banner_klein.gif','ftpwatcher.gif','ftpxani.gif','fullmoon.gif','furby.gif','furnow.gif','fursona.gif','fuschia.gif','futurama_archive.gif','futuramadb.gif','futurama.gif','fvwm-logo.gif','fvwm-themes-logo.gif','fwarehome.gif','fwolfnow.gif','fz2k.gif','gab.gif','galaxydiamond.gif','galaxy.gif','galeon_icon.gif','gamblesource.gif','gamefly-88x31.gif','gamefly.gif','gamercat.gif','gamergun.gif','gamesforyou.gif','games.gif','gamesmachine88x31.gif','gamezone_88x31.gif','ganow.gif','garcade.gif','gateway_2000.gif','gator_button.gif','gaybears.gif','gaysexnavigator.gif','gaywebring.gif','gaywomen.gif','gbanet.gif','gb_blueridge.gif','gb_burgundy.gif','gbc.gif','gb.gif','gb_green.gif','gbook.gif','gb_peach.gif','gbw_ban2.gif','gb_white.gif','gc_akageo.gif','gc_athens2.gif','gc_athens.gif','gc_augusta.gif','gc_baja.gif','gc_bourbonstreet2.gif','gc_bourbonstreet.gif','gc_broadway.gif','gc_broadwst.gif','gc_cape.gif','gc_capitolhill.gif','gccl.gif','gc_clover.gif','gc_collegepark.gif','gc_colosseum.gif','gc_eagle.gif','gc_enchantedforest.gif','gc_eureka.gif','gc_fashionavenue.gif','gc.gif','gcguestbtn.gif','gc_heartland.gif','gc_hollywood.gif','gc_icon2.gif','gc_icon3.gif','gc_icon.gif','gc_japan.gif','gc_madisonavenue.gif','gc_marina2.gif','gc_marina.gif','gc_motorcity.gif','gc_napa2000.gif','gc_nashville.gif','gc_paris.gif','gc_paris-leader.gif','gc_pentagon.gif','gc_picketfence.gif','gc_pipeline.gif','gc_proxyellow.gif','gc_rainforest2.gif','gc_rainforest.gif','gc_researchtriangle.gif','gc_rodeodrive.gif','gc_silval88.gif','gc_slow.gif','gc_soho2.gif','gc_soho.gif','gc_south-88.gif','gc_southbeach2.gif','gc_southbeach.gif','gc_southp88.gif','gc_sunsetstrip.gif','gc_televisioncity.gif','gc_timessquare.gif','gc_tokyo.gif','gc_trails.gif','gc_trails-w.gif','gc_tropics.gif','gc_vienna.gif','gc_wallstreet.gif','gc_well8831.gif','gc_wellesley.gif','gc_wishland.gif','gcworldwide.gif','gc_yosemite2.gif','gc_yosemite.gif','gc_yosemite-trails.gif','gdelogo.gif','geckoblue01.gif','geekcombutton.gif','gemini.gif','gem-setup.gif','genokirby.gif','gens.gif','geo88x31.gif','geoanime.gif','geobloon.gif','geocites.gif','geocities2.gif','geocities5.gif','geocities_area_51.gif','geocities_around.gif','geocities_ballbbc.gif','geocities_chinese.gif','geocities_fhp.gif','geocities_flash.gif','geocities-gc_icon.gif','geocities.gif','geocitieshome.gif','geocities_japan.gif','geocitieslight.gif','geocities_mac.gif','geocities_mirr.gif','geocities-official.gif','geocitiespuls.gif','geocitiesrot.gif','geocities_skyline.gif','geocities_soho.gif','geocities_special.gif','geocitiessplash.gif','geocitiesstart.gif','geo-citi.gif','geocube.gif','geoicon.gif','geolinkcity.gif','geo_pd.gif','geopush.gif','geostore_sm.gif','gerusama.gif','get3dnow.gif','getanu.gif','getbcnow.gif','getbeanie.gif','getblues.gif','getbote.gif','getbsod.gif','getbut.gif','getcpa.gif','getctmnow.gif','get_da.gif','getdeadani.gif','get_djvu2.gif','get_dopus.gif','get-eucharist.gif','getgospel.gif','getgpnow.gif','gethtmlnow.gif','getit-delta.gif','get_java.gif','getjuno.gif','getlaugh.gif','getmania.gif','get_midi_plug.gif','getmp2a.gif','getmsgplus.gif','getmxani.gif','getpaid4_2.gif','getpaid_88_1.gif','getq2.gif','getquake.gif','getright.gif','getright_icon.gif','getrocketb.gif','get_shockwave_grys.gif','getshuga.gif','getsmile.gif','getspear.gif','getsurveyor.gif','gettb1.gif','gettf.gif','getttnow.gif','getwc.gif','getwmp7.gif','getwolfnow.gif','getworldflash.gif','gewinn24.gif','gfaqs.gif','gfx_cool.gif','ggt-button01.gif','gh-pages-bo.gif','gif_necro.gif','gimp2.gif','gimp.gif','girlgrade3.gif','girls4notepad.gif','girls.gif','girls-united.gif','gitea.gif','github-check.gif','github.gif','givecredit.gif','giw.gif','gladiators-88x31-2.gif','glamourgoblin.gif','glamourjunky.gif','glassfish_88x31.gif','gldev_com.gif','gl.gif','gliczide.gif','glittercandybox.gif','glittereyez.gif','glori.gif','glovma.gif','glyphweb2.gif','glyphweb.gif','gmail.gif','gn-button.gif','gnnow.gif','gnome1.gif','gnomead.gif','gnome.gif','gnomes-88x31-1a3.gif','gnomes-88x31-1a.gif','gnow.gif','gnubanner.gif','gnu-fdl.gif','gnu-linux.gif','gnunano.gif','go2hellnow.gif','goblins.gif','godblessbutton1.gif','god.gif','gofernow.gif','gogamer.gif','gogo.gif','gograph.gif','golan88.gif','golanr.gif','golded.gif','gold.gif','golfshoeplus.gif','goodsearch-88x31.gif','googhunbanty.gif','google.gif','google_stand.gif','googol.gif','goon.gif','got_html.gif','gotoworld2.gif','gotoworld.gif','gotsquid.gif','gowhere.gif','gozilla2.gif','gozilla.gif','gpl3.gif','gplv3.gif','gradeb1.gif','grafovolaverunt.gif','gramyre.gif','grapheneos.gif','graphicdesign.gif','graphicfreebi.gif','graphics4u.gif','gratis-sex-fotos.gif','greensmilies.gif','gregg.gif','grossgirl94.gif','grsite.gif','gsf.gif','gsmbutton1.gif','gtagang.gif','gta_shotgames_link.gif','gtazone.gif','gtg-ani.gif','gticon.gif','gtoolslogo.gif','guestb1.gif','guestbookani.gif','guestbook-button.gif','guestbookbutton.gif','guestbook.gif','guestbook-gratis.gif','guestbooksnet.gif','guestcities.gif','GuestWorldbutton.gif','guestworld.gif','guidebook.gif','guideworld.gif','guistuff88x31.gif','guru3d.gif','guru.gif','gutenberg2.gif','gutenberg.gif','gw2k.gif','gwtagacw_3.gif','gwtagacw.gif','gwta.gif','h2dbut.gif','h95award.gif','hackerpowered.gif','hackertop100.gif','hagai.gif','haifu2.gif','haiku-now.gif','haikunow.gif','hair.gif','half-88x31.gif','half-life.gif','hall-of-light.gif','halloween1.gif','halloween2.gif','halloweenradio.gif','hamexp.gif','hamsterbuddies.gif','handpainted.gif','hangman.gif','happy2006.gif','happyboxbb.gif','happybox.gif','happyhardcore.gif','happylink.gif','happy_logo.gif','happy-mix_button.gif','happymix.gif','harmonica.gif','hartscorned.gif','hash_now.gif','hasmile.gif','hatemac_b.gif','hatems.gif','hatemsie.gif','hatsunemiku1.gif','hawkee2.gif','hawkee.gif','h-botao.gif','hd3.gif','hddguru.gif','hdwings.gif','headscape.gif','headshot.gif','heart.gif','heartofgold1.gif','heavensgate.gif','heavysig.gif','heckscaper.gif','he-him.gif','hekate.gif','helgaslovesecret.gif','hell0.gif','hello.gif','hello_kitty.gif','hellontheweb.gif','hellspit1.gif','helpme.gif','helpwanted.gif','herc_now.gif','hermish_508.gif','hermish_a.gif','heroes.gif','hetzner.gif','hex2button.gif','hex2faq.gif','heyarnold.gif','hff.gif','h-free-anim.gif','hgs.gif','hhtt.gif','hicolor.gif','highereducation.gif','hikikomorigrave.gif','hip_hop_ukraine.gif','hitmanforum.gif','hkfootball.gif','hl.gif','hlsmobile.gif','hmlink.gif','hmstd.gif','hockey.gif','hoho.gif','hoinow.gif','holyrosary.gif','holyspirit.gif','home-assistant.gif','home.gif','homepage-builder-ico.gif','homeplan.gif','homernow.gif','homesite.gif','hometown.gif','homicide.gif','homicidenow.gif','horrorgifs.gif','hosted_by_host4u.gif','hosted.gif','hosted_on_macintosh.gif','hosting.gif','hosting_weiss_animated.gif','hostyellow.gif','hotaward.gif','hotbanner88x31.gif','hotbot.gif','hot_cafe_download.gif','hotdog2.gif','hotdog.gif','hotdognow.gif','hotdogpro.gif','hotgraphics.gif','hotlinecafebutton2.gif','hotlinecafebutton3.gif','hotline.gif','hotmail2.gif','hotmail3.gif','hotmail.gif','hotscripts.gif','hotscriptso.gif','hotstuff.gif','hotswimsuitbutton.gif','hotwaxpro.gif','howtobecomeanangel.gif','hpadanim.gif','hpbanner2.gif','hpg_banner_10.gif','hps1.gif','hps2.gif','hps3.gif','hps4.gif','hps5.gif','hpvc-now.gif','hpwd.gif','hqbutton15.gif','hs25_now.gif','hs2_now.gif','hs4_now.gif','hsajesusveg.gif','html3.gif','html3_s1.gif','html401.gif','htmldream.gif','html_editor_now.gif','html.gif','html_lib.gif','htmlval2.gif','htmlval.gif','httpbutton.gif','httpismall.gif','httpterrormoose.gif','humanraccoon2.gif','humanstxt-isolated-blank.gif','humor5.gif','hurtsnow.gif','hwpowered.gif','hypnocoin.gif','i2p.gif','iab.gif','iacw-now.gif','iak.gif','iamv2.gif','ib-anim.gif','iblis9.gif','ibm-java.gif','ibnow.gif','ibrowse7a.gif','ibrowse.gif','icab.gif','icbanner.gif','icbg.gif','iccsania.gif','iccsani.gif','icerabutton1.gif','ic.gif','ichatnow2.gif','icon03.gif','icon6.gif','iconawol.gif','icongallery.gif','icon_javapow.gif','icon_mweb.gif','iconolog.gif','iconstree.gif','icq2.gif','icqamiga.gif','icqbutton.gif','icqdownload98.gif','icq.gif','icq_sites.gif','icra_button.gif','icw_atl.gif','icw_bmax.gif','icw_ckm.gif','icw_ffw.gif','icw_inp.gif','icw_led.gif','icw_pha.gif','icw_pje.gif','icw_rds.gif','icw_vml.gif','icw_xpl.gif','id4.gif','id.gif','idi.gif','ie1984.gif','ie2.gif','ie3.gif','ie40.gif','ie4_2.gif','ie4.gif','ie5.88x31.gif','ie5.gif','ieanime2.gif','ie_anim.gif','iebad.gif','iebarf.gif','ieborg.gif','ieburnbtn.gif','iebutton.gif','iecrash.gif','iedie2.gif','iedie.gif','ieduh.gif','ieexpecter.gif','ieexplode.gif','ie_exploder.gif','ieexploit.gif','ieeyes.gif','iefuck.gif','ieget5.gif','ieget_an.gif','iegetms.gif','ieidiot.gif','ieisevil.gif','iemandatory.gif','iemickey.gif','iemono.gif','ienuke.gif','ienuts.gif','ie_only.gif','ie-pengsoft.gif','iepokelogo.gif','ie_rainbow.gif','iereserv.gif','ieretards.gif','ie-serenader.gif','ieshit.gif','iestop.gif','iesub.gif','iesucks2.gif','ie_sucks.gif','iesucks.gif','iesux.gif','iewash.gif','iexploiter.gif','iexplore.gif','iexplorer.gif','if1bis.gif','i-face02.gif','ifarchive.gif','iframsuc.gif','ifree_chat.gif','i-fucking-hate-neocities.gif','iglooftp.gif','ign64link.gif','igroman.gif','iinet.gif','iky.gif','ilove1980s.gif','ilovehorror.gif','imac.gif','imac-orange.gif','imac-power.gif','image002.gif','imaginaryland2.gif','imaginaryland.gif','imaz-88x31.gif','img74.gif','img-broken.gif','img-missing.gif','imgreqbtn.gif','imhigh.gif','imissxp.gif','i-mockery-88x33.gif','impeach.gif','imsl_logo.gif','inaka.gif','iname003.gif','indyv.gif','inetc.gif','inetd.gif','inkchallenged.gif','i-np.gif','insane.gif','insanity.gif','installfrom.gif','integrityheadb.gif','intel.gif','interf8831.gif','intermind.gif','intermute.gif','internetarchive.gif','internetbee.gif','internetexplerror.gif','internet_now.gif','internetprivacy.gif','internet-roadkill.gif','invalidator.gif','investmentcatalog-88x31.gif','ip64now.gif','ipv6-2.gif','ipv6.gif','iraq.gif','ircworks.gif','irfan.gif','iriba.gif','irma-decor-88x31_2.gif','irondevilicon.gif','irrlicht.gif','iscript.gif','is_it_slow_say_so.gif','israland.gif','ita.gif','italian.gif','italienglf.gif','itoddler.gif','itsdeath.gif','iwatchwebtv.gif','iwon.gif','iww.gif','jacob.gif','jaden88.gif','jail.gif','jakeonline.gif','jamba.gif','jamiroquai.gif','jango.gif','jango_shop.gif','jar0dbut.gif','jaup2.gif','jaup3.gif','jaup.gif','jaupnow.gif','java2.gif','javabanner.gif','javafree.gif','java_green_button.gif','javalobby.gif','javalogo.gif','javanow.gif','javascript2.gif','javascriptfree.gif','javascript.gif','javascriptkit.gif','javascriptsnet.gif','javascriptwizard.gif','javascript-zero.gif','javass.gif','jedeye.gif','jediservers.gif','jedit.gif','jello88.gif','jellybeanstyling.gif','jellybuttonofficial.gif','jellyfin.gif','jellyworld.gif','jerrylehr.gif','jesus_now.gif','jetaudio.gif','jiangl2000.gif','jjj-now.gif','jk4mac_sm.gif','jk_net_bon21.gif','jnow.gif','jobsritchie.gif','johak.gif','john_kerry2.gif','john_kerry3.gif','john_kerry.gif','johnny.gif','johnspage.gif','joinanim.gif','joinbutton.gif','joinegroups.gif','join.gif','join-hb.gif','joinkag.gif','joinlist.gif','joinlistp.gif','join_logo3.gif','join_logo4.gif','join_logo.gif','joinnow.gif','join_shockrave.gif','join-washu.gif','joinwotism.gif','jonezua.gif','jorjae.gif','jowie_schulner2.gif','joyicon2.gif','jreiss-lynx.gif','jsanctum.gif','js.gif','js-warning.gif','juas_bu1.gif','jubii3_88x31.gif','juhq.gif','julesneohome.gif','jump.gif','junkyard_button.gif','juno.gif','jurassicpunk.gif','jusadd.gif','just_female.gif','justfluffingaroundbutton.gif','justsay.gif','jveg_button.gif','jwg-eye.gif','k03-88x31-02.gif','k03-88x31-04.gif','ka88x31.gif','kaboom2.gif','kaboom3.gif','kakashi.gif','kamiloka.gif','kangwbtn.gif','kapook.gif','kat3wz.gif','kate.gif','kawaiibutton.gif','kawaii.gif','kawaiiness.gif','kbut.gif','kdenews.gif','keen.gif','keep.gif','kemofure.gif','kermit.gif','kero.gif','kero_station.gif','kerry_edwards.gif','kewlfile.gif','kezz.gif','kfleischer.gif','kg.gif','kh-confused-memories-88x31.gif','khworld-88x31.gif','kickme.gif','kicq-88x31.gif','kieslowski.gif','kihologo.gif','killer_instinct_arena_88x31.gif','killmenow.gif','kimnow.gif','king.gif','kirby.gif','kisgo.gif','kissed_site.gif','kitten88.gif','kittylink.gif','kiwix.gif','kklink2.gif','kknow.gif','kktkbutton.gif','kkurl33.gif','klub.gif','KMeleon-devil.gif','KMeleon-Get.gif','KMeleon_logo.gif','KMeleon-Red-Now_Ani2.gif','KMeleon-Red Now_Ani.gif','KMeleon-Red-Now.gif','KMeleon-Slap1.gif','KMeleon-Slap2.gif','KMeleon-Slap3.gif','KMeleon-Sloop1.gif','KMeleon-Sloop2.gif','KMeleon-Sloop3.gif','KMeleon-Sloop4.gif','KMeleon-Sloop5.gif','KMeleon-Sloop6.gif','KMeleon-White_Ani.gif','KMeleon-white.gif','kmfms-n.gif','knbutton.gif','knopnbk.gif','kofdanger.gif','kombat.gif','komodo.gif','konata.gif','konko.gif','konnov.gif','korg.gif','korncom1.gif','korncom.gif','koshka.gif','kosivart-88x31.gif','kot.gif','kqpnow.gif','krieg.gif','ktlnow.gif','KTV-banner88x31v1.gif','kyiv.gif','kys_now.gif','l_10.gif','l_22.gif','l_24.gif','l_28.gif','l_32.gif','l_39.gif','l3dplug.gif','l_45.gif','l_48.gif','l_56.gif','l_58.gif','lacemonster.gif','lahey_logo.gif','lambda2.gif','lancer502.gif','landchad.gif','landersbutton1.gif','lanksidan.gif','lapfoxgrid.gif','larbs.gif','latex.gif','laurie.gif','laword.gif','ldp-link.gif','learncoding.gif','learn_html.gif','learnhtml.gif','learn-sadgrl-online.gif','leaveaol.gif','legal.gif','legalize2000.gif','legalize2.gif','legalize_now.gif','legalsite.gif','legoland.gif','lem88x31.gif','leoboard.gif','letsnotencrypt.gif','letter.gif','lgd.gif','lh_banner_gl.gif','lhm.gif','lia-cool.gif','libreboot.gif','licence.gif','licence-red.gif','life_anm.gif','lights.gif','likee-kidsstation.gif','likepage_88x31.gif','lilbut.gif','lilyblossom.gif','link_bbr.gif','link-button3.gif','linkbutton.gif','linkee.gif','linkexchange.gif','link.gif','linkme13.gif','linksbrow.gif','links.gif','linkshare.gif','linkshop1.gif','linkswmp.gif','linktohullpromote1.gif','linktohullpromote2.gif','linkus1.gif','linkwarez.gif','linres.gif','linuxberg.gif','linux-directory.gif','linuxgames_button.gif','linux.gif','linuxguide.gif','linux_mint.gif','linuxnow2.gif','linuxnow.gif','linux-p.gif','linux_powered.gif','linx.gif','listbot.gif','list-me.gif','listru-a21.gif','listsoft_cool.gif','lite.gif','lite-xl.gif','lit_knipka.gif','little2.gif','live365_2.gif','live365.gif','livecam.gif','livepencil.gif','lmcnani1.gif','lmooch.gif','logo001.gif','logo006.gif','logo105.gif','logo1.gif','logo2.gif','logo3.gif','logo4-ebay.gif','logo4.gif','logo_5.gif','logo5.gif','logo6.gif','logo7.gif','logo8.gif','logo9.gif','logo-bg.gif','logocandyshop.gif','logochat.gif','logocybermonkey.gif','logo_g.gif','logo.gif','logogzone.gif','logohelgahatelove.gif','logopicture2.gif','logorainbow.gif','logosmoke.gif','logo_special_sky.gif','logout.gif','logo_wing.gif','logo_yeah.gif','lolicon14.gif','lolicon15.gif','lolirot.gif','lookstein.gif','loser_gagebutton.gif','louys.gif','loveariddle.gif','lovecandied.gif','love-home.gif','lovelyday.gif','lovemac.gif','lovenow.gif','lpagebut.gif','lpagebutton.gif','lpcanimatedbanner.gif','ltime.gif','ltk_starcraft.gif','luigi.gif','lukasworld.gif','luko.gif','lulu.gif','lulu_tinyuniverses_wannachill.gif','luna.gif','luzhu.gif','lvl-88x31.gif','lwbutton3.gif','lww.gif','lycos.gif','lycos_new.gif','lynnb88.gif','lynx386.gif','lynx-enh.gif','lynx_enh.gif','lynx.gif','lynxnow.gif','lynxwink.gif','macbutton.gif','maccafe.gif','mac_desktops.gif','macfactory.gif','macfriendly.gif','macg4.gif','machine_cat.gif','macinsites.gif','maclynx.gif','macmade3.gif','macmade-blkwtbrdrspin.gif','macmade-fr.gif','macmade-wht.gif','macos8.gif','macos.gif','macosmade.gif','macos_mov.gif','mac-power.gif','mac-works.gif','macworld_online.gif','maczilla.gif','made_on_amiga.gif','madewithamac.gif','madewithamiga2.gif','madewithamiga.gif','madewithbrackets.gif','madewithjed.gif','madewithlove.gif','madewithmd8.gif','madewithneo.gif','madewithnotepad2.gif','madewithvi.gif','madewithweb.gif','made_with_windows.gif','madville.gif','mafumafu.gif','magic.gif','magiconline.gif','mailbits.gif','mailbits-loop-88x31.gif','maillita.gif','mailru.gif','mailshell.gif','makedisk.gif','mame.gif','manabinogi.gif','mandrake.gif','mangamaisanime.gif','marg8831.gif','mariotendo.gif','mark.gif','marlyslink.gif','mars.gif','mars_icon.gif','marymausal.gif','mashina-net-ru-88x31.gif','mastodon_button_1.gif','mastodon_button_2.gif','mastodon_button_3.gif','masto.gif','mathcom.gif','mathias_valid.gif','matlogo1.gif','maudfs_2.gif','maulicn2.gif','maxilog.gif','mayaland.gif','mazeguy.gif','mboard.gif','mboys.gif','mcafee2.gif','mcafee.gif','mdpbutton1.gif','mediabuilder.gif','media.gif','mediamail.gif','medulla.gif','megahitter.gif','meinbutton.gif','melmyu.gif','melon-badge.gif','member-anim.gif','members-choice.gif','memoires.gif','memoweb.gif','menmy.gif','mentos.gif','me_released.gif','merlinxp.gif','messad2.gif','messad.gif','meta.gif','mg_sm_88x31.gif','mhbutton.gif','miami.gif','michaelc.gif','miclogo-88x31.gif','micronpoweredby.gif','microshaftl.gif','microsoftbw.gif','microsoft_frontpage_97_beta.gif','microsoft.gif','microsoft_internet.gif','microsoft_stop.gif','midbtn.gif','midi_files_now.gif','midimusic.gif','midinote.gif','mi_edit.gif','migactive.gif','mika.gif','miku.gif','mikumiku.gif','milesource88x31_1.gif','milinme.gif','milktea.gif','milkyglitter.gif','minecraft.gif','minibanner.gif','miniefechatbanner.gif','miniforg.gif','mirandalimon.gif','mirc50.gif','mirc53.gif','mirc.gif','mircnet.gif','mircnow2.gif','mircnow56.gif','mircnow.gif','mircx.gif','mirovie-poiskoviki.gif','mirrorsedge.gif','misti.gif','mj88x31_ani2.gif','mlbut03.gif','mlespaint.gif','mlkbanner.gif','m-lol.gif','mmlink.gif','mmm.gif','mms_but1.gif','mobiles.gif','modarch.gif','modarchive.gif','moddb.gif','modernxpbutton.gif','modperl.gif','modplug.gif','modulespl.gif','modulez.gif','moist.gif','momdad1.gif','momoko.gif','momo_link.gif','monazilla.gif','monero-now.gif','moneybookers2.gif','moneybookers.gif','mongolia.gif','monobook.gif','moochmainlink.gif','moon12.gif','moonbutton_1.gif','moon_link.gif','moonshotlist.gif','moregamez.gif','morphos.gif','mousemade.gif','mousepow.gif','movies.gif','moz2.gif','moz3.gif','mozbutd1.gif','mozfd.gif','mozfound1.gif','mozgec.gif','mozilla2.gif','mozilla3.gif','mozilla4.gif','mozilla.gif','mozilla_now.gif','mozillanow.gif','mozillaorg.gif','mozillavol.gif','moziscool.gif','moznow2.gif','moznow3.gif','moznow.gif','mozporn1.gif','mozstd.gif','mp3-4free.gif','mp3bttn.gif','mp3butn.gif','mp3-button.gif','mp3com.gif','mpayne.gif','mpeg3hm.gif','mpeg.gif','mpegx.gif','mp_liquidaudio.gif','mp_voquette.gif','mpx.gif','mrpgs_button_32.gif','msagentworld.gif','ms_ani.gif','ms_animated.gif','msbackoffice.gif','msbuiltwith.gif','msexplorer.gif','msfartpage.gif','ms_fp_do.gif','msfree.gif','msfrontpage2000.gif','msfrontpage2.gif','msfrontpage.gif','ms_frontpage_now_f.gif','ms.gif','msiemoz.gif','mslive.gif','msmp9.gif','msn2.gif','msnexp.gif','msn.gif','msnhotmail.gif','ms_nm_stat3.gif','msnotepad.gif','msntbciis.gif','msoffice97.gif','mspaint.gif','msplatform.gif','mspptani.gif','msql2_now.gif','msql-pwr2.gif','msscript.gif','mstlink2.gif','mswin98_89.gif','mswinmedia2.gif','mswinmedia.gif','mswinmediaplayer7.gif','mswinmediaplayer8.gif','mswinntiis.gif','msx.gif','mtbtrial.gif','mtndewnow.gif','mudflaps.gif','muhhbanner.gif','mui_link.gif','muinow.gif','multinfo.gif','mundomanga.gif','mundomatrix_01.gif','murderdollsworld.gif','musicbug.gif','music.gif','mutt.gif','muxasoft.gif','mwb_link.gif','mwbuddy.gif','mwolfnow.gif','mxskinz.gif','myastas883101.gif','mybookmark.gif','mylink.gif','mylogo01.gif','mylogo10.gif','mylogo11.gif','mylogo1.gif','mylogo2.gif','mylogo3.gif','mylogo6.gif','mylogo8.gif','mylogo9.gif','mylogo.gif','mymusic.gif','myspace.gif','mysql4.gif','mysql5.gif','mysql-88x31-bow.gif','mysql-88x31.gif','mysql_88x31.gif','mysql-88x31-wob.gif','mysqla.gif','mysterysite.gif','myway.gif','myzips_anim.gif','n64_com_now.gif','n64.gif','nag.gif','nailbutt.gif','namazu.gif','namo_designed.gif','nanae.gif','nano2.gif','nano.gif','nanoha.gif','nanowrimo2006.gif','nao-button.gif','nappanimbutt1.gif','naraweb.gif','narcoticsnow.gif','narrow-head.gif','narutoex.gif','nascarrocks.gif','navidrome.gif','nb2.gif','nb-bbbut.gif','nbc.gif','nc_arcadia.gif','nc_area51.gif','nc_arles.gif','nc_athens.gif','nc_baja.gif','nc_bourbon.gif','nc_cape.gif','nc_capitol.gif','ncc.gif','nc_college.gif','nc_coloss.gif','nc_districts_alt.gif','nc_districts.gif','nc_districts_hollywood.gif','nc_districtspippin.gif','nc_districts_siliconvalley.gif','nc_editor.gif','nc_enchant.gif','nc_eureka.gif','nc_fashion.gif','nc.gif','nc_hollywood.gif','nclinux.gif','nc_madison.gif','nc_motor.gif','nc_napa.gif','nc_nashville.gif','nc_oxford.gif','nc_paris.gif','nc_pentagon.gif','nc_petsburg.gif','nc_petsburgh.gif','nc_purgatory.gif','nc_rainforest.gif','nc_research.gif','nc_rodeo.gif','ncsa.gif','nc_silicon.gif','nc_silicon-valley.gif','nc_silver-lake.gif','nc_soho.gif','nc_south.gif','nc_stratford.gif','nc_sunset.gif','nc_times.gif','nc_tokyo2.gif','nc_tokyo.gif','nc_tribune.gif','nc_tropic.gif','nc_tv.gif','nc_vienna.gif','nc_wall.gif','nc_wellesley.gif','nc_westhollywood.gif','nc_yosemite.gif','nd-88x31-1a.gif','nd-88x31-2a.gif','nd-88x31-3a.gif','nd-88x31-4a.gif','ndi-88x31-2.gif','nd_logo.gif','nebulus.gif','nec.gif','necx_topnav.gif','nedscape_now.gif','nehe.gif','neko-b.gif','neko.gif','nekojiru2.gif','nekojiru.gif','neobroker-88x31-2.gif','neobroker-88x31-4.gif','neocade88x31.gif','neocities-2.gif','neocities2.gif','neocities3.gif','neocities4.gif','neocities4life.gif','neocities5.gif','neocities6.gif','neocities7.gif','neocities-alpha.gif','neocitiesblue.gif','neocitieschill.gif','neocities.gif','neocities_hosted2.gif','neocities_hosted.gif','neocities_hosting.gif','neocities_made.gif','neocities-now.gif','neocitiesorg.gif','neocities-pink.gif','neocitiespink.gif','neocities_vaporwave_stamp.gif','neocitieswww.gif','neocities-yellow.gif','neocitizensrock.gif','neocreatives.gif','neo-fedi.gif','neo-geo.gif','neogeo.gif','neohitz.gif','neonlove_lani.gif','neopets.gif','neoplanet.gif','neotool.gif','neotribune.gif','neovim.gif','nescenter.gif','neshbutton.gif','neskaya.gif','nestcapenow.gif','net20blink.gif','net3a.gif','netadd.gif','netaddress.gif','netbeans_download_88x31.gif','netbsd2.gif','netbsd.gif','netcenter.gif','netcup.gif','net_escape.gif','netflix-88x31.gif','netgal.gif','nethood8831_o7_by_floppyjay.gif','netlabs.gif','netmechanic.gif','netmegs.gif','netnanny.gif','netnever.gif','netno.gif','netnow20.gif','netnow2.gif','netnow3.gif','netnow9.gif','netreg45.gif','netreg50.gif','netscape2flash.gif','netscape2.gif','netscape3a.gif','netscape451.gif','netscape46.gif','netscape47.gif','netscape4.gif','netscape5.gif','netscape61.gif','netscape62.gif','netscape6_get.gif','netscape6.gif','netscape6_now.gif','netscape7.gif','netscape8.gif','netscape9.gif','netscape_ahora.gif','netscapeanim2.gif','netscape-as.gif','netscape_award.gif','netscapeb.gif','netscape_bleed.gif','netscape_blow.gif','netscape_cd.gif','netscapecd.gif','netscape_c.gif','netscape_choose.gif','netscape_cn.gif','netscapeee.gif','netscapeexplorer.gif','netscape.gif','netscapehemp.gif','netscape_logo.gif','netscape_newsletter.gif','netscape_nick.gif','netscape_now2.gif','netscapenow2.gif','netscapenow30.gif','netscape_now3.gif','netscape_now_4_0.gif','netscapenow40.gif','netscape_now.gif','netscapenow.gif','netscape_power.gif','netscapepower.gif','netscape_rave.gif','netscape_rl.gif','netscape_taiwan.gif','netsonic.gif','nettamer.gif','netwbut.gif','network2.gif','network.gif','netzip.gif','neve_campbell.gif','newbutton.gif','newbuttonone.gif','newbuttontwo.gif','newgrounds.gif','newlambda.gif','newpwr.gif','new-tab.gif','newtonware.gif','newtop100.gif','nextcard88x31.gif','nextcloud.gif','next_game.gif','nf1.gif','nft.gif','ngs_88x31_logo.gif','ng_tank.gif','nietscape4.gif','niffnaff.gif','nifty44.gif','niftyiregi.gif','nigeriaweb.gif','nikkilogo.gif','ninnow.gif','nintendodomainbutton.gif','nintendo.gif','nintendorks.gif','ninty.gif','nirvana.gif','njstar12.gif','nkd.gif','nland.gif','nmasterbot.gif','nneighborhoodsmall.gif','nnk.gif','no15.gif','noaa.gif','noaol.gif','nobelief.gif','noblink.gif','no-button.gif','noclick.gif','nocookie.gif','nodrugs.gif','noerror.gif','no_escape.gif','noescapenow.gif','noframes2.gif','noframes3.gif','noframes4.gif','noframes5.gif','no_frames.gif','noframes.gif','noframesnow.gif','nofuckingthanks.gif','no.gif','nogluck.gif','nokia64.gif','nonags.gif','nonbinary.gif','noodle.gif','nopiracy1.gif','nopiracy2.gif','nopiracy.gif','norma.gif','norton2.gif','norton.gif','nostalgy.gif','notall.gif','notebook.gif','notepad2.gif','notepad3.gif','notepad4.gif','notepad5.gif','notepad6.gif','notepad_ani.gif','notepad.gif','notepad-logo3.gif','notepadnow.gif','notepadpowered.gif','notepadpp2.gif','notepadpp3.gif','notepadpp.gif','notperfect.gif','not_related.gif','novemberry.gif','now20_button.gif','nowbutt.gif','nowebp.gif','now_ggz.gif','now_newt_button.gif','nowonder.gif','now_ware.gif','ns3a.gif','ns4ie4.gif','ns4now.gif','nsalready.gif','nsbest.gif','nscommunicator.gif','nsie.gif','nsnever.gif','nsnow11.gif','nsnow2.gif','nsnow3.gif','ns-now.gif','nsnow.gif','nsux.gif','ntstlkr1.gif','nuengart.gif','nuengdoll.gif','numetal.gif','nutscape.gif','nvbtn3.gif','nvidia.gif','nya2.gif','nyan.gif','nzanim.gif','nzbutton.gif','oaever.gif','obb.gif','oe_ng.gif','of_banner_88x31.gif','officialbutton.gif','offspring.gif','ogl_button.gif','ohgban3.gif','oldavista.gif','oldternet.gif','om_8831.gif','omanga.gif','omfg.gif','onionlink1098.gif','online-casino.gif','online-help.gif','onlysuki.gif','ooo.gif','openbooks.gif','openbooks_OpenBX-01.gif','openbookspresident.gif','opencontent.gif','openeye.gif','openeyes.gif','opengl.gif','openlink.gif','openmind.gif','openmpt.gif','opennet.gif','openwall.gif','opera2.gif','opera-ani_03mic.gif','opera_bu.gif','opera.gif','operalogo.gif','opttobut.gif','or1.gif','orange8831.gif','ordb.gif','original.gif','osamasux.gif','osbadge.gif','ostan.gif','ostblog.gif','otaku.gif','outlook-express.gif','owl-powered.gif','ozgang.gif','paceka-88x31.gif','package.gif','pagan_proud.gif','pageblock.gif','pagerank-violet.gif','pagesview.gif','paintnet.gif','paintshop.gif','paintshoppro.gif','pajaczek.gif','palm-gear.gif','palmpilot.gif','pandemonium.gif','paperanim2.gif','parachat_now.gif','parental.gif','park24.gif','parkcity.gif','paroxysm.gif','parser_1.gif','parser_2.gif','partycrsh.gif','pascal.gif','passtheshare.gif','passtheshareware.gif','patriot.gif','patycosplayboton.gif','paukbt.gif','pausejeux-88x31.gif','paws.gif','payscripts.gif','pban.gif','pbbanner2.gif','pb.gif','pbm.gif','pcgamer.gif','pcg-finder.gif','pckurier.gif','pc_win.gif','pcworld.gif','pdc_promobutton.gif','peace.gif','pedit.gif','pegasus-server.gif','peko-chan micro bar.gif','peko.gif','penguin.gif','penguins.gif','penlo.gif','pepsi.gif','pepsirauschde.gif','perfected.gif','perfect.gif','perfectsoldier2.gif','periodic_tables_link.gif','perltk.gif','petesqb_button.gif','petsites.gif','petzrus.gif','pfan_logo.gif','pgnet.gif','pgn.gif','pgp-now.gif','pgsgo.gif','pgw.gif','phonechump.gif','phone.gif','phong1.gif','phong_buttlink.gif','php4_88x31.gif','phpBB_88a.gif','php.gif','phpjunkyard.gif','phplinks.gif','phpnuke2.gif','phpnuke.gif','phpnukeru.gif','php_powered.gif','pict_2033.gif','pig.gif','pikachu.gif','piki.gif','pikvm.gif','pingtool_now.gif','pinguonline.gif','pink.gif','piptol_button.gif','piracy2.gif','piracy.gif','piss.gif','pixbutton2.gif','pixelwizard.gif','pixil-gif-drawing.gif','pknewmini.gif','place_97.gif','planetb.gif','planetgif.gif','planet_half-life.gif','planetquaked.gif','planetquake.gif','plasticlove.gif','playball.gif','play_ctf.gif','plus_themes_now.gif','pma_logo.gif','pmanow.gif','pmsnow.gif','pngbar.gif','pn.gif','pngnow.gif','pntcast.gif','podarkoff-88x31.gif','pogoat.gif','pointix.gif','pointmac.gif','pokemex.gif','pokemon.gif','polar_search.gif','policegraphbut3.gif','poligames88x31.gif','pompey_pirates.gif','popmusic.gif','popularradio.gif','posnow.gif','postal.gif','postpet.gif','pothead.gif','pouet.gif','pov3now.gif','povnow36.gif','povnow.gif','power-button.gif','powerd-web2.gif','powered-boost.gif','powered_by_ani.gif','poweredbyasm_88x31.gif','powered-by-debian.gif','powered-by-djbdns.gif','poweredbyfedora.gif','poweredby.gif','poweredbyruby.gif','powered-cpp.gif','powered.gif','powered-llvm.gif','powered_siteadmin_10a.gif','powered_siteadmin_8aa.gif','powered-wn.gif','power.gif','pow.gif','ppc.gif','pp-free.gif','ppg-logo.gif','pptani.gif','ppuser_c.gif','pq3.gif','presa.gif','preserve.gif','press.gif','pretend.gif','prfm.gif','pride.gif','prideradio.gif','prima.gif','princesstoots.gif','prodigy.gif','prodraw.gif','profit11x88x31.gif','project-support.gif','projekt64er.gif','promago-88x31.gif','promailbutton.gif','promote2.gif','promote.gif','propaganda.gif','protectb.gif','protect.gif','protectit.gif','protest.gif','protovision.gif','proudamerican.gif','proud.gif','proud_of_my_son.gif','proweb.gif','proweb_teal.gif','proxmox.gif','proxyellow.gif','psbutton.gif','pscafe.gif','pseudocinnabar.gif','psion.gif','ps_made.gif','psp.gif','pspu.gif','ps-ws.gif','psxlink.gif','ptfc.gif','publicdomain.gif','pueblo-now.gif','puffertank.gif','punch_out_88x31.gif','punchycrack.gif','purplehello98.gif','pussy-deluxe.gif','pwrmark.gif','pwsuse.gif','px.gif','pyroani.gif','pyurk.gif','q2_button.gif','q2depo.gif','q2page_button.gif','q4psb.gif','qb45_button.gif','qb64_button.gif','qbanner1_19970123.gif','qbmh.gif','qbnews_button.gif','qbs-button.gif','qbutton1.gif','qc6.gif','qdtlink.gif','qfnow.gif','qg.gif','qlebtn16.gif','qle.gif','qmenow.gif','qnow7.gif','qnow.gif','q_now_v3.gif','qnxdemo.gif','qooclub2.gif','qoole_button.gif','qoole.gif','qoolenow.gif','qpclan.gif','qspynow.gif','qtime4.gif','qtipsnow100.gif','qtips_now.gif','qtipsnow.gif','qtsb2.gif','quake2com.gif','quake2gfx.gif','quake2.gif','quake2id.gif','quake2levels.gif','quake2now.gif','quake4portal.gif','quake-button1.gif','quake-button2.gif','quakecon97.gif','quake_ctf_now30.gif','quakefaq.gif','quakefiles2.gif','quakefiles.gif','quakefinder.gif','quake.gif','quakegl.gif','quakeidge.gif','quakelab.gif','quakemake.gif','quakemaph.gif','quakenow2.gif','quakenow.gif','quakepalace.gif','quakepc.gif','quakespy2.gif','quakespy.gif','quakesrc.gif','quake_weenie.gif','quakeworldnow.gif','quark now.gif','queen_quick.gif','queerpride.gif','quessnow.gif','quest3.gif','questions-comments.gif','questnow.gif','quickcam.gif','quickcreations.gif','quick.gif','quickpurchase.gif','quicktime2.gif','quicktime6req.gif','quicktime.gif','quictime.gif','qulanow.gif','quovis.gif','qutebrowser.gif','qview_now.gif','qwango88.gif','r03.gif','ra30.gif','raa.gif','rabbit1.gif','ra_button.gif','racebuilder.gif','radio-pixel-88x31.gif','radium.gif','rainbow_bev.gif','rainbowb.gif','rainbowhouselogoanimal.gif','rainbowhouse_rabbit_logo2.gif','raining-starss-button.gif','ralseismokingadart.gif','rambler.gif','randysavage.gif','rankav.gif','rankwhere.gif','ranmashampoohate.gif','rapworldlink.gif','rar_download.gif','rarecentral.gif','rarnow.gif','rar_whit_move.gif','raskrutka-88x31.gif','ratenow.gif','rating.gif','ravenow3.gif','rc5-88x31.gif','rct2.gif','real1.gif','realarcade.gif','realaudi.gif','realaudio.gif','realdown.gif','real_enter.gif','realfree.gif','realg2_2.gif','realg2.gif','realget.gif','real.gif','realjukebox.gif','realjukeboxsti.gif','realone.gif','realp.gif','realplayer7.gif','realplayer7plus.gif','realplayerfree.gif','real_play.gif','realplay.gif','realplug.gif','realprogressive.gif','recommend.gif','recommendit.gif','rec-time-88x31.gif','reddit.gif','redhat1.gif','redhat2.gif','redhat.gif','red_negative_a.gif','redrobot.gif','redwingstheme.gif','ref88x31_2.gif','refuse.gif','regedit.gif','regetnow.gif','register-it.gif','regnet2.gif','regnet.gif','regsoft.gif','relax-now.gif','relib.gif','reliquary.gif','rem88x31.gif','remember911.gif','remotely.gif','renza.gif','request.gif','requiem_now.gif','resakdox.gif','reshirii.gif','resin-powered.gif','respecta.gif','respect.gif','restart.gif','restko.gif','retrogames.gif','retrokid-rainbow-city.gif','retrosite.gif','rfc1876-now.gif','rgarden.gif','rhc.gif','riada.gif','right2repair.gif','ripbanner.gif','rkrp-sverdlovsk-88x31.gif','rlinux.gif','robert_de_niro.gif','robocats.gif','roboform.gif','robopdf.gif','roccie.gif','rocketmix.gif','rockmylife1.gif','rockmylife3.gif','rocksonico.gif','roguebuttondor.gif','roguefanbutton.gif','rogue.gif','roguespearnewsbutton.gif','roku97.gif','roland_88x31.gif','romance-net-88x31.gif','romance-net-88x31-stat.gif','ron3kl_link.gif','rorikon.gif','roro1a.gif','roroqa.gif','rosemary10.gif','rosemary11.gif','rosemary12.gif','rosemary13.gif','rosemary14.gif','rosemary15.gif','rosemary16.gif','rosemary17.gif','rosemary18.gif','rosemary19.gif','rosemary1.gif','rosemary20.gif','rosemary21.gif','rosemary22.gif','rosemary24.gif','rosemary25.gif','rosemary26.gif','rosemary29.gif','rosemary2.gif','rosemary31.gif','rosemary32.gif','rosemary33.gif','rosemary34.gif','rosemary35.gif','rosemary36.gif','rosemary3.gif','rosemary4.gif','rosemary5.gif','rosemary6.gif','rosemary7.gif','rosemary8.gif','rosemary9.gif','rotteen.gif','roundhousekick.gif','roxasbox.gif','rp88x31.gif','rps_now.gif','rra.gif','rresbb.gif','rs-88x31-1b.gif','rsacirated.gif','rss-button.gif','rumia.gif','runbox.gif','runtime.gif','russia.gif','russianbrides.gif','russiansec.gif','rw97.gif','rxqueen2.gif','rxqueen.gif','rxqueenimgif.gif','s4e.gif','sabrina.gif','sabutton.gif','sadpartyqueen.gif','safebutu.gif','safesearching.gif','sailormoonmicrobar.gif','saintimages.gif','saladcard_88x31.gif','sammomgoosebut.gif','sandy.gif','sanehtml.gif','sanook.gif','sansook.gif','santiago.gif','sapphirekirby.gif','saratov.gif','sarcasm.gif','sat88.gif','saveanow.gif','save.gif','sawarka.gif','say-no-to-web3.gif','s-ban.gif','sbirromania.gif','sblbutton.gif','sbutton.gif','scam.gif','scape.gif','sc_baner.gif','sc_button_dec2019.gif','sceneorg.gif','scheisskopf.gif','schill.gif','school.gif','scifirenegade.gif','scmapdb.gif','scoot.gif','scottgames.gif','scouse.gif','screamdesign.gif','screenthemes.gif','screwactura.gif','screw.gif','scribbleland.gif','scriptsearch_logo1.gif','scrubby.gif','scumani.gif','scunreal.gif','sdb.gif','sdblast.gif','sdf.gif','sdl.gif','seanconneryru.gif','seans.gif','search-direct.gif','sears.gif','secondlife.gif','secretmaryo.gif','seedyourtorrents.gif','sega-elite.gif','Sega-Elite.gif','segagendevring.gif','segamania.gif','sega_online.gif','sega_support.gif','selectaol.gif','selfpromote.gif','send2friend.gif','sendit.gif','sept04.gif','service88x31.gif','sesna.gif','seti.gif','set-midi.gif','s-expoca.gif','sexy88x31.gif','seybold.gif','sfl8831.gif','sf_logo.gif','sflogo.gif','s_freewareweb.gif','sga.gif','shadowm00n03.gif','shakira88x31.gif','sharegamez.gif','shareo.gif','shareware.gif','shareware_zone.gif','shar.gif','sharitnow.gif','shb-2011.gif','she-her.gif','shenmuedojo.gif','sheppard.gif','shinee.gif','shishkabob1.gif','shishkaboblink.gif','shithole.gif','shitify.gif','shkolar-88x31-1.gif','shkolar-88x31-2.gif','shock-new-classic3.gif','shockwave2.gif','shockwave.gif','shoplogo4.gif','shopparks.gif','shorturl4.gif','shorturl.gif','shrimpzone.gif','siam2-s.gif','siamza.gif','sibweba16.gif','sicklycarpet.gif','sideadd.gif','sid.gif','sidplug.gif','sifoo.gif','sig_mets.gif','sign_guest_book.gif','signguestbook.gif','signguest.gif','silicon-valley.gif','Simoniabutton.gif','simpletext.gif','simpsons-folder.gif','sims2.gif','simsearch.gif','simtel.gif','simulation.gif','sinewave.gif','singaporebutton.gif','sitaani.gif','site5.gif','sitelink.gif','sitetrak.gif','sitreid.gif','skaianet.gif','skill_88_31.gif','skinfact.gif','skinnow.gif','skirt.gif','ski_wxusa_88x31.gif','slackillers.gif','slap-like-now.gif','slashdot.gif','slash.gif','slimesnow.gif','slingerzbutton1.gif','slipgate.gif','slogo.gif','sloth_follow_me.gif','slotlink.gif','slowie.gif','sluggy.gif','small03.gif','small04.gif','smallthird.gif','smartgb.gif','smashtml.gif','smbhq.gif','smbx.gif','smcgee-lynxnow.gif','smenterprise.gif','sm_fever_button.gif','smile_always.gif','smile.gif','smlbutton.gif','smofs88.gif','smtraffic.gif','smug5.gif','smush.gif','smwc.gif','sniffit.gif','snowybannerfoxy.gif','snowykittybanner.gif','soapcores banner.gif','sochi.gif','soda.gif','sodamag.gif','sof2-88x31.gif','sofa.com.ua.17.gif','sofa.com.ua.7.gif','softcute.gif','softlist2.gif','softnosferatu.gif','softseek.gif','so.gif','soi13.gif','sonar_screensaver2.gif','sonar_screensaver.gif','sonic2000now.gif','sonicstadium.gif','sonora.gif','sont.gif','soraru.gif','sosban.gif','soulmaze.gif','soulseek.gif','soundsarvr.gif','sourcetec.gif','source_tut.gif','spaceinvaders.gif','spacelink.gif','spaceorb.gif','spacey.gif','spadinner.gif','spamwhoreclique.gif','spbutton2.gif','spbutton.gif','spdy-now.gif','speech.gif','speedtrap.gif','sphinx.gif','spicebutton.gif','spinner_ani_listen.gif','spiritcellar_badge.gif','spla4a4a.gif','splat-link.gif','spootymaniacs.gif','sportsbutton.gif','spotify.gif','spotshop.gif','spring99.gif','springbreakdiscounts.gif','spritecladbutton.gif','spritecladnow.gif','sprunk.gif','spunwithps.gif','squid.gif','squidnow.gif','sregi.gif','srgb-now.gif','ss89a.gif','ssabutn.gif','ss.gif','sshock2.gif','ssnow2.gif','ssnow.gif','sstreet.gif','ssurf.gif','stammkneipe.gif','standards_now.gif','starbage1.gif','starbage2.gif','starbage3.gif','starbage4.gif','starcraft.gif','stardew_valley.gif','stareditnet.gif','starlocked.gif','starluck.gif','starsprinkles2.gif','star-textless.gif','start_legalize2.gif','startpage_button.gif','startsex.gif','stat_counter.gif','stationradio.gif','stats.gif','statuscafe.gif','statusprojects.gif','steam.gif','step0003.gif','stephanie_channel.gif','stephenvk.gif','stlsnow2.gif','stm.gif','stop.gif','stop_nato.gif','stop_unix.gif','stormpay.gif','strangeworld.gif','strata.gif','strawberry.gif','strawberrylinkg.gif','strong02.gif','studio89.gif','stuniverse.gif','stunning.gif','stupidtags.gif','subbotnik.gif','subculture8831.gif','sublime.gif','submit25free01.gif','submitexpress.gif','submit.gif','subnet.gif','subnets.gif','subspace.gif','subutton.gif','suckmagl0ckhs.gif','sucks.gif','sugar.gif','sugoiboton.gif','suicideboy.gif','sunaneko.gif','sun.gif','sunnyforrmula.gif','supernow.gif','supershare.gif','superultrarare.gif','support-dole.gif','supporttroops.gif','supreme_88x31.gif','surfcontrol.gif','surf-guide.gif','surfsilly.gif','surfto2.gif','surftobanner.gif','surf-to.gif','surfto.gif','surgerywaste2.gif','surgerywaste.gif','sushipantsunow.gif','sut-88x31-1a2.gif','sut-88x31-1a.gif','sut-88x31-2a1.gif','sv88.gif','svenbutton.gif','swaglogo5.gif','sware-award.gif','s_watpho.gif','swatteam.gif','swbutton.gif','swcom.gif','sweethard666.gif','sweethard666type.gif','sweet_homepage.gif','sw.gif','switch_now.gif','swolf6now.gif','swolfnow.gif','sygnusstar.gif','synapse_88x31.gif','syslbnth.gif','t4u-ani.gif','tab1.gif','tac.gif','tacke_anim1.gif','tacke_anim2.gif','takeone.gif','talker.gif','tapunow.gif','t-asis.gif','t-badge-88x31.gif','tbnow.gif','tbosg.gif','tc.gif','tcnow.gif','tcod.gif','tcpa.gif','tdmcnowf.gif','team_elite_88x31.gif','teapot.gif','tehleroy1.gif','tehleroy2.gif','tehleroy.gif','telefraggednow.gif','telegram-alt.gif','telegram.gif','telegram-old.gif','telnet.gif','ten_button2.gif','ten_button4.gif','ten_button5.gif','terrorpuppe.gif','teruto.gif','tetban.gif','texmill.gif','textfile.gif','textpad.gif','tfad.gif','tfc88x31green.gif','tf.gif','tfnow.gif','tfs2.gif','tfs.gif','tgreetings_88x31.gif','tha.gif','thaidev.gif','thaigame.gif','thaitel.gif','thaiware.gif','thanks-for-looking.gif','thankwing.gif','thatpays2.gif','thats-odd.gif','thebrokensetonline_bsoanim.gif','thecamp.gif','thedigitalme.gif','thedollpalace.gif','the-electric-sheep_tes.gif','thehatelisting.gif','the-largest-88x31-collection.gif','themedoc.gif','theme_webicon.gif','themez.gif','theogl.gif','theoldnet_but.gif','theorb.gif','thesands88x31.gif','thetruth.gif','thevoice.gif','thevoid.gif','they-them.gif','thieforce.gif','thrednow.gif','thx.gif','ticker.gif','tictac.gif','tidw2.gif','tidw.gif','tiffany4.gif','tiger95.gif','tigers.gif','tildeclub.gif','time.gif','tim-now.gif','tinytwinkle.gif','tipsba.gif','tiredalien2.gif','tiredalien.gif','tito.gif','tj88x31.gif','tld.gif','t-logo-88x31-t.gif','tmarsh.gif','tobu.gif','tocxjo.gif','todaychange.gif','toget.gif','tohell.gif','tokyocabinet.gif','tombbutton1.gif','tomcat_button.gif','tomoko_b.gif','toolch.gif','toolzonenow.gif','top1000.gif','top100pet.gif','top100sitesnetwork5.gif','top100splatt.gif','top100womensites.gif','top20browser.gif','top25mp3.gif','top300list.gif','top50.gif','top50security.gif','top50sports.gif','top50theme.gif','top50wav.gif','top_6.gif','topcities.gif','topdolls.gif','top.gif','topgreetings.gif','topgsm.gif','toplist-banner.gif','top_mill_ban.gif','topsites.asp.gif','topsite_sex.gif','topteddybears.gif','topweddingsites.gif','topwww.gif','tor.gif','total.gif','totally.gif','tqfbut.gif','trafficjumbobutton.gif','trafficx.gif','trafficzapexchange88x31.gif','trafficzap.gif','tranarchy.gif','transistor_cafe.gif','transnow2.gif','trapped-inside-da-web_tidw.gif','trashani.gif','trashchild.gif','trashparadise.gif','trashpolis.gif','trazi.gif','treksites.gif','tr.gif','tributeshow.gif','trillian.gif','trinidad.gif','tripod2.gif','tripod.gif','truhebutton2.gif','tsbnsha2.gif','tsis.gif','tsn_listed.gif','tspic.gif','tsrfanlistbutton.gif','tsww.gif','ttenow.gif','ttnews.gif','tucows1.gif','tucows2.gif','tucows_ani1.gif','tucowsbutton.gif','tucowsgr.gif','tucowslogo.gif','tumblr2018.gif','tummy.gif','tumscbanner.gif','tung.gif','tuningmobile.gif','tuong.gif','turkbox.gif','turtle.gif','twebmaster.gif','twiki.gif','twitterbutton.gif','twitter.gif','twomen_88x31.gif','tx2tags.gif','tycoonplanet.gif','tyg.gif','typhrakromer.gif','u3.gif','uagaytop.gif','ubmlink2.gif','ubuntu-88x31.gif','udo_mw.gif','ufaq1.gif','uhome.gif','ukproudlist.gif','uksch.gif','ulead.gif','un4seen.gif','undercon2.gif','under-con.gif','undercon.gif','underground.gif','underwear.gif','unleashed.gif','unlimit.gif','unnbut.gif','unreal.gif','unreality.gif','unrealorg.gif','untergrund.gif','upallnight.gif','upaw-now.gif','upload_com.gif','upyours2.gif','upyours3.gif','uqf.gif','usa.gif','usa-hot-ani.gif','us_aw_88x31.gif','use_this.gif','usgolf95.gif','usubanr88.gif','usumlbn88.gif','uwaga.gif','uxn-button.gif','uybn3.gif','uzjobs.gif','v3.gif','v6-88x31-2b.gif','v6-88x31.gif','vahunz_now.gif','vaiosearch.gif','valentines_button.gif','valid-any.gif','valid-atom.gif','valid-bad.gif','valid-css-blue.gif','valid-css.gif','valid-html20.gif','valid-html32.gif','valid-html401-blue.gif','valid-html401.gif','valid-html5.gif','valid-rss.gif','valid-wai-aaa.gif','valid-wcag1a.gif','valid-xhtml10-2.gif','valid-xhtml10.gif','valueclick.gif','vampbadge.gif','vampireunlimited.gif','vampnow.gif','van88x31.gif','vangagifs.gif','vbarchiv.gif','vbutton.gif','vd-88x31-1a.gif','vd_button.gif','vdo.gif','veggie.gif','vendeg.gif','ver-audio.gif','ver-explorer.gif','verify1.gif','verify3.gif','verify5.gif','ver-offline.gif','ver-online.gif','ver-text.gif','vertpushbutton.gif','vertpush.gif','very.gif','vesterweb.gif','vetvamp.gif','vggoldlogosegastyle.gif','vgn1.gif','vi-best.gif','vicnow.gif','videocraft.gif','video_game_cheats_tips_hints_codes.gif','videogametengoku.gif','viewbook2.gif','viewbook.gif','viewguestbook.gif','vim_a.gif','vim.gif','vim.vialle.love.anim.gif','vi_now.gif','violet1.gif','violetbutton.gif','vip.gif','vipper.gif','vipserv.gif','virovirokun.gif','virtualmary.gif','virusafe.gif','virusalert.gif','virus.gif','visionlogo.gif','visitmini.gif','visualage.gif','vivaldi.gif','vivazwei.gif','vivibutton1.gif','vni.gif','v-now.gif','vocaloid.gif','vodkabinereb.gif','void-button-anim.gif','volta.gif','vomitboyz.gif','vonage.gif','vota3.gif','vote1.gif','vote4me.gif','vote8831.gif','vote_but_01.gif','vote_but_02.gif','votebutton.gif','vote.gif','votepicture.gif','vote_top.gif','voyager1.gif','voyager2.gif','voyager.gif','voyagernow.gif','vpepsilogo.gif','vp-eye88.gif','vrml3d.gif','vrmlfrnc.gif','vrml.gif','vscbutton.gif','vservers2.gif','vservers3.gif','vservers.gif','vt.gif','vxtreme.gif','w3c-amaya.gif','w3schools88x31.gif','w95link.gif','w96_button.gif','wacdiscord.gif','wac.gif','waiter.gif','walk-to-remember2.gif','walk-to-remember.gif','walkx.gif','wallpaper.gif','warezbutton.gif','warezguide.gif','warning.gif','warpnow.gif','waterfox.gif','wbbhosting.gif','wc.gif','wclass.gif','wclink.gif','wcpower.gif','wdw-but.gif','web11badge.gif','web3.gif','web3no.gif','webalizer.gif','weballey2.gif','webart.gif','webbed.gif','webbooks2.gif','webbooks.gif','webcamgate_88x31.gif','webcam.gif','webcelerator.gif','webchat.gif','webclipart.gif','webcom.gif','webcounter.gif','webcpw.gif','webcrawler.gif','webdesign.gif','webdesignhelper_ad7.gif','webdisk.gif','webedit.gif','webexpert.gif','webfaq5.gif','webgfx.gif','webgurus.gif','weblogo2.gif','webmasterhack.gif','webmeister.gif','webmentions.gif','webmoney.gif','webopt-88x31.gif','webopt-banner-88x30.gif','weborama2.gif','weborama3.gif','weborama4.gif','weborama.gif','webpassion.gif','webpeople.gif','web-pi.gif','websitebutton.gif','website.gif','websitez.gif','websprite.gif','webtracker2.gif','webtracker.gif','webtrends.gif','webtutor.gif','webvoo.gif','web_weed.gif','weed.gif','weedmexplore.gif','weednow.gif','weezer4.gif','wega.gif','weirdfantastic.gif','weloveradio.gif','wesen.gif','wetter883101.gif','wetter.gif','wgdlbtn.gif','wget.gif','wgggggggg.gif','wheeeee.gif','whimsical.gif','why-aol-image.gif','wiby-button.gif','wiby.gif','wii.gif','wikipedia2.gif','wikipedia.gif','wikipedia_ru.gif','willogan.gif','win10no.gif','win95.gif','winamp1.gif','winamp2.gif','winamp3.gif','winamp4.gif','winamp5.gif','winamp6.gif','winampg.gif','winamp.gif','winamp_logo_001.gif','winamp-miniban.gif','winamp-skinsb.gif','windows98.gif','windowscentral.gif','windows_media_player.gif','winfiles.gif','winfiles_link.gif','wing1.gif','win.gif','wingroove.gif','winhouse.gif','winrar2.gif','winrar3.gif','winrar4.gif','winrar.gif','winstep.gif','winxp2.gif','winxp.gif','winzip1.gif','winzip2.gif','winzip3.gif','winzip70.gif','winzip7b.gif','winzip7.gif','winzip8a.gif','winzip8.gif','winzip.gif','winzip_N.gif','winzipnow.gif','wip_anim.gif','wirlaburla-badge.gif','wizardb.gif','wiz_button.gif','wlfdoomnow1.gif','wlogo.gif','wme-88x31-1d2.gif','wmooch.gif','wmp.gif','wnabidjan.gif','wnafricabusiness.gif','wnafricafm.gif','wnafricandaily.gif','wnangola.gif','wncameroon.gif','wncongodrc.gif','wncongo.gif','wnegypt.gif','wnethiopia.gif','wnghana.gif','wnkenya.gif','wnleone.gif','wnliberia.gif','wnlibya.gif','wnmadagascar.gif','wnmorocco.gif','wnmozambique.gif','wnnigeria.gif','wnsafrica.gif','wnsbutton.gif','wnsenegal.gif','wnsomalia.gif','wntanzania.gif','wntunisia.gif','wnuganda.gif','wnzimbabwe.gif','wokbanner.gif','wolfekET-88.gif','wolfenq.gif','wolfenstein-pl.gif','wolfzirkus.gif','wonder.gif','woodru4.gif','working.gif','worldofcrisis.gif','worldplantcenter.gif','worldsring.gif','worldwidewebtwo_88x31_www2.gif','worstoftheweb.gif','wos.gif','wow.gif','wpcnonan.gif','wr-bansmall_01_1.gif','wr.gif','written-in-vi.gif','written_in_vi.gif','wrongcode.gif','wr-red.gif','wsftp2.gif','wsftp3.gif','wsftp.gif','wspnow.gif','wt_button_com.gif','wtfc.gif','wtfminiad.gif','wt_static.gif','ww97anim.gif','wwcl.gif','wwiiassocbttn1.gif','wwolfnow.gif','wwscifi.gif','www2.gif','www4jcb.gif','www.gif','wxusa_88x31a.gif','wxusa_88x31.gif','wxwidgets2.gif','wxwidgets.gif','wznowsma.gif','wznowsmb.gif','xaab5427.gif','xampp.gif','xav_logo.gif','xboxsource.gif','xcalibre.gif','xenia.gif','xenu_button2.gif','xenu.gif','xfree.gif','xfspowered.gif','xircon.gif','xitami.gif','xkcd.gif','xooloo.gif','xoom.gif','xosl.gif','xp.gif','XPrfGrp.gif','xpulse.gif','xrinax.gif','xtremepunk.gif','xvtmacbutton.gif','xxiivv.gif','xxx.gif','y2k2.gif','y2k.gif','y2kid.gif','y2ks.gif','ya-ca-88x31-13.gif','ya-ca-88x31.gif','yahelite.gif','yahoo2.gif','yahoo_auctions.gif','yahooboots.gif','yahoo_chat.gif','yahoo_clubs.gif','yahoo.gif','yahoogo.gif','yahoo_instant.gif','yahoo_mail.gif','yahoo_messenger.gif','yahoo_my.gif','yahoo_no.gif','yamnow.gif','yandex2.gif','yandex.gif','yanklogo.gif','yanknow.gif','yay_its_a_button.gif','ybbo-88-2.gif','yeahbutton.gif','yens.gif','yesterwebbutton.gif','yesterweb.gif','y-geo.gif','ymusic.gif','yoshihatchbutton.gif','yoshilore.gif','youpi.gif','ytbutton.gif','yudo_flag.gif','yu-gi-oh_extreme.gif','yumenikki.gif','yunasoft.gif','z3r0s.gif','za-kaddafi.gif','zanarkand.gif','zapzone2.gif','zapzone3.gif','zapzone4.gif','zapzone.gif','zapzoneitalia.gif','zd.gif','zd_internet_click_here.gif','zdnet1.gif','zdnet.gif','zettai.gif','zeuscmdlogo.gif','zion.gif','zipilebutton.gif','zk-88x31-1a.gif','zombieranch.gif','zonazero.gif','zorg.gif','zpbut3.gif','ztclink.gif','ztnbutton.gif','zxbyte.gif','zymicbest.gif'];
+
+    // All 283 confirmed blinkies from blinkies.cafe
+    const BLINKIES = ['0001-saucer','0002-mushroom','0003-ghost','0004-peachy','0005-citystars','0006-purple','0007-chocolate','0008-pink','0009-gradient-pink','0010-blue','0011-frog','0012-kiss','0013-starryeyes','0014-pride','0015-exit-button','0016-valentine','0017-love','0018-glitter','0019-candy','0020-blinkiesCafe','0021-vampirefangs','0022-iheart','0023-trans-pride','0024-red','0025-birthdaycake','0026-iheart2','0027-sakura','0028-computer','0029-pinksparkle','0030-catpaw','0031-dogpaw','0032-coffeecup','0033-confused','0034-skull','0035-edgyred','0036-fire','0037-aprilfools','0038-exitbutton2','0039-staticrainbow','0040-gemini','0041-aquarius','0042-aries','0043-taurus','0044-hearts','0045-scorpio','0046-leo','0047-virgo','0048-libra','0049-sagittarius','0050-capricorn','0051-pisces','0052-cancer','0053-pinkchecker','0054-caution','0055-rainbowswirl','0056-pirate','0057-ophiuchus','0058-snail','0059-greenscreen','0060-glitch','0061-pinkcomputer','0062-flower','0063-darth','0064-cow','0065-bunnies','0066-orangekitty','0067-moonstars','0068-mainframe','0069-alien','0070-lavalamp','0071-bi','0072-lesbian','0073-gay','0074-pan','0075-demigender','0076-demigirl','0077-demiboy','0078-intersex','0079-nonbinary','0080-genderfluid','0081-asexual','0082-aromantic','0083-demiromantic','0084-agender','0085-dolleyes','0086-dollface','0087-demisexual','0088-cow','0089-kiss','0090-flatline','0091-bug','0092-computerconnect','0093-cats','0094-tinycats','0095-tinycats','0096-blackgreen','0097-purple','0098-ballcplpinkblue','0099-ballcplpinkpink','0100-ballcplblueblue','0101-ballcplyellowyellow','0102-rainbowchecker','0103-kitty','0104-redsnowflake','0105-gradientpurple','0106-vicioussmiley','0107-gradientorange','0108-crewmate','0109-gradientgreen','0110-yeah','0111-glittergold','0112-peep','0113-autism','0114-tbh','0115-alpinelinux','0116-debian','0117-redlightsaber','0118-rubberducky','0119-pastelstars','0120-starofdavid','0121-blinkiescafe','0122-hsbreath','0123-glitterpink','0124-stars','0125-blood','0126-slime','0127-splatoon1','0128-splatoon2','0129-splatoon3','0130-twilightsparkle','0131-rarity','0132-rainbowdash','0133-applejack','0134-fluttershy','0135-pinkiepie','0136-clock','0137-catgender','0138-greenglow','0139-robotgender','0140-hsroxy','0141-digigender','0142-virusgender','0143-webkinz','0144-pokeball','0145-kirbysquish','0146-kirbydance','0147-kirbywalk','0148-kirbyswim','0149-ty','0150-alligator','0151-toonthrow','0152-honeyslime','0153-toonsquirt','0154-toonsound','0155-toondrop','0156-toonlure','0157-toonzap','0158-toonup','0159-toontrap','0160-pupgender','0161-genderqueer','0162-cherry','0163-cherry','0164-bloodylips','0165-jennifersbody','0166-finfin','0167-saw','0168-catgender','0169-topsurgery','0170-bigender','0171-jerma','0172-rainbowequalizer','0173-dollbrowneyes','0174-hal9000','0175-splatoonoctolingorange','0176-splatoonoctolinggreen','0177-splatoonoctolingyellow','0178-mikuwink2','0179-kittencry','0180-happybirthday','0181-confetti','0182-halloweencathouse','0183-pastelpinkwings','0184-pastelpinkrainbow','0185-pinkglow','0186-angelsmiley','0187-transparentsparkle','0188-knifechainsaw','0189-whale','0190-hittingfloor','0191-fallleaves','0192-forgetmenotflower','0193-topsurgery','0194-pleadingemoji','0195-raven','0196-browndog','0197-gray','0199-instagramlogo','0200-tumblrlogo','0201-twitterlogo','0202-pinterestlogo','0203-youtubelogo','0204-twitchlogo','0205-pluralsystem','0206-nyancat','0207-happybirthdayblinkiescafe','0208-rainbowconfetti','0209-antigravrainbowconfetti','0210-werewolfmoonhowl','0211-ghostorange','0212-gradientblue','0213-gradientorange','0214-rainbowtransparent','0215-pridetransparent','0216-cinderella','0217-promare1','0218-promare2','0219-promare3','0220-pills','0221-cd','0222-construction','0223-yandere','0224-raincloud','0225-softblue','0226-snowflake','0227-birds','0228-pinkdrip','0229-roses','0230-plantpot','0231-treeforest','0232-mbavblooddrivenurse','0233-mbav3cheersforevil','0234-mbavdoublenegativeangeldevil','0235-rainbowstar','0236-pastelshootingstar','0237-purplestars','0238-heartsconnected','0239-heartmessage','0240-nursestethoscope','0241-redpulse','0242-loveletter','0243-heartflowerplant','0244-redlips','0245-pikachuhearts','0246-heartflowergrass','0247-pinkheart','0248-lipsrosesparkle','0249-beatinghearts','0250-redbouncyhearts','0251-pastelpinkbutterfly','0252-heartpair','0253-rainbowheartclownballoons','0254-strawberrygradient','0255-glowinghearts','0256-transparentpastelbubbles','0257-dollcoupleheart','0258-smileyshug','0259-spiralpastel','0260-doggender','0261-werewolfgender','0262-wolfgender','0263-demongender','0264-adhd','0265-wheelchair','0266-lovefool','0267-spineinjury','0268-hardofhearing','0269-sickashell','0270-owmybones','0271-chronicmigraines','0272-disabledpride','0273-mlmpride','0274-wlwpride','0275-bunnybounce','0275-spiderweb','0275-stressed','0276-washhands','0277-zombies','0278-galpals','0280-pinkalien','0281-tumblrgrl','0282-miraclemoon','0283-purplelace','anakin','blinkiesCafe-badge','y2k-compliant'];
+
+    function pick(arr, n) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+        return a.slice(0, n);
+    }
+
+    function imgBadge(f) {
+        const i = document.createElement('img');
+        i.className='badge-img'; i.src=BADGE_BASE+f; i.width=88; i.height=31; i.alt='';
+        i.style.imageRendering='pixelated'; i.onerror=function(){this.style.display='none';};
+        return i;
+    }
+    function imgBlinkie(name) {
+        const i = document.createElement('img');
+        i.src=BLINKIE_BASE+name+'.gif'; i.width=150; i.height=20; i.alt='';
+        i.style.imageRendering='pixelated'; i.onerror=function(){this.style.display='none';};
+        return i;
+    }
+
+    // pick 40 badges at a time — broken ones vanish, ~10-15 valid ones remain visible
+    const blinkEl  = document.querySelector('.blinkies');
+    const badgeEl  = document.querySelector('.badges');
+    const footerEl = document.querySelector('.footer-badges');
+    const hdrImg   = document.getElementById('hdr-badge');
+
+    if (blinkEl)  { pick(BLINKIES, 15).forEach(n => blinkEl.appendChild(imgBlinkie(n))); }
+    if (badgeEl)  { pick(BADGES, 40).forEach(f => badgeEl.appendChild(imgBadge(f))); }
+    if (footerEl) { pick(BADGES, 40).forEach(f => footerEl.appendChild(imgBadge(f))); }
+    if (hdrImg)   { hdrImg.src = BADGE_BASE + pick(BADGES, 1)[0]; hdrImg.onerror=function(){ this.src=BADGE_BASE+'linux.gif'; }; }
+})();
+</script>
+
+</body>
 </html>
