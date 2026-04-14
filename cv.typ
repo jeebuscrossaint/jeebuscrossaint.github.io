@@ -177,7 +177,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   [General Physics II — Honors (A)],           [General Physics III (A)],
   [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
   [Mechanics I (IP)],                          [Quantum Information Processing (IP)],
-  [Theoretical Methods for Physics (IP)],      [],
+  [Theoretical Methods for Physics (IP)],      [Directed Independent Research (IP)],
 )
 
 #v(0.2em)
@@ -191,7 +191,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   [Matrix Theory (B)],                         [Matrix & Linear Algebra (IP)],
   [Linear Algebra (IP)],                       [Introduction to Complex Variables (IP)],
   [Intro to Partial Differential Equations (IP)], [Introduction to Graph Theory (IP)],
-  [Statistical Methods I (IP)],                [Statistical Methods II (IP)],
+  [Statistical Methods I (IP)],                [],
 )
 
 #v(0.2em)
