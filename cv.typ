@@ -178,6 +178,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
   [Mechanics I (IP)],                          [Quantum Information Processing (IP)],
   [Theoretical Methods for Physics (IP)],      [Directed Independent Research (IP)],
+  [Thermal & Statistical Physics (IP)],        [],
 )
 
 #v(0.2em)
@@ -203,7 +204,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   [Data Structures & Algorithms (A)],          [Computer Logic Design (A)],
   [Computer Architecture (A−)],                [Intro to Deep Learning (A)],
   [Discrete Structures (IP)],                  [Engineering Analysis & Computation (A)],
-  [Foundations of Computing (A)],              [],
+  [Foundations of Computing (A)],              [Object-Oriented Programming (IP)],
 )
 
 /* ── HONORS ── */
