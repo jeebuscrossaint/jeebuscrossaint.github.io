@@ -70,7 +70,7 @@
 #v(0.15em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 – March 2025]
+  [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]] (High School)*], [January 2024 – March 2025]
 )
 #grid(columns: (1fr,), [_Supervisor: Tucker Hindle, Florida Atlantic University_])
 - Benchmarked 10+ coherence and detection methods (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences to evaluate approaches for identifying AI-generated text.
@@ -82,19 +82,19 @@
 #v(0.2em)
 #line(length: 100%, stroke: 0.3pt)
 #v(0.1em)
-#text(size: 11pt, weight: "bold")[HIGH SCHOOL EXPERIENCE]
+#text(size: 11pt, weight: "bold")[OTHER EXPERIENCE]
 #v(0.1em)
 
 #grid(
   columns: (1fr, auto),
-  [*Teaching Assistant — Calculus*], [August 2024 – May 2025]
+  [*Teaching Assistant — Calculus (High School)*], [August 2024 – May 2025]
 )
 - Assisted 70 undergraduate students with learning calculus; office hours, exam review, grading. Part-time (10 h/week).
 
 #v(0.15em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]] — Programmer, Leader, Builder*], [November 2023 – May 2025]
+  [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]] — Programmer, Leader, Builder (High School)*], [November 2023 – May 2025]
 )
 - Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds.
 - Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
