@@ -53,7 +53,7 @@
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
 - Developing instrumentation and automation software for astrophotonics research at the intersection of photonics and observational astronomy, spanning CREOL and the UCF Physics Department.
-- Built an automated end-to-end data acquisition and processing pipeline for characterizing photonic lanterns via digital holography; orchestrates 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps, with FFT-based fringe extraction and 7-mode LP decomposition.
+- Built an automated data acquisition and processing pipeline for modal characterization of photonic lanterns via off-axis digital holography; coordinates 4 instruments across 7-leg × 7-wavelength (1540–1570 nm) sweeps, implementing FFT-based twin-image extraction, Butterworth filtering, quadratic phase correction, and LP mode decomposition to recover complex modal amplitudes and field structure.
 - Developing PolyOculus, control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation.
 - Developed Python SDK wrapper (gentec-camera) for an IR beam profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
 
