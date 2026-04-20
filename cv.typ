@@ -177,7 +177,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   [General Physics II — Honors (A)],           [General Physics III (A)],
   [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
   [Quantum Information Processing (IP)],        [Theoretical Methods for Physics (IP)],
-  [Directed Independent Research (IP)],        [Electricity & Magnetism I (Fall 2026)],
+  [Directed Independent Research (IP)],        [Electricity & Magnetism I (IP)],
 )
 
 #v(0.2em)
