@@ -82,7 +82,7 @@
 #v(0.2em)
 #line(length: 100%, stroke: 0.3pt)
 #v(0.1em)
-#text(size: 11pt, weight: "bold")[OTHER EXPERIENCE]
+#text(size: 11pt, weight: "bold")[HIGH SCHOOL EXPERIENCE]
 #v(0.1em)
 
 #grid(
