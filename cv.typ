@@ -8,8 +8,7 @@
   #text(size: 10.5pt)[
     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] |
     #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] |
-    #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]] |
-    +1 561-603-2661
+    #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]]
   ]
 ]
 #v(0.2em)
