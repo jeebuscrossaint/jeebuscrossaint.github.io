@@ -1,4 +1,4 @@
-#set page(margin: (x: 0.8in, y: 0.38in))
+#set page(margin: (x: 0.8in, y: 0.28in))
 #set text(font: "Libertinus Serif", size: 8.8pt)
 #set par(leading: 0.5em)
 #set par(justify: true)
@@ -33,6 +33,8 @@
   columns: (1fr, auto),
   [High School Diploma (111 Credit Hours) — Background: Embedded Systems, UNIX systems, C/C++], [August 2021 - May 2025]
 )
+#v(-0.5em)
+- Relevant Coursework: Calculus I–III, Differential Equations, Matrix Theory, Data Structures & Algorithms
 #text(size: 11pt, weight: "bold")[PROFESSIONAL EXPERIENCE]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
@@ -43,6 +45,7 @@
 - Conducting research at the intersection of photonics and observational astronomy, developing instrumentation software spanning CREOL and the UCF Physics Department.
 - Built an automated digital holography pipeline orchestrating 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps.
 - Developing PolyOculus, control software for an 8-telescope photometric observation array with INDI-protocol mount control, focuser automation, and RA/Dec coordinate slewing.
+- Developed gentec-camera, a Python SDK wrapper for an IR beam profiling camera enabling automated acquisition, real-time Gaussian beam analysis, and FITS output for optical research pipelines.
 #grid(columns: (1fr, auto), [*Software Engineer — Research*], [March 2026 - Present])
 #v(-0.6em)
 #grid(columns: (1fr,), [_UCF Physics Department — Dr. Zhongzhou Chen_])
@@ -58,6 +61,7 @@
 #v(-0.6em)
 #grid(columns: (1fr,), [_#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]], Florida Atlantic University_])
 #v(-0.4em)
+- Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds.
 - Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(-1em)
@@ -100,3 +104,10 @@
 *Instrumentation:* GPIB, GigE Vision, RS-232, INDI protocol \
 #v(-0.6em)
 *Operating Systems:* Linux Distributions, BSD, Windows
+#text(size: 11pt, weight: "bold")[HONORS & AWARDS]
+#v(-1em)
+#line(length: 100%, stroke: 0.4pt)
+#grid(columns: (1fr, auto), [Lockheed Martin Award — "Highest Level of Engineering Excellence," AEV Competition], [2024])
+#grid(columns: (1fr, auto), [2nd Place in Division, Advanced Experimental Vehicles Competition], [2024])
+#grid(columns: (1fr, auto), [NSF Award 2421299 — Research Funding (ESTELA, with Dr. Zhongzhou Chen)], [2026])
+#grid(columns: (1fr, auto), [Gates Foundation INV-076932 — Research Funding (ESTELA)], [2026])
