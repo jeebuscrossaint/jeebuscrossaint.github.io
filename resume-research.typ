@@ -40,14 +40,14 @@
 #text(size: 11pt, weight: "bold")[PROFESSIONAL EXPERIENCE]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
-#grid(columns: (1fr, auto), [*Instrumentation Software Engineer — Research*], [August 2025 - Present])
+#grid(columns: (1fr, auto), [*Undergraduate Researcher — Astrophotonics & Instrumentation*], [August 2025 - Present])
 #v(-0.6em)
 #grid(columns: (1fr,), [_#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]], CREOL — Dr. Stephen Eikenberry_])
 #v(-0.4em)
 - Conducting research at the intersection of photonics and observational astronomy, developing instrumentation software spanning CREOL and the UCF Physics Department.
 - Built an automated digital holography pipeline orchestrating 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps.
 - Developing PolyOculus, control software for an 8-telescope photometric observation array with INDI-protocol mount control, focuser automation, and RA/Dec coordinate slewing.
-#grid(columns: (1fr, auto), [*Software Engineer — Research*], [March 2026 - Present])
+#grid(columns: (1fr, auto), [*Research Assistant — Physics Education*], [March 2026 - Present])
 #v(-0.6em)
 #grid(columns: (1fr,), [_UCF Physics Department — Dr. Zhongzhou Chen_])
 #v(-0.4em)
@@ -64,7 +64,7 @@
 #v(-0.4em)
 - Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds.
 - Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
-#grid(columns: (1fr, auto), [*AI/ML Software Engineer — Research*], [January 2024 - March 2025])
+#grid(columns: (1fr, auto), [*Researcher — Machine Learning & AI Safety*], [January 2024 - March 2025])
 #v(-0.6em)
 #grid(columns: (1fr,), [_#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]], Florida Atlantic University_])
 #v(-0.4em)
