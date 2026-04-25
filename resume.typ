@@ -105,6 +105,6 @@
 #line(length: 100%, stroke: 0.4pt)
 *Languages:* C/C++, Rust, Python, VHDL, Shell (Fish, Bash, tcsh) \
 #v(-0.6em)
-*Tools & Frameworks:* Docker, Git, CMake, XMake, NumPy, SciPy, INDI \
+*Tools & Frameworks:* Docker, Git, CMake, XMake, NumPy, SciPy, INDI, VirtualBox, VMware, QEMU \
 #v(-0.6em)
 *Operating Systems:* Linux Distributions, BSD, Windows
