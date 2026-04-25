@@ -4,7 +4,7 @@
 #set par(justify: true)
 #align(center)[
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
-  #v(-0.1em)
+  #v(-0.4em)
   #text(size: 10.5pt)[
      #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] | #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]]
   ]
@@ -104,6 +104,7 @@
 *Instrumentation:* GPIB, GigE Vision, RS-232, INDI protocol \
 #v(-0.6em)
 *Operating Systems:* Linux Distributions, BSD, Windows \
+#v(0.2em)
 #text(size: 11pt, weight: "bold")[HONORS & AWARDS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
