@@ -1,19 +1,17 @@
 #set page(margin: (x: 0.8in, y: 0.38in))
 #set text(font: "Libertinus Serif", size: 8.8pt)
-#set par(leading: 0.55em)
+#set par(leading: 0.5em)
 #set par(justify: true)
 #align(center)[
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
-  #v(0.06em)
+  #v(-0.1em)
   #text(size: 10.5pt)[
-     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] | #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]] | +1 561-603-2661
+     #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] | #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] | #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]]
   ]
 ]
-#v(0.08em)
-#line(length: 100%, stroke: 0.5pt)
-#v(0.03em)
 #text(size: 11pt, weight: "bold")[EDUCATION]
-#v(0.03em)
+#v(-1em)
+#line(length: 100%, stroke: 0.4pt)
 #grid(
   columns: (1fr, auto, auto),
   column-gutter: 1em,
@@ -24,7 +22,6 @@
   [Physics (Optics & Lasers), Mathematics, Computer Science Minor], [August 2025 - Present]
 )
 - Relevant Coursework: Geometric Optics, Matrix & Linear Algebra, Quantum Information Processing, Discrete Computational Structures, Theoretical Methods for Physics, Statistical Methods 1
-#v(0.03em)
 #grid(
   columns: (1fr, auto),
   [*Florida Atlantic University*], [*3.66 GPA*]
@@ -33,74 +30,72 @@
   columns: (1fr, auto),
   [Computer Science coursework - High School Diploma (111 Credit Hours)], [August 2021 - May 2025]
 )
-#v(0.06em)
-#text(size: 11pt, weight: "bold")[SKILLS]
-#v(0.03em)
-*Programming Languages:* C/C++, Rust, Python, Shell (Fish, Bash, tcsh)
-
-*Tools & Frameworks:* Docker, Git, CMake, XMake, NumPy, SciPy, INDI
-
-*Operating Systems:* Linux Distributions, BSD, Windows
-
-#v(0.06em)
 #text(size: 11pt, weight: "bold")[PROFESSIONAL EXPERIENCE]
-#v(0.03em)
+#v(-1em)
+#line(length: 100%, stroke: 0.4pt)
 #grid(
   columns: (1fr, auto),
   [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]] - Undergraduate Researcher*], [August 2025 - Present]
 )
-- Developing instrumentation and automation software for astrophotonics research under Dr. Stephen Eikenberry; primary outputs include a digital holography pipeline characterizing photonic lanterns via 7-mode LP decomposition (4-instrument orchestration across 1540–1570 nm) and PolyOculus, control software for an 8-telescope photometric observation array.
-#v(0.03em)
+- Conducting research at the intersection of photonics and observational astronomy under Dr. Stephen Eikenberry, developing instrumentation software spanning CREOL and the UCF Physics Department.
+- Built an automated digital holography pipeline orchestrating 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps.
+- Developing PolyOculus, control software for an 8-telescope photometric observation array with INDI-protocol mount control, focuser automation, and RA/Dec coordinate slewing.
 #grid(
   columns: (1fr, auto),
   [*UCF Physics Department - Paid Undergraduate Research Assistant*], [March 2026 - Present]
 )
-#grid(
-  columns: (1fr,),
-  [Physics Education Research under Dr. Zhongzhou Chen]
-)
-- Developing ESTELA, an automated multi-version exam generation system for AI-assisted isomorphic physics problem banks, supporting scalable and equitable assessment infrastructure for introductory STEM courses; funded by NSF-2421299 and Gates Foundation INV-076932.
-#v(0.03em)
+- Developing ESTELA, an automated multi-version exam generation system for AI-assisted isomorphic physics problem banks, supporting scalable and equitable assessment infrastructure for introductory STEM courses.
+- Funded by NSF award 2421299 and Gates Foundation INV-076932.
 #grid(
   columns: (1fr, auto),
   [*Teaching Assistant - Employee*], [August 2024 - May 2025]
 )
-- Assisted 70 undergraduate students with learning calculus. Part-time position (10h/week).
-#v(0.03em)
+- Assisted 70 undergraduate students with learning calculus; office hours, exam review, and grading. Part-time (10h/week).
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]] - Programmer, Leader, Builder*], [November 2023 - May 2025]
 )
-- Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds; won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
-#v(0.03em)
+- Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds.
+- Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]]*], [January 2024 - March 2025]
 )
-- Benchmarked 10+ coherence and detection methods (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences; identified GPT-2 perplexity as the strongest discriminator (3.3× gap between coherent and incoherent text; BERT NSP failed to distinguish) and characterized a fundamental quality–evasion tradeoff across all humanization approaches; presented at Wilkes Honors College Symposium.
-#v(0.06em)
+- Benchmarked 10+ coherence and detection approaches (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences to evaluate identification of AI-generated text.
+- Identified GPT-2 perplexity as the strongest discriminator (3.3× gap); BERT NSP failed to distinguish coherent from incoherent text.
+- Characterized a fundamental quality–evasion tradeoff across all humanization approaches; presented at Wilkes Honors College Symposium.
 #text(size: 11pt, weight: "bold")[PROJECTS]
-#v(0.03em)
+#v(-1em)
+#line(length: 100%, stroke: 0.4pt)
 #grid(
   columns: (1fr, auto),
-  [*ESTELA - Problem Bank Visualizer & Exam Generator*], [March 2026 - Present]
+  [*#link("https://github.com/jeebuscrossaint/estela")[#text(fill: blue)[#underline[ESTELA]]] - Problem Bank Visualizer & Exam Generator*], [March 2026 - Present]
 )
-- Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
-#v(0.03em)
+- Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types.
+- Renders LaTeX math via KaTeX and exports multi-version exams as LaTeX or print-ready HTML/PDF.
 #grid(
   columns: (1fr, auto),
-  [*Photonic Lantern Digital Holography Automation*], [January 2026 - Present]
+  [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: blue)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 - Present]
 )
-- Automated end-to-end data acquisition and processing pipeline for characterizing photonic lanterns via digital holography; orchestrates 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps, with FFT-based fringe extraction and 7-mode LP decomposition.
-#v(0.03em)
+- Automated data acquisition and processing pipeline for photonic lantern characterization via digital holography across 7-leg × 7-wavelength (1540–1570 nm) sweeps.
+- Implements FFT-based fringe extraction, automated polarization optimization, and full 7-mode LP decomposition.
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: blue)[#underline[PolyOculus]]]*], [January 2026 - Present]
 )
-- Developing control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation as part of ongoing astrophotonics research at UCF CREOL
-#v(0.03em)
+- INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array.
+- Part of ongoing astrophotonics research at UCF CREOL under Dr. Eikenberry.
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]]*], [November 2025]
 )
-- Developed Python SDK wrapper for IR beam profiling camera enabling automated data acquisition, real-time beam analysis, and FITS output for optical instrumentation research.
+- Python SDK wrapper for IR beam profiling camera enabling automated acquisition and real-time beam analysis.
+- Outputs FITS format for integration with optical instrumentation research pipelines.
+#text(size: 11pt, weight: "bold")[SKILLS]
+#v(-1em)
+#line(length: 100%, stroke: 0.4pt)
+*Languages:* C/C++, Rust, Python, Shell (Fish, Bash, tcsh) \
+#v(-0.4em)
+*Tools & Frameworks:* Docker, Git, CMake, XMake, NumPy, SciPy, INDI \
+#v(-0.4em)
+*Operating Systems:* Linux Distributions, BSD, Windows
