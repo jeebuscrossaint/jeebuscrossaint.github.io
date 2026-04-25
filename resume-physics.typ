@@ -103,11 +103,10 @@
 #v(-0.6em)
 *Instrumentation:* GPIB, GigE Vision, RS-232, INDI protocol \
 #v(-0.6em)
-*Operating Systems:* Linux Distributions, BSD, Windows
+*Operating Systems:* Linux Distributions, BSD, Windows \
 #text(size: 11pt, weight: "bold")[HONORS & AWARDS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
 #grid(columns: (1fr, auto), [Lockheed Martin Award — "Highest Level of Engineering Excellence," AEV Competition], [2024])
 #grid(columns: (1fr, auto), [2nd Place in Division, Advanced Experimental Vehicles Competition], [2024])
-#grid(columns: (1fr, auto), [NSF Award 2421299 — Research Funding (ESTELA, with Dr. Zhongzhou Chen)], [2026])
-#grid(columns: (1fr, auto), [Gates Foundation INV-076932 — Research Funding (ESTELA)], [2026])
+#grid(columns: (1fr, auto), [NSF Award 2421299 & Gates Foundation INV-076932 — ESTELA Research Funding (with Dr. Zhongzhou Chen)], [2026])
