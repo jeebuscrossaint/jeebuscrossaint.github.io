@@ -138,6 +138,24 @@
         ::selection { background: var(--sel); color: #fff; }
 
         @media (max-width: 940px) { #wrap { width: 100%; } }
+
+        /* ── TABS ── */
+        #tab-bar {
+            background: var(--nav-bg); border: 2px solid var(--border);
+            border-top: 1px solid var(--head-bdr); border-bottom: none;
+            padding: 4px 12px; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+        }
+        .tab-lbl {
+            font-family: 'Courier New', monospace; font-size: 11px;
+            color: var(--muted); margin-right: 4px;
+        }
+        .tab-btn {
+            background: var(--head2); border: 1px solid var(--border); color: var(--label);
+            padding: 2px 10px; font-family: 'VT323', monospace; font-size: 19px;
+            cursor: pointer; letter-spacing: 1px; line-height: 1;
+        }
+        .tab-btn:hover { background: var(--head1); color: var(--primary); }
+        .tab-btn.active { background: var(--head1); color: var(--primary); border-color: var(--primary); }
     </style>
     <script>
     // ── THEME (same engine as index.html) ──
@@ -171,11 +189,20 @@
     <a href="index.html">home</a><span class="sep">//</span>
     <a href="index.html#writing">writing</a><span class="sep">//</span>
     <a href="friends.html">links</a><span class="sep">//</span>
-    <a href="pdf.html?file=resume.pdf" id="nav-resume">résumé</a><span class="sep">//</span>
+    <a href="pdf.html?file=resume-research.pdf" id="nav-resume">résumé</a><span class="sep">//</span>
     <a href="pdf.html?file=cv.pdf" id="nav-cv">cv</a><span class="sep">//</span>
     <a href="https://github.com/jeebuscrossaint" target="_blank">github</a><span class="sep">//</span>
     <a href="mailto:apatel6ty@protonmail.com">email</a><span class="sep">//</span>
     <a href="credits.html">credits</a>
+</div>
+
+<div id="tab-bar">
+    <span class="tab-lbl">variant &rsaquo;</span>
+    <button class="tab-btn" data-file="resume-research.pdf">research</button>
+    <button class="tab-btn" data-file="resume-physics.pdf">physics</button>
+    <button class="tab-btn" data-file="resume-swe.pdf">swe</button>
+    <button class="tab-btn" data-file="resume.pdf">general</button>
+    <button class="tab-btn" data-file="cv.pdf">cv</button>
 </div>
 
 <div id="toolbar">
@@ -207,44 +234,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 (function(){
-    // ── Config ──
-    const params   = new URLSearchParams(window.location.search);
-    const pdfFile  = params.get('file') || 'resume.pdf';
-    const label    = pdfFile.replace(/\.pdf$/i, '');
-    // Always fetch from the live site so it works locally and in production
-    const pdfUrl   = 'https://apatel.co/' + pdfFile;
+    const params  = new URLSearchParams(window.location.search);
+    let   curFile = params.get('file') || 'resume-research.pdf';
 
-    // Update UI labels
-    document.title = label + ' // apatel.co';
-    document.getElementById('hdr-filename').textContent = label;
-    document.getElementById('doc-title').textContent    = label;
-    document.getElementById('dl-btn').href              = pdfUrl;
-    document.getElementById('dl-btn').download          = pdfFile;
-    document.getElementById('footer-info').textContent  = pdfFile;
-
-    // Highlight current nav link
-    const navR = document.getElementById('nav-resume');
-    const navC = document.getElementById('nav-cv');
-    if (pdfFile === 'resume.pdf' && navR) navR.style.color = 'var(--primary)';
-    if (pdfFile === 'cv.pdf'     && navC) navC.style.color = 'var(--primary)';
-
-    // ── PDF.js setup ──
     pdfjsLib.GlobalWorkerOptions.workerSrc =
         'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    const container    = document.getElementById('pdf-container');
-    const statusEl     = document.getElementById('pdf-status');
-    const progressFill = document.getElementById('progress-fill');
-    const pageInfo     = document.getElementById('page-info');
-    const zoomVal      = document.getElementById('zoom-val');
+    const container = document.getElementById('pdf-container');
+    const pageInfo  = document.getElementById('page-info');
+    const zoomVal   = document.getElementById('zoom-val');
 
     let scale     = 1.5;
     let pdfDoc    = null;
     let rendering = false;
 
-    function setStatus(msg, isError) {
-        statusEl.textContent = msg;
-        statusEl.className   = isError ? 'error' : '';
+    function updateLabels(file) {
+        const label = file.replace(/\.pdf$/i, '');
+        const url   = 'https://apatel.co/' + file;
+        document.title = label + ' // apatel.co';
+        document.getElementById('hdr-filename').textContent = label;
+        document.getElementById('doc-title').textContent    = label;
+        document.getElementById('dl-btn').href              = url;
+        document.getElementById('dl-btn').download          = file;
+        document.getElementById('footer-info').textContent  = file;
+        const navR = document.getElementById('nav-resume');
+        const navC = document.getElementById('nav-cv');
+        if (navR) navR.style.color = file !== 'cv.pdf' ? 'var(--primary)' : '';
+        if (navC) navC.style.color = file === 'cv.pdf' ? 'var(--primary)' : '';
+        document.querySelectorAll('.tab-btn').forEach(b =>
+            b.classList.toggle('active', b.dataset.file === file));
     }
 
     async function renderPage(page, wrap) {
@@ -252,9 +270,7 @@
         const canvas   = document.createElement('canvas');
         canvas.width   = viewport.width;
         canvas.height  = viewport.height;
-        const ctx      = canvas.getContext('2d');
-        await page.render({ canvasContext: ctx, viewport }).promise;
-        // replace placeholder canvas if present
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
         const existing = wrap.querySelector('canvas');
         if (existing) wrap.replaceChild(canvas, existing);
         else wrap.insertBefore(canvas, wrap.querySelector('.page-label'));
@@ -263,44 +279,40 @@
     async function renderAll() {
         if (rendering) return;
         rendering = true;
-        const wraps = container.querySelectorAll('.pdf-page-wrap');
-        for (const wrap of wraps) {
-            const pageNum = parseInt(wrap.dataset.page, 10);
-            const page    = await pdfDoc.getPage(pageNum);
+        for (const wrap of container.querySelectorAll('.pdf-page-wrap')) {
+            const page = await pdfDoc.getPage(parseInt(wrap.dataset.page, 10));
             await renderPage(page, wrap);
         }
         rendering = false;
     }
 
-    async function loadPDF() {
+    async function loadPDF(file) {
+        curFile = file;
+        updateLabels(file);
+        container.innerHTML = '<div id="pdf-status">loading pdf...<div id="progress-bar"><div id="progress-fill" style="height:100%;background:var(--primary);width:0%;transition:width 0.2s"></div></div></div>';
+        pageInfo.textContent = '';
         try {
-            const loadingTask = pdfjsLib.getDocument({
-                url: pdfUrl,
+            const task = pdfjsLib.getDocument({
+                url: 'https://apatel.co/' + file,
                 cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
                 cMapPacked: true,
             });
-
-            loadingTask.onProgress = (p) => {
+            task.onProgress = p => {
                 if (p.total) {
-                    const pct = Math.round((p.loaded / p.total) * 100);
-                    progressFill.style.width = pct + '%';
+                    const fill = container.querySelector('#progress-fill');
+                    if (fill) fill.style.width = Math.round(p.loaded / p.total * 100) + '%';
                 }
             };
-
-            pdfDoc = await loadingTask.promise;
+            pdfDoc = await task.promise;
             const n = pdfDoc.numPages;
-
             pageInfo.textContent = n + (n === 1 ? ' page' : ' pages');
-
-            // Build page placeholders
             container.innerHTML = '';
             for (let i = 1; i <= n; i++) {
-                const wrap  = document.createElement('div');
-                wrap.className   = 'pdf-page-wrap';
+                const wrap = document.createElement('div');
+                wrap.className  = 'pdf-page-wrap';
                 wrap.dataset.page = i;
-                // placeholder canvas
                 const ph = document.createElement('canvas');
-                ph.width  = 600; ph.height = 800;
+                ph.width = 600; ph.height = 800;
                 wrap.appendChild(ph);
                 const lbl = document.createElement('div');
                 lbl.className   = 'page-label';
@@ -308,15 +320,12 @@
                 wrap.appendChild(lbl);
                 container.appendChild(wrap);
             }
-
             await renderAll();
-
         } catch(e) {
-            setStatus('error loading pdf: ' + e.message, true);
+            container.innerHTML = '<div id="pdf-status" class="error">error loading pdf: ' + e.message + '</div>';
         }
     }
 
-    // ── Zoom controls ──
     function updateZoom(newScale) {
         scale = Math.max(0.5, Math.min(3.0, newScale));
         zoomVal.textContent = Math.round(scale * 100 / 1.5 * 100) + '%';
@@ -326,17 +335,16 @@
     document.getElementById('btn-zoom-in').addEventListener('click',  () => updateZoom(scale + 0.25));
     document.getElementById('btn-zoom-out').addEventListener('click', () => updateZoom(scale - 0.25));
     document.getElementById('btn-zoom-fit').addEventListener('click', () => {
-        // fit to wrap width
         const wrapW = document.getElementById('pdf-wrap').clientWidth - 40;
-        if (pdfDoc) {
-            pdfDoc.getPage(1).then(p => {
-                const vp = p.getViewport({ scale: 1 });
-                updateZoom(wrapW / vp.width);
-            });
-        }
+        if (pdfDoc) pdfDoc.getPage(1).then(p => {
+            updateZoom(wrapW / p.getViewport({ scale: 1 }).width);
+        });
     });
 
-    loadPDF();
+    document.querySelectorAll('.tab-btn').forEach(btn =>
+        btn.addEventListener('click', () => loadPDF(btn.dataset.file)));
+
+    loadPDF(curFile);
 })();
 </script>
 <script>
