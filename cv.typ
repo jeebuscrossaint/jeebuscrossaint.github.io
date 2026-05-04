@@ -26,7 +26,7 @@
 )
 #grid(
   columns: (1fr, auto),
-  [Physics (Optics & Lasers), Mathematics — Computer Science Minor], [August 2025 – Present]
+  [B.S. in Physics (Optics & Lasers) and Mathematics, Computer Science Minor — Expected Spring 2029], [August 2025 – Present]
 )
 
 #v(0.1em)
@@ -152,9 +152,9 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 #text(size: 11pt, weight: "bold")[TECHNICAL SKILLS]
 #v(0.1em)
 
-*Programming Languages:* C/C++, Rust, Python, Shell (Fish, Bash, tcsh)
+*Programming Languages:* C/C++, Rust, Python, JavaScript, Shell (Fish, Bash, tcsh), LaTeX/Typst
 
-*Libraries & Frameworks:* NumPy, SciPy, Docker, Git, CMake, XMake, INDI
+*Tools & Libraries:* NumPy, SciPy, Docker, Git, CMake, XMake, INDI
 
 *Instrumentation:* Tunable IR laser control, GigE camera acquisition, fiber switch automation, motorized polarization control, FITS data format
 
