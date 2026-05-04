@@ -26,7 +26,7 @@
 )
 #grid(
   columns: (1fr, auto),
-  [B.S. in Physics (Optics & Lasers) and Mathematics, Computer Science Minor — Expected Spring 2029], [August 2025 – Present]
+  [B.S. in Physics (Optics & Lasers) and Mathematics, Computer Science Minor], [August 2025 – Present]
 )
 
 #v(0.1em)
