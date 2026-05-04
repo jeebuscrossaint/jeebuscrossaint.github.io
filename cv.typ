@@ -6,7 +6,7 @@
   #text(size: 15pt, weight: "bold")[AMARNATH S. PATEL]
   #v(0.15em)
   #text(size: 10.5pt)[
-    #link("mailto:apatel6ty@protonmail.com")[#text(fill: blue)[#underline[apatel6ty\@protonmail.com]]] |
+    #link("mailto:amarnath.patel@ucf.edu")[#text(fill: blue)[#underline[amarnath.patel\@ucf.edu]]] |
     #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] |
     #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]]
   ]
