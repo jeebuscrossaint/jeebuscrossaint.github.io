@@ -167,42 +167,72 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 #text(size: 11pt, weight: "bold")[RELEVANT COURSEWORK]
 #v(0.1em)
 
-*Physics*
+*University of Central Florida*
+#v(0.1em)
+_Physics_
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Geometric Optics & Lab (A)],               [General Physics I (C+)],
-  [General Physics II — Honors (A)],           [General Physics III (A)],
-  [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
-  [Quantum Information Processing (A)],        [Theoretical Methods for Physics (A)],
-  [Directed Independent Research (IP)],        [Electricity & Magnetism I (IP)],
+  [Geometric Optics & Lab (A)],               [Chemistry Fundamentals I (A)],
+  [Chemistry Fundamentals II (IP)],            [Quantum Information Processing (A)],
+  [Theoretical Methods for Physics (A)],       [Directed Independent Research (IP)],
+  [Electricity & Magnetism I (IP)],            [],
 )
 
-#v(0.2em)
-*Mathematics*
+#v(0.15em)
+_Mathematics_
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Calculus I (A−)],                           [Calculus II (A−)],
-  [Honors Calculus III (A)],                   [Differential Equations (A)],
-  [Matrix Theory (B)],                         [Matrix & Linear Algebra (A)],
-  [Linear Algebra (IP)],                       [Introduction to Complex Variables (IP)],
+  [Statistical Methods I (A)],                [Matrix & Linear Algebra (A)],
+  [Linear Algebra (IP)],                      [Introduction to Complex Variables (IP)],
   [Intro to Partial Differential Equations (IP)], [Introduction to Graph Theory (IP)],
-  [Statistical Methods I (A)],                [],
 )
 
-#v(0.2em)
-*Computer Science*
+#v(0.15em)
+_Computer Science_
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Data Structures & Algorithms (A)],          [Computer Logic Design (A)],
-  [Computer Architecture (A−)],                [Intro to Deep Learning (A)],
-  [Discrete Structures (IP)],                  [Engineering Analysis & Computation (A)],
-  [Foundations of Computing (A)],              [Object-Oriented Programming (IP)],
+  [Engineering Analysis & Computation (A)],   [Discrete Structures (IP)],
+  [Object-Oriented Programming (IP)],         [],
+)
+
+#v(0.25em)
+*Florida Atlantic University*
+#v(0.1em)
+_Physics_
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  row-gutter: 0.3em,
+  [General Physics I (C+)],                   [General Physics II — Honors (A)],
+  [General Physics III (A)],                  [],
+)
+
+#v(0.15em)
+_Mathematics_
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  row-gutter: 0.3em,
+  [Calculus I (A−)],                          [Calculus II (A−)],
+  [Honors Calculus III (A)],                  [Differential Equations (A)],
+  [Matrix Theory (B)],                        [],
+)
+
+#v(0.15em)
+_Computer Science_
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  row-gutter: 0.3em,
+  [Data Structures & Algorithms (A)],         [Computer Logic Design (A)],
+  [Computer Architecture (A−)],               [Intro to Deep Learning (A)],
+  [Foundations of Computing (A)],             [],
 )
 
 /* ── HONORS ── */
