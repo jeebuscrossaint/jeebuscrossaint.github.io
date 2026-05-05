@@ -174,10 +174,10 @@ _Physics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Geometric Optics & Lab (A)],               [Chemistry Fundamentals I (A)],
-  [Chemistry Fundamentals II (IP)],            [Quantum Information Processing (A)],
-  [Theoretical Methods for Physics (A)],       [Directed Independent Research (IP)],
-  [Electricity & Magnetism I (IP)],            [],
+  [Geometric Optics & Lab (A)],               [General Physics III (A)],
+  [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
+  [Quantum Information Processing (A)],        [Theoretical Methods for Physics (A)],
+  [Directed Independent Research (IP)],        [Electricity & Magnetism I (IP)],
 )
 
 #v(0.15em)
@@ -210,7 +210,6 @@ _Physics_
   column-gutter: 1em,
   row-gutter: 0.3em,
   [General Physics I (C+)],                   [General Physics II — Honors (A)],
-  [General Physics III (A)],                  [],
 )
 
 #v(0.15em)
