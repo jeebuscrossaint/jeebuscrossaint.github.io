@@ -197,7 +197,7 @@ _Computer Science_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Engineering Analysis & Computation (A)],   [Discrete Structures (IP)],
+  [Engineering Analysis & Computation (A)],   [Discrete Structures (A)],
   [Object-Oriented Programming (IP)],         [],
 )
 
