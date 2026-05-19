@@ -36,7 +36,7 @@
 )
 #grid(
   columns: (1fr, auto),
-  [Computer Science coursework concurrent with High School Diploma (111 Credit Hours)], [August 2021 – May 2025]
+  [University coursework completed via FAU High School, ages 14–18 (111 credit hours)], [August 2021 – May 2025]
 )
 
 /* ── RESEARCH EXPERIENCE ── */
@@ -174,10 +174,10 @@ _Physics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Geometric Optics & Lab (A)],               [General Physics III (A)],
+  [Geometric Optics & Lab (A)],               [Modern Physics \[PHY 3101\] (A)],
   [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
-  [Quantum Information Processing (A)],        [Theoretical Methods for Physics (A)],
-  [Directed Independent Research (IP)],        [Electricity & Magnetism I (IP)],
+  [Quantum Information Processing (A)],        [Mathematical Methods for Physics \[PHZ 3113\] (A)],
+  [Independent Research \[PHY 4912\] (IP)],    [Electricity & Magnetism I (IP)],
 )
 
 #v(0.15em)
@@ -186,9 +186,9 @@ _Mathematics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Statistical Methods I (A)],                [Matrix & Linear Algebra (A)],
-  [Linear Algebra (IP)],                      [Introduction to Complex Variables (IP)],
-  [Intro to Partial Differential Equations (IP)], [Introduction to Graph Theory (IP)],
+  [Statistics \[STA 2023\] (A)],                [Applied Linear Algebra \[MAS 3105\] (A)],
+  [Linear Algebra (Proof-Based) \[MAS 3106\] (IP)], [Complex Analysis \[MAA 4402\] (IP)],
+  [Partial Differential Equations (IP)],       [Graph Theory (IP)],
 )
 
 #v(0.15em)
@@ -197,7 +197,7 @@ _Computer Science_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Engineering Analysis & Computation (A)],   [Discrete Structures (A)],
+  [C Programming \[EGN 3211\] (A)],            [Discrete Structures (A)],
   [Object-Oriented Programming (IP)],         [],
 )
 
@@ -219,8 +219,8 @@ _Mathematics_
   column-gutter: 1em,
   row-gutter: 0.3em,
   [Calculus I (A−)],                          [Calculus II (A−)],
-  [Honors Calculus III (A)],                  [Differential Equations (A)],
-  [Matrix Theory (B)],                        [],
+  [Honors Calculus III (A)],                  [Ordinary Differential Equations \[MAP 2302\] (A)],
+  [Elementary Matrix Algebra \[MAS 2103\] (B)], [],
 )
 
 #v(0.15em)
@@ -230,8 +230,8 @@ _Computer Science_
   column-gutter: 1em,
   row-gutter: 0.3em,
   [Data Structures & Algorithms (A)],         [Computer Logic Design (A)],
-  [Computer Architecture (A−)],               [Intro to Deep Learning (A)],
-  [Foundations of Computing (A)],             [],
+  [Computer Architecture (A−)],               [Deep Learning \[CAP 4613\] (A)],
+  [C++ Programming \[COP 3014\] (A)],          [Web Development \[COP 3813\] (A)],
 )
 
 /* ── HONORS ── */
