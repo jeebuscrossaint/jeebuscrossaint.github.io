@@ -107,7 +107,14 @@
 
 #grid(
   columns: (1fr, auto),
-  [*Coherence and Detection Approaches for Identifying AI-Generated Text*], [2025]
+  [*Batch Processing for Automated Grading System via Azure OpenAI — Efficient & Affordable Large-Scale Processing*], [June 2026]
+)
+University of Central Florida, Downtown Campus.
+
+#v(0.15em)
+#grid(
+  columns: (1fr, auto),
+  [*Coherence and Detection Approaches for Identifying AI-Generated Text*], [March 2025]
 )
 Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic University.
 
