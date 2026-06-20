@@ -108,7 +108,7 @@
 #grid(
   columns: (1fr, auto),
   column-gutter: 1em,
-  [*Batch Processing for Automated Grading via Azure OpenAI: Efficient, Affordable Large-Scale Processing*], [June 2026]
+  [*Batch Processing for Automated Grading via Azure OpenAI*], [June 2026]
 )
 University of Central Florida, Downtown Campus.
 
