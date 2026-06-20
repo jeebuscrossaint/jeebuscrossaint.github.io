@@ -107,7 +107,8 @@
 
 #grid(
   columns: (1fr, auto),
-  [*Batch Processing for Automated Grading System via Azure OpenAI — Efficient & Affordable Large-Scale Processing*], [June 2026]
+  column-gutter: 1em,
+  [*Batch Processing for Automated Grading via Azure OpenAI: Efficient, Affordable Large-Scale Processing*], [June 2026]
 )
 University of Central Florida, Downtown Campus.
 
@@ -127,7 +128,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 #grid(
   columns: (1fr, auto),
-  [*Photonic Lantern Digital Holography Automation*], [January 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: blue)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 – Present]
 )
 - Automated data acquisition and processing pipeline for photonic lantern characterization via digital holography. Orchestrates tunable IR laser, fiber switch, motorized polarization controller, and GigE InGaAs camera across 7-leg × 7-wavelength sweeps (1540–1570 nm). Implements FFT-based fringe extraction and full 7-mode LP decomposition.
 
@@ -141,7 +142,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
-  [*ESTELA — Problem Bank Visualizer & Exam Generator*], [March 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/estela")[#text(fill: blue)[#underline[ESTELA]]] — Problem Bank Visualizer & Exam Generator*], [March 2026 – Present]
 )
 - Rust backend, vanilla JS frontend. Parses YAML problem banks across 13 topic areas and 11 question types. Renders LaTeX via KaTeX. Exports multi-version exams as LaTeX or print-ready HTML/PDF. NSF/Gates-funded research tool.
 
