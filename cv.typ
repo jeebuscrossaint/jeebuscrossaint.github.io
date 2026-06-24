@@ -195,7 +195,7 @@ _Mathematics_
   column-gutter: 1em,
   row-gutter: 0.3em,
   [Statistics \[STA 2023\] (A)],                [Applied Linear Algebra \[MAS 3105\] (A)],
-  [Linear Algebra (Proof-Based) \[MAS 3106\] (IP)], [Complex Analysis \[MAA 4402\] (IP)],
+  [Linear Algebra (Proof-Based) \[MAS 3106\] (IP)], [Complex Analysis \[MAA 4402\] (A)],
   [Partial Differential Equations (IP)],       [Graph Theory (IP)],
 )
 
