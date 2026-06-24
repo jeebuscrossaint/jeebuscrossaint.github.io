@@ -52,7 +52,7 @@
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
 - Developing instrumentation and automation software for astrophotonics research at the intersection of photonics and observational astronomy, spanning CREOL and the UCF Physics Department.
-- Built an automated data acquisition and processing pipeline for modal characterization of photonic lanterns via off-axis digital holography; coordinates 4 instruments across 7-leg × 7-wavelength (1540–1570 nm) sweeps, implementing FFT-based twin-image extraction, Butterworth filtering, quadratic phase correction, and LP mode decomposition to recover complex modal amplitudes and field structure.
+- Built an unattended acquisition-and-reconstruction pipeline that measures the wavelength-dependent complex transfer matrix of a photonic lantern via off-axis digital holography (replicating Dobias et al., _Opt. Express_ 2026); coordinates 4 instruments across all-port × C-band (1525–1575 nm) sweeps, with FFT sideband isolation, Butterworth filtering, quadratic-phase correction, and per-hologram fidelity optimization feeding LP-mode decomposition to recover complex modal amplitude and phase.
 - Developing PolyOculus, control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation.
 - Developed Python SDK wrapper (gentec-camera) for an IR beam profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
 
@@ -130,7 +130,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: blue)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 – Present]
 )
-- Automated data acquisition and processing pipeline for photonic lantern characterization via digital holography. Orchestrates tunable IR laser, fiber switch, motorized polarization controller, and GigE InGaAs camera across 7-leg × 7-wavelength sweeps (1540–1570 nm). Implements FFT-based fringe extraction and full 7-mode LP decomposition.
+- Unattended pipeline measuring a photonic lantern's wavelength-dependent complex transfer matrix via off-axis digital holography. Orchestrates a tunable IR laser, fiber switch, motorized polarization controller, and GigE InGaAs camera; auto-optimizes polarization for fringe contrast, then for each port × wavelength reconstructs the complex field (FFT sideband demodulation → Butterworth filter → quadratic-phase correction) and decomposes it into LP modes — one transfer-matrix row per shot, ~92% reconstruction fidelity. Ships as a single native Windows executable.
 
 #v(0.1em)
 #grid(
