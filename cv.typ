@@ -259,6 +259,10 @@ _Computer Science_
 )
 #grid(
   columns: (1fr, auto),
+  [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025]
+)
+#grid(
+  columns: (1fr, auto),
   [NSF Award 2421299 — Research Funding (ESTELA project, with Dr. Zhongzhou Chen)], [2026]
 )
 #grid(
