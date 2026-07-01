@@ -150,11 +150,13 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 #text(size: 11pt, weight: "bold")[TECHNICAL SKILLS]
 #v(0.1em)
 
-*Programming Languages:* C/C++, Rust, Python, JavaScript, Shell (Fish, Bash, tcsh), LaTeX/Typst
+*Programming Languages:* C/C++, CUDA, Rust, Python, JavaScript, Shell (Fish, Bash, tcsh), LaTeX/Typst
 
-*Tools & Libraries:* NumPy, SciPy, Docker, Git, CMake, XMake, INDI
+*Scientific Computing:* NumPy, SciPy, GPU/CUDA acceleration, FFT & signal processing, electromagnetic simulation (RCWA)
 
-*Instrumentation:* Tunable IR laser control, GigE camera acquisition, fiber switch automation, motorized polarization control, FITS data format
+*Tools & Libraries:* Qt/PySide6, Docker, Git, CMake, XMake, INDI, KaTeX
+
+*Instrumentation:* GPIB/VISA, RS-232, GigE Vision camera acquisition, tunable IR laser control, motorized polarization control, FITS & GDSII data formats
 
 *Operating Systems:* Linux (Arch, NixOS, Ubuntu), BSD, Windows
 
