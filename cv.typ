@@ -10,7 +10,12 @@
     Orlando, FL |
     #link("mailto:amarnath.patel@ucf.edu")[#text(fill: lc)[#underline[amarnath.patel\@ucf.edu]]] |
     #link("https://apatel.co")[#text(fill: lc)[#underline[apatel.co]]] |
-    #link("https://github.com/jeebuscrossaint")[#text(fill: lc)[#underline[github.com/jeebuscrossaint]]]
+    #link("https://github.com/jeebuscrossaint")[#text(fill: lc)[#underline[github.com/jeebuscrossaint]]] |
+    #link("https://orcid.org/0009-0008-9460-082X")[#text(fill: lc)[#underline[ORCID 0009-0008-9460-082X]]]
+  ]
+  #v(0.2em)
+  #text(size: 9.5pt, style: "italic")[
+    Research interests: optical instrumentation & photonics, scientific/GPU computing, and machine learning for the physical sciences
   ]
 ]
 #v(0.2em)
