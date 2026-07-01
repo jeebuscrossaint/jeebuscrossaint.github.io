@@ -113,7 +113,7 @@
   column-gutter: 1em,
   [*Batch Processing for Automated Grading via Azure OpenAI*], [June 2026]
 )
-University of Central Florida, Downtown Campus. ESTELA project software (Physics Education Research); presented by Dr. Zhongzhou Chen.
+University of Central Florida, Downtown Campus. ESTELA project (Physics Education Research, Dr. Zhongzhou Chen).
 
 #v(0.15em)
 #grid(
