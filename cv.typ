@@ -131,30 +131,17 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: lc)[#underline[CELERIS]]] — GPU-Accelerated Metalens Design & EM Solver*], [2026]
 )
-- Unattended pipeline measuring a photonic lantern's wavelength-dependent complex transfer matrix via off-axis digital holography. Orchestrates a tunable IR laser, fiber switch, motorized polarization controller, and GigE InGaAs camera; auto-optimizes polarization for fringe contrast, then for each port × wavelength reconstructs the complex field (FFT sideband demodulation → Butterworth filter → quadratic-phase correction) and decomposes it into LP modes — one transfer-matrix row per shot, ~92% reconstruction fidelity. Ships as a single native Windows executable.
+- From-scratch, validated electromagnetic solver for metalens design via rigorous coupled-wave analysis (RCWA): 1D TE/TM and 2D vectorial formulations, stable scattering-matrix recursion, and dispersion models (Sellmeier, tabulated n,k).
+- CUDA-accelerated far-field analysis (600–700× over a 16-core CPU); inverse-design optimizer and fabrication-ready GDSII export, from a CLI or native desktop GUI. C++/CUDA with Python bindings.
 
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: lc)[#underline[PolyOculus]]] — 8-Telescope Array Control Software*], [January 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/coat")[#text(fill: lc)[#underline[coat]]] — Cross-Platform Color-Scheme Configurator*], [2026]
 )
-- INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array. Part of ongoing astrophotonics research at UCF CREOL.
-
-#v(0.1em)
-#grid(
-  columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/estela")[#text(fill: lc)[#underline[ESTELA]]] — Problem Bank Visualizer & Exam Generator*], [March 2026 – Present]
-)
-- Rust backend, vanilla JS frontend. Parses YAML problem banks across 13 topic areas and 11 question types. Renders LaTeX via KaTeX. Exports multi-version exams as LaTeX or print-ready HTML/PDF. NSF/Gates-funded research tool.
-
-#v(0.1em)
-#grid(
-  columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: lc)[#underline[gentec-camera]]] — IR Beam Profiling SDK*], [November 2025]
-)
-- Python SDK wrapper for Gentec IR beam profiling camera. Automated acquisition, real-time Gaussian beam analysis, FITS output for optical instrumentation research.
+- Rust CLI that applies Base16/Base24 color schemes across 22 Linux applications and themes Windows system colors from a single config file; compatible with the ~700-scheme tinted-theming ecosystem, with a terminal scheme browser and live RGB previews.
 
 /* ── SKILLS ── */
 #v(0.2em)
