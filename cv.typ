@@ -54,10 +54,10 @@
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
 - Developing instrumentation and automation software for astrophotonics research spanning CREOL and the UCF Physics Department.
-- Built an unattended pipeline that measures the wavelength-dependent complex transfer matrix of a photonic lantern via off-axis digital holography, coordinating 4 instruments across all-port × C-band (1525–1575 nm) sweeps at ~92% reconstruction fidelity (building on the method of Dobias et al., _Opt. Express_ 2026).
+- Built an unattended pipeline that measures the wavelength-dependent complex transfer matrix of a photonic lantern via #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]], coordinating 4 instruments across all-port × C-band (1525–1575 nm) sweeps at ~92% reconstruction fidelity (building on the method of Dobias et al., _Opt. Express_ 2026).
 - Implemented the reconstruction chain: FFT sideband isolation and demodulation, Butterworth filtering, and numerically optimized quadratic-phase correction, feeding LP-mode decomposition to recover complex modal amplitude and phase.
-- Developing PolyOculus, control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation.
-- Developed Python SDK wrapper (gentec-camera) for an IR beam profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
+- Developing #link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: lc)[#underline[PolyOculus]]], control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation.
+- Developed Python SDK wrapper (#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: lc)[#underline[gentec-camera]]]) for an IR beam profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
 
 #v(0.15em)
 #grid(
@@ -65,7 +65,7 @@
   [*UCF Physics Department — Paid Undergraduate Research Assistant*], [March 2026 – Present]
 )
 #grid(columns: (1fr,), [_Physics Education Research — Supervisor: Dr. Zhongzhou Chen_])
-- Developing ESTELA, an automated system that generates multi-version isomorphic physics exams from AI-assisted problem banks for introductory STEM courses.
+- Developing #link("https://github.com/jeebuscrossaint/estela")[#text(fill: lc)[#underline[ESTELA]]], an automated system that generates multi-version isomorphic physics exams from AI-assisted problem banks for introductory STEM courses.
 - Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
 - Funded by NSF award 2421299 and Gates Foundation INV-076932.
 
