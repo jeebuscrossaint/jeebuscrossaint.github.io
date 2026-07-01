@@ -1,14 +1,16 @@
 #set page(margin: (x: 0.8in, y: 0.6in))
 #set text(font: "Libertinus Serif", size: 10pt)
-#set par(justify: true)
+#set par(justify: false)
+#let lc = rgb("#173a5e")
 
 #align(center)[
   #text(size: 15pt, weight: "bold")[AMARNATH S. PATEL]
   #v(0.15em)
   #text(size: 10.5pt)[
-    #link("mailto:amarnath.patel@ucf.edu")[#text(fill: blue)[#underline[amarnath.patel\@ucf.edu]]] |
-    #link("https://apatel.co")[#text(fill: blue)[#underline[apatel.co]]] |
-    #link("https://github.com/jeebuscrossaint")[#text(fill: blue)[#underline[github.com/jeebuscrossaint]]]
+    Orlando, FL |
+    #link("mailto:amarnath.patel@ucf.edu")[#text(fill: lc)[#underline[amarnath.patel\@ucf.edu]]] |
+    #link("https://apatel.co")[#text(fill: lc)[#underline[apatel.co]]] |
+    #link("https://github.com/jeebuscrossaint")[#text(fill: lc)[#underline[github.com/jeebuscrossaint]]]
   ]
 ]
 #v(0.2em)
@@ -48,11 +50,12 @@
 
 #grid(
   columns: (1fr, auto),
-  [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]], CREOL — Undergraduate Researcher*], [August 2025 – Present]
+  [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: lc)[#underline[UCF Astrophotonics Lab]]], CREOL — Undergraduate Researcher*], [August 2025 – Present]
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
-- Developing instrumentation and automation software for astrophotonics research at the intersection of photonics and observational astronomy, spanning CREOL and the UCF Physics Department.
-- Built an unattended acquisition-and-reconstruction pipeline that measures the wavelength-dependent complex transfer matrix of a photonic lantern via off-axis digital holography (replicating Dobias et al., _Opt. Express_ 2026); coordinates 4 instruments across all-port × C-band (1525–1575 nm) sweeps, with FFT sideband isolation, Butterworth filtering, quadratic-phase correction, and per-hologram fidelity optimization feeding LP-mode decomposition to recover complex modal amplitude and phase.
+- Developing instrumentation and automation software for astrophotonics research spanning CREOL and the UCF Physics Department.
+- Built an unattended pipeline that measures the wavelength-dependent complex transfer matrix of a photonic lantern via off-axis digital holography, coordinating 4 instruments across all-port × C-band (1525–1575 nm) sweeps at ~92% reconstruction fidelity (building on the method of Dobias et al., _Opt. Express_ 2026).
+- Implemented the reconstruction chain: FFT sideband isolation and demodulation, Butterworth filtering, and numerically optimized quadratic-phase correction, feeding LP-mode decomposition to recover complex modal amplitude and phase.
 - Developing PolyOculus, control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation.
 - Developed Python SDK wrapper (gentec-camera) for an IR beam profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
 
@@ -62,14 +65,14 @@
   [*UCF Physics Department — Paid Undergraduate Research Assistant*], [March 2026 – Present]
 )
 #grid(columns: (1fr,), [_Physics Education Research — Supervisor: Dr. Zhongzhou Chen_])
-- Developing ESTELA, an automated multi-version exam generation system for AI-assisted isomorphic physics problem banks, supporting scalable and equitable assessment infrastructure for introductory STEM courses.
+- Developing ESTELA, an automated system that generates multi-version isomorphic physics exams from AI-assisted problem banks for introductory STEM courses.
 - Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
 - Funded by NSF award 2421299 and Gates Foundation INV-076932.
 
 #v(0.15em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]] (High School)*], [January 2024 – March 2025]
+  [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: lc)[#underline[FAU Grant-Funded AI Safety Research Project]]] (High School)*], [January 2024 – March 2025]
 )
 #grid(columns: (1fr,), [_Supervisor: Tucker Hindle, Florida Atlantic University_])
 - Benchmarked 10+ coherence and detection methods (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences to evaluate approaches for identifying AI-generated text.
@@ -93,7 +96,7 @@
 #v(0.15em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: blue)[#underline[Advanced Experimental Vehicles]]] — Programmer, Leader, Builder (High School)*], [November 2023 – May 2025]
+  [*#link("https://github.com/YamanDevelopment/AEV-Software")[#text(fill: lc)[#underline[Advanced Experimental Vehicles]]] — Programmer, Leader, Builder (High School)*], [November 2023 – May 2025]
 )
 - Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds.
 - Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
@@ -110,7 +113,7 @@
   column-gutter: 1em,
   [*Batch Processing for Automated Grading via Azure OpenAI*], [June 2026]
 )
-University of Central Florida, Downtown Campus.
+University of Central Florida, Downtown Campus. Presented work from the ESTELA project (Physics Education Research, Dr. Zhongzhou Chen).
 
 #v(0.15em)
 #grid(
@@ -128,28 +131,28 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: blue)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 – Present]
 )
 - Unattended pipeline measuring a photonic lantern's wavelength-dependent complex transfer matrix via off-axis digital holography. Orchestrates a tunable IR laser, fiber switch, motorized polarization controller, and GigE InGaAs camera; auto-optimizes polarization for fringe contrast, then for each port × wavelength reconstructs the complex field (FFT sideband demodulation → Butterworth filter → quadratic-phase correction) and decomposes it into LP modes — one transfer-matrix row per shot, ~92% reconstruction fidelity. Ships as a single native Windows executable.
 
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: blue)[#underline[PolyOculus]]] — 8-Telescope Array Control Software*], [January 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: lc)[#underline[PolyOculus]]] — 8-Telescope Array Control Software*], [January 2026 – Present]
 )
 - INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array. Part of ongoing astrophotonics research at UCF CREOL.
 
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/estela")[#text(fill: blue)[#underline[ESTELA]]] — Problem Bank Visualizer & Exam Generator*], [March 2026 – Present]
+  [*#link("https://github.com/jeebuscrossaint/estela")[#text(fill: lc)[#underline[ESTELA]]] — Problem Bank Visualizer & Exam Generator*], [March 2026 – Present]
 )
 - Rust backend, vanilla JS frontend. Parses YAML problem banks across 13 topic areas and 11 question types. Renders LaTeX via KaTeX. Exports multi-version exams as LaTeX or print-ready HTML/PDF. NSF/Gates-funded research tool.
 
 #v(0.1em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]] — IR Beam Profiling SDK*], [November 2025]
+  [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: lc)[#underline[gentec-camera]]] — IR Beam Profiling SDK*], [November 2025]
 )
 - Python SDK wrapper for Gentec IR beam profiling camera. Automated acquisition, real-time Gaussian beam analysis, FITS output for optical instrumentation research.
 
@@ -182,10 +185,9 @@ _Physics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Geometric Optics & Lab (A)],               [Modern Physics \[PHY 3101\] (A)],
-  [Chemistry Fundamentals I (A)],              [Chemistry Fundamentals II (IP)],
-  [Quantum Information Processing (A)],        [Mathematical Methods for Physics \[PHZ 3113\] (A)],
-  [Independent Research \[PHY 4912\] (IP)],    [Electricity & Magnetism I (IP)],
+  [Geometric Optics & Lab],                    [Modern Physics \[PHY 3101\]],
+  [Quantum Information Processing],             [Mathematical Methods for Physics \[PHZ 3113\]],
+  [Independent Research \[PHY 4912\] (In Progress)], [Electricity & Magnetism I (In Progress)],
 )
 
 #v(0.15em)
@@ -194,9 +196,8 @@ _Mathematics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Statistics \[STA 2023\] (A)],                [Applied Linear Algebra \[MAS 3105\] (A)],
-  [Linear Algebra (Proof-Based) \[MAS 3106\] (IP)], [Complex Analysis \[MAA 4402\] (A)],
-  [Partial Differential Equations (IP)],       [Graph Theory (IP)],
+  [Applied Linear Algebra \[MAS 3105\]],        [Complex Analysis \[MAA 4402\]],
+  [Linear Algebra (Proof-Based) \[MAS 3106\] (In Progress)], [Partial Differential Equations (In Progress)],
 )
 
 #v(0.15em)
@@ -205,8 +206,8 @@ _Computer Science_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [C Programming \[EGN 3211\] (A)],            [Discrete Structures (A)],
-  [Object-Oriented Programming (IP)],         [],
+  [C Programming \[EGN 3211\]],                [Discrete Structures],
+  [Object-Oriented Programming (In Progress)], [],
 )
 
 #v(0.25em)
@@ -217,7 +218,7 @@ _Physics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [General Physics I (C+)],                   [General Physics II — Honors (A)],
+  [General Physics I],                        [General Physics II — Honors],
 )
 
 #v(0.15em)
@@ -226,9 +227,9 @@ _Mathematics_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Calculus I (A−)],                          [Calculus II (A−)],
-  [Honors Calculus III (A)],                  [Ordinary Differential Equations \[MAP 2302\] (A)],
-  [Elementary Matrix Algebra \[MAS 2103\] (B)], [],
+  [Calculus I],                               [Calculus II],
+  [Honors Calculus III],                      [Ordinary Differential Equations \[MAP 2302\]],
+  [Elementary Matrix Algebra \[MAS 2103\]],   [],
 )
 
 #v(0.15em)
@@ -237,9 +238,9 @@ _Computer Science_
   columns: (1fr, 1fr),
   column-gutter: 1em,
   row-gutter: 0.3em,
-  [Data Structures & Algorithms (A)],         [Computer Logic Design (A)],
-  [Computer Architecture (A−)],               [Deep Learning \[CAP 4613\] (A)],
-  [C++ Programming \[COP 3014\] (A)],          [Web Development \[COP 3813\] (A)],
+  [Data Structures & Algorithms],             [Computer Logic Design],
+  [Computer Architecture],                    [Deep Learning \[CAP 4613\]],
+  [C++ Programming \[COP 3014\]],              [Web Development \[COP 3813\]],
 )
 
 /* ── HONORS ── */
