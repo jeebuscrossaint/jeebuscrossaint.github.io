@@ -122,6 +122,19 @@ University of Central Florida, Downtown Campus. ESTELA project (Physics Educatio
 )
 Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic University.
 
+/* ── TECHNICAL REPORTS ── */
+#v(0.2em)
+#line(length: 100%, stroke: 0.3pt)
+#v(0.1em)
+#text(size: 11pt, weight: "bold")[TECHNICAL REPORTS]
+#v(0.1em)
+
+#grid(
+  columns: (1fr, auto),
+  [*#link("https://apatel.co/ai-safety.pdf")[#text(fill: lc)[#underline[Coherence and Detection Approaches for Identifying AI-Generated Text]]]*], [2025]
+)
+- Empirical study of AI-text detection and adversarial evasion: benchmarked 10 coherence and detection methods (GPT-2 perplexity best, 3.35× separation; RoBERTa the only effective detector) and built four evasion pipelines, characterizing a consistent quality–evasion tradeoff. Grant-funded, Florida Atlantic University.
+
 /* ── PROJECTS ── */
 #v(0.2em)
 #line(length: 100%, stroke: 0.3pt)
