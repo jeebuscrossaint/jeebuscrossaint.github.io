@@ -1,6 +1,6 @@
-#set page(margin: (x: 0.8in, y: 0.34in))
+#set page(margin: (x: 0.8in, y: 0.3in))
 #set text(font: "Libertinus Serif", size: 8.8pt)
-#set par(leading: 0.46em)
+#set par(leading: 0.43em)
 #set par(justify: true)
 #align(center)[
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
@@ -34,7 +34,7 @@
   [Computer Science coursework - High School Diploma (111 Credit Hours)], [August 2021 - May 2025]
 )
 #v(-0.5em)
-- Relevant Coursework: Deep Learning, Data Structures & Algorithms, Computer Logic Design, Structured Computer Architecture, Internet Computing
+- Relevant Coursework: Deep Learning, Data Structures & Algorithms, Computer Logic Design, Structured Computer Architecture
 #text(size: 11pt, weight: "bold")[PROFESSIONAL EXPERIENCE]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
@@ -93,14 +93,15 @@
 - INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array; part of ongoing astrophotonics research at UCF CREOL.
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]]*], [November 2025]
+  [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: blue)[#underline[CELERIS]]] — GPU-Accelerated Metalens Design & EM Solver*], [2026]
 )
 #v(-0.5em)
-- Python SDK wrapper for a Gentec Beamage 4M IR beam profiler (2048×2048, 1495–1595 nm) enabling automated acquisition, real-time 4σ beam analysis, and FITS output for optical instrumentation pipelines.
+- From-scratch, validated electromagnetic solver for metalens design via rigorous coupled-wave analysis (1D TE/TM + 2D vectorial formulations, scattering-matrix recursion, Sellmeier/tabulated dispersion); agrees with analytic TMM to 1e-6.
+- CUDA-accelerated far-field analysis at 675× speedup (23.9 s → 35 ms over 92K pillars); inverse-design optimizer and fabrication-ready GDSII export from a CLI or native GUI. C++/CUDA with Python bindings.
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
-*Languages:* C/C++, Rust, Python, VHDL, Shell (Fish, Bash, tcsh) \
+*Languages:* C/C++, CUDA, Rust, Python, VHDL, Shell (Fish, Bash, tcsh) \
 #v(-0.6em)
 *Tools & Frameworks:* Docker, Git, CMake, XMake, NumPy, SciPy, INDI, VirtualBox, VMware, QEMU \
 #v(-0.6em)
