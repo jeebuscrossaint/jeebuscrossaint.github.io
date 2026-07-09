@@ -50,6 +50,11 @@
   .card-name { font-weight:800; font-size:clamp(1.7rem,7vw,2.1rem); line-height:.9; letter-spacing:-0.035em; text-transform:uppercase; }
   .card-name .d { color:var(--accent); }
   .card-handle { font-size:.64rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-soft); white-space:nowrap; padding-bottom:3px; }
+  .card-bio { padding:17px 24px 19px; border-bottom:1px solid var(--rule); }
+  .card-bio p { margin:0; font-size:.9rem; line-height:1.5; color:var(--ink); }
+  .card-bio .dim { color:var(--ink-soft); }
+  .card-bio .lang { color:var(--accent); font-weight:600; }
+  .card-bio .note { margin-top:11px; font-size:.84rem; color:var(--ink-soft); }
   .card-links { display:flex; flex-direction:column; }
   .card-links a { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 24px; border-bottom:1px solid var(--rule-2); transition:background .16s ease, padding-left .16s ease; }
   .card-links a:last-child { border-bottom:none; }
@@ -80,6 +85,10 @@
     <div class="card-head">
       <div class="card-name">Amarnath<br>Patel<span class="d">.</span></div>
       <div class="card-handle">apatel.co</div>
+    </div>
+    <div class="card-bio">
+      <p>Physics <span class="dim">(optics &amp; lasers)</span> &amp; math student, heavily into CS. Astrophotonics @ CREOL, physics-ed research @ UCF Physics. Almost exclusively <span class="lang">C++</span> &amp; <span class="lang">Python</span>.</p>
+      <p class="note">Always up for interesting collaborations &amp; open source to contribute to — also, i want money.</p>
     </div>
     <nav class="card-links">
       <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener"><span class="k">github</span><span class="v">jeebuscrossaint ↗</span></a>
