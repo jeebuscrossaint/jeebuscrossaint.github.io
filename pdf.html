@@ -189,7 +189,7 @@
     <a href="index.html">home</a><span class="sep">//</span>
     <a href="index.html#writing">writing</a><span class="sep">//</span>
     <a href="friends.html">links</a><span class="sep">//</span>
-    <a href="pdf.html?file=resume-research.pdf" id="nav-resume">résumé</a><span class="sep">//</span>
+    <a href="pdf.html?file=resume.pdf" id="nav-resume">résumé</a><span class="sep">//</span>
     <a href="pdf.html?file=cv.pdf" id="nav-cv">cv</a><span class="sep">//</span>
     <a href="https://github.com/jeebuscrossaint" target="_blank">github</a><span class="sep">//</span>
     <a href="mailto:apatel6ty@protonmail.com">email</a><span class="sep">//</span>
@@ -197,11 +197,8 @@
 </div>
 
 <div id="tab-bar">
-    <span class="tab-lbl">variant &rsaquo;</span>
-    <button class="tab-btn" data-file="resume-research.pdf">research</button>
-    <button class="tab-btn" data-file="resume-physics.pdf">physics</button>
-    <button class="tab-btn" data-file="resume-swe.pdf">swe</button>
-    <button class="tab-btn" data-file="resume.pdf">general</button>
+    <span class="tab-lbl">document &rsaquo;</span>
+    <button class="tab-btn" data-file="resume.pdf">résumé</button>
     <button class="tab-btn" data-file="cv.pdf">cv</button>
 </div>
 
@@ -235,7 +232,7 @@
 <script>
 (function(){
     const params  = new URLSearchParams(window.location.search);
-    let   curFile = params.get('file') || 'resume-research.pdf';
+    let   curFile = params.get('file') || 'resume.pdf';
 
     pdfjsLib.GlobalWorkerOptions.workerSrc =
         'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';

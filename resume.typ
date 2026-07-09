@@ -1,6 +1,6 @@
-#set page(margin: (x: 0.8in, y: 0.38in))
+#set page(margin: (x: 0.8in, y: 0.34in))
 #set text(font: "Libertinus Serif", size: 8.8pt)
-#set par(leading: 0.5em)
+#set par(leading: 0.46em)
 #set par(justify: true)
 #align(center)[
   #text(size: 14pt, weight: "bold")[AMARNATH S. PATEL]
@@ -42,14 +42,13 @@
 #v(-0.6em)
 #grid(columns: (1fr,), [_#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: blue)[#underline[UCF Astrophotonics Lab]]], CREOL — Dr. Stephen Eikenberry_])
 #v(-0.4em)
-- Conducting research at the intersection of photonics and observational astronomy, developing instrumentation software spanning CREOL and the UCF Physics Department.
-- Built an automated digital holography pipeline orchestrating 4 instruments (tunable IR laser, fiber switch, motorized polarization controller, GigE InGaAs camera) across 7-leg × 7-wavelength (1540–1570 nm) sweeps.
+- Built an automated digital holography pipeline coordinating 4 lab instruments (HP 8168E tunable IR laser, DiCon GP700 7-port fiber switch, Thorlabs MPC320 polarization controller, Xenics Bobcat 320 GigE InGaAs camera) over GPIB/VISA, RS-232, and GigE Vision across port × wavelength C-band sweeps (1525–1575 nm).
 - Developing PolyOculus, control software for an 8-telescope photometric observation array with INDI-protocol mount control, focuser automation, and RA/Dec coordinate slewing.
 #grid(columns: (1fr, auto), [*Software Engineer — Research*], [March 2026 - Present])
 #v(-0.6em)
 #grid(columns: (1fr,), [_UCF Physics Department — Dr. Zhongzhou Chen_])
 #v(-0.4em)
-- Developing ESTELA, an automated multi-version exam generation system for AI-assisted isomorphic physics problem banks, supporting scalable and equitable assessment infrastructure for introductory STEM courses.
+- Developing ESTELA, an automated exam generation system that produces multi-version isomorphic physics exams from a 615-problem bank, supporting scalable and equitable assessment infrastructure for introductory STEM courses.
 - Funded by NSF award 2421299 and Gates Foundation INV-076932.
 #grid(columns: (1fr, auto), [*Teaching Assistant*], [August 2024 - May 2025])
 #v(-0.6em)
@@ -66,9 +65,9 @@
 #v(-0.6em)
 #grid(columns: (1fr,), [_#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: blue)[#underline[FAU Grant-Funded AI Safety Research Project]]], Florida Atlantic University_])
 #v(-0.4em)
-- Benchmarked 10+ coherence and detection approaches (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences to evaluate identification of AI-generated text.
-- Identified GPT-2 perplexity as the strongest discriminator (3.3× gap); BERT NSP failed to distinguish coherent from incoherent text.
-- Characterized a fundamental quality–evasion tradeoff across all humanization approaches; presented at Wilkes Honors College Symposium.
+- Benchmarked 10 coherence and detection methods (GPT-2 perplexity, BERT NSP, RoBERTa, LSA, NLI, burstiness) on a 255K-passage corpus to evaluate identification of AI-generated text.
+- Identified GPT-2 perplexity as the strongest discriminator (3.35× separation, 17.5 vs 58.5); BERT NSP failed to distinguish coherent from incoherent text.
+- Built 4 adversarial evasion pipelines (iterative rewriting, tree-search decoding, list-branching, RL) generating 3,125 sequences; characterized a consistent quality–evasion tradeoff. Presented at Wilkes Honors College Symposium.
 #text(size: 11pt, weight: "bold")[PROJECTS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
@@ -77,29 +76,27 @@
   [*#link("https://github.com/jeebuscrossaint/estela")[#text(fill: blue)[#underline[ESTELA]]] - Problem Bank Visualizer & Exam Generator*], [March 2026 - Present]
 )
 #v(-0.5em)
-- Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types.
-- Renders LaTeX math via KaTeX and exports multi-version exams as LaTeX or print-ready HTML/PDF.
+- Built in Rust (Tauri 2) with a vanilla JS frontend; parses 615 problems across 29 YAML banks spanning 13 topic areas and 11 question types.
+- Generates up to 10 isomorphic exam versions with auto-generated answer keys; renders LaTeX math via KaTeX and exports to 4 formats (LaTeX, Word, HTML, ZIP bundle).
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: blue)[#underline[Photonic Lantern Digital Holography Automation]]]*], [January 2026 - Present]
 )
 #v(-0.5em)
-- Automated data acquisition and processing pipeline for photonic lantern characterization via digital holography across 7-leg × 7-wavelength (1540–1570 nm) sweeps.
-- Implements FFT-based fringe extraction, automated polarization optimization, and full 7-mode LP decomposition.
+- Automated data acquisition and processing pipeline for photonic lantern characterization via off-axis digital holography across port × wavelength C-band sweeps (1525–1575 nm).
+- Implements FFT sideband demodulation, order-4 Butterworth filtering, quadratic-phase correction, and 8-mode LP decomposition at ~98% reconstruction fidelity.
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: blue)[#underline[PolyOculus]]]*], [January 2026 - Present]
 )
 #v(-0.5em)
-- INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array.
-- Part of ongoing astrophotonics research at UCF CREOL under Dr. Eikenberry.
+- INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array; part of ongoing astrophotonics research at UCF CREOL.
 #grid(
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: blue)[#underline[gentec-camera]]]*], [November 2025]
 )
 #v(-0.5em)
-- Python SDK wrapper for IR beam profiling camera enabling automated acquisition and real-time beam analysis.
-- Outputs FITS format for integration with optical instrumentation research pipelines.
+- Python SDK wrapper for a Gentec Beamage 4M IR beam profiler (2048×2048, 1495–1595 nm) enabling automated acquisition, real-time 4σ beam analysis, and FITS output for optical instrumentation pipelines.
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
