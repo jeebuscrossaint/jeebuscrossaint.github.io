@@ -1,0 +1,53 @@
+name: sync color schemes
+
+# Regenerates schemes.js from tinted-theming/schemes so new palettes they add
+# show up here automatically. Runs weekly, or on demand from the Actions tab.
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-schemes
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Checkout tinted-theming schemes
+        uses: actions/checkout@v4
+        with:
+          repository: tinted-theming/schemes
+          ref: master
+          path: tt-schemes
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Regenerate schemes.js
+        run: python scripts/build-schemes.py
+
+      - name: Commit if changed
+        run: |
+          rm -rf tt-schemes
+          if git diff --quiet -- schemes.js; then
+            echo "schemes.js already up to date"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add schemes.js
+          git commit -m "chore: sync color schemes from tinted-theming"
+          git push

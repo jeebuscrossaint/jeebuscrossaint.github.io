@@ -33,7 +33,9 @@
   .btn:hover { color:var(--ink); border-color:var(--ink); }
 
   #viewer { flex:1; overflow:auto; padding:clamp(16px,4vw,40px); display:flex; flex-direction:column; align-items:center; gap:14px; }
-  #viewer canvas { max-width:100%; height:auto; box-shadow:0 1px 40px rgba(0,0,0,.5); display:block; }
+  #viewer canvas { max-width:100%; height:auto; box-shadow:0 1px 40px rgba(0,0,0,.5); display:block; animation:fade .5s ease both; }
+  @keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion:reduce){ #viewer canvas { animation:none; } }
   .status { color:var(--ink-soft); font-family:ui-monospace,Menlo,monospace; font-size:.85rem; margin-top:40px; }
   .status.err { color:#e0564a; }
 </style>

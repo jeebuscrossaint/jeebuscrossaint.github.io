@@ -37,7 +37,8 @@
   .entry .date { font-size:.74rem; letter-spacing:.05em; color:var(--ink-soft); }
   .entry .t { font-size:1.35rem; font-weight:700; letter-spacing:-0.02em; margin:4px 0 3px; }
   .entry .d { font-size:.95rem; color:var(--ink-soft); }
-  .entry .t .ar { color:var(--accent); }
+  .entry .t .ar { color:var(--accent); display:inline-block; transition:transform .18s ease; }
+  .entry:hover .t .ar { transform:translate(3px,0); }
 
   /* rendered markdown */
   #post-content h1 { font-size:clamp(1.9rem,5vw,3rem); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin:0 0 .5em; text-wrap:balance; }
@@ -60,6 +61,16 @@
   #post-content td { padding:.5em .6em; border-bottom:1px solid var(--rule-2); color:var(--ink-soft); }
   .loading { color:var(--ink-soft); font-family:ui-monospace,Menlo,monospace; font-size:.9rem; }
   .load-err { color:#e0564a; }
+
+  /* entrance reveal */
+  @keyframes rise { from { opacity:0; transform:translateY(11px); } to { opacity:1; transform:none; } }
+  @keyframes fade { from { opacity:0; } to { opacity:1; } }
+  .idx .idx-title, .idx .entry { opacity:0; animation:rise .6s cubic-bezier(.2,.7,.2,1) both; }
+  .idx .idx-title { animation-delay:.02s; }
+  .idx .entry:nth-child(2){animation-delay:.10s} .idx .entry:nth-child(3){animation-delay:.16s}
+  .idx .entry:nth-child(4){animation-delay:.22s} .idx .entry:nth-child(n+5){animation-delay:.28s}
+  .rdr { animation:fade .7s ease both; }
+  @media (prefers-reduced-motion:reduce){ .idx .idx-title, .idx .entry, .rdr { animation:none; opacity:1; } }
 </style>
 </head>
 <body>
@@ -84,6 +95,7 @@
 
   if (!post) {
     document.title = 'writing — apatel.co';
+    area.className = 'idx';
     area.innerHTML =
       '<p class="idx-title">Writing</p>' +
       '<a class="entry" href="post.html?post=c-cpp-nixos-clangd-guide"><span class="date mono">2026 · 03 · 15</span><div class="t">Getting clangd to work on NixOS <span class="ar">→</span></div><div class="d">Fixing the “vector file not found” and iostream errors once and for all.</div></a>' +
@@ -98,6 +110,7 @@
     .then(function(r){ if(!r.ok) throw new Error('post not found: ' + post); return r.text(); })
     .then(function(md){
       area.innerHTML = marked.parse(md);
+      area.classList.add('rdr');
       var h1 = area.querySelector('h1');
       if (h1) document.title = h1.textContent + ' — apatel.co';
     })
