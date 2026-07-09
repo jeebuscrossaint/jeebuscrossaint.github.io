@@ -57,16 +57,19 @@
   .rv { opacity:0; transform:translateY(16px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
   .rv.in { opacity:1; transform:none; }
 
-  /* hero */
-  .hero { padding:clamp(56px,10vw,132px) 0 clamp(34px,5vw,64px); }
-  .eyebrow { display:flex; flex-wrap:wrap; gap:6px 22px; font-size:.74rem; text-transform:uppercase; letter-spacing:.15em; color:var(--ink-soft); margin-bottom:clamp(22px,3vw,34px); }
+  /* hero — deliberately sparse: name + field only; work is discovered on scroll */
+  .hero { min-height:calc(100svh - 53px); display:flex; flex-direction:column; justify-content:flex-end; padding:clamp(80px,14vh,180px) 0 clamp(30px,5vh,60px); }
+  .eyebrow { display:flex; flex-wrap:wrap; gap:6px 22px; font-size:.74rem; text-transform:uppercase; letter-spacing:.15em; color:var(--ink-soft); margin-bottom:clamp(18px,2.4vw,28px); }
   .eyebrow span { display:inline-flex; align-items:center; gap:8px; }
   .liveblip { width:7px; height:7px; border-radius:50%; background:var(--accent); animation:blip 2.4s ease-out infinite; }
   @keyframes blip { 0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent);} 70%{box-shadow:0 0 0 9px transparent;} 100%{box-shadow:0 0 0 0 transparent;} }
   .wordmark { font-weight:800; font-size:clamp(3rem,13vw,10.5rem); line-height:.85; letter-spacing:-0.046em; margin:0; text-transform:uppercase; text-wrap:balance; }
   .wordmark .amp { color:var(--accent); }
-  .thesis { margin:clamp(26px,4vw,42px) 0 0; max-width:34ch; font-size:clamp(1.15rem,2.3vw,1.62rem); line-height:1.34; font-weight:500; letter-spacing:-0.015em; }
-  .thesis b { color:var(--accent); font-weight:500; }
+  .scrollcue { margin-top:clamp(30px,5vh,56px); display:inline-flex; align-items:center; gap:10px; width:max-content; font-size:.72rem; text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft); transition:color .18s, opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .scrollcue:hover { color:var(--ink); }
+  .scrollcue .ar { animation:cbob 2s ease-in-out infinite; }
+  @keyframes cbob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(4px);} }
+  @media (prefers-reduced-motion:reduce) { .scrollcue .ar { animation:none; } .liveblip { animation:none; } }
 
   /* full-bleed stat band */
   .statband { border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
@@ -193,9 +196,9 @@
   </div>
 
   <header class="hero wrap">
-    <div class="eyebrow rv"><span><i class="liveblip"></i> Orlando, FL</span><span>UCF — Physics &amp; Mathematics</span><span>Builder &amp; Researcher</span></div>
+    <div class="eyebrow rv"><span><i class="liveblip"></i> Physics &amp; Mathematics — University of Central Florida</span></div>
     <h1 class="wordmark rv" style="transition-delay:.06s">Amarnath<br>Patel<span class="amp">.</span></h1>
-    <p class="thesis rv" style="transition-delay:.14s">I build <b>fast, correct software</b> — GPU compute, systems programming, and tools that do real work.</p>
+    <a class="scrollcue rv" href="#work" style="transition-delay:.18s"><span class="ar">↓</span> scroll</a>
   </header>
 
   <div class="statband">
