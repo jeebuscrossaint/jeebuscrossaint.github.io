@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Links & cool sites — Amarnath Patel">
-<title>links — apatel.co</title>
+<meta name="description" content="Friends — Amarnath Patel">
+<title>friends — apatel.co</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
 <script src="schemes.js"></script>
 <script src="theme.js"></script>
@@ -38,13 +38,25 @@
   .link .n .ar { color:var(--accent); font-size:.8rem; }
   .link .d { color:var(--ink-soft); font-size:.92rem; }
   .friends .link { grid-template-columns:12rem 1fr; }
+  .link .ar { display:inline-block; transition:transform .18s ease; }
+  .link:hover .ar { transform:translate(2px,-2px); }
   @media (max-width:540px){ .link, .friends .link { grid-template-columns:1fr; gap:2px; } }
+
+  /* entrance reveal */
+  @keyframes rise { from { opacity:0; transform:translateY(11px); } to { opacity:1; transform:none; } }
+  h1, .sub, .link { opacity:0; animation:rise .6s cubic-bezier(.2,.7,.2,1) both; }
+  .sub { animation-delay:.05s; }
+  .friends .link:nth-child(1){animation-delay:.10s} .friends .link:nth-child(2){animation-delay:.15s}
+  .friends .link:nth-child(3){animation-delay:.20s} .friends .link:nth-child(4){animation-delay:.25s}
+  .friends .link:nth-child(5){animation-delay:.30s} .friends .link:nth-child(6){animation-delay:.35s}
+  .friends .link:nth-child(7){animation-delay:.40s} .friends .link:nth-child(n+8){animation-delay:.45s}
+  @media (prefers-reduced-motion:reduce){ h1, .sub, .link { animation:none; opacity:1; } }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <a class="back" href="index.html">← <b>apatel.co</b> / links</a>
+  <a class="back" href="index.html">← <b>apatel.co</b> / friends</a>
   <div class="controls">
     <span class="schemetag mono" id="schemeTag"></span>
     <button class="btn" id="shuffleBtn" type="button" title="new random palette">⟳</button>
@@ -52,11 +64,10 @@
 </div>
 
 <main>
-  <h1>Friends &amp; links</h1>
-  <p class="sub">People I know, and corners of the web I keep coming back to.</p>
+  <h1>Friends</h1>
+  <p class="sub">People I know with corners of the web worth visiting.</p>
 
   <div class="group friends">
-    <h2>Friends</h2>
     <a class="link" href="https://zachl.tech" target="_blank" rel="noopener"><span class="n">zachary lopez <span class="ar">↗</span></span><span class="d">zachl.tech</span></a>
     <a class="link" href="https://jcamille.dev" target="_blank" rel="noopener"><span class="n">jossaya camille <span class="ar">↗</span></span><span class="d">jcamille.dev</span></a>
     <a class="link" href="https://str1ke.codes" target="_blank" rel="noopener"><span class="n">thandi menelas <span class="ar">↗</span></span><span class="d">str1ke.codes</span></a>
@@ -64,20 +75,6 @@
     <a class="link" href="https://makaip.com" target="_blank" rel="noopener"><span class="n">jason (makai) pindell <span class="ar">↗</span></span><span class="d">makaip.com</span></a>
     <a class="link" href="https://alexcastronovo.com" target="_blank" rel="noopener"><span class="n">alex castronovo <span class="ar">↗</span></span><span class="d">alexcastronovo.com</span></a>
     <a class="link" href="https://github.com/Valenciola" target="_blank" rel="noopener"><span class="n">valerie fils-aime <span class="ar">↗</span></span><span class="d">github/Valenciola</span></a>
-  </div>
-
-  <div class="group">
-    <h2>Web revival</h2>
-    <a class="link" href="https://neocities.org" target="_blank" rel="noopener"><span class="n">neocities <span class="ar">↗</span></span><span class="d">bring back personal homepages</span></a>
-    <a class="link" href="https://sadgrl.online" target="_blank" rel="noopener"><span class="n">sadgrl <span class="ar">↗</span></span><span class="d">webmastery resources &amp; layouts</span></a>
-    <a class="link" href="https://melonland.net" target="_blank" rel="noopener"><span class="n">melonland <span class="ar">↗</span></span><span class="d">indie web forum</span></a>
-  </div>
-
-  <div class="group">
-    <h2>Tools I like</h2>
-    <a class="link" href="https://wiki.archlinux.org" target="_blank" rel="noopener"><span class="n">arch wiki <span class="ar">↗</span></span><span class="d">best technical wiki on the internet</span></a>
-    <a class="link" href="https://godbolt.org" target="_blank" rel="noopener"><span class="n">godbolt <span class="ar">↗</span></span><span class="d">compiler explorer</span></a>
-    <a class="link" href="https://typst.app" target="_blank" rel="noopener"><span class="n">typst <span class="ar">↗</span></span><span class="d">latex but actually good</span></a>
   </div>
 </main>
 
