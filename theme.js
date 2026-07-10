@@ -25,6 +25,9 @@
     st.setProperty('--rule',rgba(fg,dark?0.14:0.18));
     st.setProperty('--rule-2',rgba(fg,dark?0.07:0.10));
     st.setProperty('--accent',ac);
+    var mc=document.querySelector('meta[name="theme-color"]');
+    if(!mc){ mc=document.createElement('meta'); mc.name='theme-color'; document.head.appendChild(mc); }
+    mc.content=c[0];
     window.__accent=hexRGB(ac); window.__dark=dark;
     lastName=s[0];
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+lastName+'</b>';
@@ -37,5 +40,12 @@
   document.addEventListener('DOMContentLoaded', function(){
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+lastName+'</b>';
     var b=document.getElementById('shuffleBtn'); if(b) b.addEventListener('click', function(){ apply(rand()); });
+  });
+
+  // press "r" anywhere to reroll the palette
+  document.addEventListener('keydown', function(e){
+    if(e.key!=='r'||e.metaKey||e.ctrlKey||e.altKey) return;
+    if(/^(input|textarea|select)$/i.test(e.target.tagName||'')) return;
+    apply(rand());
   });
 })();

@@ -7,6 +7,7 @@
 <title>Amarnath Patel — apatel.co</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
 <style>
+  @view-transition { navigation: auto; }
   :root {
     --bg:#09090B; --bg-2:#0F0F12; --ink:#EDECE8; --ink-soft:#8B8B87;
     --rule:rgba(255,255,255,0.13); --rule-2:rgba(255,255,255,0.06); --accent:#5B8CFF;
@@ -134,6 +135,9 @@
     st.setProperty('--rule',rgba(fg,curIsDark?0.14:0.18));
     st.setProperty('--rule-2',rgba(fg,curIsDark?0.07:0.10));
     st.setProperty('--accent',accentHex);
+    var mc=document.querySelector('meta[name="theme-color"]');
+    if(!mc){ mc=document.createElement('meta'); mc.name='theme-color'; document.head.appendChild(mc); }
+    mc.content=c[0];
     document.getElementById('wave').style.mixBlendMode = curIsDark?'screen':'multiply';
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+s[0]+'</b>';
   }
@@ -178,6 +182,7 @@
   }
   boot.addEventListener('click',finish);
   addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key==='Escape') finish(); });
+  addEventListener('keydown',function(e){ if(e.key==='r'&&!e.metaKey&&!e.ctrlKey&&!e.altKey) applyScheme(randomScheme()); });
 
   function randomScheme(){ return SCHEMES.length ? SCHEMES[Math.floor(Math.random()*SCHEMES.length)] : ['default','d','09090b0f0f12181818313131565654edece8f5e0dcb4befeff5555ffb86cf1fa8c50fa7b8be9fdbd93f9ff79c6ffb86c']; }
   var shuf=document.getElementById('shuffleBtn'); if(shuf) shuf.addEventListener('click',function(){ applyScheme(randomScheme()); });
