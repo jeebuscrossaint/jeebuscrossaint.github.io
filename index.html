@@ -104,7 +104,7 @@
   .btn { font-family:ui-monospace,Menlo,monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); background:none; border:1px solid var(--rule); padding:5px 9px; cursor:pointer; transition:color .18s, border-color .18s, background .18s; }
   .btn:hover { color:var(--ink); border-color:var(--ink); }
 
-  @media (prefers-reduced-motion:reduce) { .rv { opacity:1; transform:none; transition:none; } .blip { animation:none; } }
+  @media (prefers-reduced-motion:reduce) { .rv { opacity:1; transform:none; transition:none; } }
 </style>
 <script src="nav.js"></script>
 </head>
@@ -190,11 +190,13 @@
   /* ambient field */
   var cvs=document.getElementById('wave'), ctx=cvs.getContext('2d',{alpha:true});
   var SC=9, W=0,H=0, cols=0,rows=0, img=null,data=null;
-  var mx=0.5,my=0.35, tmx=0.5,tmy=0.35, ignite=0, running=true;
+  var mx=0.5,my=0.35, tmx=0.5,tmy=0.35, ignite=0, running=true, animate=(!reduce && !lowData), rafId=0;
+  function schedule(){ if(!rafId) rafId=requestAnimationFrame(frame); }
   function resize(){ W=innerWidth; H=innerHeight; cols=Math.max(2,Math.ceil(W/SC)); rows=Math.max(2,Math.ceil(H/SC)); cvs.width=cols; cvs.height=rows; cvs.style.width=W+'px'; cvs.style.height=H+'px'; img=ctx.createImageData(cols,rows); data=img.data; }
   resize(); addEventListener('resize',resize);
   var src=[{x:0.18,y:0.22,k:0.42,w:1.7,ph:0},{x:0.82,y:0.30,k:0.36,w:1.3,ph:2.1},{x:0.55,y:0.85,k:0.48,w:2.1,ph:4.0}];
   function frame(t){
+    rafId=0;
     var time=t*0.001; tmx+=(mx-tmx)*0.035; tmy+=(my-tmy)*0.035;
     var R=curAccent[0],G=curAccent[1],B=curAccent[2], sx=[],sy=[],sk=[],sw=[],sp=[];
     for(var i=0;i<src.length;i++){var s=src[i]; sx.push((s.x+0.05*Math.sin(time*0.13+i))*cols); sy.push((s.y+0.05*Math.cos(time*0.11+i*1.7))*rows); sk.push(s.k); sw.push(s.w); sp.push(s.ph);}
@@ -207,10 +209,10 @@
       data[p]=R;data[p+1]=G;data[p+2]=B;data[p+3]=(v*maxA)|0; p+=4;
     }}
     ctx.putImageData(img,0,0);
-    if(running) requestAnimationFrame(frame);
+    if(running && animate) schedule();   // reduced-motion: render one static frame, don't loop
   }
   addEventListener('pointermove',function(e){mx=e.clientX/W; my=e.clientY/H;},{passive:true});
-  document.addEventListener('visibilitychange',function(){running=!document.hidden; if(running) requestAnimationFrame(frame);});
+  document.addEventListener('visibilitychange',function(){running=!document.hidden; if(running && animate) schedule();});
 
   /* device tilt (mobile): steer the field with the gyroscope, feeding the same mx/my the pointer uses */
   var tiltOn=false;
@@ -236,9 +238,9 @@
   function finish(){ if(skipped) return; skipped=true; ignite=1; boot.classList.add('done'); body.classList.add('lit'); }
   function igniteField(){ body.classList.add('lit');
     if(lowData){ return; }   // data-saver / reduced-data: skip the animated field, keep static bg
-    if(reduce){ ignite=1; requestAnimationFrame(frame); return; }
+    if(reduce){ ignite=1; schedule(); return; }   // one static frame, no animation loop
     var s=performance.now(); (function ramp(now){ ignite=Math.min(1,(now-s)/1400); if(ignite<1) requestAnimationFrame(ramp); })(performance.now());
-    requestAnimationFrame(frame);
+    schedule();
   }
   function start(){ igniteField();
     if(reduce){ boot.classList.add('reveal'); setTimeout(finish,120); return; }
