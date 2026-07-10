@@ -41,11 +41,4 @@
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+lastName+'</b>';
     var b=document.getElementById('shuffleBtn'); if(b) b.addEventListener('click', function(){ apply(rand()); });
   });
-
-  // press "r" anywhere to reroll the palette
-  document.addEventListener('keydown', function(e){
-    if(e.key!=='r'||e.metaKey||e.ctrlKey||e.altKey) return;
-    if(/^(input|textarea|select)$/i.test(e.target.tagName||'')) return;
-    apply(rand());
-  });
 })();
