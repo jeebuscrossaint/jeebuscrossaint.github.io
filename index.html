@@ -158,13 +158,14 @@
   function rgba(rgb,a){ return 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+a+')'; }
   var curAccent=[91,140,255], curIsDark=true;
 
-  function applyScheme(s){
+  function applyScheme(s, forced){
     var hx=s[2], c=[]; for(var ci=0;ci<16;ci++) c.push('#'+hx.substr(ci*6,6));
     var bg=hexRGB(c[0]), fg=hexRGB(c[5]);
     curIsDark = (s[1]==='d') || (s[1]!=='l' && lum(bg)<0.4);
     var cand=[13,14,12,11,9,8].map(function(i){return c[i];});
     var best=cand.filter(function(h){return contrast(hexRGB(h),bg)>=2.4;});
-    var accentHex = best.length ? best[Math.floor(Math.random()*best.length)] : c[13];
+    // reuse the stored accent so navigation keeps one palette; else pick fresh
+    var accentHex = (forced&&/^#[0-9a-f]{6}$/i.test(forced)) ? forced : (best.length ? best[Math.floor(Math.random()*best.length)] : c[13]);
     curAccent=hexRGB(accentHex);
     var st=root.style;
     st.setProperty('--bg',c[0]); st.setProperty('--bg-2',c[1]);
@@ -176,8 +177,15 @@
     if(!mc){ mc=document.createElement('meta'); mc.name='theme-color'; document.head.appendChild(mc); }
     mc.content=c[0];
     document.getElementById('wave').style.mixBlendMode = curIsDark?'screen':'multiply';
+    savePalette(s[0], accentHex);
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+s[0]+'</b>';
   }
+
+  // persist palette across navigation within a visit (sessionStorage; shared key with theme.js)
+  var PKEY='apatel.palette';
+  function savePalette(n,a){ try{ sessionStorage.setItem(PKEY, JSON.stringify({n:n,a:a})); }catch(e){} }
+  function readPalette(){ try{ return JSON.parse(sessionStorage.getItem(PKEY)); }catch(e){ return null; } }
+  function schemeByName(n){ for(var i=0;i<SCHEMES.length;i++) if(SCHEMES[i][0]===n) return SCHEMES[i]; return null; }
 
   /* ambient field */
   var cvs=document.getElementById('wave'), ctx=cvs.getContext('2d',{alpha:true});
@@ -187,7 +195,7 @@
   resize(); addEventListener('resize',resize);
   var src=[{x:0.18,y:0.22,k:0.42,w:1.7,ph:0},{x:0.82,y:0.30,k:0.36,w:1.3,ph:2.1},{x:0.55,y:0.85,k:0.48,w:2.1,ph:4.0}];
   function frame(t){
-    var time=t*0.001; tmx+=(mx-tmx)*0.06; tmy+=(my-tmy)*0.06;
+    var time=t*0.001; tmx+=(mx-tmx)*0.035; tmy+=(my-tmy)*0.035;
     var R=curAccent[0],G=curAccent[1],B=curAccent[2], sx=[],sy=[],sk=[],sw=[],sp=[];
     for(var i=0;i<src.length;i++){var s=src[i]; sx.push((s.x+0.05*Math.sin(time*0.13+i))*cols); sy.push((s.y+0.05*Math.cos(time*0.11+i*1.7))*rows); sk.push(s.k); sw.push(s.w); sp.push(s.ph);}
     var cxp=tmx*cols,cyp=tmy*rows,n=src.length,amp=ignite,p=0,m=n+1,maxA=curIsDark?130:105;
@@ -243,7 +251,7 @@
   function randomScheme(){ return SCHEMES.length ? SCHEMES[Math.floor(Math.random()*SCHEMES.length)] : ['default','d','09090b0f0f12181818313131565654edece8f5e0dcb4befeff5555ffb86cf1fa8c50fa7b8be9fdbd93f9ff79c6ffb86c']; }
   var shuf=document.getElementById('shuffleBtn'); if(shuf) shuf.addEventListener('click',function(){ applyScheme(randomScheme()); });
 
-  applyScheme(randomScheme());
+  (function restorePalette(){ var p=readPalette(); if(p&&p.n){ var s=schemeByName(p.n); if(s){ applyScheme(s,p.a); return; } } applyScheme(randomScheme()); })();
   start();
 })();
 </script>

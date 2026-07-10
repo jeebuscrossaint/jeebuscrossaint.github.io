@@ -12,13 +12,14 @@
   function contrast(a,b){ var l1=lum(a),l2=lum(b); return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05); }
   function rgba(r,a){ return 'rgba('+r[0]+','+r[1]+','+r[2]+','+a+')'; }
 
-  function apply(s){
+  function apply(s, forced){
     var hx=s[2], c=[]; for(var i=0;i<16;i++) c.push('#'+hx.substr(i*6,6));
     var bg=hexRGB(c[0]), fg=hexRGB(c[5]);
     var dark=(s[1]==='d')||(s[1]!=='l' && lum(bg)<0.4);
     var cand=[13,14,12,11,9,8].map(function(i){return c[i];});
     var best=cand.filter(function(h){return contrast(hexRGB(h),bg)>=2.4;});
-    var ac=best.length?best[Math.floor(Math.random()*best.length)]:c[13];
+    // reuse the stored accent so navigation keeps one palette; else pick fresh
+    var ac=(forced&&/^#[0-9a-f]{6}$/i.test(forced))?forced:(best.length?best[Math.floor(Math.random()*best.length)]:c[13]);
     var st=root.style;
     st.setProperty('--bg',c[0]); st.setProperty('--bg-2',c[1]);
     st.setProperty('--ink',c[5]); st.setProperty('--ink-soft',c[3]);
@@ -30,12 +31,21 @@
     mc.content=c[0];
     window.__accent=hexRGB(ac); window.__dark=dark;
     lastName=s[0];
+    save(s[0], ac);
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+lastName+'</b>';
   }
   function rand(){ return S.length ? S[Math.floor(Math.random()*S.length)] : ['default','d','09090b0f0f12181818313131565654edece8f5e0dcb4befeff5555ffb86cf1fa8c50fa7b8be9fdbd93f9ff79c6ffb86c']; }
 
+  // persist the chosen palette so it stays put across navigation within a visit
+  // (sessionStorage -> fresh random palette each new session, stable while browsing)
+  var KEY='apatel.palette';
+  function save(n,a){ try{ sessionStorage.setItem(KEY, JSON.stringify({n:n,a:a})); }catch(e){} }
+  function read(){ try{ return JSON.parse(sessionStorage.getItem(KEY)); }catch(e){ return null; } }
+  function byName(n){ for(var i=0;i<S.length;i++) if(S[i][0]===n) return S[i]; return null; }
+  function restore(){ var p=read(); if(p&&p.n){ var s=byName(p.n); if(s){ apply(s,p.a); return; } } apply(rand()); }
+
   window.__applyScheme=apply; window.__randScheme=rand;
-  apply(rand());
+  restore();
 
   document.addEventListener('DOMContentLoaded', function(){
     var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+lastName+'</b>';
