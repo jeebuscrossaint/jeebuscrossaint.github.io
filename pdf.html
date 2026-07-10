@@ -46,9 +46,15 @@
   .btn:hover { color:var(--ink); border-color:var(--ink); }
 
   #viewer { flex:1; overflow:auto; padding:clamp(16px,4vw,40px); display:flex; flex-direction:column; align-items:center; gap:14px; }
-  #viewer canvas { max-width:100%; height:auto; box-shadow:0 1px 40px rgba(0,0,0,.5); display:block; animation:fade .5s ease both; }
+  .page { position:relative; max-width:100%; box-shadow:0 1px 40px rgba(0,0,0,.5); animation:fade .5s ease both; }
+  #viewer canvas { display:block; max-width:100%; height:auto; }
   @keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
-  @media (prefers-reduced-motion:reduce){ #viewer canvas { animation:none; } }
+  @media (prefers-reduced-motion:reduce){ .page { animation:none; } }
+  /* pdf.js annotation layer — makes in-PDF hyperlinks clickable */
+  .annotationLayer { position:absolute; top:0; left:0; pointer-events:none; transform-origin:0 0; z-index:3; }
+  .annotationLayer section { position:absolute; text-align:initial; pointer-events:auto; box-sizing:border-box; transform-origin:0 0; }
+  .annotationLayer .linkAnnotation > a { position:absolute; font-size:1em; top:0; left:0; width:100%; height:100%; border-radius:2px; transition:background .15s, box-shadow .15s; }
+  .annotationLayer .linkAnnotation > a:hover { background:color-mix(in srgb, var(--accent) 24%, transparent); box-shadow:0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent); }
   .status { color:var(--ink-soft); font-family:ui-monospace,Menlo,monospace; font-size:.85rem; margin-top:40px; }
   .status.err { color:#e0564a; }
 </style>
@@ -85,6 +91,20 @@
     dlBtn.href = file; dlBtn.setAttribute('download', file);
   }
 
+  // minimal link service — core pdf.min.js doesn't ship PDFLinkService.
+  // external URLs (the only kind on the résumé/CV) just need addLinkAttributes.
+  var linkService = {
+    externalLinkEnabled: true,
+    addLinkAttributes: function(link, url){
+      link.href = url; link.rel = 'noopener noreferrer nofollow'; link.target = '_blank';
+    },
+    getDestinationHash: function(){ return '#'; },
+    getAnchorUrl: function(){ return '#'; },
+    goToDestination: function(){ return Promise.resolve(); },
+    executeNamedAction: function(){}, executeSetOCGState: function(){},
+    eventBus: null
+  };
+
   function load(file){
     current = file; setTabs(file);
     viewer.innerHTML = '<div class="status">loading…</div>';
@@ -92,17 +112,44 @@
       .then(function(pdf){
         viewer.innerHTML = '';
         var width = Math.min(viewer.clientWidth - 8, 900);
+        var dpr = window.devicePixelRatio || 1;
         var chain = Promise.resolve();
         for (var i = 1; i <= pdf.numPages; i++) (function(n){
           chain = chain.then(function(){ return pdf.getPage(n); }).then(function(page){
-            var vp = page.getViewport({ scale: 1 });
-            var scale = (width / vp.width) * (window.devicePixelRatio || 1);
-            var v = page.getViewport({ scale: scale });
+            var base = page.getViewport({ scale: 1 });
+            var cssScale = width / base.width;               // on-screen scale
+            var cssVp = page.getViewport({ scale: cssScale });
+            var renderVp = page.getViewport({ scale: cssScale * dpr }); // crisp canvas backing store
+
+            var pageDiv = document.createElement('div');
+            pageDiv.className = 'page';
+            pageDiv.style.width = cssVp.width + 'px';
+            pageDiv.style.height = cssVp.height + 'px';
+
             var canvas = document.createElement('canvas');
-            canvas.width = v.width; canvas.height = v.height;
-            canvas.style.width = (v.width / (window.devicePixelRatio || 1)) + 'px';
-            viewer.appendChild(canvas);
-            return page.render({ canvasContext: canvas.getContext('2d'), viewport: v }).promise;
+            canvas.width = renderVp.width; canvas.height = renderVp.height;
+            canvas.style.width = cssVp.width + 'px';
+            canvas.style.height = cssVp.height + 'px';
+            pageDiv.appendChild(canvas);
+            viewer.appendChild(pageDiv);
+
+            return page.render({ canvasContext: canvas.getContext('2d'), viewport: renderVp }).promise
+              .then(function(){ return page.getAnnotations(); })
+              .then(function(annotations){
+                if (!annotations || !annotations.length) return;
+                var annDiv = document.createElement('div');
+                annDiv.className = 'annotationLayer';
+                annDiv.style.setProperty('--scale-factor', cssScale);
+                pageDiv.appendChild(annDiv);
+                var layer = new pdfjsLib.AnnotationLayer({
+                  div: annDiv, accessibilityManager: null, annotationCanvasMap: null,
+                  page: page, viewport: cssVp.clone({ dontFlip: true })
+                });
+                return layer.render({
+                  annotations: annotations, div: annDiv,
+                  linkService: linkService, renderForms: false
+                });
+              });
           });
         })(i);
         return chain;
