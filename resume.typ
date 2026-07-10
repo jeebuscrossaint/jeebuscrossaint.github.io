@@ -87,7 +87,7 @@
 - Implements FFT sideband demodulation, order-4 Butterworth filtering, quadratic-phase correction, and 8-mode LP decomposition at ~98% reconstruction fidelity.
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/pyfocusertest")[#text(fill: blue)[#underline[PolyOculus]]]*], [January 2026 - Present]
+  [*#link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: blue)[#underline[PolyOculus]]]*], [January 2026 - Present]
 )
 #v(-0.5em)
 - INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array; part of ongoing astrophotonics research at UCF CREOL.
