@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Writing by Amarnath Patel">
+<meta name="description" content="Writing by Amarnath Patel — notes on systems, GPU, and tooling.">
+<link rel="canonical" href="https://apatel.co/post.html">
 <title>writing — apatel.co</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/post.html">
+<meta property="og:title" content="Writing — Amarnath Patel">
+<meta property="og:description" content="Amarnath Patel">
+<meta property="og:image" content="https://apatel.co/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apatel.co/og.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
 <script src="schemes.js"></script>
 <script src="theme.js"></script>
@@ -94,6 +105,7 @@
 (function(){
   var post = new URLSearchParams(location.search).get('post');
   var area = document.getElementById('post-content');
+  function setCanonical(href){ var l=document.querySelector('link[rel=canonical]'); if(l) l.href=href; }
 
   if (!post) {
     document.title = 'writing — apatel.co';
@@ -115,6 +127,7 @@
       area.classList.add('rdr');
       var h1 = area.querySelector('h1');
       if (h1) document.title = h1.textContent + ' — apatel.co';
+      setCanonical('https://apatel.co/post.html?post=' + encodeURIComponent(post));
     })
     .catch(function(err){ area.innerHTML = '<p class="loading load-err">error: ' + err.message + '</p>'; });
 })();

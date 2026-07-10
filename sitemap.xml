@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://apatel.co/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/post.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/post.html?post=c-cpp-nixos-clangd-guide</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/post.html?post=a-better-tree-for-win</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/friends.html</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/pdf.html</loc>
+    <priority>0.4</priority>
+  </url>
+</urlset>
