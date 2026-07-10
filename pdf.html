@@ -88,7 +88,9 @@
   var viewer = document.getElementById('viewer');
   var dlBtn = document.getElementById('dlBtn');
   var params = new URLSearchParams(location.search);
-  var current = params.get('file') || 'resume.pdf';
+  // only accept a plain local *.pdf filename (no paths / URLs / javascript:)
+  var requested = params.get('file');
+  var current = (requested && /^[\w.-]+\.pdf$/.test(requested)) ? requested : 'resume.pdf';
 
   function setTabs(file){
     document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.dataset.file === file); });
@@ -110,60 +112,81 @@
     eventBus: null
   };
 
+  // cache parsed documents so switching tabs / resizing never re-downloads a PDF
+  var docs = {}, currentPdf = null, lastWidth = 0, renderToken = 0;
+  function getDoc(file){
+    if (!docs[file]) {
+      docs[file] = pdfjsLib.getDocument({ url: file, cMapUrl:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/', cMapPacked:true }).promise
+        .catch(function(e){ delete docs[file]; throw e; }); // don't cache failures — allow retry
+    }
+    return docs[file];
+  }
+
+  function render(pdf){
+    var token = ++renderToken;                     // stale renders (old tab / size) bail out
+    var width = Math.min(viewer.clientWidth - 8, 900);
+    lastWidth = width;
+    var dpr = window.devicePixelRatio || 1;
+    viewer.innerHTML = '';
+    var chain = Promise.resolve();
+    for (var i = 1; i <= pdf.numPages; i++) (function(n){
+      chain = chain.then(function(){
+        if (token !== renderToken) return;         // a newer render superseded this one
+        return pdf.getPage(n).then(function(page){
+          if (token !== renderToken) return;
+          var base = page.getViewport({ scale: 1 });
+          var cssScale = width / base.width;               // on-screen scale
+          var cssVp = page.getViewport({ scale: cssScale });
+          var renderVp = page.getViewport({ scale: cssScale * dpr }); // crisp canvas backing store
+
+          var pageDiv = document.createElement('div');
+          pageDiv.className = 'page';
+          pageDiv.style.width = cssVp.width + 'px';
+          pageDiv.style.height = cssVp.height + 'px';
+
+          var canvas = document.createElement('canvas');
+          canvas.width = renderVp.width; canvas.height = renderVp.height;
+          canvas.style.width = cssVp.width + 'px';
+          canvas.style.height = cssVp.height + 'px';
+          pageDiv.appendChild(canvas);
+          viewer.appendChild(pageDiv);
+
+          return page.render({ canvasContext: canvas.getContext('2d'), viewport: renderVp }).promise
+            .then(function(){ return page.getAnnotations(); })
+            .then(function(annotations){
+              if (token !== renderToken || !annotations || !annotations.length) return;
+              var annDiv = document.createElement('div');
+              annDiv.className = 'annotationLayer';
+              annDiv.style.setProperty('--scale-factor', cssScale);
+              pageDiv.appendChild(annDiv);
+              var layer = new pdfjsLib.AnnotationLayer({
+                div: annDiv, accessibilityManager: null, annotationCanvasMap: null,
+                page: page, viewport: cssVp.clone({ dontFlip: true })
+              });
+              return layer.render({
+                annotations: annotations, div: annDiv,
+                linkService: linkService, renderForms: false
+              });
+            });
+        });
+      });
+    })(i);
+    return chain;
+  }
+
   function load(file){
     current = file; setTabs(file);
     viewer.innerHTML = '<div class="status">loading…</div>';
-    pdfjsLib.getDocument({ url: file, cMapUrl:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/', cMapPacked:true }).promise
-      .then(function(pdf){
-        viewer.innerHTML = '';
-        var width = Math.min(viewer.clientWidth - 8, 900);
-        var dpr = window.devicePixelRatio || 1;
-        var chain = Promise.resolve();
-        for (var i = 1; i <= pdf.numPages; i++) (function(n){
-          chain = chain.then(function(){ return pdf.getPage(n); }).then(function(page){
-            var base = page.getViewport({ scale: 1 });
-            var cssScale = width / base.width;               // on-screen scale
-            var cssVp = page.getViewport({ scale: cssScale });
-            var renderVp = page.getViewport({ scale: cssScale * dpr }); // crisp canvas backing store
-
-            var pageDiv = document.createElement('div');
-            pageDiv.className = 'page';
-            pageDiv.style.width = cssVp.width + 'px';
-            pageDiv.style.height = cssVp.height + 'px';
-
-            var canvas = document.createElement('canvas');
-            canvas.width = renderVp.width; canvas.height = renderVp.height;
-            canvas.style.width = cssVp.width + 'px';
-            canvas.style.height = cssVp.height + 'px';
-            pageDiv.appendChild(canvas);
-            viewer.appendChild(pageDiv);
-
-            return page.render({ canvasContext: canvas.getContext('2d'), viewport: renderVp }).promise
-              .then(function(){ return page.getAnnotations(); })
-              .then(function(annotations){
-                if (!annotations || !annotations.length) return;
-                var annDiv = document.createElement('div');
-                annDiv.className = 'annotationLayer';
-                annDiv.style.setProperty('--scale-factor', cssScale);
-                pageDiv.appendChild(annDiv);
-                var layer = new pdfjsLib.AnnotationLayer({
-                  div: annDiv, accessibilityManager: null, annotationCanvasMap: null,
-                  page: page, viewport: cssVp.clone({ dontFlip: true })
-                });
-                return layer.render({
-                  annotations: annotations, div: annDiv,
-                  linkService: linkService, renderForms: false
-                });
-              });
-          });
-        })(i);
-        return chain;
-      })
-      .catch(function(e){ viewer.innerHTML = '<div class="status err">could not load ' + file + ' — ' + e.message + '</div>'; });
+    getDoc(file)
+      .then(function(pdf){ if (current !== file) return; currentPdf = pdf; return render(pdf); })
+      .catch(function(e){ if (current === file){ viewer.innerHTML = '<div class="status err"></div>'; viewer.firstChild.textContent = 'could not load ' + file + ' — ' + e.message; } });
   }
 
   document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click', function(){ load(t.dataset.file); }); });
-  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ load(current); }, 250); });
+  // re-render on resize only when the width actually changed (ignore mobile URL-bar height jitter)
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){
+    if (currentPdf && Math.min(viewer.clientWidth - 8, 900) !== lastWidth) render(currentPdf);
+  }, 250); });
   load(current);
 })();
 </script>

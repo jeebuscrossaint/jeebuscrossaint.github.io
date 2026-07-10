@@ -100,7 +100,7 @@
   <div id="post-content"><p class="loading">loading…</p></div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script>
 (function(){
   var post = new URLSearchParams(location.search).get('post');
@@ -129,7 +129,7 @@
       if (h1) document.title = h1.textContent + ' — apatel.co';
       setCanonical('https://apatel.co/post.html?post=' + encodeURIComponent(post));
     })
-    .catch(function(err){ area.innerHTML = '<p class="loading load-err">error: ' + err.message + '</p>'; });
+    .catch(function(err){ area.innerHTML = '<p class="loading load-err"></p>'; area.firstChild.textContent = 'error: ' + err.message; });
 })();
 </script>
 </body>
