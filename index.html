@@ -204,6 +204,25 @@
   addEventListener('pointermove',function(e){mx=e.clientX/W; my=e.clientY/H;},{passive:true});
   document.addEventListener('visibilitychange',function(){running=!document.hidden; if(running) requestAnimationFrame(frame);});
 
+  /* device tilt (mobile): steer the field with the gyroscope, feeding the same mx/my the pointer uses */
+  var tiltOn=false;
+  function onTilt(e){
+    if(e.gamma==null||e.beta==null) return;
+    // gamma = left/right (-90..90), beta = front/back; recentre beta on a comfortable ~45° reading angle
+    var g=Math.max(-40,Math.min(40,e.gamma)), b=Math.max(-40,Math.min(40,e.beta-45));
+    mx=0.5+(g/40)*0.5; my=0.5+(b/40)*0.5;
+  }
+  function enableTilt(){
+    if(tiltOn || reduce || lowData || typeof DeviceOrientationEvent==='undefined') return;
+    function attach(){ tiltOn=true; addEventListener('deviceorientation',onTilt,{passive:true}); }
+    if(typeof DeviceOrientationEvent.requestPermission==='function'){
+      DeviceOrientationEvent.requestPermission().then(function(st){ if(st==='granted') attach(); }).catch(function(){});
+    } else { attach(); }  // Android/others: no gesture or prompt needed
+  }
+  // Android fires without a gesture; iOS needs the permission call inside the first tap
+  enableTilt();
+  addEventListener('pointerdown',enableTilt,{once:true,passive:true});
+
   /* boot */
   var boot=document.getElementById('boot'), skipped=false;
   function finish(){ if(skipped) return; skipped=true; ignite=1; boot.classList.add('done'); body.classList.add('lit'); }
