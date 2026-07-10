@@ -19,16 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Checkout tinted-theming schemes
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: tinted-theming/schemes
           path: tt-schemes
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.x"
 
