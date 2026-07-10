@@ -187,7 +187,6 @@
   }
   boot.addEventListener('click',finish);
   addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key==='Escape') finish(); });
-  addEventListener('keydown',function(e){ if(e.key==='r'&&!e.metaKey&&!e.ctrlKey&&!e.altKey) applyScheme(randomScheme()); });
 
   function randomScheme(){ return SCHEMES.length ? SCHEMES[Math.floor(Math.random()*SCHEMES.length)] : ['default','d','09090b0f0f12181818313131565654edece8f5e0dcb4befeff5555ffb86cf1fa8c50fa7b8be9fdbd93f9ff79c6ffb86c']; }
   var shuf=document.getElementById('shuffleBtn'); if(shuf) shuf.addEventListener('click',function(){ applyScheme(randomScheme()); });
