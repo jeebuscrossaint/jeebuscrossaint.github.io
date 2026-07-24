@@ -93,11 +93,11 @@
 - INDI-protocol mount control, automated focuser, RA/Dec slewing, and backlash compensation for an 8-telescope photometric observation array; part of ongoing astrophotonics research at UCF CREOL.
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: blue)[#underline[CELERIS]]] — GPU-Accelerated Metalens Design & EM Solver*], [2026]
+  [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: blue)[#underline[CELERIS]]] — Metalens Design Pipeline & From-Scratch RCWA Solver*], [2026]
 )
 #v(-0.5em)
-- From-scratch, validated electromagnetic solver for metalens design via rigorous coupled-wave analysis (1D TE/TM + 2D vectorial formulations, scattering-matrix recursion, Sellmeier/tabulated dispersion); agrees with analytic TMM to 1e-6.
-- CUDA-accelerated far-field analysis at 675× speedup (23.9 s → 35 ms over 92K pillars); inverse-design optimizer and fabrication-ready GDSII export from a CLI or native GUI. C++/CUDA with Python bindings.
+- From-scratch, validated electromagnetic solver for metalens design via rigorous coupled-wave analysis (1D TE/TM + 2D vectorial, scattering-matrix recursion, Sellmeier/tabulated dispersion); cross-validated against the grcwa and Stanford S#super[4] solvers (agreement to 1e-7) and reproduces published metalenses (Khorasaninejad 2016, Chen 2018).
+- End-to-end design→analysis→GDSII pipeline: meta-atom library sweeps, achromatic & Pancharatnam–Berry design, optical-analysis battery, GPU-accelerated far-field propagation, and fabrication-ready layout export. C++/CUDA with Python bindings; manuscript in preparation.
 #text(size: 11pt, weight: "bold")[SKILLS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
