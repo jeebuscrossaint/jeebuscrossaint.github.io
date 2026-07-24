@@ -90,6 +90,22 @@
 
 #grid(
   columns: (1fr, auto),
+  [*Secretary — National Society of Black Physicists (NSBP), UCF Chapter*], [2025 – Present]
+)
+- Coordinate meetings, records, and communications for the UCF student chapter of the National Society of Black Physicists.
+
+#v(0.15em)
+#block(breakable: false)[
+#grid(
+  columns: (1fr, auto),
+  [*President — Coding Club, Florida Atlantic University (High School)*], [2023 – 2025]
+)
+- Founded and led a student coding club; organized meetings and collaborative programming projects with peers.
+]
+
+#v(0.15em)
+#grid(
+  columns: (1fr, auto),
   [*Teaching Assistant — Calculus (High School)*], [August 2024 – May 2025]
 )
 - Assisted 70 undergraduate students with learning calculus; office hours, exam review, grading. Part-time (10 h/week).
@@ -145,10 +161,10 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 #grid(
   columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: lc)[#underline[CELERIS]]] — GPU-Accelerated Metalens Design & EM Solver*], [2026]
+  [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: lc)[#underline[CELERIS]]] — Metalens Design Pipeline & From-Scratch RCWA Solver*], [2026]
 )
-- From-scratch, validated electromagnetic solver for metalens design via rigorous coupled-wave analysis (RCWA): 1D TE/TM and 2D vectorial formulations, stable scattering-matrix recursion, and dispersion models (Sellmeier, tabulated n,k).
-- CUDA-accelerated far-field analysis (600–700× over a 16-core CPU); inverse-design optimizer and fabrication-ready GDSII export, from a CLI or native desktop GUI. C++/CUDA with Python bindings.
+- From-scratch, validated electromagnetic solver for metalens/metasurface design via rigorous coupled-wave analysis (RCWA): 1D TE/TM and 2D-vectorial formulations, Li/Liu–Fan Fourier factorization, and Redheffer scattering-matrix recursion. Cross-validated against the grcwa and Stanford S#super[4] solvers (agreement to ~1e-7) and reproduces canonical published metalenses (Khorasaninejad et al., _Science_ 2016; Chen et al., _Nat. Nanotechnol._ 2018).
+- Full design→analysis→fabrication pipeline that standalone RCWA kernels lack: meta-atom library sweeps, phase mapping (incl. achromatic and Pancharatnam–Berry designs), an optical-analysis battery (Strehl, MTF, Zernike, chromatic, tolerance), GPU-accelerated far-field propagation, and fabrication-ready GDSII export — from a CLI, Python bindings, or a native desktop GUI. C++23/CUDA. _Manuscript in preparation (Computer Physics Communications)._
 
 #v(0.1em)
 #grid(
