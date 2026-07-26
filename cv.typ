@@ -54,21 +54,20 @@
   [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: lc)[#underline[UCF Astrophotonics Lab]]], CREOL — Undergraduate Researcher*], [August 2025 – Present]
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
-- Developing instrumentation and automation software for astrophotonics research spanning CREOL and the UCF Physics Department.
-- Built an unattended pipeline that measures the wavelength-dependent complex transfer matrix of a photonic lantern via #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]], coordinating 4 instruments across all-port × C-band (1525–1575 nm) sweeps at ~98% reconstruction fidelity (building on the method of Dobias et al., _Opt. Express_ 2026).
-- Implemented the reconstruction chain: FFT sideband isolation and demodulation, Butterworth filtering, and numerically optimized quadratic-phase correction, feeding LP-mode decomposition to recover complex modal amplitude and phase.
-- Developing #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], control and automation software for an 8-telescope photometric observation array; implementing INDI-protocol mount control, focuser automation, RA/Dec coordinate slewing, and backlash compensation.
-- Developed Python SDK wrapper (#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: lc)[#underline[gentec-camera]]]) for an IR beam profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
+- Contribute to a measurement campaign characterizing the wavelength-dependent complex transfer matrix of a photonic lantern by #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]]; collect and analyze holographic data across all-port × C-band (1525–1575 nm) sweeps, reaching #sym.approx#h(0.1em)98% reconstruction fidelity (extending the method of Dobias et al., _Opt. Express_ 2026).
+- Developed and validated the phase-retrieval analysis: FFT sideband isolation and demodulation, Butterworth filtering, and numerically optimized quadratic-phase correction, followed by LP-mode decomposition to recover complex modal amplitude and phase.
+- Automated the four-instrument measurement chain — tunable IR laser, motorized polarization control, and #link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: lc)[#underline[IR beam-profiling camera]]] with real-time analysis and FITS output — for unattended overnight acquisition.
+- Contribute to #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], an astronomical instrument program building photometric observing capability from a networked array of 8 telescopes: developed INDI-protocol mount control, focuser automation, RA/Dec slewing, and backlash compensation.
 
 #v(0.15em)
 #grid(
   columns: (1fr, auto),
-  [*UCF Physics Department — Paid Undergraduate Research Assistant*], [March 2026 – Present]
+  [*UCF Physics Department — Undergraduate Research Assistant*], [March 2026 – Present]
 )
-#grid(columns: (1fr,), [_Physics Education Research — Supervisor: Dr. Zhongzhou Chen_])
-- Developing #link("https://github.com/jeebuscrossaint/estela")[#text(fill: lc)[#underline[ESTELA]]], an automated system that generates multi-version isomorphic physics exams from AI-assisted problem banks for introductory STEM courses.
-- Built in Rust with a vanilla JS frontend; parses YAML problem banks across 13 topic areas supporting 11 question types, renders LaTeX math via KaTeX, and exports multi-version exams as LaTeX or print-ready HTML/PDF.
-- Funded by NSF award 2421299 and Gates Foundation INV-076932.
+#grid(columns: (1fr,), [_Physics Education Research — Dr. Zhongzhou Chen (NSF Award 2421299; Gates Foundation INV-076932)_])
+- Research on automated assessment generation for introductory physics instruction: built #link("https://github.com/jeebuscrossaint/estela")[#text(fill: lc)[#underline[ESTELA]]], a system producing multi-version isomorphic exams from structured problem banks, and an agentic generation–evaluation pipeline that iteratively drafts and validates new problems against instructor criteria.
+- Authored the documentation and distribution materials used at a faculty workshop, and maintain the public release pipeline that external adopters depend on.
+- Lead developer across two independent implementations of the assessment tool, including technical ownership of a parallel version authored by another group member. Manuscript in preparation.
 
 #v(0.15em)
 #grid(
@@ -76,10 +75,8 @@
   [*#link("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[#text(fill: lc)[#underline[FAU Grant-Funded AI Safety Research Project]]] (High School)*], [January 2024 – March 2025]
 )
 #grid(columns: (1fr,), [_Supervisor: Tucker Hindle, Florida Atlantic University_])
-- Benchmarked 10+ coherence and detection methods (BERT NSP, GPT-2 perplexity, RoBERTa, LSA, NLI, burstiness) across 3,125+ generated sequences to evaluate approaches for identifying AI-generated text.
-- Identified GPT-2 perplexity as the strongest discriminator (3.3× gap between coherent and incoherent text); BERT NSP failed to distinguish the two.
-- Characterized a fundamental quality–evasion tradeoff across all humanization approaches tested, including iterative sampling, content abstraction, and RL-based methods.
-- Grant-funded with HPC access; findings presented at the Wilkes Honors College Symposium (2025).
+- Benchmarked 10+ coherence and detection methods (GPT-2 perplexity, RoBERTa, BERT NSP, LSA, NLI, burstiness) across 3,125+ generated sequences; identified GPT-2 perplexity as the strongest discriminator (3.3× separation between coherent and incoherent text).
+- Characterized a consistent quality–evasion tradeoff across four adversarial humanization pipelines. Grant-funded with HPC access; presented at the Wilkes Honors College Symposium (2025).
 
 /* ── OTHER EXPERIENCE ── */
 #v(0.2em)
@@ -128,6 +125,14 @@
 #grid(
   columns: (1fr, auto),
   column-gutter: 1em,
+  [*Complex Transfer-Matrix Characterization of a Photonic Lantern by Off-Axis Digital Holography*], [November 2026 (upcoming)]
+)
+Joint Annual Conference of the National Society of Black Physicists and the National Society of Hispanic Physicists, North Carolina.
+
+#v(0.15em)
+#grid(
+  columns: (1fr, auto),
+  column-gutter: 1em,
   [*Batch Processing for Automated Grading via Azure OpenAI*], [June 2026]
 )
 University of Central Florida, Downtown Campus. ESTELA project (Physics Education Research, Dr. Zhongzhou Chen).
@@ -163,15 +168,10 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
   columns: (1fr, auto),
   [*#link("https://github.com/jeebuscrossaint/CELERIS")[#text(fill: lc)[#underline[CELERIS]]] — Metalens Design Pipeline & From-Scratch RCWA Solver*], [2026]
 )
-- From-scratch, validated electromagnetic solver for metalens/metasurface design via rigorous coupled-wave analysis (RCWA): 1D TE/TM and 2D-vectorial formulations, Li/Liu–Fan Fourier factorization, and Redheffer scattering-matrix recursion. Cross-validated against the grcwa and Stanford S#super[4] solvers (agreement to ~1e-7) and reproduces canonical published metalenses (Khorasaninejad et al., _Science_ 2016; Chen et al., _Nat. Nanotechnol._ 2018).
-- Full design→analysis→fabrication pipeline that standalone RCWA kernels lack: meta-atom library sweeps, phase mapping (incl. achromatic and Pancharatnam–Berry designs), an optical-analysis battery (Strehl, MTF, Zernike, chromatic, tolerance), GPU-accelerated far-field propagation, and fabrication-ready GDSII export — from a CLI, Python bindings, or a native desktop GUI. C++23/CUDA. _Manuscript in preparation (Computer Physics Communications)._
-
-#v(0.1em)
-#grid(
-  columns: (1fr, auto),
-  [*#link("https://github.com/jeebuscrossaint/coat")[#text(fill: lc)[#underline[coat]]] — Cross-Platform Color-Scheme Configurator*], [2026]
-)
-- Rust CLI that applies Base16/Base24 color schemes across 22 Linux applications and themes Windows system colors from a single config file; compatible with the ~700-scheme tinted-theming ecosystem, with a terminal scheme browser and live RGB previews.
+- From-scratch solver for Maxwell's equations in periodic subwavelength structures via rigorous coupled-wave analysis / the Fourier modal method: 1D TE/TM multilayer gratings with Li/Liu–Fan inverse-rule factorization, full 2D-vectorial $P dot Q$ formulation for biperiodic nanopillar arrays, and stable Redheffer scattering-matrix layer recursion.
+- Validated every layer of the stack against closed-form physics, an independent method, or energy conservation: RCWA vs. transfer-matrix method to 1e-6, multilayer S-matrix to 1e-15, 2D→1D degenerate reduction to 5e-12, $Sigma$(diffraction efficiency) = 1.000000, and diffraction-limited designed focal spots at FWHM = $lambda f \/ D$. Independently cross-validated against the grcwa and Stanford S#super[4] solvers (#sym.approx#h(0.1em)1e-7) and reproduces canonical published metalenses (Khorasaninejad et al., _Science_ 2016; Chen et al., _Nat. Nanotechnol._ 2018).
+- Implemented the physical design and analysis capability standalone RCWA kernels lack: Sellmeier and tabulated $n,k$ dispersion, meta-atom library sweeps with automatic etch-depth selection for full-2#sym.pi phase coverage, gradient-based (Adam) inverse design, Pancharatnam–Berry geometric-phase and polarization-multiplexed lenses exploiting form birefringence (reporting per-polarization RMS phase and focal isolation in dB), plus Strehl, Zernike wavefront, MTF, chromatic focal shift, through-focus caustic, and fabrication-tolerance Monte-Carlo analysis with fabrication-ready GDSII export.
+- Accelerated Rayleigh–Sommerfeld far-field propagation as a CUDA kernel: 675× over a 16-core CPU at 92k pillars (23.9 s → 35 ms), agreeing to #sym.approx#h(0.1em)1e-5, with automatic CPU fallback. C++23/CUDA, with Python bindings and a native desktop GUI. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
 /* ── SKILLS ── */
 #v(0.2em)
@@ -287,9 +287,9 @@ _Computer Science_
 )
 #grid(
   columns: (1fr, auto),
-  [NSF Award 2421299 — Research Funding (ESTELA project, with Dr. Zhongzhou Chen)], [2026]
+  [Barry M. Goldwater Scholarship — UCF institutional nominee], [2026]
 )
 #grid(
   columns: (1fr, auto),
-  [Gates Foundation INV-076932 — Research Funding (ESTELA project)], [2026]
+  [Astronaut Scholarship Foundation — UCF institutional nominee], [2026]
 )
