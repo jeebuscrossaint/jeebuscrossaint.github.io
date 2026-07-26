@@ -84,7 +84,7 @@
 )
 #v(-0.5em)
 - Automated data acquisition and processing pipeline for photonic lantern characterization via off-axis digital holography across port × wavelength C-band sweeps (1525–1575 nm).
-- Implements FFT sideband demodulation, order-4 Butterworth filtering, quadratic-phase correction, and 8-mode LP decomposition at ~98% reconstruction fidelity.
+- Implements FFT sideband demodulation, order-4 Butterworth filtering, quadratic-phase correction, and 8-mode LP decomposition at #sym.approx#h(0.1em)98% reconstruction fidelity.
 #grid(
   columns: (1fr, auto),
   [*#link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: blue)[#underline[PolyOculus]]]*], [January 2026 - Present]
