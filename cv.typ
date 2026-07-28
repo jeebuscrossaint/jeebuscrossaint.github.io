@@ -54,11 +54,11 @@
   [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: lc)[#underline[UCF Astrophotonics Lab]]], CREOL — Undergraduate Researcher*], [August 2025 – Present]
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
-- Conduct the measurement and analysis of the wavelength-dependent complex transfer matrix of a photonic lantern by #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]]: perform the optical alignment and bench acquisition, and built the automated all-port × C-band (1525–1575 nm) sweep that runs unattended (extending Dobias et al., _Opt. Express_ *34*(9), 17217 (2026)).
-- Developed the full phase-retrieval chain — FFT sideband isolation and demodulation, Butterworth low-pass, joint optimization of mode-field diameter, quadratic-phase correction and position, then LP-mode decomposition recovering complex modal amplitude and phase at #sym.approx#h(0.1em)98% fidelity — and produced the per-port fidelity characterization for 6- and 7-port lanterns.
-- Integrated and control the four-instrument measurement chain across three protocols: HP 8168E tunable laser (GPIB/VISA), Xenics Bobcat 320 InGaAs camera (GigE Vision), DiCon GP700 fiber switch (RS-232), and Thorlabs MPC320 polarization controller (USB/Kinesis), with automated polarization optimization for peak fringe contrast and saturation rejection.
-- Developed a Python SDK wrapper (#link("https://github.com/jeebuscrossaint/gentec-camera")[#text(fill: lc)[#underline[gentec-camera]]]) for an IR beam-profiling camera enabling automated acquisition, real-time beam analysis, and FITS output.
-- Contribute to #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], an astronomical instrument program building photometric observing capability from a networked array of 8 telescopes: developed INDI-protocol mount control, focuser automation, RA/Dec slewing, and backlash compensation.
+- Measuring the wavelength-dependent complex transfer matrix of a photonic lantern by #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]], extending Dobias et al., _Opt. Express_ *34*(9), 17217 (2026). Align the interferometric bench and acquire holograms of the multimode output for each input port across the C-band (1525–1575 nm), recovering full amplitude and phase — one row of the transfer matrix per measurement.
+- Implemented the phase-retrieval and mode-decomposition analysis: FFT sideband isolation and demodulation, Butterworth low-pass, joint numerical optimization of mode-field diameter, defocus quadratic phase and field position, then decomposition onto the LP basis to recover complex modal amplitude and phase.
+- Produced the per-port reconstruction-fidelity characterization for 6- and 7-port lanterns, reaching #sym.approx#h(0.1em)98% fidelity $|⟨E_"rec", E_"sim"⟩|^2$ against simulated fields.
+- Automated the four-instrument acquisition chain — tunable laser, InGaAs camera, fiber switch, and motorized polarization control — so a complete all-port × C-band sweep runs unattended, with polarization optimized in-loop for peak fringe contrast and saturated frames rejected, reducing a full dataset from days of manual bench time to a single hands-off run.
+- Contribute mount control and pointing automation to #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], an astronomical instrument program building photometric observing capability from a networked array of 8 telescopes.
 
 #v(0.15em)
 #grid(
@@ -67,8 +67,7 @@
 )
 #grid(columns: (1fr,), [_Physics Education Research — Dr. Zhongzhou Chen (NSF Award 2421299; Gates Foundation INV-076932)_])
 - Research on automated assessment generation for introductory physics instruction: built #link("https://github.com/jeebuscrossaint/estela")[#text(fill: lc)[#underline[ESTELA]]], a system producing multi-version isomorphic exams from structured problem banks, and an agentic generation–evaluation pipeline that iteratively drafts and validates new problems against instructor criteria.
-- Authored the documentation and distribution materials used at a faculty workshop, and maintain the public release pipeline that external adopters depend on.
-- Lead developer across two independent implementations of the assessment tool, including technical ownership of a parallel version authored by another group member. Manuscript in preparation.
+- Materials authored for the project are in use by external adopters following a faculty workshop. Manuscript in preparation.
 
 #v(0.15em)
 #grid(
@@ -181,15 +180,13 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 #text(size: 11pt, weight: "bold")[TECHNICAL SKILLS]
 #v(0.1em)
 
-*Programming Languages:* C/C++, CUDA, Rust, Python, JavaScript, Shell (Fish, Bash, tcsh), LaTeX/Typst
+*Instrumentation:* GPIB/VISA, RS-232, INDI, GigE Vision camera acquisition, tunable IR laser control, motorized polarization control, interferometric alignment, FITS & GDSII data formats
 
-*Scientific Computing:* NumPy, SciPy, GPU/CUDA acceleration, FFT & signal processing, electromagnetic simulation (RCWA)
+*Scientific Computing:* FFT & signal processing, phase retrieval & modal decomposition, electromagnetic simulation (RCWA), GPU/CUDA acceleration, NumPy, SciPy
 
-*Tools & Libraries:* Qt/PySide6, Docker, Git, CMake, XMake, INDI, KaTeX
+*Programming Languages:* C/C++, CUDA, Python, Shell (Fish, Bash, tcsh), LaTeX/Typst
 
-*Instrumentation:* GPIB/VISA, RS-232, GigE Vision camera acquisition, tunable IR laser control, motorized polarization control, FITS & GDSII data formats
-
-*Operating Systems:* Linux (Arch, NixOS, Ubuntu), BSD, Windows
+*Tools:* Linux, Git, CMake, Qt/PySide6
 
 /* ── COURSEWORK ── */
 #v(0.2em)
