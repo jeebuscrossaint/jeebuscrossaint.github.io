@@ -204,7 +204,7 @@ _Physics_
   row-gutter: 0.3em,
   [Geometric Optics & Lab],                    [Modern Physics \[PHY 3101\]],
   [Quantum Information Processing],             [Mathematical Methods for Physics \[PHZ 3113\]],
-  [Independent Research \[PHY 4912\] (In Progress)], [Electricity & Magnetism I (In Progress)],
+  [Independent Research \[PHY 4912\]],           [Electricity & Magnetism I (In Progress)],
 )
 
 #v(0.15em)
@@ -224,7 +224,7 @@ _Computer Science_
   column-gutter: 1em,
   row-gutter: 0.3em,
   [C Programming \[EGN 3211\]],                [Discrete Structures],
-  [Object-Oriented Programming (In Progress)], [],
+  [Object-Oriented Programming],               [],
 )
 
 #v(0.25em)
