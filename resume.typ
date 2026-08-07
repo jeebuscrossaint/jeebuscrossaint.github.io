@@ -55,7 +55,7 @@
 #v(-0.35em)
 - Gradient-based (Adam) inverse design over meta-atom parameter sweeps; Monte-Carlo fabrication-tolerance analysis; Strehl, Zernike wavefront, MTF and chromatic-focal-shift analysis battery.
 #v(-0.35em)
-- Accelerated Rayleigh–Sommerfeld far-field propagation as a CUDA kernel and benchmarked it against the project's own optimized 16-core CPU path rather than a single-threaded baseline: 4.8–5.8#sym.times at 92k pillars, agreeing to machine precision. Diagnosed the kernel as memory-bound from the speedup's decline with grid size, and retracted an earlier 600–700#sym.times figure that had been measured against an unparallelized baseline. C++23/CUDA with Python bindings. _Sole-author manuscript in preparation (Computer Physics Communications)._
+- Accelerated Rayleigh–Sommerfeld far-field propagation as a CUDA kernel, benchmarked against the project's own optimized 16-core CPU path: 4.8–5.8#sym.times at 92k pillars, agreeing to machine precision. Diagnosed the kernel as memory-bound from the speedup's decline with grid size. C++23/CUDA with Python bindings. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
 #v(-0.2em)
 #grid(
