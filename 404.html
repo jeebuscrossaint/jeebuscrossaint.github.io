@@ -7,8 +7,6 @@
 <meta name="robots" content="noindex">
 <title>404 — apatel.co</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
-<script src="/schemes.js"></script>
-<script src="/theme.js"></script>
 <script src="/nav.js"></script>
 <style>
   @view-transition { navigation: auto; }
@@ -20,7 +18,29 @@
     font-weight:100 900; font-style:normal; font-display:swap;
   }
 
-  :root { --bg:#09090B; --bg-2:#0F0F12; --ink:#EDECE8; --ink-soft:#8B8B87; --rule:rgba(255,255,255,0.13); --rule-2:rgba(255,255,255,0.06); --accent:#5B8CFF; }
+  /* Apple's system palette — one considered scheme that follows the OS appearance
+     instead of a random pick. These are Apple's published system colours:
+     systemGroupedBackground / secondarySystemBackground, label / secondaryLabel,
+     separator, and systemBlue in its light and dark variants. */
+  :root {
+    color-scheme: light dark;
+    --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
+    --ink:#000000; --ink-soft:#6C6C70;
+    --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
+    --accent:#007AFF;
+    --edge:rgba(255,255,255,0.72); --mat:86%;
+    --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
+      --ink:#FFFFFF; --ink-soft:#98989F;
+      --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
+      --accent:#0A84FF;
+      --edge:rgba(255,255,255,0.16); --mat:70%;
+      --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
+    }
+  }
   * { box-sizing:border-box; }
   html,body { height:100%; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; text-align:center; padding:clamp(20px,5vw,48px); transition:background-color .35s ease, color .35s ease; }

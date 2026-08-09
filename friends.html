@@ -17,8 +17,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://apatel.co/og.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
-<script src="schemes.js"></script>
-<script src="theme.js"></script>
 <script src="nav.js"></script>
 <style>
   @view-transition { navigation: auto; }
@@ -30,7 +28,29 @@
     font-weight:100 900; font-style:normal; font-display:swap;
   }
 
-  :root { --bg:#09090B; --bg-2:#0F0F12; --ink:#EDECE8; --ink-soft:#8B8B87; --rule:rgba(255,255,255,0.13); --rule-2:rgba(255,255,255,0.06); --accent:#5B8CFF; }
+  /* Apple's system palette — one considered scheme that follows the OS appearance
+     instead of a random pick. These are Apple's published system colours:
+     systemGroupedBackground / secondarySystemBackground, label / secondaryLabel,
+     separator, and systemBlue in its light and dark variants. */
+  :root {
+    color-scheme: light dark;
+    --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
+    --ink:#000000; --ink-soft:#6C6C70;
+    --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
+    --accent:#007AFF;
+    --edge:rgba(255,255,255,0.72); --mat:86%;
+    --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
+      --ink:#FFFFFF; --ink-soft:#98989F;
+      --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
+      --accent:#0A84FF;
+      --edge:rgba(255,255,255,0.16); --mat:70%;
+      --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
+    }
+  }
   * { box-sizing:border-box; }
   html { -webkit-text-size-adjust:100%; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:17px; line-height:1.55; letter-spacing:-0.006em; -webkit-font-smoothing:antialiased; transition:background-color .35s ease, color .35s ease; }
@@ -42,12 +62,6 @@
   .topbar { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:12px; height:54px; padding:0 clamp(20px,5vw,44px); border-bottom:1px solid var(--rule-2); background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); }
   .back { font-size:.9rem; letter-spacing:-0.006em; color:var(--ink-soft); font-weight:400; transition:color .18s; }
   .back:hover { color:var(--ink); } .back b { color:var(--ink); }
-  .controls { display:flex; align-items:center; gap:8px; }
-  .schemetag { font-size:.8rem; letter-spacing:-0.004em; color:var(--ink-soft); }
-  .schemetag b { color:var(--ink-soft); font-weight:500; }
-  .btn { font-size:.8rem; letter-spacing:-0.004em; font-weight:500; color:var(--ink-soft); background:color-mix(in srgb, var(--ink) 6%, transparent); border:1px solid var(--rule); border-radius:980px; min-width:2rem; min-height:2rem; padding:.375rem .7rem; cursor:pointer; transition:color .18s, border-color .18s, background .18s, transform .12s cubic-bezier(.2,.7,.2,1); }
-  .btn:hover { color:var(--ink); border-color:color-mix(in srgb, var(--ink) 42%, transparent); }
-  .btn:active { transform:scale(.96); transition-duration:.09s; }
 
   main { max-width:720px; margin:0 auto; padding:clamp(36px,6vw,72px) clamp(20px,5vw,44px) 100px; }
   h1 { font-size:clamp(1.9rem,5vw,2.6rem); font-weight:700; letter-spacing:-0.03em; line-height:1.05; margin:0 0 .3em; }
@@ -82,10 +96,6 @@
 
 <div class="topbar">
   <a class="back" href="index.html">← <b>apatel.co</b> / friends</a>
-  <div class="controls">
-    <span class="schemetag mono" id="schemeTag"></span>
-    <button class="btn" id="shuffleBtn" type="button" title="new random palette">⟳</button>
-  </div>
 </div>
 
 <main>
