@@ -12,18 +12,27 @@
 <script src="/nav.js"></script>
 <style>
   @view-transition { navigation: auto; }
+  /* Inter stands in for SF on non-Apple platforms. Apple devices resolve -apple-system first and
+     never download this file — browsers only fetch a webfont whose glyphs actually get used. */
+  @font-face {
+    font-family:'InterVar';
+    src:url('fonts/inter-var-latin.woff2') format('woff2-variations');
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
+
   :root { --bg:#09090B; --bg-2:#0F0F12; --ink:#EDECE8; --ink-soft:#8B8B87; --rule:rgba(255,255,255,0.13); --rule-2:rgba(255,255,255,0.06); --accent:#5B8CFF; }
   * { box-sizing:border-box; }
   html,body { height:100%; }
-  body { margin:0; background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; text-align:center; padding:clamp(20px,5vw,48px); transition:background-color .35s ease, color .35s ease; }
-  .mono { font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; text-align:center; padding:clamp(20px,5vw,48px); transition:background-color .35s ease, color .35s ease; }
+  .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
   a { color:inherit; text-decoration:none; }
   ::selection { background:var(--accent); color:var(--bg); }
   :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
   .code { font-weight:800; letter-spacing:-0.05em; line-height:.85; font-size:clamp(5rem,26vw,13rem); }
   .code .d { color:var(--accent); }
   .msg { margin:14px 0 26px; color:var(--ink-soft); font-size:.95rem; }
-  .home { display:inline-block; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em; font-weight:700; border:1px solid var(--rule); padding:11px 18px; transition:color .18s, border-color .18s, background .18s; }
+  .home { display:inline-block; font-size:.9rem; letter-spacing:-0.006em; font-weight:500; border:1px solid var(--rule); border-radius:980px; min-height:2.75rem; padding:.7rem 1.2rem; transition:color .18s, border-color .18s, background .18s, transform .12s cubic-bezier(.2,.7,.2,1); }
+  .home:active { transform:scale(.97); transition-duration:.09s; }
   .home:hover { color:var(--bg); background:var(--accent); border-color:var(--accent); }
   @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
   .wrap { animation:rise .6s cubic-bezier(.2,.7,.2,1) both; }

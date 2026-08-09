@@ -41,22 +41,38 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
 <style>
   @view-transition { navigation: auto; }
+  /* Inter stands in for SF on non-Apple platforms. Apple devices resolve -apple-system first and
+     never download this file — browsers only fetch a webfont whose glyphs actually get used. */
+  @font-face {
+    font-family:'InterVar';
+    src:url('fonts/inter-var-latin.woff2') format('woff2-variations');
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
   :root {
     --bg:#09090B; --bg-2:#0F0F12; --ink:#EDECE8; --ink-soft:#8B8B87;
     --rule:rgba(255,255,255,0.13); --rule-2:rgba(255,255,255,0.06); --accent:#5B8CFF;
     --maxw:960px;
+    /* material: edge highlight = light catching the top of the surface; weight scales with surface size */
+    --edge:rgba(255,255,255,0.16);
+    --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
+    --radius:26px;
+    --mat:70%;              /* how much bg is mixed into the translucent surface — legibility floor, not a style dial */
+    --blur:34px;
   }
   * { box-sizing:border-box; }
   html { -webkit-text-size-adjust:100%; }
   body {
     margin:0; min-height:100svh; background:var(--bg); color:var(--ink);
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size:17px; line-height:1.55; letter-spacing:-0.006em;
+    /* Apple platforms hit real SF via -apple-system; the "SF Pro Text"/Nerd Font names are for
+       machines with SF installed locally (Linux); everything else falls through to Helvetica. */
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:1.0625rem; line-height:1.5; letter-spacing:0;   /* body sits near 0; tracking is set per size */
+    font-optical-sizing:auto;
     -webkit-font-smoothing:antialiased; overflow-x:hidden;
     transition:background-color .35s ease, color .35s ease;
     display:flex; flex-direction:column;
   }
-  .mono { font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; }
+  .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
   a { color:inherit; text-decoration:none; }
   ::selection { background:var(--accent); color:var(--bg); }
   :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
@@ -65,46 +81,78 @@
   body.lit #wave { opacity:1; }
   #veil { position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.72; background:radial-gradient(125% 95% at 12% -5%, transparent 42%, var(--bg) 100%); }
 
-  #boot { position:fixed; inset:0; z-index:100; background:var(--bg); display:flex; align-items:center; justify-content:center; gap:16px; transition:opacity .6s ease, visibility .6s; }
-  #boot.done { opacity:0; visibility:hidden; }
-  #boot .mark { font-weight:800; letter-spacing:-0.04em; font-size:clamp(1.4rem,4vw,2rem); }
-  #boot .mark .d { color:var(--accent); }
-  #boot .bbar { width:120px; height:2px; background:var(--rule); overflow:hidden; }
-  #boot .bbar i { display:block; height:100%; width:0; background:var(--accent); transition:width .9s ease; }
-  #boot.reveal .bbar i { width:100%; }
-
   .stage { position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; padding:clamp(20px,5vw,48px); }
 
+  /* reveal composes with the drag offset (--dx/--dy) so the two never fight over `transform` */
   .rv { opacity:0; transform:translateY(12px) scale(.99); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
-  body.lit .rv { opacity:1; transform:none; }
+  body.lit .rv { opacity:1; transform:translate3d(var(--dx,0px), var(--dy,0px), 0); }
+  body.dragging .rv { transition:opacity .7s cubic-bezier(.2,.7,.2,1); }  /* drag drives transform directly */
+  body.dragging { user-select:none; -webkit-user-select:none; cursor:grabbing; }
 
-  /* the whole site: one small card */
-  .card { width:min(430px, 100%); border:1px solid var(--rule); background:color-mix(in srgb, var(--bg) 76%, transparent); backdrop-filter:blur(12px); }
-  .card-head { padding:24px 24px 20px; border-bottom:1px solid var(--rule); display:flex; align-items:flex-end; justify-content:space-between; gap:14px; }
-  .card-name { font-weight:800; font-size:clamp(1.7rem,7vw,2.1rem); line-height:.9; letter-spacing:-0.035em; text-transform:uppercase; }
+  /* the whole site: one small card — a translucent material floating on the field */
+  .card {
+    width:min(26.875rem, 100%); border-radius:var(--radius);
+    background:color-mix(in srgb, var(--bg) var(--mat), transparent);
+    backdrop-filter:blur(var(--blur)) saturate(180%);
+    -webkit-backdrop-filter:blur(var(--blur)) saturate(180%);
+    box-shadow:inset 0 1px 0 var(--edge), inset 0 0 0 1px var(--rule), var(--shadow);
+    overflow:hidden; will-change:transform; touch-action:pan-y;
+  }
+  .card-head { padding:1.625rem 1.5rem 1.3125rem; border-bottom:1px solid var(--rule); display:flex; align-items:flex-end; justify-content:space-between; gap:14px; }
+  /* large type: Display optical size (Apple splits Display/Text at ~20pt), tracking tightens as it grows */
+  .card-name {
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SFProDisplay Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight:700; font-size:clamp(1.75rem,7vw,2.15rem); line-height:1.02; letter-spacing:-0.032em;
+  }
   .card-name .d { color:var(--accent); }
-  .card-handle { font-size:.64rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-soft); white-space:nowrap; padding-bottom:3px; }
-  .card-bio { padding:17px 24px 19px; border-bottom:1px solid var(--rule); }
-  .card-bio p { margin:0; font-size:.9rem; line-height:1.5; color:var(--ink); }
+  /* small caps label: positive tracking for legibility */
+  .card-handle { font-size:.8rem; letter-spacing:-0.004em; font-weight:400; color:var(--ink-soft); white-space:nowrap; padding-bottom:5px; }
+  .card-bio { padding:1.125rem 1.5rem 1.25rem; border-bottom:1px solid var(--rule); }
+  .card-bio p { margin:0; font-size:.925rem; line-height:1.52; letter-spacing:-0.003em; color:var(--ink); }
   .card-bio .dim { color:var(--ink-soft); }
   .card-bio .lang { color:var(--accent); font-weight:600; }
-  .card-bio .note { margin-top:11px; font-size:.84rem; color:var(--ink-soft); }
+  .card-bio .note { margin-top:.6875rem; font-size:.85rem; color:var(--ink-soft); }
   .card-links { display:flex; flex-direction:column; }
-  .card-links a { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 24px; border-bottom:1px solid var(--rule-2); transition:background .16s ease, padding-left .16s ease; }
+  /* min 44px hit target; hover/press move on transform only (compositor-friendly) */
+  .card-links a {
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    min-height:2.75rem; padding:.75rem 1.5rem; border-bottom:1px solid var(--rule-2);
+    transition:background .16s ease, transform .16s cubic-bezier(.2,.7,.2,1);
+  }
   .card-links a:last-child { border-bottom:none; }
-  .card-links a:hover { background:color-mix(in srgb, var(--accent) 10%, transparent); padding-left:30px; }
-  .card-links .k { font-size:.8rem; text-transform:uppercase; letter-spacing:.11em; font-weight:600; color:var(--ink-soft); transition:color .16s; }
+  .card-links a:hover { background:color-mix(in srgb, var(--accent) 9%, transparent); transform:translateX(6px); }
+  /* feedback lands on press, not release */
+  .card-links a:active { background:color-mix(in srgb, var(--accent) 15%, transparent); transform:translateX(6px) scale(.985); transition-duration:.1s; }
+  .card-links .k { font-size:.95rem; letter-spacing:-0.006em; font-weight:500; color:var(--ink); transition:color .16s; }
   .card-links a:hover .k { color:var(--ink); }
-  .card-links .v { font-family:ui-monospace,Menlo,monospace; font-size:.72rem; color:var(--ink-soft); transition:color .16s; }
+  .card-links .v { font-size:.85rem; letter-spacing:-0.004em; color:var(--ink-soft); transition:color .16s; }
   .card-links a:hover .v { color:var(--accent); }
-  .card-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 14px 11px 24px; border-top:1px solid var(--rule); }
-  .card-scheme { font-size:.62rem; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .card-scheme b { color:var(--accent); font-weight:600; }
+  .card-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:.6875rem .875rem .6875rem 1.5rem; border-top:1px solid var(--rule); }
+  .card-scheme { font-size:.78rem; letter-spacing:-0.004em; color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .card-scheme b { color:var(--ink-soft); font-weight:500; }
   .card-ctrls { display:flex; gap:6px; flex-shrink:0; }
-  .btn { font-family:ui-monospace,Menlo,monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); background:none; border:1px solid var(--rule); padding:5px 9px; cursor:pointer; transition:color .18s, border-color .18s, background .18s; }
-  .btn:hover { color:var(--ink); border-color:var(--ink); }
+  .btn {
+    font-size:.8rem; letter-spacing:-0.004em; font-weight:500;
+    color:var(--ink-soft); background:color-mix(in srgb, var(--ink) 6%, transparent); border:1px solid var(--rule);
+    border-radius:980px; padding:.375rem .6875rem; min-height:1.875rem; cursor:pointer;
+    transition:color .18s, border-color .18s, background .18s, transform .12s cubic-bezier(.2,.7,.2,1);
+  }
+  .btn:hover { color:var(--ink); border-color:color-mix(in srgb, var(--ink) 42%, transparent); }
+  .btn:active { transform:scale(.96); transition-duration:.09s; }
 
-  @media (prefers-reduced-motion:reduce) { .rv { opacity:1; transform:none; transition:none; } }
+  @media (prefers-reduced-motion:reduce) {
+    .rv { opacity:1; transform:none; transition:none; }
+    .card-links a, .btn { transition:background .16s ease, color .16s ease; }
+    .card-links a:hover, .card-links a:active, .btn:active { transform:none; }
+  }
+  /* translucency off → frostier/solid surface, blur dropped */
+  @media (prefers-reduced-transparency:reduce) {
+    .card { --mat:100%; --blur:0px; backdrop-filter:none; -webkit-backdrop-filter:none; }
+  }
+  @media (prefers-contrast:more) {
+    .card { --mat:100%; backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:inset 0 0 0 1px var(--ink), var(--shadow); }
+    .card-handle, .card-scheme, .card-links .k, .card-links .v { color:var(--ink); }
+  }
 </style>
 <script src="nav.js"></script>
 </head>
@@ -112,8 +160,6 @@
 
 <canvas id="wave" aria-hidden="true"></canvas>
 <div id="veil" aria-hidden="true"></div>
-
-<div id="boot"><span class="mark">apatel<span class="d">.</span>co</span><span class="bbar"><i></i></span></div>
 
 <div class="stage">
   <div class="card rv">
@@ -126,18 +172,18 @@
       <p class="note">Always up for interesting collaborations &amp; open source to contribute to — also, i want money.</p>
     </div>
     <nav class="card-links">
-      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener"><span class="k">github</span><span class="v">jeebuscrossaint ↗</span></a>
-      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener"><span class="k">linkedin</span><span class="v">amarnath-patel ↗</span></a>
-      <a href="post.html"><span class="k">writing</span><span class="v">→</span></a>
-      <a href="friends.html"><span class="k">friends</span><span class="v">→</span></a>
-      <a href="pdf.html?file=resume.pdf"><span class="k">résumé</span><span class="v">pdf</span></a>
-      <a href="pdf.html?file=cv.pdf"><span class="k">cv</span><span class="v">pdf</span></a>
-      <a href="mailto:amarnath.patel@ucf.edu"><span class="k">email</span><span class="v">↗</span></a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">jeebuscrossaint ↗</span></a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">amarnath-patel ↗</span></a>
+      <a href="post.html"><span class="k">Writing</span><span class="v">→</span></a>
+      <a href="friends.html"><span class="k">Friends</span><span class="v">→</span></a>
+      <a href="pdf.html?file=resume.pdf"><span class="k">Résumé</span><span class="v">pdf</span></a>
+      <a href="pdf.html?file=cv.pdf"><span class="k">CV</span><span class="v">pdf</span></a>
+      <a href="mailto:amarnath.patel@ucf.edu"><span class="k">Email</span><span class="v">↗</span></a>
     </nav>
     <div class="card-foot">
       <span class="card-scheme" id="schemeTag"></span>
       <div class="card-ctrls">
-        <button class="btn" id="shuffleBtn" type="button" title="new random palette">⟳ shuffle</button>
+        <button class="btn" id="shuffleBtn" type="button" title="new random palette">Shuffle</button>
       </div>
     </div>
   </div>
@@ -158,9 +204,27 @@
   function rgba(rgb,a){ return 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+a+')'; }
   var curAccent=[91,140,255], curIsDark=true;
 
+  /* same WCAG AA floor the shared engine applies — base16 palettes are authored for
+     terminals and a chunk of them can't carry body copy at their own default foreground */
+  function pickInk(bg,c){
+    var order=[5,6,7,4,3,2,1,0];
+    for(var i=0;i<order.length;i++){ if(contrast(hexRGB(c[order[i]]),bg)>=4.5) return c[order[i]]; }
+    return lum(bg)<0.5?'#ffffff':'#000000';
+  }
+  function pickSoft(bg,c,inkR){
+    var cand=[3,4,2,6,5,7,1], out=null, outR=99;
+    for(var i=0;i<cand.length;i++){
+      var r=contrast(hexRGB(c[cand[i]]),bg);
+      if(r>=4.5 && r<outR && r<=inkR){ outR=r; out=c[cand[i]]; }
+    }
+    return out || pickInk(bg,c);
+  }
+
   function applyScheme(s, forced){
     var hx=s[2], c=[]; for(var ci=0;ci<16;ci++) c.push('#'+hx.substr(ci*6,6));
-    var bg=hexRGB(c[0]), fg=hexRGB(c[5]);
+    var bg=hexRGB(c[0]);
+    var inkHex=pickInk(bg,c), inkR=contrast(hexRGB(inkHex),bg), softHex=pickSoft(bg,c,inkR);
+    var fg=hexRGB(inkHex);
     curIsDark = (s[1]==='d') || (s[1]!=='l' && lum(bg)<0.4);
     var cand=[13,14,12,11,9,8].map(function(i){return c[i];});
     var best=cand.filter(function(h){return contrast(hexRGB(h),bg)>=2.4;});
@@ -169,10 +233,17 @@
     curAccent=hexRGB(accentHex);
     var st=root.style;
     st.setProperty('--bg',c[0]); st.setProperty('--bg-2',c[1]);
-    st.setProperty('--ink',c[5]); st.setProperty('--ink-soft',c[3]);
+    st.setProperty('--ink',inkHex); st.setProperty('--ink-soft',softHex);
     st.setProperty('--rule',rgba(fg,curIsDark?0.14:0.18));
     st.setProperty('--rule-2',rgba(fg,curIsDark?0.07:0.10));
     st.setProperty('--accent',accentHex);
+    /* material weight follows the scheme: a light surface needs more opacity to stay legible,
+       and its shadow has to lighten or it reads as dirt rather than depth */
+    st.setProperty('--edge', curIsDark?'rgba(255,255,255,0.16)':'rgba(255,255,255,0.72)');
+    st.setProperty('--mat', curIsDark?'70%':'86%');   /* light surfaces need more body or the field eats the text */
+    st.setProperty('--shadow', curIsDark
+      ? '0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22)'
+      : '0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09)');
     var mc=document.querySelector('meta[name="theme-color"]');
     if(!mc){ mc=document.createElement('meta'); mc.name='theme-color'; document.head.appendChild(mc); }
     mc.content=c[0];
@@ -200,7 +271,7 @@
     var time=t*0.001; tmx+=(mx-tmx)*0.035; tmy+=(my-tmy)*0.035;
     var R=curAccent[0],G=curAccent[1],B=curAccent[2], sx=[],sy=[],sk=[],sw=[],sp=[];
     for(var i=0;i<src.length;i++){var s=src[i]; sx.push((s.x+0.05*Math.sin(time*0.13+i))*cols); sy.push((s.y+0.05*Math.cos(time*0.11+i*1.7))*rows); sk.push(s.k); sw.push(s.w); sp.push(s.ph);}
-    var cxp=tmx*cols,cyp=tmy*rows,n=src.length,amp=ignite,p=0,m=n+1,maxA=curIsDark?130:105;
+    var cxp=tmx*cols,cyp=tmy*rows,n=src.length,amp=ignite,p=0,m=n+1,maxA=curIsDark?58:44;
     for(var y=0;y<rows;y++){for(var x=0;x<cols;x++){
       var re=0,im=0;
       for(var j=0;j<n;j++){var dx=x-sx[j],dy=y-sy[j],d=Math.sqrt(dx*dx+dy*dy),ph=sk[j]*d-sw[j]*time+sp[j]; re+=Math.cos(ph); im+=Math.sin(ph);}
@@ -233,25 +304,69 @@
   enableTilt();
   addEventListener('pointerdown',enableTilt,{once:true,passive:true});
 
-  /* boot */
-  var boot=document.getElementById('boot'), skipped=false;
-  function finish(){ if(skipped) return; skipped=true; ignite=1; boot.classList.add('done'); body.classList.add('lit'); }
-  function igniteField(){ body.classList.add('lit');
-    if(lowData){ return; }   // data-saver / reduced-data: skip the animated field, keep static bg
-    if(reduce){ ignite=1; schedule(); return; }   // one static frame, no animation loop
-    var s=performance.now(); (function ramp(now){ ignite=Math.min(1,(now-s)/1400); if(ignite<1) requestAnimationFrame(ramp); })(performance.now());
+  /* no synthetic loading gate — the card is there on first paint and the field fades up behind it */
+  function start(){
+    body.classList.add('lit');
+    if(lowData) return;                           // data-saver: static background, no field
+    if(reduce){ ignite=1; schedule(); return; }   // one static frame, no loop
+    var s=performance.now();
+    (function ramp(now){ ignite=Math.min(1,(now-s)/1400); if(ignite<1) requestAnimationFrame(ramp); })(performance.now());
     schedule();
   }
-  function start(){ igniteField();
-    if(reduce){ boot.classList.add('reveal'); setTimeout(finish,120); return; }
-    requestAnimationFrame(function(){ boot.classList.add('reveal'); });
-    setTimeout(finish, 1000);
-  }
-  boot.addEventListener('click',finish);
-  addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key==='Escape') finish(); });
 
   function randomScheme(){ return SCHEMES.length ? SCHEMES[Math.floor(Math.random()*SCHEMES.length)] : ['default','d','09090b0f0f12181818313131565654edece8f5e0dcb4befeff5555ffb86cf1fa8c50fa7b8be9fdbd93f9ff79c6ffb86c']; }
   var shuf=document.getElementById('shuffleBtn'); if(shuf) shuf.addEventListener('click',function(){ applyScheme(randomScheme()); });
+
+  /* the card is a surface floating on the field — push it and the field shows through.
+     1:1 tracking, rubber-banded bounds, spring return that inherits the release velocity. */
+  (function cardDrag(){
+    if (reduce) return;                     // a moving full-card surface is exactly what reduced-motion means to avoid
+    var card=document.querySelector('.card'); if(!card) return;
+    var BOUND=54, THRESH=10, W=2*Math.PI/0.4;   // response 0.4s, critically damped -> no overshoot
+    var px=0,py=0,vx=0,vy=0, dragging=false,armed=false, sx=0,sy=0,pid=0, hist=[], raf=0, last=0;
+
+    function rubberband(o,dim,c){ c=c||0.55; return (o*dim*c)/(dim+c*Math.abs(o)); }
+    function put(){ card.style.setProperty('--dx',px.toFixed(2)+'px'); card.style.setProperty('--dy',py.toFixed(2)+'px'); }
+    function step(now){
+      raf=0; var dt=Math.min((now-last)/1000,0.032); last=now;
+      var ax=-W*W*px-2*W*vx, ay=-W*W*py-2*W*vy;   // starts from the live on-screen value, so an interrupt never jumps
+      vx+=ax*dt; vy+=ay*dt; px+=vx*dt; py+=vy*dt; put();
+      if(Math.abs(px)+Math.abs(py)>0.1 || Math.abs(vx)+Math.abs(vy)>0.5) raf=requestAnimationFrame(step);
+      else { px=py=vx=vy=0; put(); body.classList.remove('dragging'); }
+    }
+    function settle(){ if(!raf){ last=performance.now(); raf=requestAnimationFrame(step); } }
+
+    card.addEventListener('pointerdown',function(e){
+      if(e.button) return;
+      armed=true; dragging=false; sx=e.clientX; sy=e.clientY; pid=e.pointerId;
+      if(raf){ cancelAnimationFrame(raf); raf=0; }    // grabbable mid-flight
+      vx=vy=0; hist=[{x:px,y:py,t:performance.now()}];
+    },{passive:true});
+
+    card.addEventListener('pointermove',function(e){
+      if(!armed) return;
+      var dx=e.clientX-sx, dy=e.clientY-sy;
+      if(!dragging){
+        if(Math.abs(dx)+Math.abs(dy)<THRESH) return;  // hysteresis, so taps still reach the links
+        dragging=true; body.classList.add('dragging');
+        try{ card.setPointerCapture(pid); }catch(_){}
+      }
+      px=rubberband(dx,BOUND); py=rubberband(dy,BOUND);
+      hist.push({x:px,y:py,t:performance.now()}); if(hist.length>6) hist.shift();
+      put();
+    },{passive:true});
+
+    function release(){
+      armed=false; if(!dragging) return; dragging=false;
+      var a=hist[0], b=hist[hist.length-1], dt=(b.t-a.t)/1000;
+      // velocity of the surface, not the finger — the finger outruns it inside the rubber band
+      if(dt>0.004){ vx=(b.x-a.x)/dt; vy=(b.y-a.y)/dt; } else { vx=vy=0; }
+      vx=Math.max(-2600,Math.min(2600,vx)); vy=Math.max(-2600,Math.min(2600,vy));
+      settle();
+    }
+    card.addEventListener('pointerup',release,{passive:true});
+    card.addEventListener('pointercancel',release,{passive:true});
+  })();
 
   (function restorePalette(){ var p=readPalette(); if(p&&p.n){ var s=schemeByName(p.n); if(s){ applyScheme(s,p.a); return; } } applyScheme(randomScheme()); })();
   start();

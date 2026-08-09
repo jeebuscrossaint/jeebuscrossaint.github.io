@@ -12,9 +12,34 @@
   function contrast(a,b){ var l1=lum(a),l2=lum(b); return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05); }
   function rgba(r,a){ return 'rgba('+r[0]+','+r[1]+','+r[2]+','+a+')'; }
 
+  /* Base16 schemes are authored for terminals, not for body copy: ~8% put base05 under
+     4.5:1 against their own base00, and 83% do it for base03. Rather than trust the scheme,
+     pick the nearest entry that clears WCAG AA — and fall back to plain black/white if the
+     whole palette is too flat. Nothing on the page should be a value nobody checked. */
+  function pickInk(bg, c){
+    var order=[5,6,7,4,3,2,1,0];
+    for(var i=0;i<order.length;i++){
+      var h=c[order[i]];
+      if(contrast(hexRGB(h),bg)>=4.5) return h;
+    }
+    return lum(bg)<0.5 ? '#ffffff' : '#000000';
+  }
+  function pickSoft(bg, c, inkR){
+    // secondary text stays dimmer than --ink so the hierarchy survives, but still clears AA
+    var cand=[3,4,2,6,5,7,1], out=null, outR=99;
+    for(var i=0;i<cand.length;i++){
+      var r=contrast(hexRGB(c[cand[i]]),bg);
+      if(r>=4.5 && r<outR && r<=inkR){ outR=r; out=c[cand[i]]; }
+    }
+    return out || pickInk(bg,c);
+  }
+
   function apply(s, forced){
     var hx=s[2], c=[]; for(var i=0;i<16;i++) c.push('#'+hx.substr(i*6,6));
-    var bg=hexRGB(c[0]), fg=hexRGB(c[5]);
+    var bg=hexRGB(c[0]);
+    var inkHex=pickInk(bg,c), inkR=contrast(hexRGB(inkHex),bg);
+    var softHex=pickSoft(bg,c,inkR);
+    var fg=hexRGB(inkHex);
     var dark=(s[1]==='d')||(s[1]!=='l' && lum(bg)<0.4);
     var cand=[13,14,12,11,9,8].map(function(i){return c[i];});
     var best=cand.filter(function(h){return contrast(hexRGB(h),bg)>=2.4;});
@@ -22,7 +47,7 @@
     var ac=(forced&&/^#[0-9a-f]{6}$/i.test(forced))?forced:(best.length?best[Math.floor(Math.random()*best.length)]:c[13]);
     var st=root.style;
     st.setProperty('--bg',c[0]); st.setProperty('--bg-2',c[1]);
-    st.setProperty('--ink',c[5]); st.setProperty('--ink-soft',c[3]);
+    st.setProperty('--ink',inkHex); st.setProperty('--ink-soft',softHex);
     st.setProperty('--rule',rgba(fg,dark?0.14:0.18));
     st.setProperty('--rule-2',rgba(fg,dark?0.07:0.10));
     st.setProperty('--accent',ac);
