@@ -48,16 +48,28 @@
     src:url('fonts/inter-var-latin.woff2') format('woff2-variations');
     font-weight:100 900; font-style:normal; font-display:swap;
   }
+  /* Apple's system palette — one considered scheme that follows the OS appearance instead of a
+     random pick: systemGroupedBackground / secondarySystemBackground, label / secondaryLabel,
+     separator, and systemBlue in its light and dark variants. */
   :root {
-    --bg:#09090B; --bg-2:#0F0F12; --ink:#EDECE8; --ink-soft:#8B8B87;
-    --rule:rgba(255,255,255,0.13); --rule-2:rgba(255,255,255,0.06); --accent:#5B8CFF;
-    --maxw:960px;
-    /* material: edge highlight = light catching the top of the surface; weight scales with surface size */
-    --edge:rgba(255,255,255,0.16);
-    --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
-    --radius:26px;
-    --mat:70%;              /* how much bg is mixed into the translucent surface — legibility floor, not a style dial */
-    --blur:34px;
+    color-scheme: light dark;
+    --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
+    --ink:#000000; --ink-soft:#6C6C70;
+    --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
+    --accent:#007AFF;
+    --edge:rgba(255,255,255,0.72); --mat:86%;
+    --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
+    --maxw:960px; --radius:26px; --blur:34px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
+      --ink:#FFFFFF; --ink-soft:#98989F;
+      --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
+      --accent:#0A84FF;
+      --edge:rgba(255,255,255,0.16); --mat:70%;
+      --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
+    }
   }
   * { box-sizing:border-box; }
   html { -webkit-text-size-adjust:100%; }
@@ -92,7 +104,7 @@
   /* the whole site: one small card — a translucent material floating on the field */
   .card {
     width:min(26.875rem, 100%); border-radius:var(--radius);
-    background:color-mix(in srgb, var(--bg) var(--mat), transparent);
+    background:color-mix(in srgb, var(--surface) var(--mat), transparent);
     backdrop-filter:blur(var(--blur)) saturate(180%);
     -webkit-backdrop-filter:blur(var(--blur)) saturate(180%);
     box-shadow:inset 0 1px 0 var(--edge), inset 0 0 0 1px var(--rule), var(--shadow);
@@ -127,23 +139,11 @@
   .card-links a:hover .k { color:var(--ink); }
   .card-links .v { font-size:.85rem; letter-spacing:-0.004em; color:var(--ink-soft); transition:color .16s; }
   .card-links a:hover .v { color:var(--accent); }
-  .card-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:.6875rem .875rem .6875rem 1.5rem; border-top:1px solid var(--rule); }
-  .card-scheme { font-size:.78rem; letter-spacing:-0.004em; color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .card-scheme b { color:var(--ink-soft); font-weight:500; }
-  .card-ctrls { display:flex; gap:6px; flex-shrink:0; }
-  .btn {
-    font-size:.8rem; letter-spacing:-0.004em; font-weight:500;
-    color:var(--ink-soft); background:color-mix(in srgb, var(--ink) 6%, transparent); border:1px solid var(--rule);
-    border-radius:980px; padding:.375rem .6875rem; min-height:1.875rem; cursor:pointer;
-    transition:color .18s, border-color .18s, background .18s, transform .12s cubic-bezier(.2,.7,.2,1);
-  }
-  .btn:hover { color:var(--ink); border-color:color-mix(in srgb, var(--ink) 42%, transparent); }
-  .btn:active { transform:scale(.96); transition-duration:.09s; }
 
   @media (prefers-reduced-motion:reduce) {
     .rv { opacity:1; transform:none; transition:none; }
-    .card-links a, .btn { transition:background .16s ease, color .16s ease; }
-    .card-links a:hover, .card-links a:active, .btn:active { transform:none; }
+    .card-links a { transition:background .16s ease, color .16s ease; }
+    .card-links a:hover, .card-links a:active { transform:none; }
   }
   /* translucency off → frostier/solid surface, blur dropped */
   @media (prefers-reduced-transparency:reduce) {
@@ -151,7 +151,7 @@
   }
   @media (prefers-contrast:more) {
     .card { --mat:100%; backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:inset 0 0 0 1px var(--ink), var(--shadow); }
-    .card-handle, .card-scheme, .card-links .k, .card-links .v { color:var(--ink); }
+    .card-handle, .card-links .k, .card-links .v { color:var(--ink); }
   }
 </style>
 <script src="nav.js"></script>
@@ -180,16 +180,9 @@
       <a href="pdf.html?file=cv.pdf"><span class="k">CV</span><span class="v">pdf</span></a>
       <a href="mailto:amarnath.patel@ucf.edu"><span class="k">Email</span><span class="v">↗</span></a>
     </nav>
-    <div class="card-foot">
-      <span class="card-scheme" id="schemeTag"></span>
-      <div class="card-ctrls">
-        <button class="btn" id="shuffleBtn" type="button" title="new random palette">Shuffle</button>
-      </div>
-    </div>
   </div>
 </div>
 
-<script src="schemes.js"></script>
 <script>
 (function () {
   var root = document.documentElement, body = document.body;
@@ -197,66 +190,26 @@
   var lowData = (navigator.connection && navigator.connection.saveData) ||
                 (window.matchMedia && matchMedia('(prefers-reduced-data: reduce)').matches);
 
-  var SCHEMES = window.__SCHEMES || [];
+  /* One fixed palette, declared in CSS and switched by the OS appearance. The field only needs
+     the accent as RGB and to know which way to blend, so it reads the tokens rather than owning them. */
   function hexRGB(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
-  function lum(rgb){ var a=rgb.map(function(v){v/=255; return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);}); return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2]; }
-  function contrast(a,b){ var l1=lum(a),l2=lum(b); return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05); }
-  function rgba(rgb,a){ return 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+a+')'; }
-  var curAccent=[91,140,255], curIsDark=true;
+  var darkQ = matchMedia('(prefers-color-scheme: dark)');
+  var curAccent=[0,122,255], curIsDark=darkQ.matches;
 
-  /* same WCAG AA floor the shared engine applies — base16 palettes are authored for
-     terminals and a chunk of them can't carry body copy at their own default foreground */
-  function pickInk(bg,c){
-    var order=[5,6,7,4,3,2,1,0];
-    for(var i=0;i<order.length;i++){ if(contrast(hexRGB(c[order[i]]),bg)>=4.5) return c[order[i]]; }
-    return lum(bg)<0.5?'#ffffff':'#000000';
-  }
-  function pickSoft(bg,c,inkR){
-    var cand=[3,4,2,6,5,7,1], out=null, outR=99;
-    for(var i=0;i<cand.length;i++){
-      var r=contrast(hexRGB(c[cand[i]]),bg);
-      if(r>=4.5 && r<outR && r<=inkR){ outR=r; out=c[cand[i]]; }
-    }
-    return out || pickInk(bg,c);
-  }
-
-  function applyScheme(s, forced){
-    var hx=s[2], c=[]; for(var ci=0;ci<16;ci++) c.push('#'+hx.substr(ci*6,6));
-    var bg=hexRGB(c[0]);
-    var inkHex=pickInk(bg,c), inkR=contrast(hexRGB(inkHex),bg), softHex=pickSoft(bg,c,inkR);
-    var fg=hexRGB(inkHex);
-    curIsDark = (s[1]==='d') || (s[1]!=='l' && lum(bg)<0.4);
-    var cand=[13,14,12,11,9,8].map(function(i){return c[i];});
-    var best=cand.filter(function(h){return contrast(hexRGB(h),bg)>=2.4;});
-    // reuse the stored accent so navigation keeps one palette; else pick fresh
-    var accentHex = (forced&&/^#[0-9a-f]{6}$/i.test(forced)) ? forced : (best.length ? best[Math.floor(Math.random()*best.length)] : c[13]);
-    curAccent=hexRGB(accentHex);
-    var st=root.style;
-    st.setProperty('--bg',c[0]); st.setProperty('--bg-2',c[1]);
-    st.setProperty('--ink',inkHex); st.setProperty('--ink-soft',softHex);
-    st.setProperty('--rule',rgba(fg,curIsDark?0.14:0.18));
-    st.setProperty('--rule-2',rgba(fg,curIsDark?0.07:0.10));
-    st.setProperty('--accent',accentHex);
-    /* material weight follows the scheme: a light surface needs more opacity to stay legible,
-       and its shadow has to lighten or it reads as dirt rather than depth */
-    st.setProperty('--edge', curIsDark?'rgba(255,255,255,0.16)':'rgba(255,255,255,0.72)');
-    st.setProperty('--mat', curIsDark?'70%':'86%');   /* light surfaces need more body or the field eats the text */
-    st.setProperty('--shadow', curIsDark
-      ? '0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22)'
-      : '0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09)');
+  function readTokens(){
+    var cs=getComputedStyle(root);
+    var a=cs.getPropertyValue('--accent').trim();
+    if(/^#[0-9a-f]{6}$/i.test(a)) curAccent=hexRGB(a);
+    curIsDark=darkQ.matches;
+    var cv=document.getElementById('wave');
+    if(cv) cv.style.mixBlendMode = curIsDark?'screen':'multiply';
     var mc=document.querySelector('meta[name="theme-color"]');
     if(!mc){ mc=document.createElement('meta'); mc.name='theme-color'; document.head.appendChild(mc); }
-    mc.content=c[0];
-    document.getElementById('wave').style.mixBlendMode = curIsDark?'screen':'multiply';
-    savePalette(s[0], accentHex);
-    var tag=document.getElementById('schemeTag'); if(tag) tag.innerHTML='<b>'+s[0]+'</b>';
+    mc.content=cs.getPropertyValue('--bg').trim();
   }
-
-  // persist palette across navigation within a visit (sessionStorage; shared key with theme.js)
-  var PKEY='apatel.palette';
-  function savePalette(n,a){ try{ sessionStorage.setItem(PKEY, JSON.stringify({n:n,a:a})); }catch(e){} }
-  function readPalette(){ try{ return JSON.parse(sessionStorage.getItem(PKEY)); }catch(e){ return null; } }
-  function schemeByName(n){ for(var i=0;i<SCHEMES.length;i++) if(SCHEMES[i][0]===n) return SCHEMES[i]; return null; }
+  // follow the system when the user flips appearance mid-visit
+  if(darkQ.addEventListener) darkQ.addEventListener('change', readTokens);
+  else if(darkQ.addListener) darkQ.addListener(readTokens);
 
   /* ambient field */
   var cvs=document.getElementById('wave'), ctx=cvs.getContext('2d',{alpha:true});
@@ -314,9 +267,6 @@
     schedule();
   }
 
-  function randomScheme(){ return SCHEMES.length ? SCHEMES[Math.floor(Math.random()*SCHEMES.length)] : ['default','d','09090b0f0f12181818313131565654edece8f5e0dcb4befeff5555ffb86cf1fa8c50fa7b8be9fdbd93f9ff79c6ffb86c']; }
-  var shuf=document.getElementById('shuffleBtn'); if(shuf) shuf.addEventListener('click',function(){ applyScheme(randomScheme()); });
-
   /* the card is a surface floating on the field — push it and the field shows through.
      1:1 tracking, rubber-banded bounds, spring return that inherits the release velocity. */
   (function cardDrag(){
@@ -368,7 +318,7 @@
     card.addEventListener('pointercancel',release,{passive:true});
   })();
 
-  (function restorePalette(){ var p=readPalette(); if(p&&p.n){ var s=schemeByName(p.n); if(s){ applyScheme(s,p.a); return; } } applyScheme(randomScheme()); })();
+  readTokens();
   start();
 })();
 </script>
