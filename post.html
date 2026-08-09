@@ -37,7 +37,7 @@
     --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
     --ink:#000000; --ink-soft:#6C6C70;
     --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
-    --accent:#007AFF;
+    --accent:#8C8C8C;   /* macOS Graphite accent — fills and tints only, never load-bearing colour */
     --edge:rgba(255,255,255,0.72); --mat:86%;
     --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
   }
@@ -46,7 +46,7 @@
       --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
       --ink:#FFFFFF; --ink-soft:#98989F;
       --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
-      --accent:#0A84FF;
+      --accent:#98989F;
       --edge:rgba(255,255,255,0.16); --mat:70%;
       --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
     }
@@ -56,8 +56,8 @@
   body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:17px; line-height:1.6; letter-spacing:-0.006em; -webkit-font-smoothing:antialiased; transition:background-color .35s ease, color .35s ease; }
   .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
   a { color:inherit; text-decoration:none; }
-  ::selection { background:var(--accent); color:var(--bg); }
-  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+  ::selection { background:color-mix(in srgb, var(--ink) 22%, transparent); color:var(--ink); }
+  :focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
 
   .topbar { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:12px; height:54px; padding:0 clamp(20px,5vw,44px); border-bottom:1px solid var(--rule-2); background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); }
   .topbar .back { font-size:.9rem; letter-spacing:-0.006em; color:var(--ink-soft); font-weight:400; transition:color .18s; }
@@ -75,7 +75,7 @@
   .entry .date { font-size:.82rem; letter-spacing:-0.004em; color:var(--ink-soft); }
   .entry .t { font-size:1.35rem; font-weight:700; letter-spacing:-0.02em; margin:4px 0 3px; }
   .entry .d { font-size:.95rem; color:var(--ink-soft); }
-  .entry .t .ar { color:var(--accent); display:inline-block; transition:transform .18s ease; }
+  .entry .t .ar { color:var(--ink-soft); display:inline-block; transition:transform .18s ease; }
   .entry:hover .t .ar { transform:translate(3px,0); }
 
   /* rendered markdown */
@@ -83,13 +83,13 @@
   #post-content h2 { font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; margin:1.9em 0 .5em; padding-bottom:.25em; border-bottom:1px solid var(--rule); }
   #post-content h3 { font-size:1.2rem; font-weight:700; letter-spacing:-0.01em; margin:1.6em 0 .4em; }
   #post-content p { margin:0 0 1.05em; }
-  #post-content a { color:var(--accent); border-bottom:1px solid color-mix(in srgb, var(--accent) 45%, transparent); transition:border-color .18s; }
-  #post-content a:hover { border-bottom-color:var(--accent); }
+  #post-content a { color:var(--ink); border-bottom:1px solid color-mix(in srgb, var(--ink) 42%, transparent); transition:border-color .18s; }
+  #post-content a:hover { border-bottom-color:var(--ink); }
   #post-content strong { font-weight:700; }
   #post-content code { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; font-size:.86em; background:var(--bg-2); border:1px solid var(--rule); padding:1px 6px; border-radius:6px; }
   #post-content pre { margin:1.3em 0; background:var(--bg-2); border:1px solid var(--rule); border-radius:14px; overflow-x:auto; }
   #post-content pre code { display:block; padding:16px 18px; background:none; border:none; font-size:.85em; line-height:1.6; color:var(--ink); }
-  #post-content blockquote { margin:1.3em 0; padding:.5em 1em; border-left:2px solid var(--accent); color:var(--ink-soft); }
+  #post-content blockquote { margin:1.3em 0; padding:.5em 1em; border-left:2px solid var(--rule); color:var(--ink-soft); }
   #post-content ul, #post-content ol { margin:0 0 1.05em 1.3em; }
   #post-content li { margin-bottom:.35em; }
   #post-content hr { border:none; border-top:1px solid var(--rule); margin:2em 0; }
