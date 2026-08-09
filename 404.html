@@ -27,7 +27,7 @@
     --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
     --ink:#000000; --ink-soft:#6C6C70;
     --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
-    --accent:#007AFF;
+    --accent:#8C8C8C;   /* macOS Graphite accent — fills and tints only, never load-bearing colour */
     --edge:rgba(255,255,255,0.72); --mat:86%;
     --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
   }
@@ -36,7 +36,7 @@
       --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
       --ink:#FFFFFF; --ink-soft:#98989F;
       --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
-      --accent:#0A84FF;
+      --accent:#98989F;
       --edge:rgba(255,255,255,0.16); --mat:70%;
       --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
     }
@@ -46,14 +46,14 @@
   body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; text-align:center; padding:clamp(20px,5vw,48px); transition:background-color .35s ease, color .35s ease; }
   .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
   a { color:inherit; text-decoration:none; }
-  ::selection { background:var(--accent); color:var(--bg); }
-  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+  ::selection { background:color-mix(in srgb, var(--ink) 22%, transparent); color:var(--ink); }
+  :focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
   .code { font-weight:800; letter-spacing:-0.05em; line-height:.85; font-size:clamp(5rem,26vw,13rem); }
-  .code .d { color:var(--accent); }
+  .code .d { color:var(--ink-soft); }
   .msg { margin:14px 0 26px; color:var(--ink-soft); font-size:.95rem; }
   .home { display:inline-block; font-size:.9rem; letter-spacing:-0.006em; font-weight:500; border:1px solid var(--rule); border-radius:980px; min-height:2.75rem; padding:.7rem 1.2rem; transition:color .18s, border-color .18s, background .18s, transform .12s cubic-bezier(.2,.7,.2,1); }
   .home:active { transform:scale(.97); transition-duration:.09s; }
-  .home:hover { color:var(--bg); background:var(--accent); border-color:var(--accent); }
+  .home:hover { color:var(--bg); background:var(--ink); border-color:var(--ink); }
   @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
   .wrap { animation:rise .6s cubic-bezier(.2,.7,.2,1) both; }
   @media (prefers-reduced-motion:reduce){ .wrap { animation:none; } }
