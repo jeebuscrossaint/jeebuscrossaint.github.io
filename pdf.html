@@ -61,7 +61,10 @@
   .btn:active { transform:scale(.96); transition-duration:.09s; }
 
   #viewer { flex:1; overflow:auto; padding:clamp(16px,4vw,40px); display:flex; flex-direction:column; align-items:center; gap:14px; }
-  .page { position:relative; max-width:100%; border-radius:10px; overflow:hidden; box-shadow:0 20px 50px -18px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.2); animation:fade .5s ease both; }
+  /* flex-shrink:0 is load-bearing: #viewer is a column flexbox with a constrained height, so
+     pages get compressed to fit unless told not to. Without overflow:hidden the canvas simply
+     overflowed the squashed box and still looked right — with it, pages clip mid-line. */
+  .page { position:relative; flex:0 0 auto; max-width:100%; border-radius:10px; overflow:hidden; box-shadow:0 20px 50px -18px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.2); animation:fade .5s ease both; }
   #viewer canvas { display:block; max-width:100%; height:auto; }
   @keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
   @media (prefers-reduced-motion:reduce){ .page { animation:none; } }
