@@ -37,7 +37,11 @@
     --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
     --ink:#000000; --ink-soft:#6C6C70;
     --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
-    --accent:#8C8C8C;   /* macOS Graphite accent — fills and tints only, never load-bearing colour */
+    /* HIG: don't hard-code system colours — AccentColor resolves to the visitor's own OS
+       accent (Graphite, Blue, whatever they set). Graphite is the fallback where the
+       keyword is unsupported. Used for fills and tints only, never to carry meaning. */
+    --accent:#8C8C8C;
+    --accent:AccentColor;
     --edge:rgba(255,255,255,0.72); --mat:86%;
     --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
   }
@@ -47,8 +51,23 @@
       --ink:#FFFFFF; --ink-soft:#98989F;
       --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
       --accent:#98989F;
+      --accent:AccentColor;
       --edge:rgba(255,255,255,0.16); --mat:70%;
       --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
+    }
+  }
+  @media (prefers-contrast: more) {
+    :root {
+      --ink-soft:#3C3C43;
+      --rule:rgba(60,60,67,0.68); --rule-2:rgba(60,60,67,0.34);
+      --mat:100%;
+    }
+  }
+  @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+    :root {
+      --ink-soft:#EBEBF5;
+      --rule:rgba(235,235,245,0.60); --rule-2:rgba(235,235,245,0.30);
+      --mat:100%;
     }
   }
   * { box-sizing:border-box; }
@@ -90,6 +109,10 @@
   .friends .link:nth-child(5){animation-delay:.30s} .friends .link:nth-child(6){animation-delay:.35s}
   .friends .link:nth-child(7){animation-delay:.40s} .friends .link:nth-child(n+8){animation-delay:.45s}
   @media (prefers-reduced-motion:reduce){ h1, .sub, .link { animation:none; opacity:1; } }
+  /* HIG: translucency and hairlines both give way under increased contrast / reduced transparency */
+  @media (prefers-reduced-transparency:reduce), (prefers-contrast:more) {
+    .topbar { background:var(--bg); backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid var(--rule); }
+  }
 </style>
 </head>
 <body>
