@@ -67,8 +67,10 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
-      --ink:#FFFFFF; --ink-soft:#98989F;
+      /* macOS dark, not iOS: windowBackgroundColor is a dark grey, not #000. Pure black is an
+         OLED-phone value and reads as a hole on a desktop display. */
+      --bg:#1C1C1E; --bg-2:#2C2C2E; --surface:#2C2C2E;
+      --ink:#FFFFFF; --ink-soft:#A1A1A8;
       --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
       --accent:#98989F;
       --accent:AccentColor;
@@ -246,6 +248,7 @@
 
   /* ambient field */
   var cvs=document.getElementById('wave'), ctx=cvs.getContext('2d',{alpha:true});
+  var cardEl=document.querySelector('.card');
   var SC=9, W=0,H=0, cols=0,rows=0, img=null,data=null;
   var mx=0.5,my=0.35, tmx=0.5,tmy=0.35, ignite=0, running=true, animate=(!reduce && !lowData), rafId=0;
   function schedule(){ if(!rafId) rafId=requestAnimationFrame(frame); }
@@ -257,11 +260,19 @@
     var time=t*0.001; tmx+=(mx-tmx)*0.035; tmy+=(my-tmy)*0.035;
     var R=curAccent[0],G=curAccent[1],B=curAccent[2], sx=[],sy=[],sk=[],sw=[],sp=[];
     for(var i=0;i<src.length;i++){var s=src[i]; sx.push((s.x+0.05*Math.sin(time*0.13+i))*cols); sy.push((s.y+0.05*Math.cos(time*0.11+i*1.7))*rows); sk.push(s.k); sw.push(s.w); sp.push(s.ph);}
-    var cxp=tmx*cols,cyp=tmy*rows,n=src.length,amp=ignite,p=0,m=n+1,maxA=curIsDark?58:44;
+    var cxp=tmx*cols,cyp=tmy*rows,n=src.length,amp=ignite,p=0;
+    /* The card is an object in the beam path, so it radiates too — its live position (drag
+       included, since transforms show up in the rect) becomes a fourth coherent source.
+       Push the card and the pattern reorganises around it. */
+    var kx=-1,ky=-1;
+    if(cardEl){ var kr=cardEl.getBoundingClientRect();
+      if(kr.width){ kx=((kr.left+kr.width/2)/W)*cols; ky=((kr.top+kr.height/2)/H)*rows; } }
+    var m=(kx>=0?n+2:n+1), maxA=curIsDark?104:78;
     for(var y=0;y<rows;y++){for(var x=0;x<cols;x++){
       var re=0,im=0;
       for(var j=0;j<n;j++){var dx=x-sx[j],dy=y-sy[j],d=Math.sqrt(dx*dx+dy*dy),ph=sk[j]*d-sw[j]*time+sp[j]; re+=Math.cos(ph); im+=Math.sin(ph);}
       var cdx=x-cxp,cdy=y-cyp,cd=Math.sqrt(cdx*cdx+cdy*cdy),cph=0.4*cd-1.6*time; re+=Math.cos(cph); im+=Math.sin(cph);
+      if(kx>=0){ var kdx=x-kx,kdy=y-ky,kd=Math.sqrt(kdx*kdx+kdy*kdy),kph=0.27*kd-0.85*time+1.2; re+=Math.cos(kph); im+=Math.sin(kph); }
       var inten=(re*re+im*im)/(m*m), v=Math.pow(inten,1.7)*amp; if(v>1)v=1;
       data[p]=R;data[p+1]=G;data[p+2]=B;data[p+3]=(v*maxA)|0; p+=4;
     }}
