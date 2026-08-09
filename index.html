@@ -211,15 +211,29 @@
 
   /* One fixed palette, declared in CSS and switched by the OS appearance. The field only needs
      the accent as RGB and to know which way to blend, so it reads the tokens rather than owning them. */
-  function hexRGB(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
   var darkQ = matchMedia('(prefers-color-scheme: dark)');
-  var curAccent=[0,122,255], curIsDark=darkQ.matches;
+  var curAccent=[140,140,140], curIsDark=darkQ.matches;
+
+  /* getPropertyValue returns custom properties *unresolved* — `--accent: AccentColor` reads
+     back as the literal string, not channel values. Round-trip through a probe element so the
+     browser resolves keywords, color-mix(), var() chains and everything else for us. */
+  function resolveColor(value, fallback){
+    var p=document.createElement('span');
+    p.style.cssText='position:absolute;visibility:hidden;pointer-events:none;color:'+value;
+    document.body.appendChild(p);
+    var c=getComputedStyle(p).color;
+    p.remove();
+    var m=c.match(/(\d+)[,\s]+(\d+)[,\s]+(\d+)/);
+    return m ? [+m[1],+m[2],+m[3]] : fallback;
+  }
 
   function readTokens(){
     var cs=getComputedStyle(root);
-    var a=cs.getPropertyValue('--accent').trim();
-    if(/^#[0-9a-f]{6}$/i.test(a)) curAccent=hexRGB(a);
-    curIsDark=darkQ.matches;
+    /* the field is chrome, not emphasis — HIG says apply colour sparingly, so it takes a
+       neutral from the label ramp rather than the accent. Otherwise every visitor whose OS
+       accent is blue gets a blue viewport. */
+    curAccent = resolveColor('var(--ink-soft)', curAccent);
+    curIsDark = darkQ.matches;
     var cv=document.getElementById('wave');
     if(cv) cv.style.mixBlendMode = curIsDark?'screen':'multiply';
     var mc=document.querySelector('meta[name="theme-color"]');
