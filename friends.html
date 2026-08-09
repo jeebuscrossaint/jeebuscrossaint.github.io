@@ -47,8 +47,10 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E;
-      --ink:#FFFFFF; --ink-soft:#98989F;
+      /* macOS dark, not iOS: windowBackgroundColor is a dark grey, not #000. Pure black is an
+         OLED-phone value and reads as a hole on a desktop display. */
+      --bg:#1C1C1E; --bg-2:#2C2C2E; --surface:#2C2C2E;
+      --ink:#FFFFFF; --ink-soft:#A1A1A8;
       --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
       --accent:#98989F;
       --accent:AccentColor;
