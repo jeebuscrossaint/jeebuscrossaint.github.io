@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="PolyOculus — building photometric observing capability from a networked array of telescopes. Mount control and pointing automation, UCF Astrophotonics Lab, CREOL.">
+<link rel="canonical" href="https://apatel.co/polyoculus.html">
+<title>PolyOculus — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/polyoculus.html">
+<meta property="og:title" content="PolyOculus — Amarnath Patel">
+<meta property="og:description" content="Amarnath Patel">
+<meta property="og:image" content="https://apatel.co/assets/og-polyoculus.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The PolyOculus redshift drift concept diagram.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apatel.co/assets/og-polyoculus.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
+<script src="nav.js"></script>
+</head>
+<body>
+
+<a class="vh" href="#main">Skip to content</a>
+
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow reveal">UCF Astrophotonics Lab · CREOL</p>
+      <h1 class="t-section reveal d1">PolyOculus.</h1>
+      <p class="t-intro dim reveal d2" style="max-width:48ch">Building large-telescope observing
+         capability out of a networked array of small, commercially available ones.</p>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap">
+      <div class="prose reveal">
+        <p>Aperture is expensive. The cost of a conventional telescope rises steeply with mirror
+           diameter, which is what makes very large single-aperture instruments so rare. PolyOculus
+           takes the other route: link many low-cost, commercially available telescopes together
+           with optical fibre so the array behaves as one much larger collecting area.</p>
+
+        <figure class="figure">
+          <picture>
+            <source type="image/webp" sizes="(max-width:44rem) 100vw, 44rem"
+                    srcset="assets/polyoculus-cost-640.webp 640w, assets/polyoculus-cost-1024.webp 1024w">
+            <img src="assets/polyoculus-cost-1024.jpg" sizes="(max-width:44rem) 100vw, 44rem"
+                 srcset="assets/polyoculus-cost-640.jpg 640w, assets/polyoculus-cost-1024.jpg 1024w"
+                 width="1024" height="711" loading="lazy" decoding="async"
+                 alt="Bar chart of cost per square metre of collecting area against telescope
+                      diameter. Standard telescopes range from 1.3 to 1.7 million dollars per
+                      square metre across 1 m to 30 m apertures, while PolyOculus ranges from
+                      150,000 dollars at 1 m down to 100,000 dollars at 8 m and 30 m.">
+          </picture>
+          <figcaption>Cost per square metre of collecting area, PolyOculus against conventional
+              telescopes. The advantage widens with aperture.
+              <span class="credit">Figure: PolyOculus programme, UCF Astrophotonics Lab, CREOL.</span>
+            </figcaption>
+        </figure>
+
+        <h2>The science case</h2>
+        <p>The array's driver is a redshift drift experiment — watching absorption features in the
+           spectra of high-redshift quasars shift over time, a direct measurement of cosmic
+           acceleration rather than an inferred one. That needs an enormous amount of collected
+           light and an extremely stable spectrograph, fed through photonic linkage and calibrated
+           against a laser frequency comb.</p>
+
+        <figure class="figure">
+          <picture>
+            <source type="image/webp" sizes="(max-width:44rem) 100vw, 44rem"
+                    srcset="assets/polyoculus-concept-640.webp 640w, assets/polyoculus-concept-1024.webp 1024w">
+            <img src="assets/polyoculus-concept-1024.jpg" sizes="(max-width:44rem) 100vw, 44rem"
+                 srcset="assets/polyoculus-concept-640.jpg 640w, assets/polyoculus-concept-1024.jpg 1024w"
+                 width="1024" height="770" loading="lazy" decoding="async"
+                 alt="Concept diagram of the redshift drift experiment: light from a high-redshift
+                      quasar is collected by a low-cost array of autonomous commercial telescopes,
+                      carried by photonic linkage to an ultra-stable spectrograph calibrated with a
+                      laser frequency comb, producing a spectrum with hydrogen absorption and
+                      emission features and metal absorption lines.">
+          </picture>
+          <figcaption>The redshift drift concept — array, photonic linkage, frequency-comb
+              calibration, and the resulting quasar spectrum.
+              <span class="credit">Figure: PolyOculus programme, UCF Astrophotonics Lab, CREOL.</span>
+            </figcaption>
+        </figure>
+
+        <h2>What I work on</h2>
+        <p>I contribute mount control and pointing automation for the array. An array only pays off
+           if every telescope in it acquires and tracks its target without someone standing at each
+           one, so the pointing has to be reliable and hands-off across the whole set.</p>
+
+        <div class="ctas" style="margin-top:2rem">
+          <a class="cta" href="https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/" target="_blank" rel="noopener">The programme at CREOL</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <div class="ctas reveal">
+        <a class="cta" href="research.html">All research</a>
+        <a class="cta" href="holography.html">Photonic lanterns</a>
+        <a class="cta" href="celeris.html">CELERIS</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo;
+      <a href="research.html">Research</a> &rsaquo; <span>PolyOculus</span></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

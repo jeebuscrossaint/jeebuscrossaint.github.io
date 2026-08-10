@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Complex transfer-matrix characterization of a photonic lantern by off-axis digital holography — UCF Astrophotonics Lab, CREOL.">
+<link rel="canonical" href="https://apatel.co/holography.html">
+<title>Photonic lanterns — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/holography.html">
+<meta property="og:title" content="Photonic lanterns — Amarnath Patel">
+<meta property="og:description" content="Amarnath Patel">
+<meta property="og:image" content="https://apatel.co/assets/og-holography.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The digital holography bench at CREOL.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apatel.co/assets/og-holography.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
+<script src="nav.js"></script>
+</head>
+<body>
+
+<a class="vh" href="#main">Skip to content</a>
+
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow reveal">UCF Astrophotonics Lab · CREOL · 2025 – present</p>
+      <h1 class="t-section reveal d1">Photonic lanterns.</h1>
+      <p class="t-intro dim reveal d2" style="max-width:46ch">Measuring the wavelength-dependent
+         complex transfer matrix of a photonic lantern by off-axis digital holography.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap-wide reveal">
+      <figure class="media hero" style="margin:0">
+        <picture>
+          <source type="image/webp" sizes="100vw"
+                  srcset="assets/bench-top-1400.webp 1400w, assets/bench-top-2400.webp 2400w">
+          <img src="assets/bench-top-1400.jpg" sizes="100vw"
+               srcset="assets/bench-top-1400.jpg 1400w, assets/bench-top-2400.jpg 2400w"
+               width="2400" height="1078" loading="eager" fetchpriority="high" decoding="async"
+               alt="Overhead view of the off-axis digital holography setup: interferometer optics
+                    and mirror mounts along the top of the breadboard, fibre-coupled polarisation
+                    controllers in the middle, and the multi-port fibre switch at right.">
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap">
+      <div class="prose reveal">
+        <p>A photonic lantern couples a multimode fibre to an array of single-mode fibres. Using
+           one for astronomy — feeding starlight from a telescope into single-mode photonic
+           devices — means knowing exactly how light entering each port emerges from the multimode
+           end, in amplitude <em>and</em> phase, at every wavelength of interest. That relationship
+           is the device's complex transfer matrix.</p>
+
+        <h2>Measurement</h2>
+        <p>The matrix is recovered by off-axis digital holography, extending the approach of
+           Dobias et al., <span class="cite"><em>Opt. Express</em> <strong>34</strong>(9), 17217
+           (2026)</span>. I align the interferometric bench and acquire holograms of the multimode
+           output for each input port across the C-band, 1525–1575 nm — recovering full amplitude
+           and phase, one row of the transfer matrix per measurement.</p>
+
+        <h2>Analysis</h2>
+        <p>I implemented the phase-retrieval and mode-decomposition pipeline: FFT sideband
+           isolation and demodulation, a Butterworth low-pass, then joint numerical optimisation
+           of mode-field diameter, defocus quadratic phase and field position. The recovered field
+           is decomposed onto the LP basis to give complex modal amplitude and phase.</p>
+
+        <h2>Automation</h2>
+        <p>The acquisition chain runs four instruments together — tunable laser, InGaAs camera,
+           fibre switch, and motorised polarisation control — so a complete all-port × C-band sweep
+           runs unattended. Polarisation is optimised in-loop for peak fringe contrast and
+           saturated frames are rejected as they arrive.</p>
+
+        <div class="ctas" style="margin-top:2rem">
+          <a class="cta" href="https://github.com/jeebuscrossaint/digital-holography-automation" target="_blank" rel="noopener">Acquisition code</a>
+          <a class="cta" href="https://github.com/jeebuscrossaint/gentec-camera" target="_blank" rel="noopener">Camera control</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap-wide stack">
+      <h2 class="t-section reveal">Characterized.</h2>
+      <p class="t-intro dim reveal d1" style="max-width:46ch">What a full transfer-matrix
+         measurement actually takes.</p>
+      <div class="stats reveal d2" style="margin-top:2.5rem">
+        <div class="stat"><p class="n">98%</p><p class="l">Reconstruction fidelity against simulated fields</p></div>
+        <div class="stat"><p class="n">50 nm</p><p class="l">C-band sweep, 1525–1575 nm, per input port</p></div>
+        <div class="stat"><p class="n">6 &amp; 7</p><p class="l">Port lanterns fully characterized</p></div>
+        <div class="stat"><p class="n">4</p><p class="l">Instruments automated into one unattended run</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section invert">
+    <div class="wrap center">
+      <p class="quote reveal">A full all-port sweep across the C-band used to take days of manual
+         bench time. Now it runs unattended.</p>
+      <p class="quote-src reveal d1">Acquisition automation — UCF Astrophotonics Lab, CREOL</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <h2 class="t-section reveal">Presented.</h2>
+      <div class="rows reveal d1" style="margin-top:2rem">
+        <div class="row">
+          <span>
+            <span class="k">Complex Transfer-Matrix Characterization of a Photonic Lantern by
+              Off-Axis Digital Holography</span>
+            <span class="b" style="display:block;margin-top:5px">Joint Annual Conference of the
+              National Society of Black Physicists and the National Society of Hispanic
+              Physicists, North Carolina</span>
+          </span>
+          <span class="v">Nov 2026</span>
+        </div>
+      </div>
+      <p class="t-small reveal d2" style="margin-top:1.5rem">Supervised by Dr. Stephen Eikenberry,
+         UCF Astrophotonics Lab, CREOL — UCF's College of Optics and Photonics.</p>
+      <div class="ctas reveal d3" style="margin-top:2rem">
+        <a class="cta" href="research.html">All research</a>
+        <a class="cta" href="celeris.html">CELERIS</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo;
+      <a href="research.html">Research</a> &rsaquo; <span>Photonic lanterns</span></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

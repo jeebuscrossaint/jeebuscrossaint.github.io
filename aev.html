@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Alset Solar Cybersedan — telemetry and dashboard software for the FAU High School solar car, 2nd place in the Cruiser Division at the 31st Solar Car Challenge.">
+<link rel="canonical" href="https://apatel.co/aev.html">
+<title>Alset Solar Cybersedan — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/aev.html">
+<meta property="og:title" content="Alset Solar Cybersedan — Amarnath Patel">
+<meta property="og:description" content="Amarnath Patel">
+<meta property="og:image" content="https://apatel.co/assets/og-aev.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The solar car dashboard running mid-race at Texas Motor Speedway.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apatel.co/assets/og-aev.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
+<script src="nav.js"></script>
+</head>
+<body>
+
+<a class="vh" href="#main">Skip to content</a>
+
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow reveal">Advanced Experimental Vehicles · FAU High School · 2023 – 2025</p>
+      <h1 class="t-section reveal d1">Alset Solar Cybersedan.</h1>
+      <p class="t-intro dim reveal d2" style="max-width:50ch">A four-passenger solar car, and the
+         software that let you watch it race from anywhere in the world.</p>
+      <div class="ctas reveal d3">
+        <a class="cta" href="https://aev-demo.zachl.tech/" target="_blank" rel="noopener">Try the live demo</a>
+        <a class="cta" href="https://github.com/YamanDevelopment/AEV-Software" target="_blank" rel="noopener">Source</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap-wide reveal">
+      <figure class="media hero" style="margin:0">
+        <picture>
+          <source type="image/webp" sizes="100vw"
+                  srcset="assets/aev-cockpit-1400.webp 1400w, assets/aev-cockpit-2400.webp 2400w">
+          <img src="assets/aev-cockpit-1400.jpg" sizes="100vw"
+               srcset="assets/aev-cockpit-1400.jpg 1400w, assets/aev-cockpit-2400.jpg 2400w"
+               width="2400" height="1109" loading="eager" fetchpriority="high" decoding="async"
+               alt="View from inside the solar car on the speedway. A driver's hand rests on the
+                    steering wheel; the dashboard screen shows a live track camera, lap times, a
+                    42 percent state-of-charge gauge, pack voltage and current, and per-cell
+                    battery statistics.">
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap">
+      <div class="prose reveal">
+        <p>The Florida Atlantic Solar Owls built a four-passenger solar car and took it to the 31st
+           annual Solar Car Challenge at Texas Motor Speedway — four days of racing on a
+           mile-and-a-half oval, after three days of scrutineering. It finished
+           <strong>second in the Cruiser Division</strong>, and took the Lockheed Martin Award for
+           engineering excellence and the Renda Carter Award for the team video and scrapbook. It
+           was the first car from a Florida high school or university to compete in that division.</p>
+
+        <p>Everything the driver sees in the photograph above is the team's own software: a
+           Tesla-style dashboard running on a touchscreen in the car, showing live speed, battery
+           management data, lap timing, and three camera feeds. The same interface was reachable
+           from anywhere in the world over a VPN, so the pit crew and everyone back home watched
+           the same telemetry the driver did.</p>
+
+        <h2>What I worked on</h2>
+        <p>I was the Unix and documentation side of the coding subteam. That meant the machine
+           underneath the dashboard: Arch Linux ARM on a Raspberry Pi 5, a Hyprland compositor
+           session for the touchscreen, gpsd and USB serial plumbing for the GPS and the
+           Thunderstruck BMS, and a WireGuard tunnel that made the worldwide remote monitoring
+           possible in the first place. Plus multiple MicroSD backups, because a car on a track in
+           Texas is a bad place to debug a corrupted boot partition.</p>
+
+        <figure class="figure">
+          <picture>
+            <source type="image/webp" sizes="(max-width:44rem) 100vw, 44rem"
+                    srcset="assets/aev-team-1200.webp 1200w, assets/aev-team-2000.webp 2000w">
+            <img src="assets/aev-team-1200.jpg" sizes="(max-width:44rem) 100vw, 44rem"
+                 srcset="assets/aev-team-1200.jpg 1200w, assets/aev-team-2000.jpg 2000w"
+                 width="2000" height="934" loading="lazy" decoding="async"
+                 alt="Team members in graduation caps and gowns gathered around the solar car,
+                      whose upper surface is covered in solar panels.">
+          </picture>
+          <figcaption>The team with the car at graduation.</figcaption>
+        </figure>
+
+        <h2>The stack</h2>
+        <ul>
+          <li><strong>Frontend</strong> — Nuxt.js, TailwindCSS and Electron, with ThreeJS for the
+              3D visualisation</li>
+          <li><strong>Backend</strong> — JavaScript, ExpressJS, WebSockets and a REST API handling
+              and storing all telemetry</li>
+          <li><strong>System</strong> — Raspberry Pi 5 (8 GB) on Arch Linux ARM, Hyprland and
+              Aylur's GTK Shell, gpsd, USB serial, WireGuard</li>
+          <li><strong>Extras</strong> — custom horn soundboard and playlist, WiFi and Bluetooth
+              settings, a debug terminal, and export to Google Sheets</li>
+        </ul>
+
+        <p>Documentation lives at <a href="https://aev.zachl.tech" target="_blank" rel="noopener">aev.zachl.tech</a>,
+           and there's a <a href="https://aev-demo.zachl.tech/" target="_blank" rel="noopener">live demo</a>
+           of the dashboard as it ran during the race.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap-wide stack">
+      <h2 class="t-section reveal">Raced.</h2>
+      <div class="stats reveal d1" style="margin-top:2.5rem">
+        <div class="stat"><p class="n">2nd</p><p class="l">Cruiser Division, 31st Solar Car Challenge</p></div>
+        <div class="stat"><p class="n">20,000</p><p class="l">Team hours designing, building and testing</p></div>
+        <div class="stat"><p class="n">50+</p><p class="l">Students across more than 12 majors</p></div>
+        <div class="stat"><p class="n">1½ mi</p><p class="l">Oval at Texas Motor Speedway, four days of racing</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap stack">
+      <h2 class="t-section reveal">Credits.</h2>
+      <div class="prose reveal d1">
+        <p>Coding subteam — <a href="https://github.com/ZachLTech" target="_blank" rel="noopener">Zachary Lopez</a>
+           (frontend/Unix), <a href="https://github.com/RealStr1ke" target="_blank" rel="noopener">Thandi Menelas</a>
+           (backend/Unix), <a href="https://github.com/jcamille2023" target="_blank" rel="noopener">Jossaya Camille</a>
+           (frontend/backend), and me (Unix/documentation). Built within the Advanced Experimental
+           Vehicles programme at FAU High School, alongside a team of more than fifty students.</p>
+      </div>
+      <div class="ctas reveal d2" style="margin-top:2rem">
+        <a class="cta" href="https://www.fau.edu/research/research-daily/2024/shine-on-fa/" target="_blank" rel="noopener">FAU's write-up of the race</a>
+        <a class="cta" href="about.html">Back to About</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo;
+      <a href="about.html">About</a> &rsaquo; <span>Alset Solar Cybersedan</span></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

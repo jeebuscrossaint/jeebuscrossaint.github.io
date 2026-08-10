@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CELERIS — a from-scratch rigorous coupled-wave analysis solver and metalens design pipeline in C++23 and CUDA, validated against closed-form physics and independent solvers.">
+<link rel="canonical" href="https://apatel.co/celeris.html">
+<title>CELERIS — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/celeris.html">
+<meta property="og:title" content="CELERIS — Amarnath Patel">
+<meta property="og:description" content="Amarnath Patel">
+<meta property="og:image" content="https://apatel.co/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "CELERIS",
+  "description": "A from-scratch rigorous coupled-wave analysis solver and metalens design pipeline, CUDA-accelerated, with inverse design and GDSII export.",
+  "url": "https://apatel.co/celeris.html",
+  "codeRepository": "https://github.com/jeebuscrossaint/CELERIS",
+  "programmingLanguage": [
+    "C++",
+    "CUDA",
+    "Python"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Amarnath Patel",
+    "url": "https://apatel.co/",
+    "identifier": "https://orcid.org/0009-0008-9460-082X"
+  },
+  "about": [
+    "Computational electromagnetics",
+    "Metalens design",
+    "Rigorous coupled-wave analysis"
+  ]
+}
+</script>
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
+<script src="nav.js"></script>
+</head>
+<body>
+
+<a class="vh" href="#main">Skip to content</a>
+
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow reveal">Independent · 2026</p>
+      <h1 class="t-section reveal d1">A Maxwell solver, from scratch.</h1>
+      <p class="t-intro dim reveal d2" style="max-width:48ch">CELERIS — rigorous coupled-wave
+         analysis and a complete metalens design pipeline, in C++23 and CUDA.</p>
+      <div class="ctas reveal d3">
+        <a class="cta" href="https://github.com/jeebuscrossaint/CELERIS" target="_blank" rel="noopener">See the code</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap">
+      <div class="prose reveal">
+        <p>A metalens focuses light with a dense array of subwavelength nanopillars rather than a
+           curved surface. Designing one means solving Maxwell's equations in periodic
+           subwavelength structures, over and over, for every candidate geometry. CELERIS is my
+           own solver for that problem, written from the ground up rather than wrapped around an
+           existing kernel.</p>
+
+        <h2>The solver</h2>
+        <p>Rigorous coupled-wave analysis via the Fourier modal method: 1D TE/TM multilayer
+           gratings with Li and Liu–Fan inverse-rule factorisation, the full 2D-vectorial
+           <code>P·Q</code> formulation for biperiodic nanopillar arrays, and stable Redheffer
+           scattering-matrix layer recursion.</p>
+
+        <h2>Validation</h2>
+        <p>Every layer of the stack is checked against closed-form physics, an independent method,
+           or energy conservation:</p>
+        <ul>
+          <li>RCWA against the transfer-matrix method to 1×10<sup>−6</sup></li>
+          <li>Multilayer scattering-matrix agreement to 1×10<sup>−15</sup></li>
+          <li>2D → 1D degenerate reduction to 5×10<sup>−12</sup></li>
+          <li>Σ(diffraction efficiency) = 1.000000</li>
+          <li>Diffraction-limited designed focal spots at FWHM = λ<em>f</em>/<em>D</em></li>
+        </ul>
+        <p>Independently cross-validated against the <code>grcwa</code> and Stanford S<sup>4</sup>
+           solvers to roughly 1×10<sup>−7</sup>, and it reproduces canonical published metalenses
+           <span class="cite">(Khorasaninejad et al., <em>Science</em> 2016; Chen et al.,
+           <em>Nat. Nanotechnol.</em> 2018)</span>.</p>
+
+        <h2>Design and analysis</h2>
+        <p>The physical capability standalone RCWA kernels lack: Sellmeier and tabulated
+           <em>n,k</em> dispersion; meta-atom library sweeps with automatic etch-depth selection
+           for full 2π phase coverage; gradient-based (Adam) inverse design; and
+           Pancharatnam–Berry geometric-phase and polarisation-multiplexed lenses exploiting form
+           birefringence, reporting per-polarisation RMS phase and focal isolation in dB. Analysis
+           covers Strehl ratio, Zernike wavefront, MTF, chromatic focal shift, through-focus
+           caustic, and fabrication-tolerance Monte Carlo — with fabrication-ready GDSII export.</p>
+
+        <h2>Performance</h2>
+        <p>Rayleigh–Sommerfeld far-field propagation is implemented as a CUDA kernel and
+           benchmarked against the project's own optimised 16-core CPU path: 4.8–5.8× faster at
+           92,000 pillars, agreeing to machine precision, with automatic CPU fallback. The
+           speedup declines as the grid grows, which is what identified the kernel as
+           memory-bound rather than compute-bound.</p>
+
+        <p>C++23 and CUDA, with Python bindings and a native desktop GUI.
+           <strong>Sole-author manuscript in preparation</strong> for
+           <em>Computer Physics Communications</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap-wide stack">
+      <h2 class="t-section reveal">Verified.</h2>
+      <p class="t-intro dim reveal d1" style="max-width:46ch">A solver you wrote yourself is only
+         worth as much as the things you checked it against.</p>
+      <div class="stats reveal d2" style="margin-top:2.5rem">
+        <div class="stat"><p class="n">10<sup>−15</sup></p><p class="l">Multilayer scattering-matrix agreement</p></div>
+        <div class="stat"><p class="n">1.000000</p><p class="l">Sum of diffraction efficiencies</p></div>
+        <div class="stat"><p class="n">5.8×</p><p class="l">CUDA speedup over the optimized 16-core CPU path</p></div>
+        <div class="stat"><p class="n">92k</p><p class="l">Pillars in the benchmark aperture</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section invert">
+    <div class="wrap center">
+      <p class="quote reveal">Two independent solvers, one closed-form limit, and conservation of
+         energy all agree with it.</p>
+      <p class="quote-src reveal d1">Validation — CELERIS</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <div class="ctas reveal">
+        <a class="cta" href="research.html">All research</a>
+        <a class="cta" href="holography.html">Photonic lanterns</a>
+        <a class="cta" href="https://github.com/jeebuscrossaint/CELERIS" target="_blank" rel="noopener">Repository</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo;
+      <a href="research.html">Research</a> &rsaquo; <span>CELERIS</span></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

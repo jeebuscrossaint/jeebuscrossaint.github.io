@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Assessing the Efficacy of AI Detectors and Countermeasures in Generative AI — evaluating two evasion techniques against three AI-text detectors. Grant-funded research at Florida Atlantic University.">
+<link rel="canonical" href="https://apatel.co/chameleon.html">
+<title>AI detectors and countermeasures — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/chameleon.html">
+<meta property="og:title" content="AI detectors and countermeasures — Amarnath Patel">
+<meta property="og:description" content="Amarnath Patel">
+<meta property="og:image" content="https://apatel.co/assets/og-chameleon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The project team at the Wilkes Honors College research symposium.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apatel.co/assets/og-chameleon.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Assessing the Efficacy of AI Detectors and Countermeasures in Generative AI",
+  "url": "https://apatel.co/chameleon.html",
+  "sameAs": "https://apatel.co/ai-safety.pdf",
+  "datePublished": "2025-03",
+  "inLanguage": "en",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Jason Makai Pindell"
+    },
+    {
+      "@type": "Person",
+      "name": "Amarnath Patel"
+    },
+    {
+      "@type": "Person",
+      "name": "Alexander Castronovo"
+    },
+    {
+      "@type": "Person",
+      "name": "Jossaya Camille"
+    },
+    {
+      "@type": "Person",
+      "name": "Zachary Lopez"
+    },
+    {
+      "@type": "Person",
+      "name": "Thandi Menelas"
+    }
+  ],
+  "about": [
+    "AI-generated text detection",
+    "Adversarial evasion",
+    "Natural language processing"
+  ],
+  "sourceOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Florida Atlantic University"
+  }
+}
+</script>
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
+<script src="nav.js"></script>
+</head>
+<body>
+
+<a class="vh" href="#main">Skip to content</a>
+
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow reveal">Florida Atlantic University · 2024 – 2025</p>
+      <h1 class="t-section reveal d1">AI detectors, and the countermeasures against them.</h1>
+      <p class="t-intro dim reveal d2" style="max-width:50ch">If a detector can be talked out of
+         its own verdict, how much is the verdict worth?</p>
+      <div class="ctas reveal d3">
+        <a class="cta" href="pdf.html?file=ai-safety.pdf">Read the paper</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap-wide reveal">
+      <figure class="media hero" style="margin:0">
+        <picture>
+          <source type="image/webp" sizes="100vw"
+                  srcset="assets/symposium-1400.webp 1400w, assets/symposium-2400.webp 2400w">
+          <img src="assets/symposium-1400.jpg" sizes="100vw"
+               srcset="assets/symposium-1400.jpg 1400w, assets/symposium-2400.jpg 2400w"
+               width="2400" height="1029" loading="eager" fetchpriority="high" decoding="async"
+               alt="Six members of the project team standing together behind a presentation
+                    console at the research symposium.">
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap">
+      <div class="prose reveal">
+        <p>Large language models can now produce text that is hard to tell from human writing,
+           which is what created the market for AI text detectors — and, immediately afterwards,
+           the market for ways around them. We set out to measure how well the second actually
+           works against the first.</p>
+
+        <p>The paper evaluates two evasion techniques. <strong>Iterative sampling</strong>
+           repeatedly paraphrases a passage and re-checks it against a detector until it hits a
+           target detectability score. <strong>Coherence and Perplexity Based Optimization</strong>
+           (CPBO) builds a branching tree of candidate continuations and selects among them by
+           weighting toward higher perplexity while pruning for coherence — perplexity being the
+           signal most detectors lean on.</p>
+
+        <h2>Method</h2>
+        <p>Human-written corpora came from Kaggle. Three models — Gemini 2.0 Flash, Gemini 1.5 Pro
+           and GPT-4o — paraphrased that text with no special prompting to produce 35 AI-augmented
+           passages, each then run through both evasion methods. Every iteration was scored against
+           three detectors (RoBERTa 105M, ZeroGPT, GPTZero) and evaluated on word frequency,
+           perplexity, coherence following the entity-based approach of
+           <span class="cite">Barzilay and Lapata (2005)</span>, and text style transfer measured
+           with BLEU.</p>
+
+        <h2>What we found</h2>
+        <ul>
+          <li>Iterative sampling reduces detectability most clearly on older detector
+              architectures, RoBERTa above all.</li>
+          <li>The gains plateau. Almost all the benefit arrives in the first refinement pass
+              rather than accruing over successive ones.</li>
+          <li>GPTZero stayed saturated near a detection score of 1.0 across every iteration and
+              all three paraphrasing models — R² of 0.004, 0.004 and 0.008. Iterative sampling had
+              essentially no effect on it.</li>
+          <li>Style is the cost. Text style transfer scores decline steadily with each pass, so
+              repeated paraphrasing buys lower detectability by eroding resemblance to the
+              original writing.</li>
+          <li>CPBO results are preliminary, but the branching procedure does reliably surface
+              higher-perplexity continuations.</li>
+        </ul>
+
+        <p>We proposed the iterative sampling approach independently in March 2024; in January 2025
+           we found that a closely related procedure had since been described by
+           <span class="cite">Sadasivan et al. (2025)</span>.</p>
+
+        <h2>Limits</h2>
+        <p>Compute was the binding constraint, and the CPBO conclusions in particular stay
+           tentative until more data is collected. The findings are specific to the three detectors
+           we tested and may not carry over to other architectures — watermarking approaches in
+           particular, which embed a statistical signal at generation time rather than inferring
+           one after the fact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap-wide stack">
+      <h2 class="t-section reveal">Tested.</h2>
+      <div class="stats reveal d1" style="margin-top:2.5rem">
+        <div class="stat"><p class="n">2</p><p class="l">Evasion techniques evaluated</p></div>
+        <div class="stat"><p class="n">3</p><p class="l">Detectors: RoBERTa 105M, ZeroGPT, GPTZero</p></div>
+        <div class="stat"><p class="n">35</p><p class="l">AI-augmented passages, three paraphrasing models</p></div>
+        <div class="stat"><p class="n">0.004</p><p class="l">R² for GPTZero — no measurable effect</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section invert">
+    <div class="wrap center">
+      <p class="quote reveal">Most of the benefit arrives in the first pass. Everything after that
+         costs you your style.</p>
+      <p class="quote-src reveal d1">Iterative sampling, across three paraphrasing models</p>
+    </div>
+  </section>
+
+  <section class="section tinted">
+    <div class="wrap stack">
+      <h2 class="t-section reveal">Credits.</h2>
+      <div class="prose reveal d1">
+        <p><em>Assessing the Efficacy of AI Detectors and Countermeasures in Generative AI</em> —
+           Jason Makai Pindell, Amarnath Patel, Alexander Castronovo, Jossaya Camille,
+           Zachary Lopez and Thandi Menelas. Florida Atlantic University High School, the
+           H. L. Wilkes Honors College, and FAU High School in partnership with the Max Planck
+           Academy for Neuroscience. Supervised by Tucker Hindle. Grant-funded, with HPC access.</p>
+        <p>Presented at the Wilkes Honors College Undergraduate Research Symposium, March 2025.</p>
+      </div>
+      <div class="ctas reveal d2" style="margin-top:2rem">
+        <a class="cta" href="pdf.html?file=ai-safety.pdf">Read the paper</a>
+        <a class="cta" href="research.html">All research</a>
+        <a class="cta" href="friends.html">The co-authors</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo;
+      <a href="research.html">Research</a> &rsaquo; <span>AI detectors</span></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
