@@ -1,0 +1,439 @@
+/* apatel.co — shared design system.
+
+   This is apple.com's *marketing* language, not the macOS/iOS app language. The two are
+   different on purpose: an app window uses semantic system colours (systemGroupedBackground,
+   label, separator) and floats translucent material over content. A marketing page uses a
+   fixed editorial palette (#f5f5f7 / #1d1d1f / #0071e3), full-bleed stacked sections, huge
+   Display type, and photography. Everything below is the second one.
+
+   Values are Apple's published web tokens, not approximations:
+     #1d1d1f  body ink            #6e6e73  secondary ink (light)
+     #f5f5f7  section tint        #86868b  secondary ink (dark)
+     #d2d2d7  hairline (light)    #424245  hairline (dark)
+     #0066cc  inline link         #0071e3  button fill
+     #2997ff  inline link (dark)                                                            */
+
+/* Inter stands in for SF on non-Apple platforms. Apple devices resolve -apple-system first
+   and never download this file — browsers only fetch a webfont whose glyphs get used. */
+@font-face {
+  font-family: 'InterVar';
+  src: url('fonts/inter-var-latin.woff2') format('woff2-variations');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+
+  /* The dark palette, named once so the two blocks that apply it below can't drift apart.
+     Declaring it here (rather than duplicating literals) is the only way to single-source it
+     without a preprocessor. */
+  --d-page:#000000; --d-tint:#101010; --d-card:#1d1d1f;
+  --d-ink:#f5f5f7; --d-ink-2:#86868b;
+  --d-rule:#424245; --d-rule-2:#2a2a2c;
+  --d-link:#2997ff; --d-nav:rgba(0,0,0,0.72);
+  --d-shadow:0 4px 24px rgba(0,0,0,.5);
+
+  --page:#ffffff; --tint:#f5f5f7; --card:#ffffff;
+  --ink:#1d1d1f; --ink-2:#6e6e73;
+  --rule:#d2d2d7; --rule-2:#e8e8ed;
+  --link:#0066cc; --fill:#0071e3; --fill-ink:#ffffff;
+  --nav:rgba(255,255,255,0.72);
+  --shadow:0 4px 24px rgba(0,0,0,.06);
+
+  --r-tile:18px; --r-lg:28px; --r-sm:12px; --r-pill:980px;
+  --nav-h:44px;
+  --maxw:980px;        /* apple.com's copy measure */
+  --maxw-wide:1440px;  /* full-bleed section cap */
+  --gutter:clamp(22px, 5vw, 44px);
+
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SFProDisplay Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace;
+
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* apple.com's dark sections are true black — this is a marketing page on a display, not a
+   macOS window, so the #1C1C1E windowBackgroundColor rule doesn't apply here.
+
+   Dark applies in two cases: the system asks for it and the visitor hasn't overridden
+   ("auto"), or the visitor explicitly picked dark. Light is the base, so forcing light is
+   simply the absence of both. nav.js sets data-theme before first paint — no flash. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page:var(--d-page); --tint:var(--d-tint); --card:var(--d-card);
+    --ink:var(--d-ink); --ink-2:var(--d-ink-2);
+    --rule:var(--d-rule); --rule-2:var(--d-rule-2);
+    --link:var(--d-link); --nav:var(--d-nav); --shadow:var(--d-shadow);
+  }
+}
+:root[data-theme="dark"] {
+  --page:var(--d-page); --tint:var(--d-tint); --card:var(--d-card);
+  --ink:var(--d-ink); --ink-2:var(--d-ink-2);
+  --rule:var(--d-rule); --rule-2:var(--d-rule-2);
+  --link:var(--d-link); --nav:var(--d-nav); --shadow:var(--d-shadow);
+}
+/* keep form controls, scrollbars and the caret in step with the chosen appearance */
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+
+@media (prefers-contrast: more) {
+  :root { --ink-2:#3a3a3c; --rule:#1d1d1f; --link:#0040a0; }
+  :root[data-theme="dark"] { --ink-2:#e8e8ed; --rule:#f5f5f7; --link:#6cb8ff; }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --ink-2:#e8e8ed; --rule:#f5f5f7; --link:#6cb8ff; }
+}
+
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+body {
+  margin:0; min-height:100svh; background:var(--page); color:var(--ink);
+  font-family:var(--font);
+  font-size:17px; line-height:1.47; letter-spacing:-0.022em;   /* apple.com body metrics */
+  font-optical-sizing:auto; -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column;
+  /* HIG: ease a light↔dark change rather than snapping the screen brightness */
+  transition:background-color .3s ease, color .3s ease;
+}
+a { color:inherit; text-decoration:none; }
+img { max-width:100%; display:block; }
+::selection { background:color-mix(in srgb, var(--link) 26%, transparent); }
+:focus-visible { outline:2px solid var(--link); outline-offset:3px; border-radius:4px; }
+/* skip-link landing zones: focusable so the next Tab continues from the content, but they
+   shouldn't draw a ring around half the page when they receive it */
+main:focus, #viewer:focus { outline:none; }
+.mono { font-family:var(--font-mono); }
+.vh { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* ── type scale ────────────────────────────────────────────────────────────────────────────
+   Tracking is size-specific: Display sizes tighten, body sits near Apple's -0.022em, small
+   print loosens back out. One letter-spacing value for the whole page is wrong somewhere. */
+.t-hero {
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(2.75rem, 7vw, 5.5rem); line-height:1.05; letter-spacing:-0.015em;
+  margin:0; text-wrap:balance;
+}
+.t-section {
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(2rem, 4.4vw, 3rem); line-height:1.08; letter-spacing:-0.004em;
+  margin:0; text-wrap:balance;
+}
+.t-tile {
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(1.5rem, 2.6vw, 2rem); line-height:1.12; letter-spacing:-0.003em;
+  margin:0; text-wrap:balance;
+}
+.t-intro {
+  font-size:clamp(1.1875rem, 1.9vw, 1.75rem); line-height:1.28; letter-spacing:0.004em;
+  font-weight:400; color:var(--ink); margin:0; text-wrap:pretty;
+}
+.center .t-intro { max-width:36ch; margin-inline:auto; }
+.eyebrow {
+  font-size:clamp(1.0625rem, 1.4vw, 1.3125rem); line-height:1.19; letter-spacing:0.011em;
+  font-weight:600; color:var(--ink-2); margin:0 0 .5em;
+}
+.t-small { font-size:.75rem; line-height:1.33; letter-spacing:-0.01em; color:var(--ink-2); }
+.dim { color:var(--ink-2); }
+
+/* ── global nav ────────────────────────────────────────────────────────────────────────────
+   A translucent layer with content scrolling under it, not an opaque strip. 44px is Apple's
+   own height; links are 12px, which looks impossibly small until you see it in context. */
+.gnav {
+  position:sticky; top:0; z-index:9999;
+  background:var(--nav);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+}
+.gnav-in {
+  max-width:var(--maxw-wide); margin:0 auto; height:var(--nav-h);
+  padding:0 var(--gutter);
+  display:flex; align-items:center; gap:clamp(18px,3vw,34px);
+}
+.gnav .wordmark {
+  font-size:.875rem; font-weight:600; letter-spacing:-0.01em; color:var(--ink);
+  margin-right:auto; white-space:nowrap;
+}
+.gnav-links { display:flex; align-items:center; gap:clamp(16px,2.6vw,30px); }
+.gnav-links a {
+  font-size:.75rem; letter-spacing:-0.01em; line-height:1;
+  color:color-mix(in srgb, var(--ink) 88%, transparent);
+  transition:color .2s var(--ease);
+}
+.gnav-links a:hover { color:var(--ink); }
+.gnav-links a[aria-current="page"] { color:var(--ink); font-weight:600; }
+/* The appearance switch is a fixed ~94px and never collapses, so the links give way first:
+   .opt items drop out below 640px, leaving Writing / Résumé / Contact. */
+@media (max-width:640px) {
+  .gnav-links { gap:15px; }
+  .gnav-links a.opt { display:none; }
+}
+@media (max-width:400px) {
+  .gnav-in { gap:10px; padding:0 16px; }
+  .gnav-links { gap:12px; }
+}
+
+/* ── appearance switch ─────────────────────────────────────────────────────────────────────
+   Three states, matching macOS System Settings: Light, Dark, and Auto (follow the system).
+   A two-state toggle would throw away the follow-the-system behaviour, which is the correct
+   default and the one most visitors never want to change.
+
+   The visual pill is 26px so it sits comfortably in a 44px bar, but each button is a full
+   44px tall and overflows the pill by 9px top and bottom — compact to look at, still a
+   proper touch target. nav.js injects this markup; a theme switch without JS is inert. */
+.theme {
+  display:flex; align-items:center; height:26px; padding:0 2px;
+  margin-left:clamp(6px,1.6vw,14px);
+  border-radius:var(--r-pill);
+  background:color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.theme button {
+  -webkit-appearance:none; appearance:none; background:none; border:none; padding:0;
+  width:30px; height:44px; margin-block:-9px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink-2); cursor:pointer;
+}
+.theme button > span {
+  display:flex; align-items:center; justify-content:center;
+  width:28px; height:22px; border-radius:var(--r-pill);
+  transition:background .2s var(--ease), box-shadow .2s var(--ease);
+}
+.theme button:hover { color:var(--ink); }
+.theme button[aria-checked="true"] { color:var(--ink); }
+.theme button[aria-checked="true"] > span {
+  background:var(--card);
+  box-shadow:0 1px 3px rgba(0,0,0,.16), 0 0 0 .5px rgba(0,0,0,.06);
+}
+.theme svg { width:14px; height:14px; display:block; }
+.theme button:focus-visible { outline:none; }
+.theme button:focus-visible > span { outline:2px solid var(--link); outline-offset:2px; }
+
+/* ── layout ────────────────────────────────────────────────────────────────────────────── */
+main { flex:1; }
+.section { padding:clamp(56px, 8vw, 110px) var(--gutter); }
+.section.tinted { background:var(--tint); }
+/* full-bleed statement band — the page's punctuation mark. Inverts in both themes: near-black
+   with light text in light mode, near-white with dark text in dark mode. */
+.section.invert { background:var(--ink); color:var(--page); }
+.quote {
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(1.75rem,3.4vw,2.75rem); line-height:1.16; letter-spacing:-0.012em;
+  margin:0 auto; max-width:24ch; text-wrap:balance;
+}
+.quote-src {
+  margin:1.25rem 0 0; font-size:.9375rem; letter-spacing:-0.014em;
+  color:color-mix(in srgb, var(--page) 62%, transparent);
+}
+/* anchored sections must clear both sticky bars when jumped to */
+section[id] { scroll-margin-top:calc(var(--nav-h) + 16px); }
+.wrap { max-width:var(--maxw); margin:0 auto; }
+.wrap-wide { max-width:var(--maxw-wide); margin:0 auto; }
+.center { text-align:center; }
+.stack > * + * { margin-top:1.1em; }
+
+/* ── calls to action ───────────────────────────────────────────────────────────────────── */
+.ctas { display:flex; flex-wrap:wrap; gap:clamp(16px,2.5vw,30px); align-items:center; }
+.center .ctas { justify-content:center; }
+
+/* text link with a chevron — Apple's primary in-copy CTA */
+.cta {
+  color:var(--link); font-size:1.0625rem; letter-spacing:-0.022em;
+  display:inline-flex; align-items:baseline; gap:.28em; min-height:2.75rem; align-content:center;
+}
+.cta::after { content:"\203A"; font-size:1.15em; line-height:1; transition:transform .2s var(--ease); }
+.cta:hover { text-decoration:underline; }
+.cta:hover::after { transform:translateX(2px); }
+
+/* filled pill — reserved for the single most important action on a page */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.4em;
+  background:var(--fill); color:var(--fill-ink);
+  font-size:1.0625rem; letter-spacing:-0.022em; font-weight:400;
+  min-height:2.75rem; padding:.75rem 1.375rem; border:none; border-radius:var(--r-pill);
+  cursor:pointer; transition:background .2s var(--ease), transform .12s var(--ease);
+}
+.btn:hover { background:color-mix(in srgb, var(--fill) 88%, #000); }
+.btn:active { transform:scale(.975); transition-duration:.09s; }   /* feedback on press, not release */
+
+/* ── tiles ─────────────────────────────────────────────────────────────────────────────── */
+.grid { display:grid; gap:12px; }               /* 12px is apple.com's tile gutter */
+.grid.two { grid-template-columns:repeat(2, 1fr); }
+.grid.three { grid-template-columns:repeat(3, 1fr); }
+@media (max-width:860px) { .grid.two, .grid.three { grid-template-columns:1fr; } }
+
+.tile {
+  position:relative; overflow:hidden; border-radius:var(--r-tile);
+  background:var(--tint); color:var(--ink);
+  padding:clamp(28px,4vw,48px);
+  display:flex; flex-direction:column; gap:.6rem;
+  min-height:clamp(300px, 34vw, 420px);
+}
+.section.tinted .tile { background:var(--card); box-shadow:var(--shadow); }
+.tile .eyebrow { margin-bottom:.2em; }
+.tile p { margin:0; color:var(--ink-2); max-width:34ch; }
+.tile .ctas { margin-top:auto; padding-top:1.25rem; }
+/* a tile that spans the whole grid row — for the one item that outranks the others */
+.tile.wide { grid-column:1 / -1; min-height:0; }
+
+/* whole-tile link: hover lifts and brightens rather than sliding sideways */
+a.tile { transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+a.tile:hover { transform:translateY(-4px); box-shadow:0 12px 34px rgba(0,0,0,.10); }
+a.tile:active { transform:translateY(-1px); transition-duration:.1s; }
+@media (prefers-color-scheme: dark) { a.tile:hover { box-shadow:0 12px 34px rgba(0,0,0,.6); } }
+
+/* ── prose ─────────────────────────────────────────────────────────────────────────────────
+   Body copy on the project detail pages. Narrower than the marketing measure because it is
+   read straight through rather than scanned. */
+/* Rhythm is margin-bottom on the block elements themselves. An adjacent-sibling rule would
+   lose to `.prose p` on specificity and silently collapse every paragraph gap. */
+.prose { max-width:44rem; }
+.prose p, .prose li { font-size:1.0625rem; line-height:1.5; letter-spacing:-0.018em; }
+.prose p, .prose ul, .prose ol, .prose figure { margin:0 0 1.15em; }
+.prose > :last-child { margin-bottom:0; }
+.prose h2 {
+  font-family:var(--font-display); font-weight:600;
+  font-size:1.3125rem; line-height:1.19; letter-spacing:-0.012em;
+  margin:2.2em 0 .6em;
+}
+.prose ul, .prose ol { padding-left:1.2em; }
+.prose li { margin:0; }
+.prose li + li { margin-top:.45em; }
+.prose a { color:var(--link); }
+.prose a:hover { text-decoration:underline; }
+.prose code {
+  font-family:var(--font-mono); font-size:.86em;
+  background:var(--tint); border:1px solid var(--rule-2);
+  padding:1px 5px; border-radius:5px;
+}
+.prose .cite { color:var(--ink-2); }
+
+/* Diagrams and plots, shown whole. Unlike .media these are never cropped — a figure that
+   loses its axes or its labels to an aspect-ratio box is worse than no figure. */
+.figure { margin:2rem 0 0; }
+.figure img {
+  width:100%; height:auto; border-radius:var(--r-sm);
+  background:var(--card); box-shadow:inset 0 0 0 1px var(--rule-2);
+}
+.figure figcaption {
+  margin-top:.75rem; font-size:.8125rem; line-height:1.45; letter-spacing:-0.01em;
+  color:var(--ink-2); max-width:60ch;
+}
+.figure .credit { display:block; margin-top:.35em; }
+
+/* ── stat band ─────────────────────────────────────────────────────────────────────────────
+   Apple's tech-spec callouts: the number carries at Display size, the label stays quiet
+   underneath. Numbers are set in Display weight so they read as figures, not headings. */
+.stats { display:grid; grid-template-columns:repeat(4, 1fr); gap:clamp(28px,4vw,44px); }
+@media (max-width:860px) { .stats { grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:460px) { .stats { grid-template-columns:1fr; } }
+.stat .n {
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(2.25rem,4vw,3.25rem); line-height:1.05; letter-spacing:-0.015em;
+  margin:0;
+}
+.stat .l {
+  margin:.5rem 0 0; color:var(--ink-2);
+  font-size:.9375rem; line-height:1.4; letter-spacing:-0.014em; max-width:24ch;
+}
+
+/* Photo slot. Drop an <img> inside and it takes over completely:
+   <div class="media"><img src="photos/creol.jpg" alt="…"></div>
+   Until then the gradient stands in — a deliberate surface, not a broken-image box. */
+.media {
+  position:relative; border-radius:var(--r-tile); overflow:hidden;
+  background:
+    radial-gradient(120% 100% at 15% 0%, color-mix(in srgb, var(--link) 22%, transparent), transparent 60%),
+    radial-gradient(100% 120% at 90% 100%, color-mix(in srgb, var(--ink) 14%, transparent), transparent 62%),
+    var(--tint);
+  aspect-ratio:16/9;
+}
+.media picture { display:block; width:100%; height:100%; }
+.media img { width:100%; height:100%; object-fit:cover; display:block; }
+/* the hero image is the widest thing on the page — letterbox it and cap the height so it
+   never eats a whole screen of scroll on a large display */
+.media.hero { aspect-ratio:21/9; max-height:min(58svh, 520px); }
+/* Frames for a photo of a person, which wants a much narrower slot than a full-bleed
+   landscape. Use .portrait for an upright shot, .photo for a landscape one — object-fit
+   crops to the frame either way, so pick whichever matches the source and it won't cut heads. */
+.media.portrait { aspect-ratio:2/3; max-width:min(26rem, 100%); margin-inline:auto; }
+.tile .media { margin:-.4rem 0 1rem; border-radius:var(--r-sm); }
+
+/* ── rows (writing index, friends, spec lists) ─────────────────────────────────────────────
+   The divider is a positioned ::after, not a border on the row itself. A box with a radius
+   *and* a single-side border renders little hooks where the border meets the curve — so the
+   hairline lives on its own square element and the radius only shapes the hover fill. */
+.rows { border-top:1px solid var(--rule-2); }
+.row {
+  display:grid; grid-template-columns:1fr auto; gap:clamp(14px,3vw,32px); align-items:baseline;
+  padding:clamp(18px,2.4vw,26px) clamp(10px,1.6vw,18px);
+  position:relative; min-height:2.75rem;
+  transition:background .2s var(--ease);
+}
+.row::after {
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:var(--rule-2); pointer-events:none;
+}
+a.row { border-radius:var(--r-sm); }
+.row .b { font-size:.9375rem; line-height:1.4; letter-spacing:-0.014em; color:var(--ink-2); }
+a.row:hover { background:color-mix(in srgb, var(--ink) 4%, transparent); }
+a.row:active { background:color-mix(in srgb, var(--ink) 7%, transparent); transition-duration:.09s; }
+.row .k { font-size:1.0625rem; letter-spacing:-0.022em; color:var(--ink); }
+.row .v { font-size:1.0625rem; letter-spacing:-0.022em; color:var(--ink-2); text-align:right; }
+a.row .v { color:var(--link); }
+.row .chev { color:var(--link); }
+a.row .chev { display:inline-block; transition:transform .2s var(--ease); }
+a.row:hover .chev { transform:translateX(3px); }
+
+/* ── footer ────────────────────────────────────────────────────────────────────────────── */
+.gfoot {
+  background:var(--tint); color:var(--ink-2);
+  font-size:.75rem; line-height:1.33; letter-spacing:-0.01em;
+  padding:clamp(26px,3vw,40px) var(--gutter);
+  border-top:1px solid var(--rule-2);
+}
+.gfoot-in { max-width:var(--maxw-wide); margin:0 auto; }
+.gfoot .crumb { padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--rule); }
+.gfoot .crumb a:hover { text-decoration:underline; }
+.gfoot .cols { display:flex; flex-wrap:wrap; gap:10px 26px; margin-bottom:14px; }
+.gfoot .cols a { color:var(--ink-2); }
+.gfoot .cols a:hover { color:var(--ink); text-decoration:underline; }
+.gfoot .legal { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:baseline; }
+.gfoot .legal .sep { color:var(--rule); }
+
+/* ── scroll reveal ─────────────────────────────────────────────────────────────────────────
+   apple.com brings sections in as they enter the viewport. nav.js adds .in; if JS never runs,
+   the :not(.js) guard means everything is simply visible — no blank page. */
+.js .reveal { opacity:0; transform:translateY(24px); }
+.js .reveal.in {
+  opacity:1; transform:none;
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+.js .reveal.d1.in { transition-delay:.06s; }
+.js .reveal.d2.in { transition-delay:.12s; }
+.js .reveal.d3.in { transition-delay:.18s; }
+
+/* ── scrollbar ─────────────────────────────────────────────────────────────────────────── */
+html { scrollbar-color:var(--rule) transparent; scrollbar-width:thin; }
+::-webkit-scrollbar { width:10px; height:10px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--rule); border:2px solid var(--page); border-radius:10px; }
+::-webkit-scrollbar-thumb:hover { background:var(--ink-2); }
+
+/* ── accessibility preferences ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce) {
+  .js .reveal { opacity:1; transform:none; transition:none; }
+  a.tile:hover, a.tile:active, .btn:active { transform:none; }
+  a.row:hover .chev, .cta:hover::after { transform:none; }
+  * { animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+}
+@media (prefers-reduced-transparency:reduce) {
+  .gnav { background:var(--page); backdrop-filter:none; -webkit-backdrop-filter:none; }
+}
+@media (prefers-contrast:more) {
+  .gnav { background:var(--page); backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .tile { box-shadow:inset 0 0 0 1px var(--rule); }
+  .row::after { background:var(--rule); }
+}
