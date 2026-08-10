@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>og source</title>
+<!-- Source for og.jpg. Rendered at exactly 1200×630 and screenshotted:
+     see scripts/build-og.sh. Uses the same tokens and type as the live site. -->
+<style>
+  @font-face {
+    font-family:'InterVar';
+    src:url('../fonts/inter-var-latin.woff2') format('woff2-variations');
+    font-weight:100 900; font-style:normal; font-display:block;
+  }
+  * { box-sizing:border-box; margin:0; }
+  html,body { width:1200px; height:630px; overflow:hidden; }
+  body {
+    background:#ffffff; color:#1d1d1f;
+    font-family:InterVar,-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 96px; position:relative;
+  }
+  /* the same soft field the site's photo slots use, bled off the right edge */
+  .field {
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(70% 90% at 100% 0%, rgba(0,113,227,.20), transparent 62%),
+      radial-gradient(60% 80% at 88% 108%, rgba(29,29,31,.10), transparent 60%),
+      #ffffff;
+  }
+  .in { position:relative; z-index:1; }
+  .eyebrow {
+    font-size:24px; font-weight:600; letter-spacing:.011em; color:#6e6e73;
+    margin-bottom:18px;
+  }
+  h1 {
+    font-size:104px; line-height:1.02; letter-spacing:-.015em; font-weight:600;
+  }
+  .sub {
+    margin-top:26px; font-size:31px; line-height:1.28; letter-spacing:.004em;
+    color:#1d1d1f; max-width:22ch;
+  }
+  .foot {
+    position:absolute; left:96px; bottom:56px; z-index:1;
+    font-size:23px; letter-spacing:-.01em; color:#6e6e73;
+  }
+  .rule {
+    position:absolute; left:96px; right:96px; bottom:128px; height:1px;
+    background:#d2d2d7; z-index:1;
+  }
+</style>
+</head>
+<body>
+  <div class="field"></div>
+  <div class="in">
+    <p class="eyebrow">Physics · Math · Computer Science</p>
+    <h1>Amarnath Patel</h1>
+    <p class="sub">Astrophotonics at CREOL. Physics-education research at UCF Physics.</p>
+  </div>
+  <div class="rule"></div>
+  <p class="foot">apatel.co</p>
+</body>
+</html>
