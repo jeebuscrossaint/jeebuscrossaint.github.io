@@ -5,6 +5,34 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://apatel.co/research.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/holography.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/polyoculus.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/celeris.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/chameleon.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/aev.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://apatel.co/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://apatel.co/post.html</loc>
     <priority>0.8</priority>
   </url>
