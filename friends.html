@@ -3,140 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Amarnath Patel — friends">
+<meta name="description" content="People I know with corners of the web worth visiting.">
 <link rel="canonical" href="https://apatel.co/friends.html">
-<title>friends — apatel.co</title>
+<title>Friends — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="apatel.co">
 <meta property="og:url" content="https://apatel.co/friends.html">
 <meta property="og:title" content="Friends — apatel.co">
 <meta property="og:description" content="Amarnath Patel">
-<meta property="og:image" content="https://apatel.co/og.png">
+<meta property="og:image" content="https://apatel.co/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://apatel.co/og.png">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
 <script src="nav.js"></script>
-<style>
-  @view-transition { navigation: auto; }
-  /* Inter stands in for SF on non-Apple platforms. Apple devices resolve -apple-system first and
-     never download this file — browsers only fetch a webfont whose glyphs actually get used. */
-  @font-face {
-    font-family:'InterVar';
-    src:url('fonts/inter-var-latin.woff2') format('woff2-variations');
-    font-weight:100 900; font-style:normal; font-display:swap;
-  }
-
-  /* Apple's system palette — one considered scheme that follows the OS appearance
-     instead of a random pick. These are Apple's published system colours:
-     systemGroupedBackground / secondarySystemBackground, label / secondaryLabel,
-     separator, and systemBlue in its light and dark variants. */
-  :root {
-    color-scheme: light dark;
-    --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
-    --ink:#000000; --ink-soft:#6C6C70;
-    --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
-    /* HIG: don't hard-code system colours — AccentColor resolves to the visitor's own OS
-       accent (Graphite, Blue, whatever they set). Graphite is the fallback where the
-       keyword is unsupported. Used for fills and tints only, never to carry meaning. */
-    --accent:#8C8C8C;
-    --accent:AccentColor;
-    --edge:rgba(255,255,255,0.72); --mat:86%;
-    --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      /* macOS dark, not iOS: windowBackgroundColor is a dark grey, not #000. Pure black is an
-         OLED-phone value and reads as a hole on a desktop display. */
-      --bg:#1C1C1E; --bg-2:#2C2C2E; --surface:#2C2C2E;
-      --ink:#FFFFFF; --ink-soft:#A1A1A8;
-      --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
-      --accent:#98989F;
-      --accent:AccentColor;
-      --edge:rgba(255,255,255,0.16); --mat:70%;
-      --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
-    }
-  }
-  @media (prefers-contrast: more) {
-    :root {
-      --ink-soft:#3C3C43;
-      --rule:rgba(60,60,67,0.68); --rule-2:rgba(60,60,67,0.34);
-      --mat:100%;
-    }
-  }
-  @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
-    :root {
-      --ink-soft:#EBEBF5;
-      --rule:rgba(235,235,245,0.60); --rule-2:rgba(235,235,245,0.30);
-      --mat:100%;
-    }
-  }
-  * { box-sizing:border-box; }
-  html { -webkit-text-size-adjust:100%; }
-  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:17px; line-height:1.55; letter-spacing:-0.006em; -webkit-font-smoothing:antialiased; transition:background-color .35s ease, color .35s ease; }
-  .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
-  a { color:inherit; text-decoration:none; }
-  ::selection { background:color-mix(in srgb, var(--ink) 22%, transparent); color:var(--ink); }
-  :focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
-
-  .topbar { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:12px; height:54px; padding:0 clamp(20px,5vw,44px); border-bottom:1px solid var(--rule-2); background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); }
-  .back { font-size:.9rem; letter-spacing:-0.006em; color:var(--ink-soft); font-weight:400; transition:color .18s; }
-  .back:hover { color:var(--ink); } .back b { color:var(--ink); }
-
-  main { max-width:720px; margin:0 auto; padding:clamp(36px,6vw,72px) clamp(20px,5vw,44px) 100px; }
-  h1 { font-size:clamp(1.9rem,5vw,2.6rem); font-weight:700; letter-spacing:-0.03em; line-height:1.05; margin:0 0 .3em; }
-  .sub { color:var(--ink-soft); font-size:.95rem; margin:0 0 2.4em; }
-  .group { margin-bottom:2.4em; }
-  .group h2 { font-size:.9rem; letter-spacing:-0.006em; color:var(--ink-soft); margin:0 0 .5rem; font-weight:500; }
-  .link { display:grid; grid-template-columns:9rem 1fr; gap:16px; align-items:baseline; min-height:2.75rem; padding:.8125rem 1rem; margin:0 -1rem;
-    border-radius:14px; border-top:1px solid var(--rule-2);
-    transition:background .16s ease, transform .16s cubic-bezier(.2,.7,.2,1); }
-  .link:hover { background:color-mix(in srgb, var(--accent) 8%, transparent); transform:translateX(5px); }
-  .link:active { transform:translateX(5px) scale(.995); transition-duration:.1s; }
-  .link .n { font-weight:600; letter-spacing:-0.01em; }
-  .link .n .ar { color:var(--ink-soft); font-size:.8rem; }
-  .link .d { color:var(--ink-soft); font-size:.92rem; }
-  .friends .link { grid-template-columns:12rem 1fr; }
-  .link .ar { display:inline-block; transition:transform .18s ease; }
-  .link:hover .ar { transform:translate(2px,-2px); }
-  @media (max-width:540px){ .link, .friends .link { grid-template-columns:1fr; gap:2px; } }
-
-  /* entrance reveal */
-  @keyframes rise { from { opacity:0; transform:translateY(11px); } to { opacity:1; transform:none; } }
-  h1, .sub, .link { opacity:0; animation:rise .6s cubic-bezier(.2,.7,.2,1) both; }
-  .sub { animation-delay:.05s; }
-  .friends .link:nth-child(1){animation-delay:.10s} .friends .link:nth-child(2){animation-delay:.15s}
-  .friends .link:nth-child(3){animation-delay:.20s} .friends .link:nth-child(4){animation-delay:.25s}
-  .friends .link:nth-child(5){animation-delay:.30s} .friends .link:nth-child(6){animation-delay:.35s}
-  .friends .link:nth-child(7){animation-delay:.40s} .friends .link:nth-child(n+8){animation-delay:.45s}
-  @media (prefers-reduced-motion:reduce){ h1, .sub, .link { animation:none; opacity:1; } }
-  /* HIG: translucency and hairlines both give way under increased contrast / reduced transparency */
-  @media (prefers-reduced-transparency:reduce), (prefers-contrast:more) {
-    .topbar { background:var(--bg); backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid var(--rule); }
-  }
-</style>
 </head>
 <body>
 
-<div class="topbar">
-  <a class="back" href="index.html">← <b>apatel.co</b> / friends</a>
-</div>
+<a class="vh" href="#main">Skip to content</a>
 
-<main>
-  <h1>Friends</h1>
-  <p class="sub">People I know with corners of the web worth visiting.</p>
-
-  <div class="group friends">
-    <a class="link" href="https://zachl.tech" target="_blank" rel="noopener"><span class="n">zachary lopez <span class="ar">↗</span></span><span class="d">zachl.tech</span></a>
-    <a class="link" href="https://jcamille.dev" target="_blank" rel="noopener"><span class="n">jossaya camille <span class="ar">↗</span></span><span class="d">jcamille.dev</span></a>
-    <a class="link" href="https://str1ke.codes" target="_blank" rel="noopener"><span class="n">thandi menelas <span class="ar">↗</span></span><span class="d">str1ke.codes</span></a>
-    <a class="link" href="https://eoghan.codes" target="_blank" rel="noopener"><span class="n">eoghan mcivor <span class="ar">↗</span></span><span class="d">eoghan.codes</span></a>
-    <a class="link" href="https://makaip.com" target="_blank" rel="noopener"><span class="n">jason (makai) pindell <span class="ar">↗</span></span><span class="d">makaip.com</span></a>
-    <a class="link" href="https://alexcastronovo.com" target="_blank" rel="noopener"><span class="n">alex castronovo <span class="ar">↗</span></span><span class="d">alexcastronovo.com</span></a>
-    <a class="link" href="https://github.com/Valenciola" target="_blank" rel="noopener"><span class="n">valerie fils-aime <span class="ar">↗</span></span><span class="d">github/Valenciola</span></a>
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html" aria-current="page">Friends</a>
+    </div>
   </div>
+</nav>
+
+<main id="main" tabindex="-1">
+  <section class="section">
+    <div class="wrap stack">
+      <h1 class="t-section reveal">Friends.</h1>
+      <p class="t-intro dim reveal d1" style="max-width:46ch">People I know with corners of the
+         web worth visiting.</p>
+
+      <div class="prose reveal d2" style="margin-top:1.5rem">
+        <p>Most of them I met through the coding club I started at FAU High School in 2023. It
+           turned out to be the most useful thing I did there — not because of the meetings, but
+           because of who showed up to them.</p>
+        <p>Five of the people below are co-authors with me on
+           <a href="chameleon.html">a paper about AI text detectors</a>. Three were on the coding
+           subteam that built <a href="aev.html">the solar car dashboard</a> that took second in
+           its division at the Solar Car Challenge. The
+           <a href="https://github.com/FAUHSCoding" target="_blank" rel="noopener">club</a> is
+           still running, now as a Hack Club chapter, several years after all of us left.</p>
+      </div>
+
+      <div class="rows reveal d2" style="margin-top:2rem">
+        <a class="row" href="https://zachl.tech" target="_blank" rel="noopener">
+          <span class="k">Zachary Lopez</span><span class="v">zachl.tech ↗</span>
+        </a>
+        <a class="row" href="https://jcamille.dev" target="_blank" rel="noopener">
+          <span class="k">Jossaya Camille</span><span class="v">jcamille.dev ↗</span>
+        </a>
+        <a class="row" href="https://str1ke.codes" target="_blank" rel="noopener">
+          <span class="k">Thandi Menelas</span><span class="v">str1ke.codes ↗</span>
+        </a>
+        <a class="row" href="https://eoghan.codes" target="_blank" rel="noopener">
+          <span class="k">Eoghan McIvor</span><span class="v">eoghan.codes ↗</span>
+        </a>
+        <a class="row" href="https://makaip.com" target="_blank" rel="noopener">
+          <span class="k">Jason (Makai) Pindell</span><span class="v">makaip.com ↗</span>
+        </a>
+        <a class="row" href="https://alexcastronovo.com" target="_blank" rel="noopener">
+          <span class="k">Alex Castronovo</span><span class="v">alexcastronovo.com ↗</span>
+        </a>
+        <a class="row" href="https://github.com/Valenciola" target="_blank" rel="noopener">
+          <span class="k">Valerie Fils-Aimé</span><span class="v">github/Valenciola ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo; <span>Friends</span></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

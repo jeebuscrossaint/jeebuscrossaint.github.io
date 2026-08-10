@@ -3,368 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Amarnath Patel">
+<meta name="description" content="Amarnath Patel — physics and mathematics at the University of Central Florida. Astrophotonics research at CREOL, physics-education research at UCF Physics.">
 <meta name="author" content="Amarnath Patel">
 <link rel="canonical" href="https://apatel.co/">
 <title>Amarnath Patel — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <!-- open graph / social (embed text kept to name only) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="apatel.co">
 <meta property="og:url" content="https://apatel.co/">
 <meta property="og:title" content="Amarnath Patel">
 <meta property="og:description" content="Amarnath Patel">
-<meta property="og:image" content="https://apatel.co/og.png">
+<meta property="og:image" content="https://apatel.co/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Amarnath Patel — apatel.co">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Amarnath Patel">
 <meta name="twitter:description" content="Amarnath Patel">
-<meta name="twitter:image" content="https://apatel.co/og.png">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Amarnath Patel",
   "url": "https://apatel.co/",
-  "image": "https://apatel.co/og.png",
-  "email": "mailto:amarnath.patel@ucf.edu",
+  "image": "https://apatel.co/og.jpg",
   "jobTitle": "Physics & Mathematics Student",
   "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Central Florida" },
-  "knowsAbout": ["Optics", "Lasers", "Astrophotonics", "Systems programming", "GPU programming", "C++", "Python"],
+  "knowsAbout": ["Optics", "Photonics", "Lasers", "Astrophotonics", "Computational electromagnetics", "Systems programming", "GPU programming", "C++", "Python"],
   "sameAs": [
     "https://github.com/jeebuscrossaint",
-    "https://www.linkedin.com/in/amarnath-patel/"
+    "https://www.linkedin.com/in/amarnath-patel/",
+    "https://orcid.org/0009-0008-9460-082X"
   ]
 }
 </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
-<style>
-  @view-transition { navigation: auto; }
-  /* Inter stands in for SF on non-Apple platforms. Apple devices resolve -apple-system first and
-     never download this file — browsers only fetch a webfont whose glyphs actually get used. */
-  @font-face {
-    font-family:'InterVar';
-    src:url('fonts/inter-var-latin.woff2') format('woff2-variations');
-    font-weight:100 900; font-style:normal; font-display:swap;
-  }
-  /* Apple's system palette — one considered scheme that follows the OS appearance instead of a
-     random pick: systemGroupedBackground / secondarySystemBackground, label / secondaryLabel,
-     separator, and systemBlue in its light and dark variants. */
-  :root {
-    color-scheme: light dark;
-    --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
-    --ink:#000000; --ink-soft:#6C6C70;
-    --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
-    /* HIG: don't hard-code system colours — AccentColor resolves to the visitor's own OS
-       accent (Graphite, Blue, whatever they set). Graphite is the fallback where the
-       keyword is unsupported. Used for fills and tints only, never to carry meaning. */
-    --accent:#8C8C8C;
-    --accent:AccentColor;
-    --edge:rgba(255,255,255,0.72); --mat:86%;
-    --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
-    --maxw:960px; --radius:26px; --blur:34px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      /* macOS dark, not iOS: windowBackgroundColor is a dark grey, not #000. Pure black is an
-         OLED-phone value and reads as a hole on a desktop display. */
-      --bg:#1C1C1E; --bg-2:#2C2C2E; --surface:#2C2C2E;
-      --ink:#FFFFFF; --ink-soft:#A1A1A8;
-      --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
-      --accent:#98989F;
-      --accent:AccentColor;
-      --edge:rgba(255,255,255,0.16); --mat:70%;
-      --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
-    }
-  }
-  @media (prefers-contrast: more) {
-    :root {
-      --ink-soft:#3C3C43;
-      --rule:rgba(60,60,67,0.68); --rule-2:rgba(60,60,67,0.34);
-      --mat:100%;
-    }
-  }
-  @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
-    :root {
-      --ink-soft:#EBEBF5;
-      --rule:rgba(235,235,245,0.60); --rule-2:rgba(235,235,245,0.30);
-      --mat:100%;
-    }
-  }
-  * { box-sizing:border-box; }
-  html { -webkit-text-size-adjust:100%; }
-  body {
-    margin:0; min-height:100svh; background:var(--bg); color:var(--ink);
-    /* Apple platforms hit real SF via -apple-system; the "SF Pro Text"/Nerd Font names are for
-       machines with SF installed locally (Linux); everything else falls through to Helvetica. */
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size:1.0625rem; line-height:1.5; letter-spacing:0;   /* body sits near 0; tracking is set per size */
-    font-optical-sizing:auto;
-    -webkit-font-smoothing:antialiased; overflow-x:hidden;
-    transition:background-color .35s ease, color .35s ease;
-    display:flex; flex-direction:column;
-  }
-  .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
-  a { color:inherit; text-decoration:none; }
-  ::selection { background:color-mix(in srgb, var(--ink) 22%, transparent); color:var(--ink); }
-  :focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
-
-  #wave { position:fixed; inset:0; width:100%; height:100%; z-index:0; display:block; pointer-events:none; opacity:0; transition:opacity 1.2s ease; }
-  body.lit #wave { opacity:1; }
-  #veil { position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.72; background:radial-gradient(125% 95% at 12% -5%, transparent 42%, var(--bg) 100%); }
-
-  .stage { position:relative; z-index:2; flex:1; display:flex; align-items:center; justify-content:center; padding:clamp(20px,5vw,48px); }
-
-  /* reveal composes with the drag offset (--dx/--dy) so the two never fight over `transform` */
-  .rv { opacity:0; transform:translateY(12px) scale(.99); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
-  body.lit .rv { opacity:1; transform:translate3d(var(--dx,0px), var(--dy,0px), 0); }
-  body.dragging .rv { transition:opacity .7s cubic-bezier(.2,.7,.2,1); }  /* drag drives transform directly */
-  body.dragging { user-select:none; -webkit-user-select:none; cursor:grabbing; }
-
-  /* the whole site: one small card — a translucent material floating on the field */
-  .card {
-    width:min(26.875rem, 100%); border-radius:var(--radius);
-    background:color-mix(in srgb, var(--surface) var(--mat), transparent);
-    backdrop-filter:blur(var(--blur)) saturate(180%);
-    -webkit-backdrop-filter:blur(var(--blur)) saturate(180%);
-    box-shadow:inset 0 1px 0 var(--edge), inset 0 0 0 1px var(--rule), var(--shadow);
-    overflow:hidden; will-change:transform; touch-action:pan-y;
-  }
-  .card-head { padding:1.625rem 1.5rem 1.3125rem; border-bottom:1px solid var(--rule); display:flex; align-items:flex-end; justify-content:space-between; gap:14px; }
-  /* large type: Display optical size (Apple splits Display/Text at ~20pt), tracking tightens as it grows */
-  .card-name {
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SFProDisplay Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight:700; font-size:clamp(1.75rem,7vw,2.15rem); line-height:1.02; letter-spacing:-0.032em;
-  }
-  .card-name .d { color:var(--ink-soft); }
-  /* small caps label: positive tracking for legibility */
-  .card-handle { font-size:.8rem; letter-spacing:-0.004em; font-weight:400; color:var(--ink-soft); white-space:nowrap; padding-bottom:5px; }
-  .card-bio { padding:1.125rem 1.5rem 1.25rem; border-bottom:1px solid var(--rule); }
-  .card-bio p { margin:0; font-size:.925rem; line-height:1.52; letter-spacing:-0.003em; color:var(--ink); }
-  .card-bio .dim { color:var(--ink-soft); }
-  .card-bio .lang { color:var(--ink); font-weight:600; }
-  .card-bio .note { margin-top:.6875rem; font-size:.85rem; color:var(--ink-soft); }
-  .card-links { display:flex; flex-direction:column; }
-  /* min 44px hit target; hover/press move on transform only (compositor-friendly) */
-  .card-links a {
-    display:flex; align-items:center; justify-content:space-between; gap:14px;
-    min-height:2.75rem; padding:.75rem 1.5rem; border-bottom:1px solid var(--rule-2);
-    transition:background .16s ease, transform .16s cubic-bezier(.2,.7,.2,1);
-  }
-  .card-links a:last-child { border-bottom:none; }
-  .card-links a:hover { background:color-mix(in srgb, var(--accent) 9%, transparent); transform:translateX(6px); }
-  /* feedback lands on press, not release */
-  .card-links a:active { background:color-mix(in srgb, var(--accent) 15%, transparent); transform:translateX(6px) scale(.985); transition-duration:.1s; }
-  .card-links .k { font-size:.95rem; letter-spacing:-0.006em; font-weight:500; color:var(--ink); transition:color .16s; }
-  .card-links a:hover .k { color:var(--ink); }
-  .card-links .v { font-size:.85rem; letter-spacing:-0.004em; color:var(--ink-soft); transition:color .16s; }
-  .card-links a:hover .v { color:var(--ink); }
-
-  @media (prefers-reduced-motion:reduce) {
-    .rv { opacity:1; transform:none; transition:none; }
-    .card-links a { transition:background .16s ease, color .16s ease; }
-    .card-links a:hover, .card-links a:active { transform:none; }
-  }
-  /* translucency off → frostier/solid surface, blur dropped */
-  @media (prefers-reduced-transparency:reduce) {
-    .card { --mat:100%; --blur:0px; backdrop-filter:none; -webkit-backdrop-filter:none; }
-  }
-  @media (prefers-contrast:more) {
-    .card { --mat:100%; backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:inset 0 0 0 1px var(--ink), var(--shadow); }
-    .card-handle, .card-links .k, .card-links .v { color:var(--ink); }
-  }
-</style>
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
 <script src="nav.js"></script>
 </head>
 <body>
 
-<canvas id="wave" aria-hidden="true"></canvas>
-<div id="veil" aria-hidden="true"></div>
+<a class="vh" href="#main">Skip to content</a>
 
-<div class="stage">
-  <div class="card rv">
-    <div class="card-head">
-      <div class="card-name">Amarnath<br>Patel<span class="d">.</span></div>
-      <div class="card-handle">apatel.co</div>
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html" aria-current="page">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
     </div>
-    <div class="card-bio" data-nosnippet>
-      <p>Physics <span class="dim">(optics &amp; lasers)</span> &amp; math student, heavily into CS. Astrophotonics @ CREOL, physics-ed research @ UCF Physics. Almost exclusively <span class="lang">C++</span> &amp; <span class="lang">Python</span>.</p>
-      <p class="note">Always up for interesting collaborations &amp; open source to contribute to — also, i want money.</p>
-    </div>
-    <nav class="card-links">
-      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">jeebuscrossaint ↗</span></a>
-      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">amarnath-patel ↗</span></a>
-      <a href="post.html"><span class="k">Writing</span><span class="v">→</span></a>
-      <a href="friends.html"><span class="k">Friends</span><span class="v">→</span></a>
-      <a href="pdf.html?file=resume.pdf"><span class="k">Résumé</span><span class="v">pdf</span></a>
-      <a href="pdf.html?file=cv.pdf"><span class="k">CV</span><span class="v">pdf</span></a>
-      <a href="mailto:amarnath.patel@ucf.edu"><span class="k">Email</span><span class="v">↗</span></a>
-    </nav>
   </div>
-</div>
+</nav>
 
-<script>
-(function () {
-  var root = document.documentElement, body = document.body;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lowData = (navigator.connection && navigator.connection.saveData) ||
-                (window.matchMedia && matchMedia('(prefers-reduced-data: reduce)').matches);
+<main id="main" tabindex="-1">
 
-  /* One fixed palette, declared in CSS and switched by the OS appearance. The field only needs
-     the accent as RGB and to know which way to blend, so it reads the tokens rather than owning them. */
-  var darkQ = matchMedia('(prefers-color-scheme: dark)');
-  var curAccent=[140,140,140], curIsDark=darkQ.matches;
+  <!-- ── hero ─────────────────────────────────────────────────────────────────────────── -->
+  <section class="section center">
+    <div class="wrap stack">
+      <p class="eyebrow reveal">Physics · Math · Computer Science</p>
+      <h1 class="t-hero reveal d1">Amarnath Patel</h1>
+      <p class="t-intro reveal d2">Physics — optics and lasers — and mathematics at the University
+         of Central Florida. Astrophotonics research at CREOL. Physics-education research at
+         UCF Physics.</p>
+      <div class="ctas reveal d3">
+        <a class="cta" href="research.html">See the research</a>
+        <a class="cta" href="pdf.html?file=resume.pdf">View résumé</a>
+      </div>
+    </div>
+  </section>
 
-  /* getPropertyValue returns custom properties *unresolved* — `--accent: AccentColor` reads
-     back as the literal string, not channel values. Round-trip through a probe element so the
-     browser resolves keywords, color-mix(), var() chains and everything else for us. */
-  function resolveColor(value, fallback){
-    var p=document.createElement('span');
-    p.style.cssText='position:absolute;visibility:hidden;pointer-events:none;color:'+value;
-    document.body.appendChild(p);
-    var c=getComputedStyle(p).color;
-    p.remove();
-    var m=c.match(/(\d+)[,\s]+(\d+)[,\s]+(\d+)/);
-    return m ? [+m[1],+m[2],+m[3]] : fallback;
-  }
+  <section class="section" style="padding-top:0">
+    <div class="wrap reveal">
+      <div class="media portrait">
+        <picture>
+          <source type="image/webp" sizes="(max-width:28rem) 100vw, 26rem"
+                  srcset="assets/me-640.webp 640w, assets/me-1024.webp 1023w">
+          <img src="assets/me-640.jpg" sizes="(max-width:28rem) 100vw, 26rem"
+               srcset="assets/me-640.jpg 640w, assets/me-1024.jpg 1023w"
+               width="1023" height="1537" loading="eager" fetchpriority="high" decoding="async"
+               alt="Amarnath Patel, in a navy suit and light blue shirt, against an office window.">
+        </picture>
+      </div>
+    </div>
+  </section>
 
-  function readTokens(){
-    var cs=getComputedStyle(root);
-    /* the field is chrome, not emphasis — HIG says apply colour sparingly, so it takes a
-       neutral from the label ramp rather than the accent. Otherwise every visitor whose OS
-       accent is blue gets a blue viewport. */
-    curAccent = resolveColor('var(--ink-soft)', curAccent);
-    curIsDark = darkQ.matches;
-    var cv=document.getElementById('wave');
-    if(cv) cv.style.mixBlendMode = curIsDark?'screen':'multiply';
-    var mc=document.querySelector('meta[name="theme-color"]');
-    if(!mc){ mc=document.createElement('meta'); mc.name='theme-color'; document.head.appendChild(mc); }
-    mc.content=cs.getPropertyValue('--bg').trim();
-  }
-  // follow the system when the user flips appearance mid-visit
-  if(darkQ.addEventListener) darkQ.addEventListener('change', readTokens);
-  else if(darkQ.addListener) darkQ.addListener(readTokens);
+  <!-- ── the rest of the site ─────────────────────────────────────────────────────────── -->
+  <section class="section tinted">
+    <div class="wrap-wide">
+      <div class="grid three">
+        <a class="tile reveal" href="research.html" style="min-height:0">
+          <h2 class="t-tile">Research.</h2>
+          <p>Photonic lanterns at CREOL, physics-education research at UCF, and a Maxwell solver
+             written from scratch.</p>
+          <div class="ctas"><span class="cta" aria-hidden="true">Read more</span></div>
+        </a>
+        <a class="tile reveal d1" href="post.html" style="min-height:0">
+          <h2 class="t-tile">Writing.</h2>
+          <p>Notes on the things that took me too long to figure out the first time.</p>
+          <div class="ctas"><span class="cta" aria-hidden="true">Read more</span></div>
+        </a>
+        <a class="tile reveal d2" href="about.html" style="min-height:0">
+          <h2 class="t-tile">About.</h2>
+          <p>Education, talks, honors, and what I get up to outside the lab.</p>
+          <div class="ctas"><span class="cta" aria-hidden="true">Read more</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  /* ambient field */
-  var cvs=document.getElementById('wave'), ctx=cvs.getContext('2d',{alpha:true});
-  var cardEl=document.querySelector('.card');
-  var SC=9, W=0,H=0, cols=0,rows=0, img=null,data=null;
-  var mx=0.5,my=0.35, tmx=0.5,tmy=0.35, ignite=0, running=true, animate=(!reduce && !lowData), rafId=0;
-  function schedule(){ if(!rafId) rafId=requestAnimationFrame(frame); }
-  function resize(){ W=innerWidth; H=innerHeight; cols=Math.max(2,Math.ceil(W/SC)); rows=Math.max(2,Math.ceil(H/SC)); cvs.width=cols; cvs.height=rows; cvs.style.width=W+'px'; cvs.style.height=H+'px'; img=ctx.createImageData(cols,rows); data=img.data; }
-  resize(); addEventListener('resize',resize);
-  var src=[{x:0.18,y:0.22,k:0.42,w:1.7,ph:0},{x:0.82,y:0.30,k:0.36,w:1.3,ph:2.1},{x:0.55,y:0.85,k:0.48,w:2.1,ph:4.0}];
-  function frame(t){
-    rafId=0;
-    var time=t*0.001; tmx+=(mx-tmx)*0.035; tmy+=(my-tmy)*0.035;
-    var R=curAccent[0],G=curAccent[1],B=curAccent[2], sx=[],sy=[],sk=[],sw=[],sp=[];
-    for(var i=0;i<src.length;i++){var s=src[i]; sx.push((s.x+0.05*Math.sin(time*0.13+i))*cols); sy.push((s.y+0.05*Math.cos(time*0.11+i*1.7))*rows); sk.push(s.k); sw.push(s.w); sp.push(s.ph);}
-    var cxp=tmx*cols,cyp=tmy*rows,n=src.length,amp=ignite,p=0;
-    /* The card is an object in the beam path, so it radiates too — its live position (drag
-       included, since transforms show up in the rect) becomes a fourth coherent source.
-       Push the card and the pattern reorganises around it. */
-    var kx=-1,ky=-1;
-    if(cardEl){ var kr=cardEl.getBoundingClientRect();
-      if(kr.width){ kx=((kr.left+kr.width/2)/W)*cols; ky=((kr.top+kr.height/2)/H)*rows; } }
-    var m=(kx>=0?n+2:n+1), maxA=curIsDark?104:78;
-    for(var y=0;y<rows;y++){for(var x=0;x<cols;x++){
-      var re=0,im=0;
-      for(var j=0;j<n;j++){var dx=x-sx[j],dy=y-sy[j],d=Math.sqrt(dx*dx+dy*dy),ph=sk[j]*d-sw[j]*time+sp[j]; re+=Math.cos(ph); im+=Math.sin(ph);}
-      var cdx=x-cxp,cdy=y-cyp,cd=Math.sqrt(cdx*cdx+cdy*cdy),cph=0.4*cd-1.6*time; re+=Math.cos(cph); im+=Math.sin(cph);
-      if(kx>=0){ var kdx=x-kx,kdy=y-ky,kd=Math.sqrt(kdx*kdx+kdy*kdy),kph=0.27*kd-0.85*time+1.2; re+=Math.cos(kph); im+=Math.sin(kph); }
-      var inten=(re*re+im*im)/(m*m), v=Math.pow(inten,1.7)*amp; if(v>1)v=1;
-      data[p]=R;data[p+1]=G;data[p+2]=B;data[p+3]=(v*maxA)|0; p+=4;
-    }}
-    ctx.putImageData(img,0,0);
-    if(running && animate) schedule();   // reduced-motion: render one static frame, don't loop
-  }
-  addEventListener('pointermove',function(e){mx=e.clientX/W; my=e.clientY/H;},{passive:true});
-  document.addEventListener('visibilitychange',function(){running=!document.hidden; if(running && animate) schedule();});
+</main>
 
-  /* device tilt (mobile): steer the field with the gyroscope, feeding the same mx/my the pointer uses */
-  var tiltOn=false;
-  function onTilt(e){
-    if(e.gamma==null||e.beta==null) return;
-    // gamma = left/right (-90..90), beta = front/back; recentre beta on a comfortable ~45° reading angle
-    var g=Math.max(-40,Math.min(40,e.gamma)), b=Math.max(-40,Math.min(40,e.beta-45));
-    mx=0.5+(g/40)*0.5; my=0.5+(b/40)*0.5;
-  }
-  function enableTilt(){
-    if(tiltOn || reduce || lowData || typeof DeviceOrientationEvent==='undefined') return;
-    function attach(){ tiltOn=true; addEventListener('deviceorientation',onTilt,{passive:true}); }
-    if(typeof DeviceOrientationEvent.requestPermission==='function'){
-      DeviceOrientationEvent.requestPermission().then(function(st){ if(st==='granted') attach(); }).catch(function(){});
-    } else { attach(); }  // Android/others: no gesture or prompt needed
-  }
-  // Android fires without a gesture; iOS needs the permission call inside the first tap
-  enableTilt();
-  addEventListener('pointerdown',enableTilt,{once:true,passive:true});
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
 
-  /* no synthetic loading gate — the card is there on first paint and the field fades up behind it */
-  function start(){
-    body.classList.add('lit');
-    if(lowData) return;                           // data-saver: static background, no field
-    if(reduce){ ignite=1; schedule(); return; }   // one static frame, no loop
-    var s=performance.now();
-    (function ramp(now){ ignite=Math.min(1,(now-s)/1400); if(ignite<1) requestAnimationFrame(ramp); })(performance.now());
-    schedule();
-  }
-
-  /* the card is a surface floating on the field — push it and the field shows through.
-     1:1 tracking, rubber-banded bounds, spring return that inherits the release velocity. */
-  (function cardDrag(){
-    if (reduce) return;                     // a moving full-card surface is exactly what reduced-motion means to avoid
-    var card=document.querySelector('.card'); if(!card) return;
-    var BOUND=54, THRESH=10, W=2*Math.PI/0.4;   // response 0.4s, critically damped -> no overshoot
-    var px=0,py=0,vx=0,vy=0, dragging=false,armed=false, sx=0,sy=0,pid=0, hist=[], raf=0, last=0;
-
-    function rubberband(o,dim,c){ c=c||0.55; return (o*dim*c)/(dim+c*Math.abs(o)); }
-    function put(){ card.style.setProperty('--dx',px.toFixed(2)+'px'); card.style.setProperty('--dy',py.toFixed(2)+'px'); }
-    function step(now){
-      raf=0; var dt=Math.min((now-last)/1000,0.032); last=now;
-      var ax=-W*W*px-2*W*vx, ay=-W*W*py-2*W*vy;   // starts from the live on-screen value, so an interrupt never jumps
-      vx+=ax*dt; vy+=ay*dt; px+=vx*dt; py+=vy*dt; put();
-      if(Math.abs(px)+Math.abs(py)>0.1 || Math.abs(vx)+Math.abs(vy)>0.5) raf=requestAnimationFrame(step);
-      else { px=py=vx=vy=0; put(); body.classList.remove('dragging'); }
-    }
-    function settle(){ if(!raf){ last=performance.now(); raf=requestAnimationFrame(step); } }
-
-    card.addEventListener('pointerdown',function(e){
-      if(e.button) return;
-      armed=true; dragging=false; sx=e.clientX; sy=e.clientY; pid=e.pointerId;
-      if(raf){ cancelAnimationFrame(raf); raf=0; }    // grabbable mid-flight
-      vx=vy=0; hist=[{x:px,y:py,t:performance.now()}];
-    },{passive:true});
-
-    card.addEventListener('pointermove',function(e){
-      if(!armed) return;
-      var dx=e.clientX-sx, dy=e.clientY-sy;
-      if(!dragging){
-        if(Math.abs(dx)+Math.abs(dy)<THRESH) return;  // hysteresis, so taps still reach the links
-        dragging=true; body.classList.add('dragging');
-        try{ card.setPointerCapture(pid); }catch(_){}
-      }
-      px=rubberband(dx,BOUND); py=rubberband(dy,BOUND);
-      hist.push({x:px,y:py,t:performance.now()}); if(hist.length>6) hist.shift();
-      put();
-    },{passive:true});
-
-    function release(){
-      armed=false; if(!dragging) return; dragging=false;
-      var a=hist[0], b=hist[hist.length-1], dt=(b.t-a.t)/1000;
-      // velocity of the surface, not the finger — the finger outruns it inside the rubber band
-      if(dt>0.004){ vx=(b.x-a.x)/dt; vy=(b.y-a.y)/dt; } else { vx=vy=0; }
-      vx=Math.max(-2600,Math.min(2600,vx)); vy=Math.max(-2600,Math.min(2600,vy));
-      settle();
-    }
-    card.addEventListener('pointerup',release,{passive:true});
-    card.addEventListener('pointercancel',release,{passive:true});
-  })();
-
-  readTokens();
-  start();
-})();
-</script>
 </body>
 </html>

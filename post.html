@@ -5,177 +5,182 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Amarnath Patel — writing">
 <link rel="canonical" href="https://apatel.co/post.html">
-<title>writing — apatel.co</title>
+<title>Writing — apatel.co</title>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="apatel.co">
 <meta property="og:url" content="https://apatel.co/post.html">
 <meta property="og:title" content="Writing — Amarnath Patel">
 <meta property="og:description" content="Amarnath Patel">
-<meta property="og:image" content="https://apatel.co/og.png">
+<meta property="og:image" content="https://apatel.co/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://apatel.co/og.png">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
-<script src="nav.js"></script>
+<style>@view-transition { navigation: auto; }</style>
+<link rel="stylesheet" href="site.css">
 <style>
-  @view-transition { navigation: auto; }
-  /* Inter stands in for SF on non-Apple platforms. Apple devices resolve -apple-system first and
-     never download this file — browsers only fetch a webfont whose glyphs actually get used. */
-  @font-face {
-    font-family:'InterVar';
-    src:url('fonts/inter-var-latin.woff2') format('woff2-variations');
-    font-weight:100 900; font-style:normal; font-display:swap;
+  /* Long-form article typography. Apple's editorial pages run a narrower measure and a
+     slightly larger body than the marketing sections — 692px is the Newsroom measure. */
+  .article { max-width:692px; margin:0 auto; }
+  .article h1 {
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(2.25rem,4.6vw,3.25rem); line-height:1.07; letter-spacing:-0.012em;
+    margin:0 0 .5em; text-wrap:balance;
   }
-
-  /* Apple's system palette — one considered scheme that follows the OS appearance
-     instead of a random pick. These are Apple's published system colours:
-     systemGroupedBackground / secondarySystemBackground, label / secondaryLabel,
-     separator, and systemBlue in its light and dark variants. */
-  :root {
-    color-scheme: light dark;
-    --bg:#F2F2F7; --bg-2:#FFFFFF; --surface:#FFFFFF;
-    --ink:#000000; --ink-soft:#6C6C70;
-    --rule:rgba(60,60,67,0.29); --rule-2:rgba(60,60,67,0.12);
-    /* HIG: don't hard-code system colours — AccentColor resolves to the visitor's own OS
-       accent (Graphite, Blue, whatever they set). Graphite is the fallback where the
-       keyword is unsupported. Used for fills and tints only, never to carry meaning. */
-    --accent:#8C8C8C;
-    --accent:AccentColor;
-    --edge:rgba(255,255,255,0.72); --mat:86%;
-    --shadow:0 30px 60px -26px rgba(0,0,0,.26), 0 2px 8px rgba(0,0,0,.09);
+  .article h2 {
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(1.5rem,2.6vw,1.875rem); line-height:1.16; letter-spacing:-0.003em;
+    margin:2em 0 .5em;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      /* macOS dark, not iOS: windowBackgroundColor is a dark grey, not #000. Pure black is an
-         OLED-phone value and reads as a hole on a desktop display. */
-      --bg:#1C1C1E; --bg-2:#2C2C2E; --surface:#2C2C2E;
-      --ink:#FFFFFF; --ink-soft:#A1A1A8;
-      --rule:rgba(84,84,88,0.65); --rule-2:rgba(84,84,88,0.32);
-      --accent:#98989F;
-      --accent:AccentColor;
-      --edge:rgba(255,255,255,0.16); --mat:70%;
-      --shadow:0 34px 70px -24px rgba(0,0,0,.62), 0 3px 10px rgba(0,0,0,.22);
-    }
+  .article h3 { font-weight:600; font-size:1.25rem; line-height:1.2; letter-spacing:-0.01em; margin:1.7em 0 .4em; }
+  .article p, .article li { font-size:1.1875rem; line-height:1.6; letter-spacing:-0.012em; }
+  .article p { margin:0 0 1.1em; }
+  .article a { color:var(--link); }
+  .article a:hover { text-decoration:underline; }
+  .article strong { font-weight:600; }
+  .article code {
+    font-family:var(--font-mono); font-size:.85em;
+    background:var(--tint); border:1px solid var(--rule-2);
+    padding:2px 6px; border-radius:6px;
   }
-  @media (prefers-contrast: more) {
-    :root {
-      --ink-soft:#3C3C43;
-      --rule:rgba(60,60,67,0.68); --rule-2:rgba(60,60,67,0.34);
-      --mat:100%;
-    }
+  .article pre {
+    margin:1.4em 0; background:var(--tint); border:1px solid var(--rule-2);
+    border-radius:var(--r-sm); overflow-x:auto;
   }
-  @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
-    :root {
-      --ink-soft:#EBEBF5;
-      --rule:rgba(235,235,245,0.60); --rule-2:rgba(235,235,245,0.30);
-      --mat:100%;
-    }
-  }
-  * { box-sizing:border-box; }
-  html { -webkit-text-size-adjust:100%; }
-  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SFProText Nerd Font","SF Pro",InterVar,"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:17px; line-height:1.6; letter-spacing:-0.006em; -webkit-font-smoothing:antialiased; transition:background-color .35s ease, color .35s ease; }
-  .mono { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; }
-  a { color:inherit; text-decoration:none; }
-  ::selection { background:color-mix(in srgb, var(--ink) 22%, transparent); color:var(--ink); }
-  :focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
-
-  .topbar { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:12px; height:54px; padding:0 clamp(20px,5vw,44px); border-bottom:1px solid var(--rule-2); background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(22px) saturate(180%); -webkit-backdrop-filter:blur(22px) saturate(180%); }
-  .topbar .back { font-size:.9rem; letter-spacing:-0.006em; color:var(--ink-soft); font-weight:400; transition:color .18s; }
-  .topbar .back:hover { color:var(--ink); }
-  .topbar .back b { color:var(--ink); }
-
-  main { max-width:720px; margin:0 auto; padding:clamp(36px,6vw,72px) clamp(20px,5vw,44px) 100px; }
-
-  /* post index */
-  .idx-title { font-size:.9rem; letter-spacing:-0.006em; color:var(--ink-soft); margin:0 0 1.5rem; }
-  .entry { display:block; padding:1.25rem 1rem; margin:0 -1rem; border-radius:16px; border-top:1px solid var(--rule-2);
-    transition:background .18s ease, transform .18s cubic-bezier(.2,.7,.2,1); }
-  .entry:hover { background:color-mix(in srgb, var(--accent) 8%, transparent); transform:translateX(5px); }
-  .entry:active { transform:translateX(5px) scale(.995); transition-duration:.1s; }
-  .entry .date { font-size:.82rem; letter-spacing:-0.004em; color:var(--ink-soft); }
-  .entry .t { font-size:1.35rem; font-weight:700; letter-spacing:-0.02em; margin:4px 0 3px; }
-  .entry .d { font-size:.95rem; color:var(--ink-soft); }
-  .entry .t .ar { color:var(--ink-soft); display:inline-block; transition:transform .18s ease; }
-  .entry:hover .t .ar { transform:translate(3px,0); }
-
-  /* rendered markdown */
-  #post-content h1 { font-size:clamp(1.9rem,5vw,3rem); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin:0 0 .5em; text-wrap:balance; }
-  #post-content h2 { font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; margin:1.9em 0 .5em; padding-bottom:.25em; border-bottom:1px solid var(--rule); }
-  #post-content h3 { font-size:1.2rem; font-weight:700; letter-spacing:-0.01em; margin:1.6em 0 .4em; }
-  #post-content p { margin:0 0 1.05em; }
-  #post-content a { color:var(--ink); border-bottom:1px solid color-mix(in srgb, var(--ink) 42%, transparent); transition:border-color .18s; }
-  #post-content a:hover { border-bottom-color:var(--ink); }
-  #post-content strong { font-weight:700; }
-  #post-content code { font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,Consolas,monospace; font-size:.86em; background:var(--bg-2); border:1px solid var(--rule); padding:1px 6px; border-radius:6px; }
-  #post-content pre { margin:1.3em 0; background:var(--bg-2); border:1px solid var(--rule); border-radius:14px; overflow-x:auto; }
-  #post-content pre code { display:block; padding:16px 18px; background:none; border:none; font-size:.85em; line-height:1.6; color:var(--ink); }
-  #post-content blockquote { margin:1.3em 0; padding:.5em 1em; border-left:2px solid var(--rule); color:var(--ink-soft); }
-  #post-content ul, #post-content ol { margin:0 0 1.05em 1.3em; }
-  #post-content li { margin-bottom:.35em; }
-  #post-content hr { border:none; border-top:1px solid var(--rule); margin:2em 0; }
-  #post-content img { max-width:100%; height:auto; border:1px solid var(--rule); border-radius:14px; margin:1.3em 0; display:block; }
-  #post-content table { width:100%; border-collapse:collapse; margin:1.3em 0; font-size:.9em; }
-  #post-content th { text-align:left; padding:.5em .6em; border-bottom:1px solid var(--rule); color:var(--ink-soft); font-weight:600; font-size:.85rem; }
-  #post-content td { padding:.5em .6em; border-bottom:1px solid var(--rule-2); color:var(--ink-soft); }
-  .loading { color:var(--ink-soft); font-family:ui-monospace,"SF Mono","SFMono Nerd Font Mono",Menlo,monospace; font-size:.9rem; }
-  .load-err { color:#e0564a; }
-
-  /* entrance reveal */
-  @keyframes rise { from { opacity:0; transform:translateY(11px); } to { opacity:1; transform:none; } }
-  @keyframes fade { from { opacity:0; } to { opacity:1; } }
-  .idx .idx-title, .idx .entry { opacity:0; animation:rise .6s cubic-bezier(.2,.7,.2,1) both; }
-  .idx .idx-title { animation-delay:.02s; }
-  .idx .entry:nth-child(2){animation-delay:.10s} .idx .entry:nth-child(3){animation-delay:.16s}
-  .idx .entry:nth-child(4){animation-delay:.22s} .idx .entry:nth-child(n+5){animation-delay:.28s}
-  .rdr { animation:fade .7s ease both; }
-  @media (prefers-reduced-motion:reduce){ .idx .idx-title, .idx .entry, .rdr { animation:none; opacity:1; } }
-  /* HIG: translucency and hairlines both give way under increased contrast / reduced transparency */
-  @media (prefers-reduced-transparency:reduce), (prefers-contrast:more) {
-    .topbar { background:var(--bg); backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid var(--rule); }
-  }
+  .article pre code { display:block; padding:18px 20px; background:none; border:none; font-size:.875rem; line-height:1.6; }
+  .article blockquote { margin:1.4em 0; padding:.2em 0 .2em 1.1em; border-left:3px solid var(--rule); color:var(--ink-2); }
+  .article ul, .article ol { margin:0 0 1.1em 1.3em; }
+  .article li { margin-bottom:.4em; }
+  .article hr { border:none; border-top:1px solid var(--rule-2); margin:2.4em 0; }
+  .article img { border-radius:var(--r-sm); margin:1.6em 0; }
+  .article table { width:100%; border-collapse:collapse; margin:1.6em 0; font-size:.9375rem; }
+  .article th { text-align:left; padding:.6em .7em; border-bottom:1px solid var(--rule); font-weight:600; }
+  .article td { padding:.6em .7em; border-bottom:1px solid var(--rule-2); color:var(--ink-2); }
+  .status { color:var(--ink-2); font-family:var(--font-mono); font-size:.875rem; }
+  .status.err { color:#e0564a; }
 </style>
+<script src="nav.js"></script>
 </head>
 <body>
 
-<div class="topbar">
-  <a class="back" href="index.html">← <b>apatel.co</b> / writing</a>
-</div>
+<a class="vh" href="#main">Skip to content</a>
 
-<main>
-  <div id="post-content"><p class="loading">loading…</p></div>
+<nav class="gnav" aria-label="Site">
+  <div class="gnav-in">
+    <a class="wordmark" href="index.html">apatel.co</a>
+    <div class="gnav-links">
+      <a href="research.html">Research</a>
+      <a href="post.html" aria-current="page">Writing</a>
+      <a class="opt" href="about.html">About</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a class="opt" href="friends.html">Friends</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+  <section class="section">
+    <div class="wrap" id="post-content"><p class="status">Loading…</p></div>
+  </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<footer class="gfoot">
+  <div class="gfoot-in">
+    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a> &rsaquo; <a href="post.html">Writing</a></p>
+    <div class="cols">
+      <a href="research.html">Research</a>
+      <a href="post.html">Writing</a>
+      <a href="about.html">About</a>
+      <a href="friends.html">Friends</a>
+      <a href="pdf.html?file=resume.pdf">Résumé</a>
+      <a href="pdf.html?file=cv.pdf">CV</a>
+      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
+    </div>
+    <div class="legal">
+      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>Orlando, Florida</span>
+    </div>
+  </div>
+</footer>
+
+<!-- vendored, not CDN: GitHub Pages serves whatever is committed, so there is no reason to
+     hand a third party the request log for every reader. -->
+<script src="vendor/marked.min.js"></script>
 <script>
 (function(){
   var post = new URLSearchParams(location.search).get('post');
+  // slugs are a closed set of filenames — anything else is refused rather than fetched,
+  // so a crafted ?post=../… can't pull an unrelated file into the page
+  if (post !== null && !/^[a-z0-9][a-z0-9-]*$/i.test(post)) post = '';
   var area = document.getElementById('post-content');
   function setCanonical(href){ var l=document.querySelector('link[rel=canonical]'); if(l) l.href=href; }
 
+  // NOTE: index.html lists the two latest of these in static markup — keep in sync.
+  var POSTS = [
+    { slug:'c-cpp-nixos-clangd-guide', date:'2026 · 03 · 15',
+      title:'Getting clangd to work on NixOS',
+      blurb:'Fixing the “vector file not found” and iostream errors once and for all.' },
+    { slug:'a-better-tree-for-win', date:'2026 · 01 · 20',
+      title:'The built-in Windows tree command is trash',
+      blurb:'And here’s how to replace it with something actually good.' }
+  ];
+
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+
   if (!post) {
-    document.title = 'writing — apatel.co';
-    area.className = 'idx';
-    area.innerHTML =
-      '<p class="idx-title">Writing</p>' +
-      '<a class="entry" href="post.html?post=c-cpp-nixos-clangd-guide"><span class="date mono">2026 · 03 · 15</span><div class="t">Getting clangd to work on NixOS <span class="ar">→</span></div><div class="d">Fixing the “vector file not found” and iostream errors once and for all.</div></a>' +
-      '<a class="entry" href="post.html?post=a-better-tree-for-win"><span class="date mono">2026 · 01 · 20</span><div class="t">The built-in Windows tree command is trash <span class="ar">→</span></div><div class="d">And here’s how to replace it with something actually good.</div></a>';
+    document.title = 'Writing — apatel.co';
+    var html =
+      '<div class="stack">' +
+        '<h1 class="t-section reveal">Writing.</h1>' +
+        '<p class="t-intro dim reveal d1" style="max-width:44ch">Notes on the things that took me ' +
+        'too long to figure out the first time.</p>' +
+        '<div class="rows reveal d2" style="margin-top:2rem">';
+    POSTS.forEach(function(p){
+      html +=
+        '<a class="row" href="post.html?post=' + encodeURIComponent(p.slug) + '">' +
+          '<span>' +
+            '<span class="t-small mono" style="display:block;margin-bottom:4px">' + esc(p.date) + '</span>' +
+            '<span class="k">' + esc(p.title) + '</span>' +
+            '<span class="b" style="display:block;margin-top:5px">' + esc(p.blurb) + '</span>' +
+          '</span>' +
+          '<span class="chev" aria-hidden="true">›</span>' +
+        '</a>';
+    });
+    area.innerHTML = html + '</div></div>';
+    // nav.js already ran its reveal pass over the original DOM, so light up what we just built
+    area.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
     return;
   }
+
   if (location.protocol === 'file:') {
-    area.innerHTML = '<p class="loading load-err">posts need a web server — open via <a href="https://apatel.co">apatel.co</a>.</p>';
+    area.innerHTML = '<p class="status err">Posts need a web server — open via <a href="https://apatel.co">apatel.co</a>.</p>';
     return;
   }
+
   fetch('posts/' + post + '.md')
     .then(function(r){ if(!r.ok) throw new Error('post not found: ' + post); return r.text(); })
     .then(function(md){
+      area.className = 'article';
       area.innerHTML = marked.parse(md);
-      area.classList.add('rdr');
       var h1 = area.querySelector('h1');
       if (h1) document.title = h1.textContent + ' — apatel.co';
       setCanonical('https://apatel.co/post.html?post=' + encodeURIComponent(post));
+      var back = document.createElement('p');
+      back.style.marginTop = '3rem';
+      back.innerHTML = '<a class="cta" href="post.html">All writing</a>';
+      area.appendChild(back);
     })
-    .catch(function(err){ area.innerHTML = '<p class="loading load-err"></p>'; area.firstChild.textContent = 'error: ' + err.message; });
+    .catch(function(err){
+      area.innerHTML = '<p class="status err"></p>';
+      area.firstChild.textContent = 'Error: ' + err.message;
+    });
 })();
 </script>
 </body>
