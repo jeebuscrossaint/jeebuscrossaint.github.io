@@ -115,6 +115,20 @@
 - Configured Arch Linux ARM on Raspberry Pi 5 with Hyprland compositor and WireGuard VPN, enabling worldwide real-time telemetry monitoring of BMS, GPS, and camera feeds.
 - Won 2nd Place in Division and Lockheed Martin Award for "Highest Level of Engineering Excellence."
 
+/* ── CONFERENCE PROCEEDINGS ── */
+#v(0.2em)
+#line(length: 100%, stroke: 0.3pt)
+#v(0.1em)
+#text(size: 11pt, weight: "bold")[CONFERENCE ABSTRACTS]
+#v(0.1em)
+
+#grid(
+  columns: (1fr, auto),
+  column-gutter: 1em,
+  [*Sub-diffraction imaging and precision wavefront sensing with photonic lanterns*], [2027]
+)
+Co-author. Abstract submitted to SPIE Photonics West 2027, OPTO — Photonic Instrumentation Engineering XIV (OE206), San Francisco, CA, 30 January – 4 February 2027. _Under review._
+
 /* ── PRESENTATIONS ── */
 #v(0.2em)
 #line(length: 100%, stroke: 0.3pt)
