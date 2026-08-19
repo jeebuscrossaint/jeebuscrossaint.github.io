@@ -95,6 +95,18 @@
 #v(-0.35em)
 - Built four adversarial evasion pipelines (iterative rewriting, tree-search decoding, list-branching, RL) over 3,125 generated sequences; characterized a consistent quality–evasion tradeoff. Grant-funded with HPC access; presented at the Wilkes Honors College Symposium.
 
+#v(-0.5em)
+#text(size: 10.5pt, weight: "bold")[CONFERENCE ABSTRACTS]
+#v(-1em)
+#line(length: 100%, stroke: 0.4pt)
+#v(-0.5em)
+#grid(
+  columns: (1fr, auto),
+  column-gutter: 1em,
+  [*[redacted]* — co-author. Abstract submitted to [redacted], [redacted]. _Under review._], [2027],
+)
+#v(-0.5em)
+
 #text(size: 10.5pt, weight: "bold")[TECHNICAL SKILLS]
 #v(-1em)
 #line(length: 100%, stroke: 0.4pt)
