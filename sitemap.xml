@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://apatel.co/</loc></url>
-<url><loc>https://apatel.co/writing.html</loc></url>
-<url><loc>https://apatel.co/writing-c-cpp-nixos-clangd-guide.html</loc></url>
-<url><loc>https://apatel.co/writing-a-better-tree-for-win.html</loc></url>
-<url><loc>https://apatel.co/holography.html</loc></url>
-<url><loc>https://apatel.co/celeris.html</loc></url>
-<url><loc>https://apatel.co/polyoculus.html</loc></url>
-<url><loc>https://apatel.co/chameleon.html</loc></url>
-<url><loc>https://apatel.co/aev.html</loc></url>
-<url><loc>https://apatel.co/friends.html</loc></url>
+<url><loc>https://apatel.co/</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/writing.html</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/writing-c-cpp-nixos-clangd-guide.html</loc><lastmod>2026-03-15</lastmod></url>
+<url><loc>https://apatel.co/writing-a-better-tree-for-win.html</loc><lastmod>2026-01-20</lastmod></url>
+<url><loc>https://apatel.co/holography.html</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/celeris.html</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/polyoculus.html</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/chameleon.html</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/aev.html</loc><lastmod>2026-09-18</lastmod></url>
+<url><loc>https://apatel.co/friends.html</loc><lastmod>2026-09-18</lastmod></url>
 </urlset>

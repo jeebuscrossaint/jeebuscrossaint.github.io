@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Amarnath Patel</title>
+<subtitle>Notes on the things that took me too long to figure out the first time.</subtitle>
+<link href="https://apatel.co/feed.xml" rel="self"/>
+<link href="https://apatel.co/"/>
+<id>https://apatel.co/</id>
+<updated>2026-03-15T00:00:00Z</updated>
+<author><name>Amarnath Patel</name><uri>https://apatel.co/</uri></author>
+<entry>
+  <title>Getting clangd to work on NixOS</title>
+  <link href="https://apatel.co/writing-c-cpp-nixos-clangd-guide.html"/>
+  <id>https://apatel.co/writing-c-cpp-nixos-clangd-guide.html</id>
+  <updated>2026-03-15T00:00:00Z</updated>
+  <summary>Fixing the "vector file not found" and iostream errors once and for all.</summary>
+</entry>
+<entry>
+  <title>The built-in Windows tree command is trash</title>
+  <link href="https://apatel.co/writing-a-better-tree-for-win.html"/>
+  <id>https://apatel.co/writing-a-better-tree-for-win.html</id>
+  <updated>2026-01-20T00:00:00Z</updated>
+  <summary>And here's how to replace it with something actually good.</summary>
+</entry>
+</feed>

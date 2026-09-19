@@ -4,14 +4,29 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Getting clangd to work on NixOS — Amarnath Patel</title>
 <meta name=description content="Fixing the “vector file not found” and iostream errors once and for all.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/writing-c-cpp-nixos-clangd-guide.html">
+<meta property="og:title" content="Getting clangd to work on NixOS — Amarnath Patel">
+<meta property="og:description" content="Fixing the “vector file not found” and iostream errors once and for all.">
+<meta property="og:image" content="https://apatel.co/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Getting clangd to work on NixOS — Amarnath Patel">
+<meta name="twitter:description" content="Fixing the “vector file not found” and iostream errors once and for all.">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
 <meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
 <meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
 <link rel=icon href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'><text y=7 font-size=9 font-family=sans-serif>a</text></svg>">
 <link rel=preload as=font type=font/woff2 crossorigin
  href="fonts/lib-400-roman.woff2">
+<link rel=preload as=font type=font/woff2 crossorigin href="fonts/lib-700-roman.woff2">
+<link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-
 <nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
+
+<main>
 <h1>Getting clangd to work on NixOS</h1>
 <p class=date>2026 · 03 · 15</p>
 <article>
@@ -132,5 +147,11 @@ InlayHints:
 <h2>Why this works</h2>
 <p>The whole issue is that clangd needs the same include paths that <code>clang++</code> uses. On normal distros everything's in <code>/usr/include</code> so it just works. On NixOS you have to explicitly give it all 5 paths in the right order: compiler-rt, C++ headers, platform headers, clang resources, and glibc.</p>
 </article>
+
+</main>
+
+<script type=application/ld+json>
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Getting clangd to work on NixOS","datePublished":"2026-03-15","author":{"@type":"Person","name":"Amarnath Patel","url":"https://apatel.co/","identifier":"https://orcid.org/0009-0008-9460-082X"}}
+</script>
 
 <footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a></footer>
