@@ -1,146 +1,64 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Amarnath Patel — physics and mathematics at the University of Central Florida. Astrophotonics research at CREOL, physics-education research at UCF Physics.">
-<meta name="author" content="Amarnath Patel">
-<link rel="canonical" href="https://apatel.co/">
-<title>Amarnath Patel — apatel.co</title>
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<!-- open graph / social (embed text kept to name only) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="apatel.co">
-<meta property="og:url" content="https://apatel.co/">
-<meta property="og:title" content="Amarnath Patel">
-<meta property="og:description" content="Amarnath Patel">
-<meta property="og:image" content="https://apatel.co/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Amarnath Patel — apatel.co">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Amarnath Patel">
-<meta name="twitter:description" content="Amarnath Patel">
-<meta name="twitter:image" content="https://apatel.co/og.jpg">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Amarnath Patel",
-  "url": "https://apatel.co/",
-  "image": "https://apatel.co/og.jpg",
-  "jobTitle": "Physics & Mathematics Student",
-  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Central Florida" },
-  "knowsAbout": ["Optics", "Photonics", "Lasers", "Astrophotonics", "Computational electromagnetics", "Systems programming", "GPU programming", "C++", "Python"],
-  "sameAs": [
-    "https://github.com/jeebuscrossaint",
-    "https://www.linkedin.com/in/amarnath-patel/",
-    "https://orcid.org/0009-0008-9460-082X"
-  ]
-}
-</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><text x='16' y='23' font-family='Helvetica,Arial' font-size='18' font-weight='bold' fill='%23fff' text-anchor='middle'>a</text></svg>">
-<style>@view-transition { navigation: auto; }</style>
-<link rel="stylesheet" href="site.css">
-<script src="nav.js"></script>
-</head>
-<body>
+<html lang=en>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Amarnath Patel</title>
+<meta name=description content="Physics (optics and lasers) and mathematics at the University of Central Florida. Astrophotonics at CREOL, physics-education research at UCF Physics.">
+<link rel=canonical href="https://apatel.co/">
+<meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
+<meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
+<link rel=icon href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'><text y=7 font-size=9 font-family=sans-serif>a</text></svg>">
+<link rel=preload as=font type=font/woff2 crossorigin
+ href="fonts/lib-400-roman.woff2">
+<link rel=stylesheet href=s.css>
 
-<a class="vh" href="#main">Skip to content</a>
+<header id=lede>
+<div>
+<h1>Amarnath Patel</h1>
+<p class=role>Physics &amp; mathematics · University of Central Florida</p>
+<p>I measure photonic lanterns at CREOL, write solvers for Maxwell's equations, and work on
+physics-education research at UCF Physics.</p>
+<ul>
+<li>Orlando, Florida
+<li><a href="mailto:amarnath.patel@ucf.edu">amarnath.patel@ucf.edu</a>
+<li><a class=x target=_blank href="resume.pdf">résumé</a>
+<li><a class=x target=_blank href="cv.pdf">cv</a>
+<li><a class=x target=_blank href="https://github.com/jeebuscrossaint" rel=me>github</a>
+<li><a class=x target=_blank href="https://orcid.org/0009-0008-9460-082X" rel=me>orcid</a>
+<li><a class=x target=_blank href="https://www.linkedin.com/in/amarnath-patel/" rel=me>linkedin</a>
+</ul>
+</div>
+<picture>
+<source type=image/webp srcset="assets/me-640.webp">
+<img src="assets/me-640.jpg" width=640 height=962 decoding=async
+ alt="Amarnath Patel, in a navy suit against an office window.">
+</picture>
+</header>
 
-<nav class="gnav" aria-label="Site">
-  <div class="gnav-in">
-    <a class="wordmark" href="index.html" aria-current="page">apatel.co</a>
-    <div class="gnav-links">
-      <a href="research.html">Research</a>
-      <a href="post.html">Writing</a>
-      <a class="opt" href="about.html">About</a>
-      <a href="pdf.html?file=resume.pdf">Résumé</a>
-      <a class="opt" href="friends.html">Friends</a>
-    </div>
-  </div>
-</nav>
+<h2>Work</h2>
+<ul class=w>
+<li><b><a href="holography.html">Photonic lanterns</a></b> — measuring a lantern's complex
+transfer matrix by off-axis digital holography, across the C-band. <i>CREOL</i>
+<li><b><a href="celeris.html">CELERIS</a></b> — a rigorous coupled-wave solver and metalens
+design pipeline, written from scratch in C++23 and CUDA. <i>Independent</i>
+<li><b><a href="polyoculus.html">PolyOculus</a></b> — pointing automation for an array of eight
+networked telescopes. <i>CREOL</i>
+<li><b><a href="chameleon.html">AI text detectors</a></b> — what evasion techniques actually
+cost you in style, and buy you in detectability. <i>FAU</i>
+<li><b>ESTELA</b> and <b>Narvi</b> — exam generation and interactive STEM demos, both agentic.
+<i>UCF Physics</i>
+</ul>
 
-<main id="main" tabindex="-1">
+<h2>Writing</h2>
+<ul class=w>
+<li><b><a href="writing-c-cpp-nixos-clangd-guide.html">Getting clangd to work on NixOS</a></b>
+— why the standard library goes missing, and the two files that fix it.
+<li><b><a href="writing-a-better-tree-for-win.html">The built-in Windows tree command is
+trash</a></b> — three flags, two options, and what to use instead.
+</ul>
 
-  <!-- ── hero ─────────────────────────────────────────────────────────────────────────── -->
-  <section class="section center">
-    <div class="wrap stack">
-      <p class="eyebrow reveal">Physics · Math · Computer Science</p>
-      <h1 class="t-hero reveal d1">Amarnath Patel</h1>
-      <p class="t-intro reveal d2">Physics — optics and lasers — and mathematics at the University
-         of Central Florida. Astrophotonics research at CREOL. Physics-education research at
-         UCF Physics.</p>
-      <div class="ctas reveal d3">
-        <a class="cta" href="research.html">See the research</a>
-        <a class="cta" href="pdf.html?file=resume.pdf">View résumé</a>
-      </div>
-    </div>
-  </section>
+<p class=tail>The full record — coursework, talks, honors — lives in the
+<a class=x target=_blank href="cv.pdf">CV</a>. Friends keep good corners of the web:
+<a href="friends.html">a list</a>.</p>
 
-  <section class="section" style="padding-top:0">
-    <div class="wrap reveal">
-      <div class="media portrait">
-        <picture>
-          <source type="image/webp" sizes="(max-width:28rem) 100vw, 26rem"
-                  srcset="assets/me-640.webp 640w, assets/me-1024.webp 1023w">
-          <img src="assets/me-640.jpg" sizes="(max-width:28rem) 100vw, 26rem"
-               srcset="assets/me-640.jpg 640w, assets/me-1024.jpg 1023w"
-               width="1023" height="1537" loading="eager" fetchpriority="high" decoding="async"
-               alt="Amarnath Patel, in a navy suit and light blue shirt, against an office window.">
-        </picture>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── the rest of the site ─────────────────────────────────────────────────────────── -->
-  <section class="section tinted">
-    <div class="wrap-wide">
-      <div class="grid three">
-        <a class="tile reveal" href="research.html" style="min-height:0">
-          <h2 class="t-tile">Research.</h2>
-          <p>Photonic lanterns at CREOL, physics-education research at UCF, and a Maxwell solver
-             written from scratch.</p>
-          <div class="ctas"><span class="cta" aria-hidden="true">Read more</span></div>
-        </a>
-        <a class="tile reveal d1" href="post.html" style="min-height:0">
-          <h2 class="t-tile">Writing.</h2>
-          <p>Notes on the things that took me too long to figure out the first time.</p>
-          <div class="ctas"><span class="cta" aria-hidden="true">Read more</span></div>
-        </a>
-        <a class="tile reveal d2" href="about.html" style="min-height:0">
-          <h2 class="t-tile">About.</h2>
-          <p>Education, talks, honors, and what I get up to outside the lab.</p>
-          <div class="ctas"><span class="cta" aria-hidden="true">Read more</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="gfoot">
-  <div class="gfoot-in">
-    <p class="crumb" style="margin:0"><a href="index.html">apatel.co</a></p>
-    <div class="cols">
-      <a href="research.html">Research</a>
-      <a href="post.html">Writing</a>
-      <a href="about.html">About</a>
-      <a href="friends.html">Friends</a>
-      <a href="pdf.html?file=resume.pdf">Résumé</a>
-      <a href="pdf.html?file=cv.pdf">CV</a>
-      <a href="https://github.com/jeebuscrossaint" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/amarnath-patel/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://orcid.org/0009-0008-9460-082X" target="_blank" rel="noopener">ORCID</a>
-    </div>
-    <div class="legal">
-      <span>Copyright © 2026 Amarnath Patel. All rights reserved.</span>
-      <span class="sep" aria-hidden="true">|</span>
-      <span>Orlando, Florida</span>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="friends.html">Friends</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a> · <a class=x target=_blank href="https://orcid.org/0009-0008-9460-082X">ORCID</a></footer>

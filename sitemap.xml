@@ -1,55 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://apatel.co/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/research.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/holography.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/polyoculus.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/celeris.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/chameleon.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/aev.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/about.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/post.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/post.html?post=c-cpp-nixos-clangd-guide</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/post.html?post=a-better-tree-for-win</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/friends.html</loc>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://apatel.co/pdf.html</loc>
-    <priority>0.4</priority>
-  </url>
+<url><loc>https://apatel.co/</loc></url>
+<url><loc>https://apatel.co/writing.html</loc></url>
+<url><loc>https://apatel.co/writing-c-cpp-nixos-clangd-guide.html</loc></url>
+<url><loc>https://apatel.co/writing-a-better-tree-for-win.html</loc></url>
+<url><loc>https://apatel.co/holography.html</loc></url>
+<url><loc>https://apatel.co/celeris.html</loc></url>
+<url><loc>https://apatel.co/polyoculus.html</loc></url>
+<url><loc>https://apatel.co/chameleon.html</loc></url>
+<url><loc>https://apatel.co/aev.html</loc></url>
+<url><loc>https://apatel.co/friends.html</loc></url>
 </urlset>

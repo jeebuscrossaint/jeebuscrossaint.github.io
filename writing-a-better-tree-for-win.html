@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>The built-in Windows tree command is trash — Amarnath Patel</title>
+<meta name=description content="And here’s how to replace it with something actually good.">
+<meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
+<meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
+<link rel=icon href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'><text y=7 font-size=9 font-family=sans-serif>a</text></svg>">
+<link rel=preload as=font type=font/woff2 crossorigin
+ href="fonts/lib-400-roman.woff2">
+<link rel=stylesheet href=s.css>
+
+<nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
+<h1>The built-in Windows tree command is trash</h1>
+<p class=date>2026 · 01 · 20</p>
+<article>
+<p>If you are anything like me you are forced to use windows for only a few programs that don't have good linux alternatives. One of the things I hate about windows is the built in tree command. It is slow, ugly, and lacks features.</p>
+<p>Already we know us UNIX enthusiasts have a better alternative. The <code>tree</code> command on linux is way better than the windows version. It is faster, has more features, and looks better.</p>
+<p>The windows version of tree has literally 3 flags and 2 options:</p>
+<pre><code class="language-plaintext">Syntax:
+  tree [&lt;drive&gt;:][&lt;path&gt;] [/f] [/a]
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<p>| Parameter   | Description                                                                 |
+|-------------|-----------------------------------------------------------------------------|
+| <code>&lt;drive&gt;:</code>  | Specifies the drive containing the disk for which you want the directory tree. |
+| <code>&lt;path&gt;</code>    | Specifies the directory to display the structure for.                       |
+| <code>/f</code>        | Displays the names of the files in each directory.                          |
+| <code>/a</code>        | Uses text characters instead of graphic lines for subdirectory links.       |
+| <code>/?</code>        | Displays help at the command prompt.                                        |
+/?  Displays help at the command prompt.</p>
+<p>Where as the linux version has a ton of options and flags to customize the output to your liking. You can even color code the output based on file types, sizes, and more.
+Thats why I wrote my own version of the tree command for windows. It is also just called tree and you can install it via scoop.</p>
+<pre><code class="language-powershell">scoop bucket add tree https://github.com/jeebuscrossaint/tree
+scoop update
+scoop install tree
+</code></pre>
+<p>It is 1:1 feature parity with the linux version of tree besides the html related options as I didn't see a need for them on windows. I doubt anyone would use it on linux anyway.</p>
+<p>Here is a list of the features it has:</p>
+<pre><code class="language-console">$ tree --help
+</code></pre>
+<p><strong>Usage:</strong></p>
+<pre><code>tree [options] [directory...]
+</code></pre>
+<p><strong>Options:</strong></p>
+<p>| Flag | Description |
+|------|-------------|
+| <code>--help</code> | Outputs a verbose usage listing. |
+| <code>--version</code> | Outputs the version of tree. |
+| <code>-a</code> | All files are printed (including hidden files). |
+| <code>-d</code> | List directories only. |
+| <code>-f</code> | Prints the full path prefix for each file. |
+| <code>-i</code> | Makes tree not print the indentation lines. |
+| <code>-l</code> | Follows symbolic links if they point to directories. |
+| <code>-x</code> | Stay on the current file-system only. |
+| <code>-P pattern</code> | List only those files that match the wild-card pattern. |
+| <code>-I pattern</code> | Do not list those files that match the wild-card pattern. |
+| <code>--noreport</code> | Omits printing of the file and directory report. |
+| <code>-p</code> | Print the file type and permissions for each file. |
+| <code>-s</code> | Print the size of each file in bytes. |
+| <code>-h</code> | Print the size in human readable format. |
+| <code>-u</code> | Print the username or UID. |
+| <code>-g</code> | Print the group name or GID. |
+| <code>-D</code> | Print the date of last modification. |
+| <code>--inodes</code> | Prints the inode number. |
+| <code>--device</code> | Prints the device number. |
+| <code>-F</code> | Append indicators for file types (<code>/</code>, <code>=</code>, <code>*</code>, <code>\|</code>). |
+| <code>-q</code> | Print non-printable characters as question marks. |
+| <code>-N</code> | Print non-printable characters as is. |
+| <code>-v</code> | Sort the output by version. |
+| <code>-r</code> | Sort the output in reverse alphabetic order. |
+| <code>-t</code> | Sort the output by last modification time. |
+| <code>--dirsfirst</code> | List directories before files. |
+| <code>-n</code> | Turn colorization off always. |
+| <code>-C</code> | Turn colorization on always. |
+| <code>-A</code> | Turn on ANSI line graphics. |
+| <code>-S</code> | Turn on ASCII line graphics. |
+| <code>-L level</code> | Max display depth of the directory tree. |
+| <code>--filelimit #</code> | Do not descend directories with more than # entries. |</p>
+<h2>Comparison: Default vs Better</h2>
+<p>Let's see the difference in action. Here's the default Windows tree command output:</p>
+<p><strong>Default Windows Tree:</strong>
+<img src="posts/assets/tree-default.png" width=351 height=384 loading=lazy decoding=async alt="Default Windows Tree Output"></p>
+<p>And here's the improved tree command with better formatting and features:</p>
+<p><strong>Better Tree (Linux-style):</strong>
+<img src="posts/assets/tree-better.png" width=580 height=1518 loading=lazy decoding=async alt="Better Tree Output"></p>
+<p>As you can see, the improved version offers:
+- <strong>Better visual hierarchy</strong> with clearer indentation and line graphics
+- <strong>Color-coded output</strong> that distinguishes between directories, files, and different file types
+- <strong>More readable formatting</strong> that's easier to scan at a glance
+- <strong>Richer information</strong> when using optional flags for file sizes, permissions, dates, etc.</p>
+<p>The default Windows tree command is functional but barebones, while the better version brings all the polish and features you'd expect from a modern CLI tool.</p>
+</article>
+
+<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a></footer>

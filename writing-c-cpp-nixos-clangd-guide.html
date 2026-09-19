@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Getting clangd to work on NixOS — Amarnath Patel</title>
+<meta name=description content="Fixing the “vector file not found” and iostream errors once and for all.">
+<meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
+<meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
+<link rel=icon href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'><text y=7 font-size=9 font-family=sans-serif>a</text></svg>">
+<link rel=preload as=font type=font/woff2 crossorigin
+ href="fonts/lib-400-roman.woff2">
+<link rel=stylesheet href=s.css>
+
+<nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
+<h1>Getting clangd to work on NixOS</h1>
+<p class=date>2026 · 03 · 15</p>
+<article>
+<p>If you've tried using clangd on NixOS, you've probably run into the "vector file not found" or "iostream not found" errors. Here's how to actually fix it.</p>
+<h2>Why it breaks</h2>
+<p>NixOS doesn't put libraries in <code>/usr/include</code> like normal distros. Everything's in isolated nix store paths, and clangd has no idea where to find the C++ standard library headers. You have to manually tell it where everything is.</p>
+<h2>Setup</h2>
+<h3>Files you need</h3>
+<p>Make a <code>flake.nix</code>:</p>
+<pre><code class="language-nix">{
+  description = &quot;C++ development environment with clangd&quot;;
+
+  inputs = {
+    nixpkgs.url = &quot;github:NixOS/nixpkgs/nixos-unstable&quot;;
+    flake-utils.url = &quot;github:numtide/flake-utils&quot;;
+  };
+
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            clang
+            clang-tools  # includes clangd
+            gcc  # for standard library headers
+          ];
+
+          shellHook = ''
+            echo &quot;C++ dev environment loaded&quot;
+            echo &quot;clangd: $(clangd --version | head -n1)&quot;
+          '';
+        };
+      }
+    );
+}
+</code></pre>
+<p>Make a <code>.envrc</code>:</p>
+<pre><code class="language-bash">use flake
+watch_file flake.nix
+watch_file flake.lock
+</code></pre>
+<h3>Finding your include paths</h3>
+<p>Run <code>direnv allow</code>, then run this:</p>
+<pre><code class="language-bash">clang++ -E -x c++ - -v &lt; /dev/null 2&gt;&amp;1 | grep -A 20 &quot;search starts here&quot;
+</code></pre>
+<p>This dumps the exact include paths your compiler uses. You need all 5 of them:
+- compiler-rt path (looks like <code>/nix/store/XXX-compiler-rt-libc-21.1.2-dev/include</code>)
+- GCC C++ headers (<code>/nix/store/XXX-gcc-14.3.0/include/c++/14.3.0</code>)
+- Platform-specific headers (<code>/nix/store/XXX-gcc-14.3.0/include/c++/14.3.0/x86_64-unknown-linux-gnu</code>)
+- Clang resource path (<code>/nix/store/XXX-clang-wrapper-21.1.2/resource-root/include</code>)
+- glibc headers (<code>/nix/store/XXX-glibc-2.40-66-dev/include</code>)</p>
+<h3>Configure clangd</h3>
+<p>Make a <code>.clangd</code> file with your actual paths in the same order the compiler uses:</p>
+<pre><code class="language-yaml">CompileFlags:
+  Add: 
+    - -std=c++17
+    - -isystem
+    - /nix/store/YOUR-compiler-rt-libc-21.1.2-dev/include
+    - -isystem
+    - /nix/store/YOUR-gcc-14.3.0/include/c++/14.3.0
+    - -isystem
+    - /nix/store/YOUR-gcc-14.3.0/include/c++/14.3.0/x86_64-unknown-linux-gnu
+    - -isystem
+    - /nix/store/YOUR-clang-wrapper-21.1.2/resource-root/include
+    - -isystem
+    - /nix/store/YOUR-glibc-2.40-66-dev/include
+
+Diagnostics:
+  UnusedIncludes: Strict
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+</code></pre>
+<p>Order matters here - it has to match what the compiler uses.</p>
+<h3>VSCode config</h3>
+<p><code>.vscode/settings.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;C_Cpp.intelliSenseEngine&quot;: &quot;disabled&quot;,
+  &quot;clangd.path&quot;: &quot;clangd&quot;,
+  &quot;clangd.arguments&quot;: [
+    &quot;--background-index&quot;,
+    &quot;--clang-tidy&quot;,
+    &quot;--header-insertion=iwyu&quot;,
+    &quot;--completion-style=detailed&quot;
+  ]
+}
+</code></pre>
+<p>This disables the Microsoft C++ extension's intellisense so it doesn't fight with clangd.</p>
+<h3>Steps</h3>
+<ol>
+<li>Install the clangd VSCode extension</li>
+<li>Run <code>direnv allow</code></li>
+<li>Get your nix store paths with that <code>clang++</code> command</li>
+<li>Update <code>.clangd</code> with your paths</li>
+<li>Open VSCode and restart the language server (Ctrl+Shift+P → "clangd: Restart language server")</li>
+</ol>
+<h2>New projects</h2>
+<p>When you start a new C++ project:
+- Copy the <code>flake.nix</code> and <code>.envrc</code>
+- Run <code>direnv allow</code>
+- Get fresh paths (they change when packages update)
+- Make a new <code>.clangd</code> with the new paths</p>
+<h2>When it still doesn't work</h2>
+<p>If you're getting header not found errors:
+- Your paths in <code>.clangd</code> are probably wrong or outdated
+- Run the <code>clang++</code> command again to get fresh paths
+- Make sure you have all 5 paths in the right order
+- Restart the language server</p>
+<p>If clangd itself isn't found:
+- Check you're in a directory with <code>.envrc</code>
+- Run <code>direnv allow</code>
+- <code>which clangd</code> should show a nix store path</p>
+<h2>Why this works</h2>
+<p>The whole issue is that clangd needs the same include paths that <code>clang++</code> uses. On normal distros everything's in <code>/usr/include</code> so it just works. On NixOS you have to explicitly give it all 5 paths in the right order: compiler-rt, C++ headers, platform headers, clang resources, and glibc.</p>
+</article>
+
+<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a></footer>
