@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Targeted résumé variants: kept in the repo, kept out of search results.
+# This stops compliant crawlers. It does not make the files private —
+# see the note in README about that.
+Disallow: /resume-
+
 Sitemap: https://apatel.co/sitemap.xml
