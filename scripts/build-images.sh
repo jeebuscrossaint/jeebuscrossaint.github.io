@@ -1,76 +1,59 @@
 #!/usr/bin/env sh
-# Derive the web-ready photos in assets/ from the camera originals (assets/dha*.jpg).
+# Derive the web-ready photos in assets/ from the camera originals.
 # Run from the repo root:  sh scripts/build-images.sh
 #
 # Originals stay in the repo untouched so these are always reproducible. Everything the
-# pages actually load is generated here: two widths per photo, WebP plus a JPEG fallback,
-# EXIF stripped (it carries camera and location data you don't want on a public site).
+# pages load is generated here: WebP plus a JPEG fallback, EXIF stripped (it carries
+# camera and capture data you don't want on a public site).
+#
+# ONE web width per photo, not a responsive ladder. The layout caps figures at 40rem
+# (640 CSS px), so the widths below already cover a 2-3x display; a 2400px variant was
+# dead weight. If the layout ever widens, add widths back here and srcset to the pages.
 set -e
 command -v magick >/dev/null || { echo "ImageMagick 'magick' not found" >&2; exit 1; }
 
 Q=82
+web() {  # web <source> <out-basename> <width> [crop]
+  src=$1; out=$2; w=$3; crop=$4
+  if [ -n "$crop" ]; then
+    magick "$src" -crop "$crop" +repage -strip -quality $Q -resize "${w}x" "assets/$out.jpg"
+  else
+    magick "$src" -strip -quality $Q -resize "${w}x>" "assets/$out.jpg"
+  fi
+  magick "assets/$out.jpg" -quality $Q "assets/$out.webp"
+}
 
 # bench-top: the overhead shot. Cropped to 2560x1150 to drop the floor and shoes at the
-# bottom — that leaves ~2.2:1, which is close to the 21:9 hero slot, so the CSS barely crops.
-magick assets/dha1.jpg -crop 2560x1150+0+0 +repage -strip -quality $Q -resize 2400x assets/bench-top-2400.jpg
-magick assets/dha1.jpg -crop 2560x1150+0+0 +repage -strip -quality $Q -resize 1400x assets/bench-top-1400.jpg
-magick assets/bench-top-2400.jpg -quality $Q assets/bench-top-2400.webp
-magick assets/bench-top-1400.jpg -quality $Q assets/bench-top-1400.webp
+# bottom, leaving ~2.2:1.
+web assets/dha1.jpg bench-top-1400 1400 2560x1150+0+0
 
-# NOTE: assets/dha2.jpg (the wide room shot) is kept but currently unused — no page links
-# it. Add a block here like the one above if it earns a slot again.
+# PolyOculus programme figures. Sources are only 1024px wide, so never upscaled.
+web assets/cosmic_accel-1024x770.png polyoculus-concept-1024 1024
+web assets/polyo_cost-1024x711.png   polyoculus-cost-1024    1024
 
-# PolyOculus programme figures. Sources are only 1024px wide, so these are never upscaled —
-# just re-encoded and given a smaller variant for phones. Diagrams, so they are shown
-# uncropped at their natural aspect rather than through a .media frame.
-magick assets/cosmic_accel-1024x770.png -strip -quality $Q assets/polyoculus-concept-1024.jpg
-magick assets/cosmic_accel-1024x770.png -strip -quality $Q -resize 640x assets/polyoculus-concept-640.jpg
-magick assets/polyoculus-concept-1024.jpg -quality $Q assets/polyoculus-concept-1024.webp
-magick assets/polyoculus-concept-640.jpg -quality $Q assets/polyoculus-concept-640.webp
+# symposium: 4:3 group photo cropped to the band the people occupy.
+web assets/wilkeshonorspresentation.jpg symposium-1400 1400 5712x2448+0+700
 
-magick assets/polyo_cost-1024x711.png -strip -quality $Q assets/polyoculus-cost-1024.jpg
-magick assets/polyo_cost-1024x711.png -strip -quality $Q -resize 640x assets/polyoculus-cost-640.jpg
-magick assets/polyoculus-cost-1024.jpg -quality $Q assets/polyoculus-cost-1024.webp
-magick assets/polyoculus-cost-640.jpg -quality $Q assets/polyoculus-cost-640.webp
-
-# symposium: 4:3 group photo cropped to the band the people occupy, so the 21:9 hero frame
-# doesn't take the tops of anyone's heads off.
-magick assets/wilkeshonorspresentation.jpg -crop 5712x2448+0+700 +repage -strip -quality $Q -resize 2400x assets/symposium-2400.jpg
-magick assets/symposium-2400.jpg -strip -quality $Q -resize 1400x assets/symposium-1400.jpg
-magick assets/symposium-2400.jpg -quality $Q assets/symposium-2400.webp
-magick assets/symposium-1400.jpg -quality $Q assets/symposium-1400.webp
-
-# AEV cockpit: already ~2.16:1, so the hero frame barely trims it.
-magick assets/donotletzachdrivethecar.jpg -strip -quality $Q -resize 2400x assets/aev-cockpit-2400.jpg
-magick assets/aev-cockpit-2400.jpg -strip -quality $Q -resize 1400x assets/aev-cockpit-1400.jpg
-magick assets/aev-cockpit-2400.jpg -quality $Q assets/aev-cockpit-2400.webp
-magick assets/aev-cockpit-1400.jpg -quality $Q assets/aev-cockpit-1400.webp
+# AEV cockpit: already ~2.16:1, so this only resizes.
+web assets/donotletzachdrivethecar.jpg aev-cockpit-1400 1400
 
 # AEV team: shown whole as a figure, never cropped.
-magick assets/gradpicturealset.jpg -strip -quality $Q -resize 2000x assets/aev-team-2000.jpg
-magick assets/aev-team-2000.jpg -strip -quality $Q -resize 1200x assets/aev-team-1200.jpg
-magick assets/aev-team-2000.jpg -quality $Q assets/aev-team-2000.webp
-magick assets/aev-team-1200.jpg -quality $Q assets/aev-team-1200.webp
+web assets/gradpicturealset.jpg aev-team-1200 1200
 
-# Per-page social cards, 1200x630. A shared link should preview the actual work, not the same
-# generic name card every time. Sources are all wider than 1.905:1, so these crop to centre.
-magick assets/bench-top-2400.jpg   -resize 1200x630^ -gravity center -crop 1200x630+0+0 +repage -strip -quality 84 assets/og-holography.jpg
-magick assets/aev-cockpit-2400.jpg -resize 1200x630^ -gravity center -crop 1200x630+0+0 +repage -strip -quality 84 assets/og-aev.jpg
-magick assets/symposium-2400.jpg   -resize 1200x630^ -gravity center -crop 1200x630+0+0 +repage -strip -quality 84 assets/og-chameleon.jpg
-magick assets/polyoculus-concept-1024.jpg -resize 1200x630^ -gravity center -crop 1200x630+0+0 +repage -strip -quality 84 assets/og-polyoculus.jpg
+# portrait: shown in an 11rem column, so 640 covers it at 3x.
+[ -f assets/mayormaynotbeaigenerated.png ] && web assets/mayormaynotbeaigenerated.png me-640 640
 
-# portrait: the hero frame is 2:3 to match the source, so this only resizes — the picture is
-# shown whole, nothing cropped. Skipped silently if the file isn't there yet.
-if [ -f assets/mayormaynotbeaigenerated.png ]; then
-  # '>' only ever shrinks — the source is ~1023px wide and upscaling it would add bytes
-  # without adding detail. 1024 covers the 26rem frame at 2x.
-  magick assets/mayormaynotbeaigenerated.png -resize '1024x>' -strip -quality $Q assets/me-1024.jpg
-  magick assets/me-1024.jpg -strip -quality $Q -resize '640x>' assets/me-640.jpg
-  magick assets/me-1024.jpg -quality $Q assets/me-1024.webp
-  magick assets/me-640.jpg  -quality $Q assets/me-640.webp
-fi
+# Per-page social cards, 1200x630, cut straight from the originals rather than from an
+# intermediate — more pixels to downsample from, and no 2400px file to keep around.
+card() { magick "$1" -resize 1200x630^ -gravity center -crop 1200x630+0+0 +repage \
+         -strip -quality 84 "assets/$2.jpg"; }
+card assets/dha1.jpg                    og-holography
+card assets/donotletzachdrivethecar.jpg og-aev
+card assets/wilkeshonorspresentation.jpg og-chameleon
+card assets/cosmic_accel-1024x770.png   og-polyoculus
 
 echo "generated:"
-for f in assets/bench-top-*.jpg assets/bench-top-*.webp assets/polyoculus-*.jpg assets/polyoculus-*.webp assets/symposium-*.jpg assets/symposium-*.webp assets/aev-*.jpg assets/aev-*.webp assets/og-*.jpg assets/me-*.jpg assets/me-*.webp; do
-  printf "  %-32s %6s KB  %s\n" "$f" "$(( $(wc -c < "$f") / 1024 ))" "$(magick identify -format '%wx%h' "$f")"
+for f in assets/bench-top-1400.* assets/polyoculus-*-1024.* assets/symposium-1400.* \
+         assets/aev-cockpit-1400.* assets/aev-team-1200.* assets/me-640.* assets/og-*.jpg; do
+  printf "  %-34s %6s KB  %s\n" "$f" "$(( $(wc -c < "$f") / 1024 ))" "$(magick identify -format '%wx%h' "$f")"
 done
