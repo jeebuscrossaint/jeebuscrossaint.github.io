@@ -32,26 +32,107 @@
 <h1>My dotfiles</h1>
 <p class=date>2026 · 09 · 24</p>
 <article>
-<p>My <a href="https://github.com/jeebuscrossaint/dotfiles">dotfiles</a> are the config for the laptop I do everything on: Artix Linux (Arch without systemd, on runit), the <a href="https://github.com/DreamMaoMao/mangowc">mango</a> Wayland compositor, kitty, fish and micro. Nearly 500 commits in, most of what's interesting isn't the config itself. It's the comments at the top of each file explaining which bug it exists to get around.</p>
-<h2>No bar</h2>
-<p>There's no status bar. <a href="https://github.com/brndnmtthws/conky">conky</a> draws everything a bar would show (tags, CPU, temperatures, memory, disk, fan, battery, volume, network, weather, uptime) straight onto the desktop layer, so it takes no screen space and never covers a window. Notifications come from dunst, fuzzel is the launcher, and that's every surface on the screen.</p>
-<p>Getting conky to work on Wayland was the first fight. Its Wayland backend implements almost none of the X11 drawing calls, and when it hits one, like <code>${cpubar}</code> or <code>${cpugraph}</code>, it doesn't warn or skip it. It ends the render, and everything below that line disappears. So every bar and sparkline in the panel is built out of text characters in a small Lua file, and each block character was checked against the actual font file rather than assumed to exist.</p>
-<h2>One theme, everywhere</h2>
-<p>Colors come from <a href="https://github.com/jeebuscrossaint/coat">coat</a>, a Rust tool I wrote that applies one Base16 or Base24 scheme to every app from a single config file. Twenty-one programs are enabled here, from the terminal and editor down to the PDF viewer, Discord, Minecraft's launcher and the compositor's own borders. <code>Super+Shift+T</code> picks a random scheme and applies it to all of them at once, and the compositor recolors without restarting.</p>
-<p>That goal decided a lot of the rest. I retired two on-screen-display daemons, swayosd and wob, for the same reason: both read their styling once at startup, so changing the theme left the volume popup in the old colors until you restarted it. Now a 400-line shell script does volume, brightness, keyboard backlight, caps lock and media keys by sending a notification that replaces the last one, and dunst draws it in whatever the current theme is.</p>
-<h2>Small scripts, each for a bug</h2>
-<p>Most of <code>~/.local/bin</code> exists because something failed quietly:</p>
-<ul>
-<li><strong><code>osd</code></strong> can't hardcode the screen's backlight device. On this laptop, which GPU drives the panel depends on a BIOS setting, and only that GPU's driver registers a backlight. It's <code>intel_backlight</code> in one mode and <code>nvidia_0</code> in the other, and the wrong one isn't broken, it's just not there.</li>
-<li><strong><code>battery-watch</code></strong> looks up the battery on every check instead of once at startup, because this machine sometimes boots with no battery device listed at all for a while. A watcher that looked once would have latched onto nothing.</li>
-<li><strong><code>audio-ensure</code></strong> restarts the audio stack only when it's actually dead. The obvious test passes on a completely dead stack, because PipeWire invents a dummy output when there's no real one, so the script looks for that dummy instead.</li>
-<li><strong><code>idle-guard</code></strong> locks the screen when I'm idle, but waits if audio is still playing.</li>
-<li><strong><code>refresh-paru-completions</code></strong> works around a paru release that writes its package list compressed and reads it back as plain text, which made tab completion print binary garbage.</li>
-</ul>
-<h2>The installer</h2>
-<p><code>install.fish</code> links every file into <code>$HOME</code> one symlink at a time. It plans the whole run first and resolves conflicts before touching anything. You can back up, skip, or adopt a conflicting file into the repo and review the diff. Afterwards it plans again to prove every link actually landed. It also has a dry run, a dependency check, a flag for a Minecraft 1.8.9 PvP instance, and an uninstall that removes only the links it made.</p>
+<p>The config for my computer. Everything lives in <a href="https://github.com/jeebuscrossaint/dotfiles">one repo</a>.</p>
+<h2>Arch Linux</h2>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Using</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compositor</td>
+<td><a href="https://github.com/DreamMaoMao/mangowc">mango</a> (Wayland)</td>
+</tr>
+<tr>
+<td>Desktop readout</td>
+<td>conky, no bar</td>
+</tr>
+<tr>
+<td>Terminal</td>
+<td>kitty</td>
+</tr>
+<tr>
+<td>Shell</td>
+<td>fish</td>
+</tr>
+<tr>
+<td>Editor</td>
+<td>micro</td>
+</tr>
+<tr>
+<td>Launcher</td>
+<td>fuzzel</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>dunst</td>
+</tr>
+<tr>
+<td>Lock</td>
+<td>swaylock</td>
+</tr>
+<tr>
+<td>Files</td>
+<td>yazi</td>
+</tr>
+<tr>
+<td>PDFs</td>
+<td>zathura</td>
+</tr>
+<tr>
+<td>Video</td>
+<td>mpv</td>
+</tr>
+<tr>
+<td>System monitor</td>
+<td>btop</td>
+</tr>
+<tr>
+<td>Theme</td>
+<td>onedark, applied to everything by <a href="https://github.com/jeebuscrossaint/coat">coat</a></td>
+</tr>
+</tbody>
+</table>
+<p>Scripts in <code>~/.local/bin</code>: <code>osd</code> (volume, brightness and media keys), <code>battery-watch</code>, <code>idle-guard</code>, <code>audio-ensure</code>, <code>theme-random</code>, <code>theme-pick</code>, <code>screenshot</code>, <code>screenshot-edit</code>, <code>pickcolor</code>, <code>layout</code>.</p>
+<p>Package lists are in <code>linux/packages/</code>: 170 from the official repos, 26 from the AUR.</p>
 <pre><code class="language-sh">git clone https://github.com/jeebuscrossaint/dotfiles ~/dotfiles
-~/dotfiles/install.fish --dry-run
+~/dotfiles/install.fish
+</code></pre>
+<p>This links everything into <code>~</code>, installs missing packages, and applies the theme. Add <code>--dry-run</code> to see what it would change first, or <code>--minecraft</code> to also set up a 1.8.9 PvP instance in PrismLauncher.</p>
+<h2>Windows</h2>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Using</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packages</td>
+<td>scoop (list in <code>windows/windowspkgs.txt</code>)</td>
+</tr>
+<tr>
+<td>Shell</td>
+<td>PowerShell 7</td>
+</tr>
+<tr>
+<td>Window manager</td>
+<td>GlazeWM</td>
+</tr>
+<tr>
+<td>Launcher</td>
+<td>Keypirinha</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-powershell">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+scoop install pwsh uutils-coreutils git bat fastfetch gh
+.\install.ps1
 </code></pre>
 </article>
 
