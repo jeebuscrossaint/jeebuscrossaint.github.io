@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>ESTELA — Amarnath Patel</title>
+<meta name=description content="An exam builder for isomorphic physics problem banks, and the tools around it, built for physics-education research at UCF.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/estela.html">
+<meta property="og:title" content="ESTELA — Amarnath Patel">
+<meta property="og:description" content="An exam builder for isomorphic physics problem banks, and the tools around it, built for physics-education research at UCF.">
+<meta property="og:image" content="https://apatel.co/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ESTELA — Amarnath Patel">
+<meta name="twitter:description" content="An exam builder for isomorphic physics problem banks, and the tools around it, built for physics-education research at UCF.">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
+<link rel=canonical href="https://apatel.co/estela.html">
+<meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
+<meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
+<link rel=icon href=/favicon.ico sizes=32x32>
+<link rel=icon href=/favicon.svg type=image/svg+xml>
+<link rel=apple-touch-icon href=/apple-touch-icon.png>
+<link rel=preload as=font type=font/woff2 crossorigin
+ href="fonts/lib-400-roman.woff2">
+<link rel=preload as=font type=font/woff2 crossorigin href="fonts/lib-700-roman.woff2">
+<link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
+<link rel=stylesheet href=s.css>
+<nav><a href="index.html">apatel.co</a> › ESTELA</nav>
+
+<main>
+<h1>ESTELA</h1>
+<p class=date>UCF Physics · Physics-education research with Dr.&nbsp;Zhongzhou Chen</p>
+
+<p>If every student in a large intro course takes the same exam, the answers travel. The usual
+fix is to write several versions, but then you have to show the versions are equally hard, or a
+student's score depends on which one they drew. Dr.&nbsp;Chen's group works on <b>isomorphic</b>
+problems: problems with the same physics, the same reasoning steps and the same difficulty, and
+only a different surface story. A cart on a track, a crate on a floor and a sled on snow can be
+one problem in three costumes. The group writes banks of these for introductory mechanics with
+help from generative AI
+(<a class=x target=_blank href="https://arxiv.org/abs/2602.05114">Liu et al., 2026</a>).</p>
+
+<h3>The exam builder</h3>
+<p>A bank is only useful if an instructor can turn it into an exam, so I built the tool that
+does that. It's a desktop app (Rust and Tauri 2) that lets an instructor browse the banks by
+course and topic, preview problems with rendered equations, and add banks to a cart. From one
+cart it generates up to ten versions of the exam. Each version draws a different isomorphic
+problem from every bank in the cart, and multiple-choice options are reshuffled per version.
+Answer keys come out alongside each version.</p>
+<p>Exports go to LaTeX on the <code>exam</code> document class, to Word with native equations
+through a bundled copy of Pandoc, to an HTML preview, or to a single ZIP with every version, key
+and figure. Instructors can download banks from inside the app, and CI builds installers for
+Windows, macOS and Linux, so nobody has to install LaTeX or Python to use it. It's now in use by
+instructors outside UCF.</p>
+<p><a class=x target=_blank href="https://jeebuscrossaint.github.io/ESTELA-html-builder/">Download</a> ·
+<a class=x target=_blank href="https://github.com/jeebuscrossaint/estela">source</a></p>
+
+<h3>Grading and generation at scale</h3>
+<p>I built a pipeline on the Azure OpenAI batch API that drafts candidate problems and checks
+them against instructor criteria, and presented batch-processing for automated grading at UCF's
+downtown campus in June 2026.</p>
+
+<h3>What I'm working on now</h3>
+<p>Verification for the group's next generation pipeline: making sure each generated problem's
+answer key actually follows from its own question before the problem enters a bank. A paper is
+in preparation.</p>
+
+<h3 id=narvi>Narvi</h3>
+<p>A side project for the same audience. Narvi lets an educator who doesn't code build a
+PhET-style interactive demo by describing it in plain language. The agent asks one question at a
+time, proposes a plan, generates a live demo in a sandboxed preview, and revises it until it's
+right, then hands back a single HTML file to publish or email. It's built on LangGraph with a
+human in the loop at every stage.
+<a class=x target=_blank href="https://github.com/jeebuscrossaint/narvi-demo-maker-llm">Source</a></p>
+
+<p><small>See also <a href="holography.html">photonic lanterns</a> and
+<a href="celeris.html">CELERIS</a>.</small></p>
+</main>
+
+<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="friends.html">Friends</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a> · <a class=x target=_blank href="https://orcid.org/0009-0008-9460-082X">ORCID</a></footer>
