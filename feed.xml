@@ -5,8 +5,15 @@
 <link href="https://apatel.co/feed.xml" rel="self"/>
 <link href="https://apatel.co/"/>
 <id>https://apatel.co/</id>
-<updated>2026-03-15T00:00:00Z</updated>
+<updated>2026-09-24T00:00:00Z</updated>
 <author><name>Amarnath Patel</name><uri>https://apatel.co/</uri></author>
+<entry>
+  <title>What's left of my degree</title>
+  <link href="https://apatel.co/writing-degree-progress.html"/>
+  <id>https://apatel.co/writing-degree-progress.html</id>
+  <updated>2026-09-24T00:00:00Z</updated>
+  <summary>A semester-by-semester log of physics, math, and the CS minor: what's done, and what's left.</summary>
+</entry>
 <entry>
   <title>Getting clangd to work on NixOS</title>
   <link href="https://apatel.co/writing-c-cpp-nixos-clangd-guide.html"/>

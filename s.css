@@ -82,6 +82,23 @@ padding:.8rem 1rem;overflow-x:auto;margin:0 0 1rem;max-width:40rem}
 pre code{background:none;padding:0;font-size:.8rem;line-height:1.5}
 .date{font:.75rem var(--mono);color:var(--d);margin:0 0 2rem}
 
+/* degree log: one square per course; filled done, half in progress, hollow left */
+.pips{display:inline-flex;flex-wrap:wrap;gap:3px;vertical-align:-.05em}
+.pips b{width:.7rem;height:.7rem;border:1px solid var(--d);border-radius:1px}
+.pips b.d{background:var(--fg);border-color:var(--fg)}
+.pips b.i{background:linear-gradient(90deg,var(--fg) 50%,transparent 50%);border-color:var(--fg)}
+.key{font:.75rem var(--mono);color:var(--d);display:flex;gap:1.25rem;margin:0 0 1.25rem}
+.key .pips{margin-right:.15rem}
+dl.glance{gap:.9rem 1.5rem;margin-bottom:1rem}
+dl.glance dd p{font-size:.875rem}
+dl.log ul{list-style:none;padding:0;margin:0}
+dl.log li{margin:0 0 .3rem}
+dl.log code{background:none;padding:0;color:var(--d)}
+/* leading course codes share one width, so the titles line up in a column */
+dl.log code.n{display:inline-block;min-width:6.4em}
+dl.log dd>i{display:block;font:.75rem/1.75 var(--mono);margin-bottom:.3rem}
+dl.log li i{color:var(--d)}
+
 @media(max-width:34rem){dl{grid-template-columns:1fr;gap:1.5rem}dt{padding-top:0}}
 /* contact labels are short: keep them beside the value even on a phone */
 @media(max-width:34rem){dl.c{grid-template-columns:5.5rem 1fr;gap:.5rem 1rem}dl.c dt{padding-top:.3rem}}
