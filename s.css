@@ -53,10 +53,8 @@ figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 #lede{display:grid;grid-template-columns:11rem 1fr;gap:2.5rem;align-items:start;
 margin-bottom:3rem}
 #lede img{border:1px solid var(--r)}
-#lede ul{color:var(--d);font:.8125rem/1.9 var(--mono);list-style:none;padding:0;margin:1.15rem 0 0}
-#lede li{display:inline}
-/* separator hangs off the END of an item, so a wrap never starts a line with it */
-#lede li:not(:last-child)::after{content:"·";opacity:.45;margin:0 .1em 0 .45em}
+dl.c{gap:.5rem 1.5rem}
+dl.c dt{padding-top:.3rem}
 @media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:11rem}}
 
 /* card front: the one-line work list */
@@ -85,3 +83,5 @@ pre code{background:none;padding:0;font-size:.8rem;line-height:1.5}
 .date{font:.75rem var(--mono);color:var(--d);margin:0 0 2rem}
 
 @media(max-width:34rem){dl{grid-template-columns:1fr;gap:1.5rem}dt{padding-top:0}}
+/* contact labels are short: keep them beside the value even on a phone */
+@media(max-width:34rem){dl.c{grid-template-columns:5.5rem 1fr;gap:.5rem 1rem}dl.c dt{padding-top:.3rem}}
