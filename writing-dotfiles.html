@@ -102,38 +102,6 @@
 ~/dotfiles/install.fish
 </code></pre>
 <p>This links everything into <code>~</code>, installs missing packages, and applies the theme. Add <code>--dry-run</code> to see what it would change first, or <code>--minecraft</code> to also set up a 1.8.9 PvP instance in PrismLauncher.</p>
-<h2>Windows</h2>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Using</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Packages</td>
-<td>scoop (list in <code>windows/windowspkgs.txt</code>)</td>
-</tr>
-<tr>
-<td>Shell</td>
-<td>PowerShell 7</td>
-</tr>
-<tr>
-<td>Window manager</td>
-<td>GlazeWM</td>
-</tr>
-<tr>
-<td>Launcher</td>
-<td>Keypirinha</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="language-powershell">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-scoop install pwsh uutils-coreutils git bat fastfetch gh
-.\install.ps1
-</code></pre>
 </article>
 
 </main>

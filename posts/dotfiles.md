@@ -30,19 +30,3 @@ git clone https://github.com/jeebuscrossaint/dotfiles ~/dotfiles
 ```
 
 This links everything into `~`, installs missing packages, and applies the theme. Add `--dry-run` to see what it would change first, or `--minecraft` to also set up a 1.8.9 PvP instance in PrismLauncher.
-
-## Windows
-
-| What | Using |
-|---|---|
-| Packages | scoop (list in `windows/windowspkgs.txt`) |
-| Shell | PowerShell 7 |
-| Window manager | GlazeWM |
-| Launcher | Keypirinha |
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-scoop install pwsh uutils-coreutils git bat fastfetch gh
-.\install.ps1
-```
