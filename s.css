@@ -50,7 +50,7 @@ img{max-width:100%;height:auto;display:block}
 figure{margin:1.25rem 0;max-width:40rem}
 figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 
-#lede{display:grid;grid-template-columns:1fr 11rem;gap:2.5rem;align-items:start;
+#lede{display:grid;grid-template-columns:11rem 1fr;gap:2.5rem;align-items:start;
 margin-bottom:3rem}
 #lede img{border:1px solid var(--r)}
 #lede ul{color:var(--d);font:.8125rem/1.9 var(--mono);list-style:none;padding:0;margin:1.15rem 0 0}
