@@ -1,10 +1,10 @@
-# The built in windows tree command is trash
+# The built-in Windows tree command is trash
 
-If you are anything like me you are forced to use windows for only a few programs that don't have good linux alternatives. One of the things I hate about windows is the built in tree command. It is slow, ugly, and lacks features.
+If you're anything like me, you only use Windows for the few programs that don't have good Linux alternatives. One of the things I hate most about it is the built-in `tree` command. It's slow, it's ugly, and it barely does anything.
 
-Already we know us UNIX enthusiasts have a better alternative. The `tree` command on linux is way better than the windows version. It is faster, has more features, and looks better.
+Those of us from the Unix side already know there's something better. The `tree` command on Linux is faster, has far more features, and looks better.
 
-The windows version of tree has literally 3 flags and 2 options:
+The Windows version has, quite literally, three flags and two options:
 
 
 ```plaintext
@@ -23,8 +23,9 @@ Syntax:
 | `/?`        | Displays help at the command prompt.                                        |
 
 
-Where as the linux version has a ton of options and flags to customize the output to your liking. You can even color code the output based on file types, sizes, and more.
-Thats why I wrote my own version of the tree command for windows. It is also just called tree and you can install it via scoop.
+The Linux version, meanwhile, has dozens of flags for shaping the output however you like, down to color-coding by file type and size.
+
+So I wrote my own `tree` for Windows. It's also just called `tree`, and you can install it with Scoop:
 
 ```powershell
 scoop bucket add tree https://github.com/jeebuscrossaint/tree
@@ -32,13 +33,9 @@ scoop update
 scoop install tree
 ```
 
-It is 1:1 feature parity with the linux version of tree besides the html related options as I didn't see a need for them on windows. I doubt anyone would use it on linux anyway.
+It matches the Linux version flag for flag, except for the HTML output options. I didn't see a need for those on Windows, and I doubt many people use them on Linux either.
 
-Here is a list of the features it has:
-
-```console
-$ tree --help
-```
+Here's everything `tree --help` lists:
 
 **Usage:**
 ```
@@ -82,22 +79,21 @@ tree [options] [directory...]
 | `-L level` | Max display depth of the directory tree. |
 | `--filelimit #` | Do not descend directories with more than # entries. |
 
-## Comparison: Default vs Better
+## Side by side
 
-Let's see the difference in action. Here's the default Windows tree command output:
+Here's the difference in practice. First, the built-in command:
 
 **Default Windows Tree:**
 ![Default Windows Tree Output](posts/assets/tree-default.png)
 
-And here's the improved tree command with better formatting and features:
+And here's mine, on the same directory:
 
-**Better Tree (Linux-style):**
+**This tree (Linux-style):**
 ![Better Tree Output](posts/assets/tree-better.png)
 
-As you can see, the improved version offers:
-- **Better visual hierarchy** with clearer indentation and line graphics
-- **Color-coded output** that distinguishes between directories, files, and different file types
-- **More readable formatting** that's easier to scan at a glance
-- **Richer information** when using optional flags for file sizes, permissions, dates, etc.
+What you get over the built-in one:
+- **A clearer hierarchy**, with proper indentation and line drawing
+- **Color**, so directories, files, and file types are easy to tell apart
+- **Optional detail** on demand: sizes, permissions, owners, and modification dates
 
-The default Windows tree command is functional but barebones, while the better version brings all the polish and features you'd expect from a modern CLI tool.
+The built-in command works, technically. This one is the `tree` you already know from Linux.

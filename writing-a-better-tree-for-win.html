@@ -32,9 +32,9 @@
 <h1>The built-in Windows tree command is trash</h1>
 <p class=date>2026 · 01 · 20</p>
 <article>
-<p>If you are anything like me you are forced to use windows for only a few programs that don't have good linux alternatives. One of the things I hate about windows is the built in tree command. It is slow, ugly, and lacks features.</p>
-<p>Already we know us UNIX enthusiasts have a better alternative. The <code>tree</code> command on linux is way better than the windows version. It is faster, has more features, and looks better.</p>
-<p>The windows version of tree has literally 3 flags and 2 options:</p>
+<p>If you're anything like me, you only use Windows for the few programs that don't have good Linux alternatives. One of the things I hate most about it is the built-in <code>tree</code> command. It's slow, it's ugly, and it barely does anything.</p>
+<p>Those of us from the Unix side already know there's something better. The <code>tree</code> command on Linux is faster, has far more features, and looks better.</p>
+<p>The Windows version has, quite literally, three flags and two options:</p>
 <pre><code class="language-plaintext">Syntax:
   tree [&lt;drive&gt;:][&lt;path&gt;] [/f] [/a]
 </code></pre>
@@ -69,16 +69,14 @@
 </tr>
 </tbody>
 </table>
-<p>Where as the linux version has a ton of options and flags to customize the output to your liking. You can even color code the output based on file types, sizes, and more.
-Thats why I wrote my own version of the tree command for windows. It is also just called tree and you can install it via scoop.</p>
+<p>The Linux version, meanwhile, has dozens of flags for shaping the output however you like, down to color-coding by file type and size.</p>
+<p>So I wrote my own <code>tree</code> for Windows. It's also just called <code>tree</code>, and you can install it with Scoop:</p>
 <pre><code class="language-powershell">scoop bucket add tree https://github.com/jeebuscrossaint/tree
 scoop update
 scoop install tree
 </code></pre>
-<p>It is 1:1 feature parity with the linux version of tree besides the html related options as I didn't see a need for them on windows. I doubt anyone would use it on linux anyway.</p>
-<p>Here is a list of the features it has:</p>
-<pre><code class="language-console">$ tree --help
-</code></pre>
+<p>It matches the Linux version flag for flag, except for the HTML output options. I didn't see a need for those on Windows, and I doubt many people use them on Linux either.</p>
+<p>Here's everything <code>tree --help</code> lists:</p>
 <p><strong>Usage:</strong></p>
 <pre><code>tree [options] [directory...]
 </code></pre>
@@ -221,19 +219,20 @@ scoop install tree
 </tr>
 </tbody>
 </table>
-<h2>Comparison: Default vs Better</h2>
-<p>Let's see the difference in action. Here's the default Windows tree command output:</p>
+<h2>Side by side</h2>
+<p>Here's the difference in practice. First, the built-in command:</p>
 <p><strong>Default Windows Tree:</strong>
 <img src="posts/assets/tree-default.png" width=351 height=384 loading=lazy decoding=async alt="Default Windows Tree Output"></p>
-<p>And here's the improved tree command with better formatting and features:</p>
-<p><strong>Better Tree (Linux-style):</strong>
+<p>And here's mine, on the same directory:</p>
+<p><strong>This tree (Linux-style):</strong>
 <img src="posts/assets/tree-better.png" width=580 height=1518 loading=lazy decoding=async alt="Better Tree Output"></p>
-<p>As you can see, the improved version offers:
-- <strong>Better visual hierarchy</strong> with clearer indentation and line graphics
-- <strong>Color-coded output</strong> that distinguishes between directories, files, and different file types
-- <strong>More readable formatting</strong> that's easier to scan at a glance
-- <strong>Richer information</strong> when using optional flags for file sizes, permissions, dates, etc.</p>
-<p>The default Windows tree command is functional but barebones, while the better version brings all the polish and features you'd expect from a modern CLI tool.</p>
+<p>What you get over the built-in one:</p>
+<ul>
+<li><strong>A clearer hierarchy</strong>, with proper indentation and line drawing</li>
+<li><strong>Color</strong>, so directories, files, and file types are easy to tell apart</li>
+<li><strong>Optional detail</strong> on demand: sizes, permissions, owners, and modification dates</li>
+</ul>
+<p>The built-in command works, technically. This one is the <code>tree</code> you already know from Linux.</p>
 </article>
 
 </main>
