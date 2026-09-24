@@ -125,14 +125,6 @@
 #grid(
   columns: (1fr, auto),
   column-gutter: 1em,
-  [*Complex Transfer-Matrix Characterization of a Photonic Lantern by Off-Axis Digital Holography*], [November 2026 (upcoming)]
-)
-Joint Annual Conference of the National Society of Black Physicists and the National Society of Hispanic Physicists, North Carolina.
-
-#v(0.15em)
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 1em,
   [*Batch Processing for Automated Grading via Azure OpenAI*], [June 2026]
 )
 University of Central Florida, Downtown Campus. ESTELA project (Physics Education Research, Dr. Zhongzhou Chen).

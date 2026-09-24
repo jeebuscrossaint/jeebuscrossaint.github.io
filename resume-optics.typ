@@ -43,10 +43,6 @@
 - Performance evaluated the way an optical system is: Strehl ratio, Zernike wavefront decomposition, MTF, chromatic focal shift, through-focus caustic, and Monte-Carlo fabrication-tolerance analysis — with fabrication-ready GDSII export at the end of it.
 - Validated against closed-form physics, an independent method and energy conservation (1e-6 to 1e-15), cross-checked against the grcwa and Stanford S#super[4] solvers (#sym.approx#h(0.1em)1e-7), and reproduces canonical published metalenses (Khorasaninejad et al., _Science_ 2016; Chen et al., _Nat. Nanotechnol._ 2018). Diffraction-limited designed focal spots at FWHM = $lambda f \/ D$. _Sole-author manuscript in preparation._
 
-#sect[PRESENTATIONS]
-#entry([*Complex Transfer-Matrix Characterization of a Photonic Lantern by Off-Axis Digital Holography*], [Nov 2026])
-Joint Annual Conference of the National Society of Black Physicists and the National Society of Hispanic Physicists, North Carolina. _Upcoming._
-
 #sect[TECHNICAL SKILLS]
 *Optics and metrology:* interferometric alignment, off-axis digital holography, phase retrieval, modal decomposition, wavefront analysis (Strehl, Zernike, MTF), fiber coupling and photonic lanterns, polarization control, diffractive and metasurface design, tolerance analysis \
 #v(-0.55em)

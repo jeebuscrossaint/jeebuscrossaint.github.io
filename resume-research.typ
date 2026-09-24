@@ -53,12 +53,6 @@
 - Built four adversarial evasion pipelines (iterative rewriting, tree-search decoding, list-branching, reinforcement learning) over 3,125 generated sequences and characterized a consistent quality–evasion tradeoff. Grant-funded with HPC access.
 
 #sect[PRESENTATIONS]
-#entry(
-  [*Complex Transfer-Matrix Characterization of a Photonic Lantern by Off-Axis Digital Holography*],
-  [November 2026],
-)
-Joint Annual Conference of the National Society of Black Physicists and the National Society of Hispanic Physicists, North Carolina. _Upcoming._
-
 #entry([*Batch Processing for Automated Grading via Azure OpenAI*], [June 2026])
 University of Central Florida, Downtown Campus. ESTELA project, Physics Education Research.
 
