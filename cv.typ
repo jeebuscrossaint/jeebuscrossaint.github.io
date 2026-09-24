@@ -39,7 +39,7 @@
 )
 #grid(
   columns: (1fr, auto),
-  [University coursework completed via FAU High School, ages 14–18 (111 credit hours)], [August 2021 – May 2025]
+  [University coursework completed via FAU High School, ages 14–18 (108 credit hours; 3 more at Palm Beach State College)], [August 2021 – May 2025]
 )
 
 /* ── RESEARCH EXPERIENCE ── */
@@ -54,7 +54,7 @@
   [*#link("https://creol.ucf.edu/astrophotonics/")[#text(fill: lc)[#underline[UCF Astrophotonics Lab]]], CREOL — Undergraduate Researcher*], [August 2025 – Present]
 )
 #grid(columns: (1fr,), [_Supervisor: Dr. Stephen Eikenberry_])
-- Measuring the wavelength-dependent complex transfer matrix of a photonic lantern by #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]], extending Dobias et al., _Opt. Express_ *34*(9), 17217 (2026). Align the interferometric bench and acquire holograms of the multimode output for each input port across the C-band (1525–1575 nm), recovering full amplitude and phase — one row of the transfer matrix per measurement.
+- Measured the wavelength-dependent complex transfer matrix of a photonic lantern by #link("https://github.com/jeebuscrossaint/digital-holography-automation")[#text(fill: lc)[#underline[off-axis digital holography]]], extending Dobias et al., _Opt. Express_ *34*(9), 17217 (2026). Aligned the interferometric bench and acquired holograms of the multimode output for each input port across the C-band (1525–1575 nm), recovering full amplitude and phase — one row of the transfer matrix per measurement.
 - Implemented the phase-retrieval and mode-decomposition analysis: FFT sideband isolation and demodulation, Butterworth low-pass, joint numerical optimization of mode-field diameter, defocus quadratic phase and field position, then decomposition onto the LP basis to recover complex modal amplitude and phase.
 - Produced the per-port reconstruction-fidelity characterization for 6- and 7-port lanterns, reaching #sym.approx#h(0.1em)98% fidelity $|⟨E_"rec", E_"sim"⟩|^2$ against simulated fields.
 - Automated the four-instrument acquisition chain — tunable laser, InGaAs camera, fiber switch, and motorized polarization control — so a complete all-port × C-band sweep runs unattended, with polarization optimized in-loop for peak fringe contrast and saturated frames rejected, reducing a full dataset from days of manual bench time to a single hands-off run.
@@ -184,73 +184,14 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 #v(0.2em)
 #line(length: 100%, stroke: 0.3pt)
 #v(0.1em)
-#text(size: 11pt, weight: "bold")[RELEVANT COURSEWORK]
+#text(size: 11pt, weight: "bold")[SELECTED COURSEWORK]
 #v(0.1em)
 
-*University of Central Florida*
-#v(0.1em)
-_Physics_
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  row-gutter: 0.3em,
-  [Geometric Optics & Lab],                    [Modern Physics \[PHY 3101\]],
-  [Quantum Information Processing],             [Mathematical Methods for Physics \[PHZ 3113\]],
-  [Independent Research \[PHY 4912\]],           [Electricity & Magnetism I (In Progress)],
-)
+*Physics:* Electricity & Magnetism I (in progress), Mathematical Methods for Physics, Modern Physics, Quantum Information Processing, Geometric Optics & Lab
 
-#v(0.15em)
-_Mathematics_
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  row-gutter: 0.3em,
-  [Applied Linear Algebra \[MAS 3105\]],        [Complex Analysis \[MAA 4402\]],
-  [Linear Algebra (Proof-Based) \[MAS 3106\] (In Progress)], [Partial Differential Equations (In Progress)],
-)
+*Mathematics:* Linear Algebra (proof-based, in progress), Partial Differential Equations (in progress), Complex Variables, Matrix & Linear Algebra, Statistical Methods
 
-#v(0.15em)
-_Computer Science_
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  row-gutter: 0.3em,
-  [C Programming \[EGN 3211\]],                [Discrete Structures],
-  [Object-Oriented Programming],               [],
-)
-
-#v(0.25em)
-*Florida Atlantic University*
-#v(0.1em)
-_Physics_
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  row-gutter: 0.3em,
-  [General Physics I],                        [General Physics II — Honors],
-)
-
-#v(0.15em)
-_Mathematics_
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  row-gutter: 0.3em,
-  [Calculus I],                               [Calculus II],
-  [Honors Calculus III],                      [Ordinary Differential Equations \[MAP 2302\]],
-  [Elementary Matrix Algebra \[MAS 2103\]],   [],
-)
-
-#v(0.15em)
-_Computer Science_
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  row-gutter: 0.3em,
-  [Data Structures & Algorithms],             [Computer Logic Design],
-  [Computer Architecture],                    [Deep Learning \[CAP 4613\]],
-  [C++ Programming \[COP 3014\]],              [Web Development \[COP 3813\]],
-)
+*Computer Science:* Deep Learning, Data Structures & Algorithm Analysis, Computer Architecture, Discrete Structures
 
 /* ── HONORS ── */
 #v(0.2em)
@@ -261,7 +202,11 @@ _Computer Science_
 
 #grid(
   columns: (1fr, auto),
-  [1st Place, Night Hacks Hackathon — UniUtils (course schedule generator & classroom finder)], [2023]
+  [President's Honor Roll, University of Central Florida (Fall 2025, Spring 2026)], [2025 – 2026]
+)
+#grid(
+  columns: (1fr, auto),
+  [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025]
 )
 #grid(
   columns: (1fr, auto),
@@ -273,5 +218,5 @@ _Computer Science_
 )
 #grid(
   columns: (1fr, auto),
-  [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025]
+  [1st Place, Night Hacks Hackathon — UniUtils (course schedule generator & classroom finder)], [2023]
 )
