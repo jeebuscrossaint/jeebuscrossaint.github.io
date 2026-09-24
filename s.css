@@ -59,8 +59,7 @@ margin-bottom:3rem}
 #lede li:not(:last-child)::after{content:"·";opacity:.45;margin:0 .1em 0 .45em}
 @media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:11rem}}
 
-/* card front: role line under the name, and the one-line work list */
-.role{font:.8125rem var(--mono);color:var(--d);margin:0 0 .9rem}
+/* card front: the one-line work list */
 ul.w{list-style:none;padding:0;margin:0;max-width:40rem}
 ul.w li{margin:0 0 .85rem;padding-left:1.1rem;text-indent:-1.1rem}
 ul.w li::before{content:"—";color:var(--d);padding-right:.45rem}
