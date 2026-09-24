@@ -21,7 +21,6 @@ Syntax:
 | `/f`        | Displays the names of the files in each directory.                          |
 | `/a`        | Uses text characters instead of graphic lines for subdirectory links.       |
 | `/?`        | Displays help at the command prompt.                                        |
-/?	Displays help at the command prompt.
 
 
 Where as the linux version has a ton of options and flags to customize the output to your liking. You can even color code the output based on file types, sizes, and more.

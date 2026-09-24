@@ -39,14 +39,36 @@
   tree [&lt;drive&gt;:][&lt;path&gt;] [/f] [/a]
 </code></pre>
 <p><strong>Parameters:</strong></p>
-<p>| Parameter   | Description                                                                 |
-|-------------|-----------------------------------------------------------------------------|
-| <code>&lt;drive&gt;:</code>  | Specifies the drive containing the disk for which you want the directory tree. |
-| <code>&lt;path&gt;</code>    | Specifies the directory to display the structure for.                       |
-| <code>/f</code>        | Displays the names of the files in each directory.                          |
-| <code>/a</code>        | Uses text characters instead of graphic lines for subdirectory links.       |
-| <code>/?</code>        | Displays help at the command prompt.                                        |
-/?  Displays help at the command prompt.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;drive&gt;:</code></td>
+<td>Specifies the drive containing the disk for which you want the directory tree.</td>
+</tr>
+<tr>
+<td><code>&lt;path&gt;</code></td>
+<td>Specifies the directory to display the structure for.</td>
+</tr>
+<tr>
+<td><code>/f</code></td>
+<td>Displays the names of the files in each directory.</td>
+</tr>
+<tr>
+<td><code>/a</code></td>
+<td>Uses text characters instead of graphic lines for subdirectory links.</td>
+</tr>
+<tr>
+<td><code>/?</code></td>
+<td>Displays help at the command prompt.</td>
+</tr>
+</tbody>
+</table>
 <p>Where as the linux version has a ton of options and flags to customize the output to your liking. You can even color code the output based on file types, sizes, and more.
 Thats why I wrote my own version of the tree command for windows. It is also just called tree and you can install it via scoop.</p>
 <pre><code class="language-powershell">scoop bucket add tree https://github.com/jeebuscrossaint/tree
@@ -61,40 +83,144 @@ scoop install tree
 <pre><code>tree [options] [directory...]
 </code></pre>
 <p><strong>Options:</strong></p>
-<p>| Flag | Description |
-|------|-------------|
-| <code>--help</code> | Outputs a verbose usage listing. |
-| <code>--version</code> | Outputs the version of tree. |
-| <code>-a</code> | All files are printed (including hidden files). |
-| <code>-d</code> | List directories only. |
-| <code>-f</code> | Prints the full path prefix for each file. |
-| <code>-i</code> | Makes tree not print the indentation lines. |
-| <code>-l</code> | Follows symbolic links if they point to directories. |
-| <code>-x</code> | Stay on the current file-system only. |
-| <code>-P pattern</code> | List only those files that match the wild-card pattern. |
-| <code>-I pattern</code> | Do not list those files that match the wild-card pattern. |
-| <code>--noreport</code> | Omits printing of the file and directory report. |
-| <code>-p</code> | Print the file type and permissions for each file. |
-| <code>-s</code> | Print the size of each file in bytes. |
-| <code>-h</code> | Print the size in human readable format. |
-| <code>-u</code> | Print the username or UID. |
-| <code>-g</code> | Print the group name or GID. |
-| <code>-D</code> | Print the date of last modification. |
-| <code>--inodes</code> | Prints the inode number. |
-| <code>--device</code> | Prints the device number. |
-| <code>-F</code> | Append indicators for file types (<code>/</code>, <code>=</code>, <code>*</code>, <code>\|</code>). |
-| <code>-q</code> | Print non-printable characters as question marks. |
-| <code>-N</code> | Print non-printable characters as is. |
-| <code>-v</code> | Sort the output by version. |
-| <code>-r</code> | Sort the output in reverse alphabetic order. |
-| <code>-t</code> | Sort the output by last modification time. |
-| <code>--dirsfirst</code> | List directories before files. |
-| <code>-n</code> | Turn colorization off always. |
-| <code>-C</code> | Turn colorization on always. |
-| <code>-A</code> | Turn on ANSI line graphics. |
-| <code>-S</code> | Turn on ASCII line graphics. |
-| <code>-L level</code> | Max display depth of the directory tree. |
-| <code>--filelimit #</code> | Do not descend directories with more than # entries. |</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--help</code></td>
+<td>Outputs a verbose usage listing.</td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Outputs the version of tree.</td>
+</tr>
+<tr>
+<td><code>-a</code></td>
+<td>All files are printed (including hidden files).</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>List directories only.</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>Prints the full path prefix for each file.</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>Makes tree not print the indentation lines.</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>Follows symbolic links if they point to directories.</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td>Stay on the current file-system only.</td>
+</tr>
+<tr>
+<td><code>-P pattern</code></td>
+<td>List only those files that match the wild-card pattern.</td>
+</tr>
+<tr>
+<td><code>-I pattern</code></td>
+<td>Do not list those files that match the wild-card pattern.</td>
+</tr>
+<tr>
+<td><code>--noreport</code></td>
+<td>Omits printing of the file and directory report.</td>
+</tr>
+<tr>
+<td><code>-p</code></td>
+<td>Print the file type and permissions for each file.</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>Print the size of each file in bytes.</td>
+</tr>
+<tr>
+<td><code>-h</code></td>
+<td>Print the size in human readable format.</td>
+</tr>
+<tr>
+<td><code>-u</code></td>
+<td>Print the username or UID.</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>Print the group name or GID.</td>
+</tr>
+<tr>
+<td><code>-D</code></td>
+<td>Print the date of last modification.</td>
+</tr>
+<tr>
+<td><code>--inodes</code></td>
+<td>Prints the inode number.</td>
+</tr>
+<tr>
+<td><code>--device</code></td>
+<td>Prints the device number.</td>
+</tr>
+<tr>
+<td><code>-F</code></td>
+<td>Append indicators for file types (<code>/</code>, <code>=</code>, <code>*</code>, <code>|</code>).</td>
+</tr>
+<tr>
+<td><code>-q</code></td>
+<td>Print non-printable characters as question marks.</td>
+</tr>
+<tr>
+<td><code>-N</code></td>
+<td>Print non-printable characters as is.</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>Sort the output by version.</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>Sort the output in reverse alphabetic order.</td>
+</tr>
+<tr>
+<td><code>-t</code></td>
+<td>Sort the output by last modification time.</td>
+</tr>
+<tr>
+<td><code>--dirsfirst</code></td>
+<td>List directories before files.</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>Turn colorization off always.</td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>Turn colorization on always.</td>
+</tr>
+<tr>
+<td><code>-A</code></td>
+<td>Turn on ANSI line graphics.</td>
+</tr>
+<tr>
+<td><code>-S</code></td>
+<td>Turn on ASCII line graphics.</td>
+</tr>
+<tr>
+<td><code>-L level</code></td>
+<td>Max display depth of the directory tree.</td>
+</tr>
+<tr>
+<td><code>--filelimit #</code></td>
+<td>Do not descend directories with more than # entries.</td>
+</tr>
+</tbody>
+</table>
 <h2>Comparison: Default vs Better</h2>
 <p>Let's see the difference in action. Here's the default Windows tree command output:</p>
 <p><strong>Default Windows Tree:</strong>
