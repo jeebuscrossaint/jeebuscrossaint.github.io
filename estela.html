@@ -62,10 +62,19 @@ instructors outside UCF.</p>
 them against instructor criteria, and presented batch-processing for automated grading at UCF's
 downtown campus in June 2026.</p>
 
-<h3>What I'm working on now</h3>
-<p>Verification for the group's next generation pipeline: making sure each generated problem's
-answer key actually follows from its own question before the problem enters a bank. A paper is
-in preparation.</p>
+<h3>Checking what the model writes</h3>
+<p>The group's next step is a multi-agent pipeline that writes isomorphic variants on its own.
+I ran its first pilot runs and found that some generated problems shipped with answer keys that
+contradicted their own questions, and that the language-model reviewer meant to catch exactly that
+was letting them through. Where a problem's answer can be worked out mechanically, a second model
+is the wrong tool for checking it, so I replaced the reviewer's verdict with a deterministic
+check. The code derives the correct answer from the problem itself and rejects any draft that
+disagrees; the model is only asked to repair what the check has already flagged, and anything it
+can't fix is withheld from the bank.</p>
+<p>Alongside that I wrote the literature review behind the paper's related-work section, and
+mined every equation out of the mechanics banks into a single library of the relations the
+course actually uses, so future generators can be handed them directly. A paper is in
+preparation.</p>
 
 <h3 id=narvi>Narvi</h3>
 <p>A side project for the same audience. Narvi lets an educator who doesn't code build a
