@@ -60,10 +60,10 @@ card assets/dha1.jpg                    og-holography
 card assets/donotletzachdrivethecar.jpg og-aev
 card assets/wilkeshonorspresentation.jpg og-chameleon
 card assets/cosmic_accel-1024x770.png   og-polyoculus
+card assets/desktop.png                 og-dotfiles
 
 echo "generated:"
 for f in assets/bench-top-1280.* assets/polyoculus-*-1024.*  assets/symposium-1280.* \
          assets/aev-cockpit-1280.* assets/aev-team-1200.* assets/me-640.* assets/og-*.jpg; do
   printf "  %-34s %6s KB  %s\n" "$f" "$(( $(wc -c < "$f") / 1024 ))" "$(magick identify -format '%wx%h' "$f")"
 done
-card assets/desktop.png                 og-dotfiles
