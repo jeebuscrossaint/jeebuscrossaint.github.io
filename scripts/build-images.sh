@@ -46,6 +46,9 @@ web assets/donotletzachdrivethecar.jpg aev-cockpit-1280 1280 82
 # AEV team: shown whole as a figure, never cropped.
 web assets/gradpicturealset.jpg aev-team-1200 1200 75
 
+# desktop screenshot for the dotfiles post: resize only, the whole screen is the point.
+web assets/desktop.png desktop-1280 1280 82
+
 # portrait: shown in an 11rem column, so 640 covers it at 3x.
 [ -f assets/mayormaynotbeaigenerated.png ] && web assets/mayormaynotbeaigenerated.png me-640 640 82
 
@@ -63,3 +66,4 @@ for f in assets/bench-top-1280.* assets/polyoculus-*-1024.*  assets/symposium-12
          assets/aev-cockpit-1280.* assets/aev-team-1200.* assets/me-640.* assets/og-*.jpg; do
   printf "  %-34s %6s KB  %s\n" "$f" "$(( $(wc -c < "$f") / 1024 ))" "$(magick identify -format '%wx%h' "$f")"
 done
+card assets/desktop.png                 og-dotfiles

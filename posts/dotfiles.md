@@ -2,6 +2,13 @@
 
 The config for my computer. Everything lives in [one repo](https://github.com/jeebuscrossaint/dotfiles).
 
+<figure>
+<picture>
+<source type=image/webp srcset="assets/desktop-1280.webp">
+<img src="assets/desktop-1280.jpg" width=1280 height=800 decoding=async alt="The desktop: a dark kitty terminal centred over a purple dusk seascape, showing an ASCII-art steam locomotive.">
+</picture>
+</figure>
+
 ## Arch Linux
 
 | What | Using |
