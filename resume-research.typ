@@ -37,7 +37,7 @@
 - Accelerated Rayleigh–Sommerfeld far-field propagation as a CUDA kernel, benchmarked against the project's own optimized 16-core CPU path: 4.8–5.8#sym.times at 92k pillars, agreeing to machine precision. C++23/CUDA with Python bindings. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
 #entry(
-  [*Independent Research* — #lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]: archival recovery of newly discovered near-Earth asteroids],
+  [*Independent Research* — #lnk("https://stardust.apatel.co")[Stardust]: archival recovery of newly discovered near-Earth asteroids],
   [October 2026],
 )
 - Began at Knight Hacks IX as a team project; I built the orbit and detection pipeline. From only the sightings that existed 4 days after discovery, a batched GPU N-body integrator (PyTorch; DE440 perturbers plus solar relativity) samples the orbit uncertainty, projects it onto years of pre-discovery ZTF images, and searches them with a U-Net detector trained on 4,000 real cutouts and a classic streak filter.

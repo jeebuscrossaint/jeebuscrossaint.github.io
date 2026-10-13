@@ -39,7 +39,7 @@
 
 #sect[SELECTED SOFTWARE]
 
-#entry([*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — finding new near-Earth asteroids in archival sky-survey images. Python, PyTorch, CUDA], [Oct 2026])
+#entry([*#lnk("https://stardust.apatel.co")[Stardust]* — finding new near-Earth asteroids in archival sky-survey images. Python, PyTorch, CUDA], [Oct 2026])
 - Knight Hacks IX team project; I built the detection and orbit pipeline: orbit fit from a new asteroid's first 4 days, a batched N-body integrator in PyTorch on the GPU (100,000 orbit clones × 1 year in 23 s on a laptop RTX 4070), search regions projected onto years of archival ZTF images, a U-Net detector and a classic streak filter, and track linking gated by an orbit refit.
 - Packaged for SLURM GPU clusters (job arrays, an Apptainer image with pinned dependencies), with cached and rate-limited downloads from the public archives, live target discovery into Databricks Delta tables with MLflow, and the model and recovered dataset published to Hugging Face. Recovered 167 verified, never-connected sightings of 22 once-risky asteroids in a blind 72-object backtest.
 

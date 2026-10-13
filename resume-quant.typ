@@ -31,7 +31,7 @@
 - Wrote the hot path as a CUDA kernel and benchmarked it against the project's own optimized 16-core CPU implementation: 4.8–5.8#sym.times at 92k elements, agreeing to machine precision. Read the speedup's decline with problem size as evidence the kernel was memory-bound rather than compute-bound. _Sole-author manuscript in preparation._
 
 #entry(
-  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — finding faint moving objects in noisy archival images. PyTorch, CUDA],
+  [*#lnk("https://stardust.apatel.co")[Stardust]* — finding faint moving objects in noisy archival images. PyTorch, CUDA],
   [October 2026],
 )
 - Built the inference pipeline: sample the uncertainty of a 4-day orbit with 100,000 GPU-propagated clones, project it onto years of archival survey images, and score candidate detections with a U-Net and a classic matched filter, accepting only tracks consistent with one orbit across nights.

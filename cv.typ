@@ -169,7 +169,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 #grid(
   columns: (1fr, auto),
-  [*#link("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[#text(fill: lc)[#underline[Stardust]]] — Archival Recovery of Near-Earth Asteroids*], [October 2026]
+  [*#link("https://stardust.apatel.co")[#text(fill: lc)[#underline[Stardust]]] — Archival Recovery of Near-Earth Asteroids*], [October 2026]
 )
 - Built the orbit and detection pipeline: from only the sightings that existed 4 days after discovery, a batched GPU N-body integrator in PyTorch (DE440 perturbers, solar relativity; 100,000 clones × 1 year in 23 s) samples the orbit uncertainty and projects it onto years of pre-discovery ZTF images, searched by a 1.9M-parameter U-Net trained on 4,000 real cutouts and a classic streak filter.
 - Blind backtest on 72 asteroids once on NASA's Sentry impact-risk list: 167 verified, never-connected sightings of 22, tightening their orbits up to 52× (median 7.1×); a frozen held-out round recovered 16 of 50. The U-Net finds 57.5% of asteroids at the camera's limit, where the streak filter finds none. Validated against JPL on 2024 YR4 (2032 Earth miss 279,443 km versus JPL's 278,333 km).

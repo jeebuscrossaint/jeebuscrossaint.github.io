@@ -56,7 +56,7 @@
 )
 - Wrote a Maxwell solver and design pipeline from scratch, including a CUDA kernel benchmarked at 4.8–5.8#sym.times over the project's own optimized 16-core CPU path at 92k elements and diagnosed as memory-bound from the way the speedup declined with problem size. Gradient-based (Adam) optimization over high-dimensional design parameters; Monte-Carlo tolerance analysis. _Sole-author manuscript in preparation._
 #entry(
-  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — finding new near-Earth asteroids in archival sky-survey images. PyTorch, CUDA, Python],
+  [*#lnk("https://stardust.apatel.co")[Stardust]* — finding new near-Earth asteroids in archival sky-survey images. PyTorch, CUDA, Python],
   [October 2026],
 )
 - Knight Hacks IX team project; I built the detection and orbit pipeline. A batched GPU N-body integrator I wrote in PyTorch samples a 4-day orbit's uncertainty (100,000 clones × 1 year in 23 s on a laptop RTX 4070) and projects it onto years of pre-discovery ZTF images; detections must link into one track that survives an orbit refit.
