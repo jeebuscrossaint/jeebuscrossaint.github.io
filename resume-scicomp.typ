@@ -32,6 +32,13 @@
 - Built the science on top of the kernel: material dispersion (Sellmeier and tabulated $n,k$), parameter sweeps, gradient-based (Adam) inverse design, Monte-Carlo tolerance analysis, a wavefront/MTF/Strehl analysis battery, and GDSII export. Python bindings and a native Qt desktop GUI over the C++ core. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
 #entry(
+  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — archival recovery of near-Earth asteroids. PyTorch, CUDA, Python (Knight Hacks IX team project)],
+  [October 2026],
+)
+- Built the orbit and detection pipeline: a batched GPU N-body integrator in PyTorch (Sun, planets, Moon, 16 massive asteroids from JPL DE440, solar relativity) samples the orbit uncertainty of a 4-day-old asteroid, 100,000 clones × 1 year in 23 s on a laptop RTX 4070. Validated against JPL on 2024 YR4: within 4 km of REBOUND+ASSIST after a year, 2032 Earth miss 279,443 km versus JPL's 278,333 km.
+- Projected the clone cloud onto years of archival ZTF images and searched with a U-Net detector and a matched streak filter, keeping only tracks that survive an orbit refit. Blind backtest on 72 once-risky asteroids: 167 verified, never-connected sightings of 22, tightening orbits up to 52× (median 7.1×).
+
+#entry(
   [*Undergraduate Researcher* — #lnk("https://creol.ucf.edu/astrophotonics/")[UCF Astrophotonics Lab], CREOL],
   [August 2025 – Present],
 )
@@ -50,7 +57,6 @@
 
 #entry([*Other software*], [2023 – Present])
 - Systems and tooling in C, Rust and Go: #lnk("https://github.com/jeebuscrossaint/hush")[hush], an interactive shell in C; #lnk("https://github.com/jeebuscrossaint/limebar")[limebar], a Wayland status bar in C; #lnk("https://github.com/jeebuscrossaint/constrict")[constrict], a build system in Go written to replace make; #lnk("https://github.com/jeebuscrossaint/coat")[coat], a universal theme applier in Rust.
-- Embedded Linux platform (Arch Linux ARM on a Raspberry Pi 5, gpsd, USB serial, WireGuard) behind live worldwide telemetry for a #lnk("https://github.com/YamanDevelopment/AEV-Software")[four-passenger solar car] — 2nd in division, Lockheed Martin Award for engineering excellence.
 
 #sect[TECHNICAL SKILLS]
 *Numerical methods:* dense and complex linear algebra, eigenvalue problems, FFT and signal processing, gradient-based optimization, Monte-Carlo methods, phase retrieval and modal decomposition, error analysis and convergence testing \
@@ -63,5 +69,4 @@
 #dated(
   [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025],
   [Lockheed Martin Award, "Highest Level of Engineering Excellence," AEV Competition], [2024],
-  [1st Place, Night Hacks Hackathon — UniUtils], [2023],
 )

@@ -31,6 +31,13 @@
 - Wrote the hot path as a CUDA kernel and benchmarked it against the project's own optimized 16-core CPU implementation: 4.8–5.8#sym.times at 92k elements, agreeing to machine precision. Read the speedup's decline with problem size as evidence the kernel was memory-bound rather than compute-bound. _Sole-author manuscript in preparation._
 
 #entry(
+  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — finding faint moving objects in noisy archival images. PyTorch, CUDA (Knight Hacks IX team project)],
+  [October 2026],
+)
+- Built the inference pipeline: sample the uncertainty of a 4-day orbit with 100,000 GPU-propagated clones, project it onto years of archival survey images, and score candidate detections with a U-Net and a classic matched filter, accepting only tracks consistent with one orbit across nights.
+- Ran it like an out-of-sample test: rules developed on 22 asteroids, then frozen and run once on 50 held out (16 recovered). Detector thresholds matched to a common false-alarm rate and committed before rerunning; each track given a formal chance probability against measured junk density and decoy stacks (17 of 22 at 5σ). Result: 167 never-connected sightings, orbits up to 52× tighter.
+
+#entry(
   [*Undergraduate Researcher* — #lnk("https://github.com/inconspicuous-buisness-venture/chameleon-testing")[FAU Grant-Funded AI Safety Research Project]],
   [January 2024 – March 2025],
 )
@@ -49,7 +56,6 @@
 
 #sect[PROGRAMMING]
 - *Systems, in C, Rust and Go:* #lnk("https://github.com/jeebuscrossaint/hush")[hush], an interactive shell in C; #lnk("https://github.com/jeebuscrossaint/limebar")[limebar], a Wayland status bar in C; #lnk("https://github.com/jeebuscrossaint/constrict")[constrict], a build system in Go written to replace make; #lnk("https://github.com/jeebuscrossaint/hazmat")[hazmat], a password manager in C99.
-- *Problem solving:* #lnk("https://github.com/jeebuscrossaint/project-euler")[Project Euler] and multi-year #lnk("https://github.com/jeebuscrossaint/Advent-of-Code")[Advent of Code] solutions in C++, plus #lnk("https://github.com/jeebuscrossaint/aocli")[aocli], a command-line client for the latter. 1st place, Night Hacks hackathon.
 
 #sect[SKILLS]
 *Mathematics and methods:* linear algebra and eigenvalue problems, complex analysis, differential equations, Fourier analysis, numerical optimization, Monte-Carlo methods, statistical benchmarking and discriminator evaluation, error analysis \
@@ -60,5 +66,4 @@
 #dated(
   [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025],
   [Lockheed Martin Award, "Highest Level of Engineering Excellence," AEV Competition], [2024],
-  [1st Place, Night Hacks Hackathon — UniUtils (course schedule generator and classroom finder)], [2023],
 )

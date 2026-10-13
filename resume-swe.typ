@@ -37,14 +37,11 @@
 - Built #lnk("https://github.com/jeebuscrossaint/estela")[ESTELA] (Rust, Tauri 2), a desktop application that generates multi-version isomorphic exams from a structured bank of 615 problems across 29 banks, 13 topic areas and 11 question types, with auto-generated answer keys and export to four formats. Shipped to external adopters outside the university following a faculty workshop.
 - Built an agentic generation–evaluation pipeline over the Azure OpenAI batch API that drafts candidate problems and validates them against instructor criteria before a human ever reviews them.
 
-#entry(
-  [*Programmer, Coding Subteam* — #lnk("https://github.com/YamanDevelopment/AEV-Software")[Advanced Experimental Vehicles], Florida Atlantic University],
-  [Nov 2023 – May 2025],
-)
-- Owned the Unix and systems half of a four-person software team building live telemetry for a four-passenger solar car: Arch Linux ARM on a Raspberry Pi 5, a Hyprland compositor session driving the in-car touchscreen, gpsd and USB-serial plumbing to the GPS and Thunderstruck BMS, and the WireGuard tunnel that made worldwide remote monitoring possible at all.
-- The dashboard those services fed (team stack: Nuxt.js, Tailwind, Electron and Three.js over an Express + WebSocket backend) ran in the car and streamed to the pit crew and to viewers off-site simultaneously, through four days of racing. 2nd in the Cruiser Division; Lockheed Martin Award for engineering excellence.
-
 #sect[SELECTED SOFTWARE]
+
+#entry([*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — finding new near-Earth asteroids in archival sky-survey images. Python, PyTorch, CUDA], [Oct 2026])
+- Knight Hacks IX team project; I built the detection and orbit pipeline: orbit fit from a new asteroid's first 4 days, a batched N-body integrator in PyTorch on the GPU (100,000 orbit clones × 1 year in 23 s on a laptop RTX 4070), search regions projected onto years of archival ZTF images, a U-Net detector and a classic streak filter, and track linking gated by an orbit refit.
+- Packaged for SLURM GPU clusters (job arrays, an Apptainer image with pinned dependencies), with cached and rate-limited downloads from the public archives, live target discovery into Databricks Delta tables with MLflow, and the model and recovered dataset published to Hugging Face. Recovered 167 verified, never-connected sightings of 22 once-risky asteroids in a blind 72-object backtest.
 
 #entry([*#lnk("https://github.com/jeebuscrossaint/CELERIS")[CELERIS]* — electromagnetic solver and metalens design pipeline. C++23, CUDA, Python, CMake], [2026])
 - Wrote a Maxwell solver from scratch rather than wrapping an existing kernel, then built the design and analysis tooling on top: parameter sweeps, gradient-based (Adam) inverse design, Monte-Carlo tolerance analysis, and fabrication-ready GDSII export. Python bindings and a native Qt desktop GUI.
@@ -53,7 +50,7 @@
 
 #entry([*Systems and tooling* — C, C++, Rust, Go], [2023 – Present])
 - #lnk("https://github.com/jeebuscrossaint/hush")[hush], an interactive shell in C; #lnk("https://github.com/jeebuscrossaint/limebar")[limebar], a featherweight Wayland status bar in C; #lnk("https://github.com/jeebuscrossaint/constrict")[constrict], a build system in Go written to replace make; #lnk("https://github.com/jeebuscrossaint/coat")[coat], a universal theme applier in Rust; #lnk("https://github.com/jeebuscrossaint/hazmat")[hazmat], a small password manager in C99. Tools I use daily on my own machine, not demos.
-- #lnk("https://github.com/jeebuscrossaint/slashbinslash.sh")[slashbinslash.sh], temporary file sharing and storage; #lnk("https://apatel.co")[apatel.co], a hand-written static site with no framework, no build step and no third-party requests at runtime; UniUtils, a course-schedule generator and classroom finder — 1st place, Night Hacks hackathon.
+- #lnk("https://github.com/jeebuscrossaint/slashbinslash.sh")[slashbinslash.sh], temporary file sharing and storage; #lnk("https://apatel.co")[apatel.co], a hand-written static site with no framework, no build step and no third-party requests at runtime.
 
 #sect[TECHNICAL SKILLS]
 *Languages:* C, C++ (C++23), Rust, Python, Go, JavaScript/TypeScript, CUDA, VHDL, Shell (Fish, Bash) \
@@ -66,5 +63,4 @@
 #dated(
   [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025],
   [Lockheed Martin Award, "Highest Level of Engineering Excellence," AEV Competition], [2024],
-  [1st Place, Night Hacks Hackathon — UniUtils], [2023],
 )

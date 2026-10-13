@@ -167,6 +167,13 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 - Implemented the physical design and analysis capability standalone RCWA kernels lack: Sellmeier and tabulated $n,k$ dispersion, meta-atom library sweeps with automatic etch-depth selection for full-2#sym.pi phase coverage, gradient-based (Adam) inverse design, Pancharatnam–Berry geometric-phase and polarization-multiplexed lenses exploiting form birefringence (reporting per-polarization RMS phase and focal isolation in dB), plus Strehl, Zernike wavefront, MTF, chromatic focal shift, through-focus caustic, and fabrication-tolerance Monte-Carlo analysis with fabrication-ready GDSII export.
 - Accelerated Rayleigh–Sommerfeld far-field propagation as a CUDA kernel, benchmarked against the project's own optimized 16-core CPU path: 4.8–5.8#sym.times at 92k pillars, agreeing to machine precision, with automatic CPU fallback. Diagnosed the kernel as memory-bound from the speedup's decline with grid size. C++23/CUDA, with Python bindings and a native desktop GUI. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
+#grid(
+  columns: (1fr, auto),
+  [*#link("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[#text(fill: lc)[#underline[Stardust]]] — Archival Recovery of Near-Earth Asteroids (Knight Hacks IX team project)*], [October 2026]
+)
+- Built the orbit and detection pipeline: from only the sightings that existed 4 days after discovery, a batched GPU N-body integrator in PyTorch (DE440 perturbers, solar relativity; 100,000 clones × 1 year in 23 s) samples the orbit uncertainty and projects it onto years of pre-discovery ZTF images, searched by a 1.9M-parameter U-Net trained on 4,000 real cutouts and a classic streak filter.
+- Blind backtest on 72 asteroids once on NASA's Sentry impact-risk list: 167 verified, never-connected sightings of 22, tightening their orbits up to 52× (median 7.1×); a frozen held-out round recovered 16 of 50. The U-Net finds 57.5% of asteroids at the camera's limit, where the streak filter finds none. Validated against JPL on 2024 YR4 (2032 Earth miss 279,443 km versus JPL's 278,333 km).
+
 /* ── SKILLS ── */
 #v(0.2em)
 #line(length: 100%, stroke: 0.3pt)

@@ -37,6 +37,13 @@
 - Accelerated Rayleigh–Sommerfeld far-field propagation as a CUDA kernel, benchmarked against the project's own optimized 16-core CPU path: 4.8–5.8#sym.times at 92k pillars, agreeing to machine precision. C++23/CUDA with Python bindings. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
 #entry(
+  [*Independent Research* — #lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]: archival recovery of newly discovered near-Earth asteroids],
+  [October 2026],
+)
+- Began at Knight Hacks IX as a team project; I built the orbit and detection pipeline. From only the sightings that existed 4 days after discovery, a batched GPU N-body integrator (PyTorch; DE440 perturbers plus solar relativity) samples the orbit uncertainty, projects it onto years of pre-discovery ZTF images, and searches them with a U-Net detector trained on 4,000 real cutouts and a classic streak filter.
+- Blind backtest on 72 asteroids once on NASA's Sentry impact-risk list: 167 verified, never-connected sightings of 22, tightening their orbits up to 52× (median 7.1×); a frozen held-out round recovered 16 of 50. Validated against JPL on 2024 YR4 (2032 Earth miss 279,443 km versus JPL's 278,333 km). Live run on NASA's current risk list found 202 pre-discovery sightings of 23 asteroids, confirmed by both detectors.
+
+#entry(
   [*Undergraduate Research Assistant* — UCF Physics Department],
   [March 2026 – Present],
 )
@@ -85,7 +92,6 @@ Empirical study of AI-text detection and adversarial evasion: benchmarked 10 coh
   [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025],
   [Lockheed Martin Award, "Highest Level of Engineering Excellence," AEV Competition], [2024],
   [2nd Place in Division, Advanced Experimental Vehicles Competition], [2024],
-  [1st Place, Night Hacks Hackathon — UniUtils], [2023],
 )
 
 #sect[SERVICE & OUTREACH]

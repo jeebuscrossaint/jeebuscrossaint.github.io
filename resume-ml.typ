@@ -29,7 +29,7 @@
 - Evaluated whether AI-text detection actually works, and what it costs to defeat it. Benchmarked 10 statistical coherence and detection measures — GPT-2 perplexity, RoBERTa classification, BERT next-sentence prediction, latent semantic analysis, NLI entailment, burstiness — on a 255,000-passage corpus of human and model-generated text.
 - Established GPT-2 perplexity as the strongest discriminator (3.35#sym.times separation, 17.5 versus 58.5), RoBERTa as the only effective trained detector, and BERT NSP as carrying no usable signal for the task — a negative result worth having.
 - Built four adversarial evasion pipelines against those detectors: iterative paraphrase-and-recheck, coherence- and perplexity-based tree-search decoding, list-branching, and a reinforcement-learning approach — over 3,125 generated sequences from Gemini 2.0 Flash, Gemini 1.5 Pro and GPT-4o. Characterized a consistent quality–evasion tradeoff: every method that reliably beat the detector degraded the text.
-- Grant-funded with HPC access. #lnk("https://apatel.co/ai-safety.pdf")[Technical report]; presented at the Wilkes Honors College Undergraduate Research Symposium, 2025.
+- Grant-funded with HPC access; #lnk("https://apatel.co/ai-safety.pdf")[technical report] presented at the Wilkes Honors College Symposium, 2025.
 
 #entry(
   [*Undergraduate Research Assistant* — UCF Physics Department],
@@ -46,7 +46,7 @@
 #sub[Supervisor: Dr. Stephen Eikenberry]
 - Inference on noisy experimental data: FFT demodulation, filtering, and joint nonlinear optimization over three coupled parameters to recover complex amplitude and phase from raw interferograms, validated at #sym.approx#h(0.1em)98% fidelity against simulated ground truth (NumPy/SciPy).
 - Built the acquisition system that produces the data — four instruments driven as one experiment, with in-loop objective optimization and automatic bad-frame rejection, turning days of manual collection into a single unattended run.
-- Brought up mainline Linux 7.1 and Arch Linux ARM on the #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus] telescope array's eight Jetson Nano nodes, replacing NVIDIA's end-of-life Ubuntu 18.04 image: traced boot failures to an SD-card regulator behind a modular Tegra I2C driver, U-Boot's 14 MiB initramfs load window, and missing Tegra PWM/host1x drivers, and built a kernel that boots with no initramfs. Any node rebuilds from the repo in about 15 minutes (Ansible).
+- Brought up mainline Linux 7.1 and Arch Linux ARM on the #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus] telescope array's eight Jetson Nano nodes, replacing NVIDIA's end-of-life Ubuntu 18.04 image: traced boot failures to an SD-card regulator behind a modular Tegra I2C driver, U-Boot's 14 MiB initramfs load window, and missing Tegra PWM/host1x drivers, and built a kernel that boots with no initramfs. Any node rebuilds in about 15 minutes (Ansible).
 - Wrote the node control software: centroid-based autoguiding from a USB3 guide camera (driven through its vendor UVC extension unit for 1 µs exposure control) to INDI mount guide pulses, cutting simulated tracking error from 3.01″ to 0.29″ RMS, plus a closed-loop piezo steering mirror that holds a laser spot to 0.2 px.
 
 #sect[SELECTED PROJECTS]
@@ -55,7 +55,12 @@
   [2026],
 )
 - Wrote a Maxwell solver and design pipeline from scratch, including a CUDA kernel benchmarked at 4.8–5.8#sym.times over the project's own optimized 16-core CPU path at 92k elements and diagnosed as memory-bound from the way the speedup declined with problem size. Gradient-based (Adam) optimization over high-dimensional design parameters; Monte-Carlo tolerance analysis. _Sole-author manuscript in preparation._
-#entry([*#lnk("https://github.com/jeebuscrossaint/narvi-demo-maker-llm")[Narvi]* — agentic workflow that designs and builds interactive STEM demos in real time for non-coding end users], [2026])
+#entry(
+  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — finding new near-Earth asteroids in archival sky-survey images. PyTorch, CUDA, Python],
+  [October 2026],
+)
+- Knight Hacks IX team project; I built the detection and orbit pipeline. A batched GPU N-body integrator I wrote in PyTorch samples a 4-day orbit's uncertainty (100,000 clones × 1 year in 23 s on a laptop RTX 4070) and projects it onto years of pre-discovery ZTF images; detections must link into one track that survives an orbit refit.
+- Trained a 1.9M-parameter U-Net detector on 4,000 real ZTF cutouts, after catching a 3–4″ error in an upstream service's labels by checking them against the pixels. On unseen nights at a matched false-alarm rate it finds 57.5% of asteroids at the camera's limit, where a classic streak filter finds none. Blind backtest on 72 asteroids NASA once listed as possible impactors: 167 verified, never-connected sightings of 22, tightening their orbits up to 52× (median 7.1×); a frozen held-out round recovered 16 of 50.
 
 #sect[TECHNICAL SKILLS]
 *Machine learning:* empirical evaluation and benchmarking methodology, adversarial robustness, LLM inference and prompting at scale (Azure OpenAI batch API), agentic pipelines, transformer-based classification, perplexity and coherence metrics, reinforcement learning, tree-search decoding \
@@ -67,6 +72,4 @@
 #sect[HONORS]
 #dated(
   [Florida Bright Futures — Florida Academic Scholars (highest tier; 100% tuition)], [2025],
-  [Lockheed Martin Award, "Highest Level of Engineering Excellence," AEV Competition], [2024],
-  [1st Place, Night Hacks Hackathon — UniUtils], [2023],
 )
