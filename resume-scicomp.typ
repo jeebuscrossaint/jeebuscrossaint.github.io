@@ -32,7 +32,7 @@
 - Built the science on top of the kernel: material dispersion (Sellmeier and tabulated $n,k$), parameter sweeps, gradient-based (Adam) inverse design, Monte-Carlo tolerance analysis, a wavefront/MTF/Strehl analysis battery, and GDSII export. Python bindings and a native Qt desktop GUI over the C++ core. _Sole-author manuscript in preparation (Computer Physics Communications)._
 
 #entry(
-  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — archival recovery of near-Earth asteroids. PyTorch, CUDA, Python (Knight Hacks IX team project)],
+  [*#lnk("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[Stardust]* — archival recovery of near-Earth asteroids. PyTorch, CUDA, Python],
   [October 2026],
 )
 - Built the orbit and detection pipeline: a batched GPU N-body integrator in PyTorch (Sun, planets, Moon, 16 massive asteroids from JPL DE440, solar relativity) samples the orbit uncertainty of a 4-day-old asteroid, 100,000 clones × 1 year in 23 s on a laptop RTX 4070. Validated against JPL on 2024 YR4: within 4 km of REBOUND+ASSIST after a year, 2032 Earth miss 279,443 km versus JPL's 278,333 km.

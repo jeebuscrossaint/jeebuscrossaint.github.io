@@ -60,7 +60,7 @@
 #v(-0.2em)
 #grid(
   columns: (1fr, auto),
-  [*#link("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[#text(fill: lc)[#underline[Stardust]]] — Archival Recovery of Near-Earth Asteroids (Knight Hacks IX team project)*], [October 2026]
+  [*#link("https://huggingface.co/spaces/facehuggerenthusiast/stardust")[#text(fill: lc)[#underline[Stardust]]] — Archival Recovery of Near-Earth Asteroids*], [October 2026]
 )
 #v(-0.5em)
 - Built the orbit and detection pipeline: a batched GPU N-body integrator in PyTorch samples a 4-day orbit's uncertainty (100,000 clones × 1 year in 23 s on a laptop GPU) and projects it onto years of archival ZTF images, searched by a U-Net detector and a classic streak filter. Blind backtest on 72 once-risky asteroids: 167 verified, never-connected sightings of 22, tightening orbits up to 52× (median 7.1×).
