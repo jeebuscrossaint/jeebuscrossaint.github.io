@@ -26,7 +26,8 @@
 - Own the lab's #lnk("https://github.com/jeebuscrossaint/digital-holography-automation")[acquisition software]: a Python stack that drives four instruments as one system — tunable IR laser, InGaAs camera, fiber switch and motorized polarization controller — across three transports (GPIB/VISA, RS-232, GigE Vision), so a full all-port × C-band measurement sweep runs unattended. Days of manual bench operation became a single hands-off run.
 - Closed-loop control and fault handling in the acquisition path: polarization optimized in-loop against a live fringe-contrast objective, saturated frames detected and rejected as they arrive, so an overnight run does not silently produce unusable data.
 - Built the numerical pipeline that turns raw frames into results — FFT sideband isolation and demodulation, Butterworth filtering, and a joint nonlinear optimization over three coupled parameters (NumPy/SciPy) — validated at #sym.approx#h(0.1em)98% reconstruction fidelity against simulated ground truth.
-- Contribute mount control and pointing automation (INDI) to #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus], an instrument program coordinating a networked array of 8 telescopes.
+- Own the OS and node software for #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus], a networked array of 8 telescopes each driven by a Jetson Nano. Brought up mainline Linux 7.1 and Arch Linux ARM to replace NVIDIA's end-of-life Ubuntu 18.04 image: traced boot failures to an SD-card regulator behind a modular Tegra I2C driver, U-Boot's 14 MiB initramfs load window, and missing Tegra PWM/host1x drivers, and built a kernel that boots with no initramfs. Any node rebuilds from the monorepo in about 15 minutes (Ansible, canary-first fleet upgrades).
+- Wrote the node control loops: autoguiding from a USB3 guide camera (driven through its vendor UVC extension unit for 1 µs exposure control) to INDI mount guide pulses, cutting simulated tracking error from 3.01″ to 0.29″ RMS, and a PI-loop piezo steering mirror that holds a laser spot to 0.2 px.
 
 #entry(
   [*Undergraduate Research Assistant* — UCF Physics Department],
@@ -59,7 +60,7 @@
 #v(-0.55em)
 *Frameworks and libraries:* Qt/PySide6, Tauri 2, Nuxt/Vue, Express, Electron, Three.js, NumPy, SciPy \
 #v(-0.55em)
-*Systems and tools:* Linux (Arch, daily driver), Git, CMake, Docker, WireGuard, Wayland, embedded Linux on Raspberry Pi, GPU/CUDA profiling, GPIB/VISA, RS-232, GigE Vision, LaTeX/Typst
+*Systems and tools:* Linux (Arch, daily driver), Git, CMake, Docker, WireGuard, Wayland, embedded Linux (mainline kernel and U-Boot on NVIDIA Jetson; Raspberry Pi), Ansible, INDI, UVC/V4L2, GPU/CUDA profiling, GPIB/VISA, RS-232, GigE Vision, LaTeX/Typst
 
 #sect[HONORS]
 #dated(

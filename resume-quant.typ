@@ -45,6 +45,7 @@
 #sub[Supervisor: Dr. Stephen Eikenberry]
 - Estimation and signal processing on noisy experimental data: FFT sideband isolation and demodulation, Butterworth filtering, and a joint nonlinear optimization over three coupled parameters to recover complex amplitude and phase from raw interferograms — #sym.approx#h(0.1em)98% fidelity against simulated ground truth.
 - Automated the four-instrument acquisition chain end to end, with in-loop optimization of a live objective and automatic rejection of bad frames, turning days of manual data collection into a single unattended run.
+- Own the node software for the lab's 8-telescope PolyOculus array: feedback control from a camera to mount guide pulses that cuts simulated tracking error tenfold (3.01″ #sym.arrow.r 0.29″ RMS), on Jetson Nanos I brought up on mainline Linux.
 
 #sect[PROGRAMMING]
 - *Systems, in C, Rust and Go:* #lnk("https://github.com/jeebuscrossaint/hush")[hush], an interactive shell in C; #lnk("https://github.com/jeebuscrossaint/limebar")[limebar], a Wayland status bar in C; #lnk("https://github.com/jeebuscrossaint/constrict")[constrict], a build system in Go written to replace make; #lnk("https://github.com/jeebuscrossaint/hazmat")[hazmat], a password manager in C99.

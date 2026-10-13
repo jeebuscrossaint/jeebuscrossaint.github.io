@@ -46,6 +46,8 @@
 #sub[Supervisor: Dr. Stephen Eikenberry]
 - Inference on noisy experimental data: FFT demodulation, filtering, and joint nonlinear optimization over three coupled parameters to recover complex amplitude and phase from raw interferograms, validated at #sym.approx#h(0.1em)98% fidelity against simulated ground truth (NumPy/SciPy).
 - Built the acquisition system that produces the data — four instruments driven as one experiment, with in-loop objective optimization and automatic bad-frame rejection, turning days of manual collection into a single unattended run.
+- Brought up mainline Linux 7.1 and Arch Linux ARM on the #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus] telescope array's eight Jetson Nano nodes, replacing NVIDIA's end-of-life Ubuntu 18.04 image: traced boot failures to an SD-card regulator behind a modular Tegra I2C driver, U-Boot's 14 MiB initramfs load window, and missing Tegra PWM/host1x drivers, and built a kernel that boots with no initramfs. Any node rebuilds from the repo in about 15 minutes (Ansible).
+- Wrote the node control software: centroid-based autoguiding from a USB3 guide camera (driven through its vendor UVC extension unit for 1 µs exposure control) to INDI mount guide pulses, cutting simulated tracking error from 3.01″ to 0.29″ RMS, plus a closed-loop piezo steering mirror that holds a laser spot to 0.2 px.
 
 #sect[SELECTED PROJECTS]
 #entry(
@@ -58,7 +60,7 @@
 #sect[TECHNICAL SKILLS]
 *Machine learning:* empirical evaluation and benchmarking methodology, adversarial robustness, LLM inference and prompting at scale (Azure OpenAI batch API), agentic pipelines, transformer-based classification, perplexity and coherence metrics, reinforcement learning, tree-search decoding \
 #v(-0.55em)
-*Numerical and systems:* CUDA kernel development and profiling, HPC cluster work, linear algebra, FFT and signal processing, gradient-based optimization, Monte-Carlo methods \
+*Numerical and systems:* CUDA kernel development and profiling, embedded Linux bring-up on NVIDIA Jetson (kernel config, U-Boot), closed-loop control, HPC cluster work, linear algebra, FFT and signal processing, gradient-based optimization, Monte-Carlo methods \
 #v(-0.55em)
 *Languages and tools:* Python (NumPy, SciPy), C++ (C++23), CUDA, Rust, C, Go; Linux, Git, CMake, Docker, LaTeX/Typst
 

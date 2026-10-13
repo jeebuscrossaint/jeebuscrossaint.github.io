@@ -58,7 +58,9 @@
 - Implemented the phase-retrieval and mode-decomposition analysis: FFT sideband isolation and demodulation, Butterworth low-pass, joint numerical optimization of mode-field diameter, defocus quadratic phase and field position, then decomposition onto the LP basis to recover complex modal amplitude and phase.
 - Produced the per-port reconstruction-fidelity characterization for 6- and 7-port lanterns, reaching #sym.approx#h(0.1em)98% fidelity $|⟨E_"rec", E_"sim"⟩|^2$ against simulated fields.
 - Automated the four-instrument acquisition chain — tunable laser, InGaAs camera, fiber switch, and motorized polarization control — so a complete all-port × C-band sweep runs unattended, with polarization optimized in-loop for peak fringe contrast and saturated frames rejected, reducing a full dataset from days of manual bench time to a single hands-off run.
-- Contribute mount control and pointing automation to #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], an astronomical instrument program building photometric observing capability from a networked array of 8 telescopes.
+- Own the telescope-node software for #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], an astronomical instrument program building photometric observing capability from a networked array of 8 telescopes, each driven by a Jetson Nano.
+- Brought the nodes up on mainline Linux 7.1 and Arch Linux ARM, replacing NVIDIA's end-of-life Ubuntu 18.04 image: traced boot failures to an SD-card regulator behind a modular Tegra I2C driver, U-Boot's 14 MiB initramfs load window, and missing Tegra PWM/host1x drivers, and built a kernel that boots with no initramfs. Any node rebuilds from the repository in about 15 minutes (Ansible).
+- Wrote centroid-based autoguiding from the DMK guide camera to INDI mount guide pulses, cutting simulated tracking error from 3.01″ to 0.29″ RMS, and closed-loop piezo fast-steering-mirror control that holds a laser spot to 0.2 px.
 
 #v(0.15em)
 #grid(
@@ -178,7 +180,7 @@ Wilkes Honors College Undergraduate Research Symposium, Florida Atlantic Univers
 
 *Programming Languages:* C/C++, CUDA, Python, Shell (Fish, Bash, tcsh), LaTeX/Typst
 
-*Tools:* Linux, Git, CMake, Qt/PySide6
+*Tools:* Linux (incl. embedded kernel bring-up on NVIDIA Jetson), Git, CMake, Ansible, Qt/PySide6
 
 /* ── COURSEWORK ── */
 #v(0.2em)

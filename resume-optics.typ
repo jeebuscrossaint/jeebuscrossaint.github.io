@@ -32,7 +32,7 @@
 - Implemented the phase-retrieval and mode-decomposition analysis: FFT sideband isolation and demodulation, Butterworth low-pass filtering, joint optimization of mode-field diameter, defocus quadratic phase and field position, then LP-basis decomposition for complex modal amplitude and phase.
 - Delivered the per-port reconstruction-fidelity characterization for 6- and 7-port lanterns at #sym.approx#h(0.1em)98% fidelity against simulated fields — the metrology result the group's measurement campaign rests on.
 - #lnk("https://github.com/jeebuscrossaint/digital-holography-automation")[Automated the four-instrument acquisition chain] over GPIB/VISA, RS-232 and GigE Vision so a complete all-port × C-band sweep runs unattended, with polarization optimized in-loop for peak fringe contrast and saturated frames rejected on arrival. A full dataset went from days of bench time to a single hands-off run.
-- Contribute mount control and pointing automation to #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus], an instrument program building large-aperture observing capability from a networked array of 8 telescopes fed by photonic linkage to a stabilized spectrograph.
+- Own the telescope-node software for #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus], an instrument program building large-aperture observing capability from a networked array of 8 telescopes fed by photonic linkage to a stabilized spectrograph: autoguiding from a DMK 33UX273 guide camera to iOptron mount guide pulses over INDI, holding a star on a target pixel such as the fiber (simulated tracking error 3.01″ #sym.arrow.r 0.29″ RMS at 0.254″/px), and closed-loop piezo fast-steering-mirror control holding a laser spot to 0.2 px. Brought the nodes' Jetson Nanos up on mainline Linux to replace NVIDIA's end-of-life image.
 
 #entry(
   [*Independent Research* — #lnk("https://github.com/jeebuscrossaint/CELERIS")[CELERIS]: metasurface design and analysis pipeline],
@@ -46,7 +46,7 @@
 #sect[TECHNICAL SKILLS]
 *Optics and metrology:* interferometric alignment, off-axis digital holography, phase retrieval, modal decomposition, wavefront analysis (Strehl, Zernike, MTF), fiber coupling and photonic lanterns, polarization control, diffractive and metasurface design, tolerance analysis \
 #v(-0.55em)
-*Instrumentation:* GPIB/VISA and RS-232 instrument control, GigE Vision camera acquisition, INDI, tunable IR lasers, InGaAs imaging, motorized stages and polarization controllers, FITS and GDSII \
+*Instrumentation:* GPIB/VISA and RS-232 instrument control, GigE Vision and UVC camera acquisition, INDI mount control and autoguiding, piezo fast steering mirrors, tunable IR lasers, InGaAs imaging, motorized stages and polarization controllers, FITS and GDSII \
 #v(-0.55em)
 *Computation:* electromagnetic simulation (RCWA/FMM), FFT and signal processing, gradient-based optimization, Monte-Carlo methods, GPU/CUDA acceleration; C/C++ (C++23), CUDA, Python (NumPy, SciPy), Rust; Linux, Git, CMake, Qt/PySide6
 

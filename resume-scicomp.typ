@@ -38,7 +38,7 @@
 #sub[Supervisor: Dr. Stephen Eikenberry]
 - Built the lab's #lnk("https://github.com/jeebuscrossaint/digital-holography-automation")[data-acquisition system]: a Python stack that drives four instruments as one coordinated experiment across GPIB/VISA, RS-232 and GigE Vision, with in-loop optimization of a live objective and automatic rejection of saturated frames. Reduced a full measurement campaign from days of manual operation to a single unattended run.
 - Implemented the reduction pipeline that turns raw interferograms into physics: FFT sideband isolation and demodulation, Butterworth filtering, joint nonlinear optimization over three coupled parameters, and decomposition onto an analytic mode basis (NumPy/SciPy). Characterized at #sym.approx#h(0.1em)98% reconstruction fidelity against simulated ground truth.
-- Contribute mount control and pointing automation to #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus], coordinating a networked array of 8 telescopes as one instrument.
+- Own the node software for #lnk("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[PolyOculus], a networked array of 8 telescopes: brought up mainline Linux on the array's Jetson Nanos to replace NVIDIA's end-of-life image (custom kernel, no initramfs, Ansible-managed fleet), and wrote centroid-based autoguiding to INDI mount guide pulses that cuts simulated tracking error from 3.01″ to 0.29″ RMS, plus a PI-loop piezo steering mirror holding a laser spot to 0.2 px.
 
 #entry(
   [*Undergraduate Research Assistant* — UCF Physics Department],
@@ -55,7 +55,7 @@
 #sect[TECHNICAL SKILLS]
 *Numerical methods:* dense and complex linear algebra, eigenvalue problems, FFT and signal processing, gradient-based optimization, Monte-Carlo methods, phase retrieval and modal decomposition, error analysis and convergence testing \
 #v(-0.55em)
-*High performance:* CUDA kernel development and profiling, multicore CPU optimization, memory-bound versus compute-bound analysis, HPC cluster work \
+*High performance:* CUDA kernel development and profiling, multicore CPU optimization, memory-bound versus compute-bound analysis, HPC cluster work, embedded Linux on NVIDIA Jetson \
 #v(-0.55em)
 *Languages and tools:* C++ (C++23), CUDA, C, Python (NumPy, SciPy), Rust, Go; Linux, Git, CMake, Docker, Qt/PySide6, LaTeX/Typst; GPIB/VISA, RS-232, GigE Vision, FITS, GDSII
 

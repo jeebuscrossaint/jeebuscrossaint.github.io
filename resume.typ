@@ -71,7 +71,7 @@
 #v(-0.35em)
 - Automated the four-instrument acquisition chain (HP 8168E tunable IR laser, Xenics Bobcat 320 InGaAs camera, DiCon GP700 fiber switch, Thorlabs MPC320 polarization control) over GPIB/VISA, RS-232 and GigE Vision, so a complete all-port #sym.times C-band sweep runs unattended with in-loop polarization optimization and saturated-frame rejection — reducing a full dataset from days of manual bench time to a single hands-off run.
 #v(-0.35em)
-- Contribute mount control and pointing automation to #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], an instrument program building photometric capability from a networked array of 8 telescopes.
+- Own the node software for #link("https://creol.ucf.edu/astrophotonics/creol-astrophotonics-polyoculus/")[#text(fill: lc)[#underline[PolyOculus]]], a networked array of 8 telescopes: brought the array's Jetson Nanos up on mainline Linux (custom kernel, Ansible-managed fleet) to replace NVIDIA's end-of-life image, and wrote autoguiding to INDI mount guide pulses (simulated tracking error 3.01″ #sym.arrow.r 0.29″ RMS) and closed-loop piezo steering-mirror control (0.2 px).
 
 #v(-0.2em)
 #grid(
