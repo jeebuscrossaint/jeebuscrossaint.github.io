@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Stardust — Amarnath Patel</title>
+<meta name=description content="Finding once-risky asteroids in old sky photos, so Earth-impact scares get settled sooner.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/stardust.html">
+<meta property="og:title" content="Stardust — Amarnath Patel">
+<meta property="og:description" content="Finding once-risky asteroids in old sky photos, so Earth-impact scares get settled sooner.">
+<meta property="og:image" content="https://apatel.co/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stardust — Amarnath Patel">
+<meta name="twitter:description" content="Finding once-risky asteroids in old sky photos, so Earth-impact scares get settled sooner.">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
+<link rel=canonical href="https://apatel.co/stardust.html">
+<meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
+<meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
+<link rel=icon href=/favicon.ico sizes=32x32>
+<link rel=icon href=/favicon.svg type=image/svg+xml>
+<link rel=apple-touch-icon href=/apple-touch-icon.png>
+<link rel=preload as=font type=font/woff2 crossorigin
+ href="fonts/lib-400-roman.woff2">
+<link rel=preload as=font type=font/woff2 crossorigin href="fonts/lib-700-roman.woff2">
+<link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
+<link rel=stylesheet href=s.css>
+<nav><a href="index.html">apatel.co</a> › Stardust</nav>
+
+<main>
+<h1>Stardust — finding asteroids in old sky photos</h1>
+<p class=date>With Jossaya Camille · Knight Hacks IX · October 2026</p>
+
+<p>When a near-Earth asteroid is discovered, astronomers have only a few days of sightings, so its
+orbit is fuzzy and its odds of hitting Earth are fuzzy with it. In early 2025, 2024&nbsp;YR4
+briefly carried about a 3% chance of impact in 2032, and it took roughly two months of new
+observations to rule that out. Ruling it out required more sightings, and the usual way to get them is to
+wait and keep looking.</p>
+
+<p>There's a faster way. Public sky surveys photograph the whole sky every few nights, so a newly
+found asteroid was usually already sitting in older photos that nobody had connected to it.
+Stardust goes back and finds it there, automatically.</p>
+
+<h3>How it works</h3>
+<ul class=b>
+<li><b>Early orbit.</b> Fit an orbit to only the sightings that existed four days after discovery.
+<li><b>Clones on the GPU.</b> Sample tens of thousands of orbits consistent with those sightings and
+run them back in time with our own batched N-body integrator in PyTorch: the Sun, planets, Moon,
+and the most massive asteroids, plus the Sun's relativistic correction.
+<li><b>Search boxes.</b> Project that cloud of clones onto every older photo from the Zwicky
+Transient Facility (ZTF) at Palomar, which tells us where in each frame the asteroid must have been.
+<li><b>Detect.</b> Search those regions with a U-Net trained on real ZTF cutouts of known
+asteroids, alongside a classic streak matched filter.
+<li><b>Link and check.</b> Keep a track only if it lines up on a single orbit across several photos
+and nights, and still fits the real discovery sightings once the orbit is refit with it.
+</ul>
+
+<h3>What we built at the hackathon</h3>
+<p>We ran it on 72 asteroids that NASA had once listed as possible impactors, giving the pipeline
+only what was known four days after each discovery. It recovered <b>167 verified ZTF sightings of 22
+of them</b>, none of which had ever been attributed to those asteroids. Adding them makes the orbits
+up to 52× more certain, with a median of 7.1×. Sixteen of the 22 came from held-out rounds that we ran
+once, with every rule frozen beforehand.</p>
+
+<p>The AI detector is where the extra reach comes from. At the camera's detection limit it finds
+58% of real asteroids, where the classic streak filter finds none. It also stays honest. It doesn't
+report asteroids that are too faint to be in the photo.</p>
+
+<p>We also pointed it at asteroids on NASA's Sentry risk list today and turned up 202 pre-discovery ZTF
+sightings of 23 of them that had never been reported, each found independently by both detectors.</p>
+
+<p>To check that the engine underneath is right, we compared it with NASA JPL on 2024&nbsp;YR4.
+Our fitted orbit lands within 6&nbsp;km of JPL Horizons, the propagator stays within 4&nbsp;km per year
+of REBOUND+ASSIST, and the predicted 2032 Earth miss distance comes out at 279,443&nbsp;km against
+JPL's 278,333&nbsp;km.</p>
+
+<h3>Who did what</h3>
+<p>I built the orbit and detection side: the GPU propagator, the search and linking, the AI
+Spotter and its training data, and the checks against JPL. Jossaya built the
+<a class=x target=_blank href="https://stardust.apatel.co">live site</a>, a 3D dashboard that flies
+you to each asteroid and shows where Stardust saw it before anyone else did. Jossaya also built the
+judging deck.</p>
+
+<h3>Where it's going</h3>
+<p>Stardust didn't place at Knight Hacks, but we think there's something real in it, so we've kept going after the weekend.
+We're working on making the results hold up beyond a demo and on getting the recovered sightings to the
+Minor Planet Center.</p>
+
+<h2>Numbers</h2>
+<dl>
+<dt>167
+<dd><p>Verified, never-connected ZTF sightings of 22 once-risky asteroids.</p>
+<dt>52×
+<dd><p>Largest tightening of an orbit (2025&nbsp;YH5). Median 7.1×.</p>
+<dt>58% vs 0%
+<dd><p>AI Spotter against the classic streak filter, at the camera's limit.</p>
+<dt>23 s
+<dd><p>100,000 orbit clones run a year forward, on a laptop GPU.</p>
+<dt>202
+<dd><p>Unreported pre-discovery sightings of asteroids on NASA's risk list today.</p>
+</dl>
+
+<p><small>Python and PyTorch (CUDA), Find_Orb, REBOUND and ASSIST, Astropy; ZTF data via
+IRSA/IPAC, the Minor Planet Center, and NASA JPL. The model, dataset and results page are on
+<a class=x target=_blank href="https://huggingface.co/spaces/facehuggerenthusiast/stardust">Hugging Face</a>.
+See also <a href="polyoculus.html">PolyOculus</a> and <a href="celeris.html">CELERIS</a>.</small></p>
+</main>
+
+<script type=application/ld+json>
+{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Stardust","url":"https://stardust.apatel.co","author":[{"@type":"Person","name":"Amarnath Patel","url":"https://apatel.co/","identifier":"https://orcid.org/0009-0008-9460-082X"},{"@type":"Person","name":"Jossaya Camille"}],"programmingLanguage":["Python"],"about":["Near-Earth asteroids","Orbit determination","Precovery","Machine learning"]}
+</script>
+
+<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="friends.html">Friends</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a> · <a class=x target=_blank href="https://orcid.org/0009-0008-9460-082X">ORCID</a></footer>

@@ -6,6 +6,7 @@ themselves, **no JavaScript at all**, no third-party requests at runtime.
 ## Layout
 
     index.html        home — the card: who, work, writing, links
+      stardust.html     asteroid precovery (Knight Hacks IX)
       holography.html   photonic lantern characterisation (CREOL)
       celeris.html      RCWA solver / metalens design
       polyoculus.html   telescope array instrumentation
