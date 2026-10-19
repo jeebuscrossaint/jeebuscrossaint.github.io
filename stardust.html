@@ -31,7 +31,7 @@
 
 <main>
 <h1>Stardust — finding asteroids in old sky photos</h1>
-<p class=date>With Jossaya Camille · Knight Hacks IX · October 2026</p>
+<p class=date>Independent research · with Jossaya Camille · 2026–</p>
 
 <p>When a near-Earth asteroid is discovered, astronomers have only a few days of sightings, so its
 orbit is fuzzy and its odds of hitting Earth are fuzzy with it. In early 2025, 2024&nbsp;YR4
@@ -57,7 +57,7 @@ asteroids, alongside a classic streak matched filter.
 and nights, and still fits the real discovery sightings once the orbit is refit with it.
 </ul>
 
-<h3>What we built at the hackathon</h3>
+<h3>Results so far</h3>
 <p>We ran it on 72 asteroids that NASA had once listed as possible impactors, giving the pipeline
 only what was known four days after each discovery. It recovered <b>167 verified ZTF sightings of 22
 of them</b>, none of which had ever been attributed to those asteroids. Adding them makes the orbits
@@ -80,13 +80,11 @@ JPL's 278,333&nbsp;km.</p>
 <p>I built the orbit and detection side: the GPU propagator, the search and linking, the AI
 Spotter and its training data, and the checks against JPL. Jossaya built the
 <a class=x target=_blank href="https://stardust.apatel.co">live site</a>, a 3D dashboard that flies
-you to each asteroid and shows where Stardust saw it before anyone else did. Jossaya also built the
-judging deck.</p>
+you to each asteroid and shows where Stardust saw it before anyone else did.</p>
 
 <h3>Where it's going</h3>
-<p>Stardust didn't place at Knight Hacks, but we think there's something real in it, so we've kept going after the weekend.
-We're working on making the results hold up beyond a demo and on getting the recovered sightings to the
-Minor Planet Center.</p>
+<p>The work now is making every result rigorous enough to stand as research, and getting the
+recovered sightings to the Minor Planet Center.</p>
 
 <h2>Numbers</h2>
 <dl>
@@ -103,7 +101,7 @@ Minor Planet Center.</p>
 </dl>
 
 <p><small>Python and PyTorch (CUDA), Find_Orb, REBOUND and ASSIST, Astropy; ZTF data via
-IRSA/IPAC, the Minor Planet Center, and NASA JPL. The model, dataset and results page are on
+IRSA/IPAC, the Minor Planet Center, and NASA JPL. Started in October 2026 at Knight Hacks IX. The model, dataset and results page are on
 <a class=x target=_blank href="https://huggingface.co/spaces/facehuggerenthusiast/stardust">Hugging Face</a>.
 See also <a href="polyoculus.html">PolyOculus</a> and <a href="celeris.html">CELERIS</a>.</small></p>
 </main>
