@@ -35,8 +35,9 @@
 <p>A used ThinkPad running everything I'd otherwise pay for or put up with ads for. Everything lives in <a href="https://github.com/jeebuscrossaint/homelab">one repo</a>.</p>
 <h2>The machine</h2>
 <p>A ThinkPad X1 Carbon Gen 7 I bought used for about $100: an i5-8365U, 8 GB of RAM, and a 1 TB SSD. It runs Arch with no desktop. It boots to a text login, ignores the lid, never sleeps, and stops charging at 80% so the battery survives being plugged in all the time.</p>
-<p>It sits on campus wifi. Nothing is port-forwarded, and nothing is reachable from the internet unless I say so.</p>
+<p>It sits on campus wifi. Nothing is port-forwarded, and nothing is reachable from the internet unless I say so. The campus wifi can't reach the apps either: they only listen on the server's Tailscale address.</p>
 <h2>How I reach it</h2>
+<figure><img src="posts/assets/homelab.svg" width=720 height=550 loading=lazy decoding=async alt="How my devices, the internet and the campus wifi each reach the ThinkPad"></figure>
 <table>
 <thead>
 <tr>
@@ -65,9 +66,13 @@
 <td>Caddy's own CA</td>
 <td>HTTPS for every <code>.lab</code> name; each device trusts the root once</td>
 </tr>
+<tr>
+<td><a href="https://tailscale.com/kb/1193/tailscale-ssh">Tailscale SSH</a></td>
+<td><code>ssh server</code> with my Tailscale login; the server's own SSH takes keys only</td>
+</tr>
 </tbody>
 </table>
-<p>So every app gets a short name like <code>https://pdf.lab</code>, with a lock icon, from any of my devices, and from nobody else's.</p>
+<p>So every app gets a short name like <code>https://pdf.lab</code>, with a lock icon, from any of my devices, and from nobody else's. None of them asks me to log in, either (more on that below).</p>
 <h2>What runs on it</h2>
 <table>
 <thead>
@@ -115,13 +120,18 @@
 </tr>
 <tr>
 <td><code>share.lab</code></td>
-<td><a href="https://github.com/diced/zipline">Zipline</a></td>
-<td>temp.sh</td>
+<td><a href="https://github.com/smp46/pingvin-share-x">Pingvin Share X</a></td>
+<td>temp.sh and WeTransfer</td>
 </tr>
 <tr>
 <td><code>changes.lab</code></td>
 <td><a href="https://changedetection.io">changedetection.io</a></td>
 <td>refreshing a page by hand</td>
+</tr>
+<tr>
+<td><code>tools.lab</code></td>
+<td><a href="https://it-tools.tech">IT-Tools</a></td>
+<td>a dozen single-purpose websites</td>
 </tr>
 <tr>
 <td><code>term.lab</code></td>
@@ -150,8 +160,8 @@
 </tr>
 </tbody>
 </table>
-<p>Beszel posts to a Discord channel when the server goes down, runs hot, or fills up. A <a href="https://snowflake.torproject.org">Tor Snowflake proxy</a> runs in the background and helps people in censored countries reach Tor; the dashboard counts how many.</p>
-<p>Zipline is the one app with a public side. <a href="https://tailscale.com/kb/1223/funnel">Tailscale Funnel</a> forwards it to the internet, so a share link works for anyone, while uploading stays on my network.</p>
+<p>Beszel posts to a Discord channel when the server goes down, runs hot, or fills up. A <a href="https://snowflake.torproject.org">Tor Snowflake proxy</a> runs in the background and helps people in censored countries reach Tor; the dashboard counts how many. An <a href="https://i2pd.website">I2P</a> router relays traffic for the I2P network the same way.</p>
+<p>Pingvin Share is the one app with a public side. <a href="https://tailscale.com/kb/1223/funnel">Tailscale Funnel</a> forwards it to the internet, so a share link works for anyone, while uploading stays on my network. The public address skips Caddy, so outsiders get Pingvin's normal login page, and there's no account for them to make.</p>
 <h2>Setting up a new one</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/jeebuscrossaint/homelab</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> homelab</span>
@@ -163,7 +173,11 @@
 <li><strong>Campus wifi drops Docker Hub.</strong> The login server for Docker Hub timed out about half the time; GitHub's registry never did. The install script retries every download eight times.</li>
 <li><strong>Don't restart Docker from a terminal that runs in Docker.</strong> The web terminal is a container, so restarting Docker killed the shell running the install script halfway through. The script now ignores hangups, and Docker's <code>live-restore</code> keeps containers up through a restart.</li>
 <li><strong>Docker keeps every log forever by default.</strong> Cap it in <code>/etc/docker/daemon.json</code> with <code>"log-opts": {"max-size": "10m", "max-file": "3"}</code>.</li>
-<li><strong>Most apps want an admin account even when only you can reach them.</strong> Several can skip it: Beszel creates its user and logs you in automatically with <code>USER_EMAIL</code>, <code>USER_PASSWORD</code> and <code>AUTO_LOGIN</code>, and ExcaliDash has a "Keep Disabled" button. Overleaf and Dockge can't.</li>
+<li><strong>Most apps want an admin account even when only you can reach them.</strong> None of mine ask any more. The install script makes one user per app with a random password, then either the app logs me in by itself (Beszel's <code>AUTO_LOGIN</code>, Dockge's "disable auth" setting) or Caddy does it. For Overleaf, Pingvin and Transmute, Caddy swaps the login page for a tiny page that posts the password and reloads. That's only OK because nobody else can reach those pages.</li>
+<li><strong>Docker publishes ports on every network, not just the one you meant.</strong> <code>ports: - 443:443</code> listened on the campus wifi too, so anyone there could have reached the passwordless web terminal. Write the address in: <code>${TAILSCALE_IP}:443:443</code>. Then set <code>net.ipv4.ip_nonlocal_bind=1</code>, or Caddy fails to start at boot when Docker comes up before Tailscale has its address.</li>
+<li><strong>An app that runs a setup page on first visit is open until you visit it.</strong> Zipline, Dockge and Transmute all sat unclaimed, Zipline on a public Funnel address. Whoever opened it first would have been the admin. Have the install script make the account.</li>
+<li><strong>Reloading Caddy after a <code>git pull</code> reloads the old Caddyfile.</strong> A single-file bind mount keeps pointing at the old file once git replaces it. Restart the container instead.</li>
+<li><strong>Rebooting through the firmware is slow.</strong> <code>kexec</code> boots the new kernel straight from the running one. Arch's mkinitcpio can pack the initramfs into one kernel image, though, and kexec can't load that, so my <code>kexec-reboot</code> script pulls it back out with <code>objcopy --only-section=.initrd</code>.</li>
 </ul>
 </article>
 

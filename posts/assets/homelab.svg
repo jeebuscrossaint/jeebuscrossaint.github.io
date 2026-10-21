@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 550" width="720" height="550" role="img" aria-labelledby="t d">
+<title id="t">How my homelab is reached</title>
+<desc id="d">My laptop and phone reach the ThinkPad over Tailscale. Split DNS sends .lab lookups to CoreDNS on the server, which answers with the server's Tailscale address; Caddy then serves each app over HTTPS and signs me in. The internet only reaches the share app, through Tailscale Funnel on port 8443. The campus Wi-Fi reaches no apps, only SSH with keys and the I2P router. A Tor Snowflake proxy and an I2P router run in the background, and one install script sets it all up.</desc>
+<style>
+svg{--bg:#f5f5f5;--fg:#1a1a1a;--d:#6b6b6b;--r:#c4c4c4}
+@media(prefers-color-scheme:dark){svg{--bg:#161616;--fg:#e4e4e4;--d:#909090;--r:#3e3e3e}}
+.bg{fill:var(--bg)}
+.box{fill:none;stroke:var(--fg);stroke-width:1.25}
+.chip{fill:none;stroke:var(--r);stroke-width:1.25}
+.hi{stroke:var(--fg)}
+.srv{fill:none;stroke:var(--d);stroke-width:1;stroke-dasharray:4 4}
+.ln{stroke:var(--fg);stroke-width:1.25;fill:none}
+.no{stroke:var(--d);stroke-width:1.25;fill:none;stroke-dasharray:3 3}
+.ar{fill:var(--fg)}
+.s{font-family:"Libertinus Serif",Palatino,"Palatino Linotype",serif;fill:var(--fg)}
+.b{font-weight:700;font-size:16px}
+.m{font-family:"Libertinus Mono",ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;fill:var(--d)}
+.c{font-family:"Libertinus Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;fill:var(--fg);text-anchor:middle}
+.cap{letter-spacing:.08em}
+</style>
+<defs>
+<marker id="a" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+<path class="ar" d="M0,0L8,4L0,8z"/>
+</marker>
+</defs>
+<rect class="bg" width="720" height="550"/>
+
+<!-- the server -->
+<rect class="srv" x="310" y="10" width="402" height="530" rx="4"/>
+<text class="m cap" x="326" y="36">THINKPAD X1 CARBON · ARCH · DOCKER</text>
+
+<rect class="box" x="326" y="56" width="180" height="54" rx="3"/>
+<text class="s b" x="340" y="79">CoreDNS</text>
+<text class="m" x="340" y="98">*.lab → Tailscale IP</text>
+
+<rect class="box" x="326" y="130" width="368" height="74" rx="3"/>
+<text class="s b" x="340" y="153">Caddy</text>
+<text class="m" x="340" y="172">HTTPS from its own CA, Tailscale IP only</text>
+<text class="m" x="340" y="190">signs me in to every app: no logins</text>
+
+<path class="ln" d="M510,204V226" marker-end="url(#a)"/>
+
+<rect class="chip" x="326" y="232" width="116" height="28" rx="3"/><text class="c" x="384" y="250">home.lab</text>
+<rect class="chip" x="452" y="232" width="116" height="28" rx="3"/><text class="c" x="510" y="250">pdf.lab</text>
+<rect class="chip" x="578" y="232" width="116" height="28" rx="3"/><text class="c" x="636" y="250">convert.lab</text>
+<rect class="chip" x="326" y="268" width="116" height="28" rx="3"/><text class="c" x="384" y="286">search.lab</text>
+<rect class="chip" x="452" y="268" width="116" height="28" rx="3"/><text class="c" x="510" y="286">latex.lab</text>
+<rect class="chip" x="578" y="268" width="116" height="28" rx="3"/><text class="c" x="636" y="286">draw.lab</text>
+<rect class="chip" x="326" y="304" width="116" height="28" rx="3"/><text class="c" x="384" y="322">keep.lab</text>
+<rect class="chip" x="452" y="304" width="116" height="28" rx="3"/><text class="c" x="510" y="322">changes.lab</text>
+<rect class="chip" x="578" y="304" width="116" height="28" rx="3"/><text class="c" x="636" y="322">tools.lab</text>
+<rect class="chip hi" x="326" y="340" width="116" height="28" rx="3"/><text class="c" x="384" y="358">share.lab</text>
+<rect class="chip" x="452" y="340" width="116" height="28" rx="3"/><text class="c" x="510" y="358">term.lab</text>
+<rect class="chip" x="578" y="340" width="116" height="28" rx="3"/><text class="c" x="636" y="358">top.lab</text>
+<rect class="chip" x="326" y="376" width="116" height="28" rx="3"/><text class="c" x="384" y="394">stats.lab</text>
+<rect class="chip" x="452" y="376" width="116" height="28" rx="3"/><text class="c" x="510" y="394">logs.lab</text>
+<rect class="chip" x="578" y="376" width="116" height="28" rx="3"/><text class="c" x="636" y="394">dockge.lab</text>
+
+<rect class="chip" x="326" y="424" width="368" height="50" rx="3"/>
+<text class="m" x="340" y="444">in the background</text>
+<text class="s" x="340" y="463" font-size="15">Tor Snowflake proxy · I2P router</text>
+
+<text class="m" x="326" y="504">one script builds all of it from a fresh</text>
+<text class="m" x="326" y="522">Arch or Alpine install: sudo ./install.sh</text>
+
+<!-- my devices, over Tailscale -->
+<rect class="box" x="4" y="56" width="180" height="148" rx="3"/>
+<text class="s b" x="18" y="82">My devices</text>
+<text class="m" x="18" y="104">laptop, phone</text>
+<text class="m" x="18" y="122">on Tailscale,</text>
+<text class="m" x="18" y="140">from anywhere</text>
+<text class="m" x="18" y="186">ssh: Tailscale SSH</text>
+
+<path class="ln" d="M184,83H326" marker-end="url(#a)"/>
+<text class="m" x="192" y="75">① look up *.lab</text>
+<text class="m" x="192" y="99">split DNS</text>
+
+<path class="ln" d="M184,167H326" marker-end="url(#a)"/>
+<text class="m" x="192" y="159">② open pdf.lab</text>
+<text class="m" x="192" y="183">over Tailscale</text>
+
+<!-- the internet, through Funnel -->
+<rect class="box" x="4" y="318" width="180" height="72" rx="3"/>
+<text class="s b" x="18" y="344">The internet</text>
+<text class="m" x="18" y="364">anyone with a</text>
+<text class="m" x="18" y="380">share link</text>
+
+<path class="ln" d="M184,354H326" marker-end="url(#a)"/>
+<text class="m" x="192" y="346">Funnel :8443</text>
+<text class="m" x="192" y="370">share links only</text>
+
+<!-- the campus Wi-Fi, which reaches no apps -->
+<rect class="box" x="4" y="430" width="180" height="72" rx="3"/>
+<text class="s b" x="18" y="456">Campus Wi-Fi</text>
+<text class="m" x="18" y="476">SSH (keys only)</text>
+<text class="m" x="18" y="492">and I2P, nothing else</text>
+
+<path class="no" d="M184,466H290"/>
+<path class="ln" d="M295,460l12,12M307,460l-12,12"/>
+<text class="m" x="192" y="458">no apps here</text>
+</svg>
