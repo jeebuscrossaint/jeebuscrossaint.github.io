@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>My homelab — Amarnath Patel</title>
+<meta name=description content="The used ThinkPad that runs my apps, and how I reach them.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="apatel.co">
+<meta property="og:url" content="https://apatel.co/writing-homelab.html">
+<meta property="og:title" content="My homelab — Amarnath Patel">
+<meta property="og:description" content="The used ThinkPad that runs my apps, and how I reach them.">
+<meta property="og:image" content="https://apatel.co/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My homelab — Amarnath Patel">
+<meta name="twitter:description" content="The used ThinkPad that runs my apps, and how I reach them.">
+<meta name="twitter:image" content="https://apatel.co/og.jpg">
+<meta name=theme-color content=#f5f5f5 media="(prefers-color-scheme:light)">
+<meta name=theme-color content=#161616 media="(prefers-color-scheme:dark)">
+<link rel=icon href=/favicon.ico sizes=32x32>
+<link rel=icon href=/favicon.svg type=image/svg+xml>
+<link rel=apple-touch-icon href=/apple-touch-icon.png>
+<link rel=preload as=font type=font/woff2 crossorigin
+ href="fonts/lib-400-roman.woff2">
+<link rel=preload as=font type=font/woff2 crossorigin href="fonts/lib-700-roman.woff2">
+<link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
+<link rel=stylesheet href=s.css>
+<nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
+
+<main>
+<h1>My homelab</h1>
+<p class=date>2026 · 10 · 20</p>
+<article>
+<p>A used ThinkPad running everything I'd otherwise pay for or put up with ads for. Everything lives in <a href="https://github.com/jeebuscrossaint/homelab">one repo</a>.</p>
+<h2>The machine</h2>
+<p>A ThinkPad X1 Carbon Gen 7 I bought used for about $100: an i5-8365U, 8 GB of RAM, and a 1 TB SSD. It runs Arch with no desktop. It boots to a text login, ignores the lid, never sleeps, and stops charging at 80% so the battery survives being plugged in all the time.</p>
+<p>It sits on campus wifi. Nothing is port-forwarded, and nothing is reachable from the internet unless I say so.</p>
+<h2>How I reach it</h2>
+<table>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://tailscale.com">Tailscale</a></td>
+<td>Puts the server and my devices on one private network, from anywhere</td>
+</tr>
+<tr>
+<td><a href="https://coredns.io">CoreDNS</a></td>
+<td>Answers <code>*.lab</code> with the server's Tailscale address</td>
+</tr>
+<tr>
+<td>Tailscale split DNS</td>
+<td>Sends only <code>.lab</code> lookups to that CoreDNS</td>
+</tr>
+<tr>
+<td><a href="https://caddyserver.com">Caddy</a></td>
+<td>Sends <code>pdf.lab</code> to the PDF app, <code>latex.lab</code> to Overleaf, and so on</td>
+</tr>
+<tr>
+<td>Caddy's own CA</td>
+<td>HTTPS for every <code>.lab</code> name; each device trusts the root once</td>
+</tr>
+</tbody>
+</table>
+<p>So every app gets a short name like <code>https://pdf.lab</code>, with a lock icon, from any of my devices, and from nobody else's.</p>
+<h2>What runs on it</h2>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>App</th>
+<th>Replaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>home.lab</code></td>
+<td><a href="https://gethomepage.dev">Homepage</a></td>
+<td>a bookmarks folder</td>
+</tr>
+<tr>
+<td><code>pdf.lab</code></td>
+<td><a href="https://www.stirlingpdf.com">Stirling PDF</a></td>
+<td>ilovepdf and friends</td>
+</tr>
+<tr>
+<td><code>convert.lab</code></td>
+<td><a href="https://transmute.sh">Transmute</a></td>
+<td>sketchy file-converter sites</td>
+</tr>
+<tr>
+<td><code>search.lab</code></td>
+<td><a href="https://docs.searxng.org">SearXNG</a></td>
+<td>Google</td>
+</tr>
+<tr>
+<td><code>latex.lab</code></td>
+<td><a href="https://github.com/overleaf/overleaf">Overleaf</a></td>
+<td>Overleaf's compile timeout</td>
+</tr>
+<tr>
+<td><code>draw.lab</code></td>
+<td><a href="https://github.com/ZimengXiong/ExcaliDash">ExcaliDash</a></td>
+<td>Excalidraw forgetting my drawings</td>
+</tr>
+<tr>
+<td><code>keep.lab</code></td>
+<td><a href="https://karakeep.app">Karakeep</a></td>
+<td>bookmarks across three browsers</td>
+</tr>
+<tr>
+<td><code>share.lab</code></td>
+<td><a href="https://github.com/diced/zipline">Zipline</a></td>
+<td>temp.sh</td>
+</tr>
+<tr>
+<td><code>changes.lab</code></td>
+<td><a href="https://changedetection.io">changedetection.io</a></td>
+<td>refreshing a page by hand</td>
+</tr>
+<tr>
+<td><code>term.lab</code></td>
+<td><a href="https://github.com/tsl0922/ttyd">ttyd</a></td>
+<td>needing a laptop with SSH on it</td>
+</tr>
+<tr>
+<td><code>top.lab</code></td>
+<td><a href="https://nicolargo.github.io/glances/">Glances</a></td>
+<td>btop</td>
+</tr>
+<tr>
+<td><code>stats.lab</code></td>
+<td><a href="https://beszel.dev">Beszel</a></td>
+<td>wondering if the server is on fire</td>
+</tr>
+<tr>
+<td><code>logs.lab</code></td>
+<td><a href="https://dozzle.dev">Dozzle</a></td>
+<td><code>docker logs</code></td>
+</tr>
+<tr>
+<td><code>dockge.lab</code></td>
+<td><a href="https://dockge.kuma.pet">Dockge</a></td>
+<td><code>docker compose</code> by hand</td>
+</tr>
+</tbody>
+</table>
+<p>Beszel posts to a Discord channel when the server goes down, runs hot, or fills up. A <a href="https://snowflake.torproject.org">Tor Snowflake proxy</a> runs in the background and helps people in censored countries reach Tor; the dashboard counts how many.</p>
+<p>Zipline is the one app with a public side. <a href="https://tailscale.com/kb/1223/funnel">Tailscale Funnel</a> forwards it to the internet, so a share link works for anyone, while uploading stays on my network.</p>
+<h2>Setting up a new one</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/jeebuscrossaint/homelab</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> homelab</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./install.sh</span></code></pre></div>
+<p>On a fresh Arch or Alpine install, this installs Docker and Tailscale, joins the tailnet, writes the settings and every secret, applies the server tweaks, and starts every app. Run it again any time; it only does what's missing.</p>
+<h2>Things that took me too long</h2>
+<ul>
+<li><strong>Tailscale Funnel on port 443 breaks everything else.</strong> Funnel claims 443 on the machine's Tailscale address, which is where Caddy serves every <code>.lab</code> site. Put Funnel on 8443 instead: <code>tailscale funnel --bg --https=8443 &lt;port&gt;</code>.</li>
+<li><strong>Campus wifi drops Docker Hub.</strong> The login server for Docker Hub timed out about half the time; GitHub's registry never did. The install script retries every download eight times.</li>
+<li><strong>Don't restart Docker from a terminal that runs in Docker.</strong> The web terminal is a container, so restarting Docker killed the shell running the install script halfway through. The script now ignores hangups, and Docker's <code>live-restore</code> keeps containers up through a restart.</li>
+<li><strong>Docker keeps every log forever by default.</strong> Cap it in <code>/etc/docker/daemon.json</code> with <code>"log-opts": {"max-size": "10m", "max-file": "3"}</code>.</li>
+<li><strong>Most apps want an admin account even when only you can reach them.</strong> Several can skip it: Beszel creates its user and logs you in automatically with <code>USER_EMAIL</code>, <code>USER_PASSWORD</code> and <code>AUTO_LOGIN</code>, and ExcaliDash has a "Keep Disabled" button. Overleaf and Dockge can't.</li>
+</ul>
+</article>
+
+</main>
+
+<script type=application/ld+json>
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"My homelab","datePublished":"2026-10-20","author":{"@type":"Person","name":"Amarnath Patel","url":"https://apatel.co/","identifier":"https://orcid.org/0009-0008-9460-082X"}}
+</script>
+
+<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a></footer>
