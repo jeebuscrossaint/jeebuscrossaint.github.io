@@ -52,7 +52,11 @@ img{max-width:100%;height:auto;display:block}
 figure{margin:1.25rem 0;max-width:40rem}
 figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 
-#lede{display:grid;grid-template-columns:9rem 1fr;gap:2rem;align-items:start}
+#lede{display:grid;grid-template-columns:12rem 1fr;gap:2rem}
+/* the photo takes the bio's height: it's laid out at zero size and stretched to the row,
+   so the text alone decides how tall the header is, and the crop is never ragged */
+@media(min-width:40.01rem){#lede picture{position:relative}
+#lede img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}}
 dl.c{gap:.5rem 1.5rem}
 dl.c dt{padding-top:.3rem}
 @media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:9rem}}
