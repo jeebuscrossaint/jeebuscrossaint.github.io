@@ -2,8 +2,7 @@
 <title id="t">How my homelab is reached</title>
 <desc id="d">My laptop and phone reach the ThinkPad over Tailscale. Split DNS sends .lab lookups to CoreDNS on the server, which answers with the server's Tailscale address; Caddy then serves each app over HTTPS and signs me in. The internet only reaches the share app, through Tailscale Funnel on port 8443. The campus Wi-Fi reaches no apps, only SSH with keys and the I2P router. A Tor Snowflake proxy and an I2P router run in the background, and one install script sets it all up.</desc>
 <style>
-svg{--bg:#f5f5f5;--fg:#1a1a1a;--d:#6b6b6b;--r:#c4c4c4}
-@media(prefers-color-scheme:dark){svg{--bg:#161616;--fg:#e4e4e4;--d:#909090;--r:#3e3e3e}}
+svg{--bg:#000;--fg:#e6e6e6;--d:#8c8c8c;--r:#333}
 .bg{fill:var(--bg)}
 .box{fill:none;stroke:var(--fg);stroke-width:1.25}
 .chip{fill:none;stroke:var(--r);stroke-width:1.25}
@@ -12,10 +11,10 @@ svg{--bg:#f5f5f5;--fg:#1a1a1a;--d:#6b6b6b;--r:#c4c4c4}
 .ln{stroke:var(--fg);stroke-width:1.25;fill:none}
 .no{stroke:var(--d);stroke-width:1.25;fill:none;stroke-dasharray:3 3}
 .ar{fill:var(--fg)}
-.s{font-family:"Libertinus Serif",Palatino,"Palatino Linotype",serif;fill:var(--fg)}
-.b{font-weight:700;font-size:16px}
-.m{font-family:"Libertinus Mono",ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;fill:var(--d)}
-.c{font-family:"Libertinus Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;fill:var(--fg);text-anchor:middle}
+.s{font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--fg)}
+.b{font-weight:600;font-size:16px}
+.m{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;fill:var(--d)}
+.c{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;fill:var(--fg);text-anchor:middle}
 .cap{letter-spacing:.08em}
 </style>
 <defs>

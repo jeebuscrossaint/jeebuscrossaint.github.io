@@ -18,7 +18,7 @@ themselves, **no JavaScript at all**, no third-party requests at runtime.
     404.html
 
     s.css             the whole stylesheet
-    fonts/            Libertinus Serif + Mono, subset to this site's glyphs
+    fonts/            IBM Plex Sans + Mono, Latin subset
     assets/           camera originals plus everything build-images.sh derives
     posts/            markdown SOURCES — see "Adding a post"
     feed.xml          Atom feed for the writing
@@ -50,12 +50,10 @@ Both need ImageMagick (`magick`); `build-og.sh` also needs Chrome or Chromium.
 
 ## Regenerating the fonts
 
-Subset from the system Libertinus OTFs — the same files Typst uses for the CV, so print
-and web match. Needs `fonttools`:
+IBM Plex Sans (400, 400 italic, 600, 600 italic) and Plex Mono 400, the Latin-subset
+woff2 files from `@fontsource/ibm-plex-sans` / `@fontsource/ibm-plex-mono` 5.1.0:
 
-    pyftsubset /usr/share/fonts/libertinus/LibertinusSerif-Regular.otf \
-      --text-file=chars.txt --flavor=woff2 --layout-features='kern,liga' \
-      --desubroutinize --output-file=fonts/lib-400-roman.woff2
+    https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-sans@5.1.0/files/ibm-plex-sans-latin-400-normal.woff2
 
-Keep the hinting (don't pass `--no-hinting`) — without it the type renders soft on
-Linux/FreeType.
+saved as `fonts/plex-<weight>-<roman|italic>.woff2` and `fonts/plex-mono.woff2`. Glyphs
+outside Latin (Greek, superscripts, ↗) fall back to the system sans.

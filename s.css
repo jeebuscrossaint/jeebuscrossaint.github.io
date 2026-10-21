@@ -1,32 +1,34 @@
-/* Libertinus Serif — the same family the CV and résumé are set in, converted from the
-   OTFs Typst uses so print and web match exactly. A low-contrast transitional face:
-   no hairlines to fall under a pixel, so it stays sharp on screen and inverted.
-   Subset to this site's glyphs, hinting retained. SIL OFL. */
-@font-face{font-family:Lib;src:url(fonts/lib-400-roman.woff2)format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:Lib;src:url(fonts/lib-400-italic.woff2)format('woff2');font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:Lib;src:url(fonts/lib-700-roman.woff2)format('woff2');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:Lib;src:url(fonts/lib-700-italic.woff2)format('woff2');font-weight:700;font-style:italic;font-display:swap}
-@font-face{font-family:LibMono;src:url(fonts/lib-mono.woff2)format('woff2');font-weight:400;font-style:normal;font-display:swap}
+/* IBM Plex Sans + Mono: an engineered, institutional face with a matching mono for the
+   labels. Latin subset from @fontsource 5.1.0, SIL OFL. One 600 file serves both
+   semibold and bold, so <b> never falls back to faux-bold. */
+@font-face{font-family:Plex;src:url(fonts/plex-400-roman.woff2)format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Plex;src:url(fonts/plex-400-italic.woff2)format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:Plex;src:url(fonts/plex-600-roman.woff2)format('woff2');font-weight:600 700;font-style:normal;font-display:swap}
+@font-face{font-family:Plex;src:url(fonts/plex-600-italic.woff2)format('woff2');font-weight:600 700;font-style:italic;font-display:swap}
+@font-face{font-family:PlexMono;src:url(fonts/plex-mono.woff2)format('woff2');font-weight:400;font-style:normal;font-display:swap}
 
-:root{--serif:Lib,"Libertinus Serif",Palatino,"Palatino Linotype",serif;
---mono:LibMono,"Libertinus Mono",ui-monospace,monospace,monospace;
-color-scheme:light dark;--bg:#f5f5f5;--fg:#1a1a1a;--d:#6b6b6b;--r:#d4d4d4}
-@media(prefers-color-scheme:dark){:root{--bg:#161616;--fg:#e4e4e4;--d:#909090;--r:#343434}}
-/* these must restate dark, or they'd repaint dim text with the light value */
-@media(prefers-contrast:more){:root{--d:#3a3a3a;--r:#8a8a8a}}
-@media(prefers-contrast:more) and (prefers-color-scheme:dark){:root{--d:#cfcfcf;--r:#9a9a9a}}
+/* black, one scheme. Text is off-white rather than #fff: pure white on pure black
+   halates at small sizes. */
+:root{--sans:Plex,"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+--mono:PlexMono,"IBM Plex Mono",ui-monospace,monospace,monospace;
+color-scheme:dark;--bg:#000;--fg:#e6e6e6;--d:#8c8c8c;--r:#262626}
+@media(prefers-contrast:more){:root{--fg:#fff;--d:#cfcfcf;--r:#8a8a8a}}
 
 *{box-sizing:border-box}
 body{max-width:52rem;margin:0 auto;padding:clamp(2.5rem,7vw,5rem) clamp(1.2rem,5vw,2.5rem) 5rem;
-background:var(--bg);color:var(--fg);font:18px/1.6 var(--serif);
+background:var(--bg);color:var(--fg);font:17px/1.65 var(--sans);
+-webkit-font-smoothing:antialiased;
 font-variant-numeric:tabular-nums;-webkit-text-size-adjust:100%}
-a{color:inherit;text-underline-offset:2px;text-decoration-thickness:1px}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;
+text-decoration-color:color-mix(in srgb,currentColor 35%,transparent)}
+a:hover{text-decoration-color:currentColor}
+b,strong{font-weight:600}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 
-h1{font-size:1.5rem;margin:0 0 .65rem}
+h1{font-size:1.5rem;font-weight:600;letter-spacing:-.015em;margin:0 0 .65rem}
 h2{font:400 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
-color:var(--d);margin:2.75rem 0 1rem;padding-bottom:.55rem;border-bottom:1px solid var(--r)}
-h3{font:600 1.05rem/1.3 var(--serif);margin:1.75rem 0 .4rem}
+color:var(--d);margin:3.5rem 0 1.25rem}
+h3{font:600 1.05rem/1.3 var(--sans);margin:1.75rem 0 .4rem}
 p{max-width:40rem;margin:0 0 1rem}
 p:last-child{margin-bottom:0}
 ul.b{max-width:40rem;padding-left:1.2rem;margin:0 0 1rem}
@@ -35,7 +37,7 @@ small{font-size:.8125rem;color:var(--d)}
 
 /* metadata left, substance right */
 dl{display:grid;grid-template-columns:7rem 1fr;gap:1.35rem 1.5rem;margin:0}
-dt{font:.75rem/1.75 var(--mono);color:var(--d);padding-top:.15rem}
+dt{font:.8rem/1.65 var(--mono);color:var(--d);padding-top:.15rem}
 dd{margin:0;max-width:40rem}
 dd>i{font-style:normal;color:var(--d)}
 dd p{color:var(--d);margin:.15rem 0 0;line-height:1.5}
@@ -52,26 +54,24 @@ figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 
 #lede{display:grid;grid-template-columns:11rem 1fr;gap:2.5rem;align-items:start;
 margin-bottom:3rem}
-#lede img{border:1px solid var(--r)}
 dl.c{gap:.5rem 1.5rem}
 dl.c dt{padding-top:.3rem}
 @media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:11rem}}
 
 /* card front: the one-line work list */
 ul.w{list-style:none;padding:0;margin:0;max-width:40rem}
-ul.w li{margin:0 0 .85rem;padding-left:1.1rem;text-indent:-1.1rem}
-ul.w li::before{content:"—";color:var(--d);padding-right:.45rem}
-ul.w i{font-style:normal;color:var(--d);font:.75rem var(--mono);white-space:nowrap}
+ul.w li{margin:0 0 .85rem}
+ul.w i{font-style:normal;color:var(--d);font:.8rem var(--mono);white-space:nowrap}
 .tail{margin-top:2.5rem;color:var(--d);font-size:.9375rem}
 .x::after{content:"↗";font-size:.85em;opacity:.7}
-footer{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--r);
+footer{margin-top:4.5rem;
 font:.75rem var(--mono);color:var(--d)}
 
 /* prose extras, used by the writing pages */
 article{max-width:40rem}
-article h2{font:600 1.1rem/1.3 var(--serif);letter-spacing:0;text-transform:none;color:var(--fg);
+article h2{font:600 1.1rem/1.35 var(--sans);letter-spacing:0;text-transform:none;color:var(--fg);
 border:0;padding:0;margin:2rem 0 .5rem}
-article h3{font:600 .95rem/1.3 var(--serif);margin:1.5rem 0 .4rem}
+article h3{font:600 .95rem/1.3 var(--sans);margin:1.5rem 0 .4rem}
 article ul,article ol{margin:0 0 1rem;padding-left:1.4rem}
 article li{margin:0 0 .3rem}
 article img{margin:1.25rem 0;border:1px solid var(--r)}
