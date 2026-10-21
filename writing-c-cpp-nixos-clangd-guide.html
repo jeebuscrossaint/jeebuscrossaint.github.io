@@ -27,9 +27,12 @@
 <link rel=stylesheet href=s.css>
 <nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
 
-<main>
+<main class=page>
+<header class=rail>
 <h1>Getting clangd to work on NixOS</h1>
 <p class=date>2026 · 03 · 15</p>
+</header>
+<div class=body>
 <article>
 <p>If you've tried using clangd on NixOS, you've probably hit <code>'vector' file not found</code> or <code>'iostream' file not found</code>. Here's how to actually fix them.</p>
 <h2>Why it breaks</h2>
@@ -157,10 +160,11 @@ InlayHints:
 <p>The whole problem is that clangd needs the same include paths <code>clang++</code> uses. On other distros everything's in <code>/usr/include</code>, so it just works. On NixOS you have to hand it all five paths explicitly, in order: compiler-rt, the C++ headers, the platform headers, clang's resource directory, and glibc.</p>
 </article>
 
+</div>
 </main>
 
 <script type=application/ld+json>
 {"@context":"https://schema.org","@type":"BlogPosting","headline":"Getting clangd to work on NixOS","datePublished":"2026-03-15","author":{"@type":"Person","name":"Amarnath Patel","url":"https://apatel.co/","identifier":"https://orcid.org/0009-0008-9460-082X"}}
 </script>
 
-<footer>© 2026 Amarnath Patel · Orlando, Florida · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a class=x target=_blank href="https://github.com/jeebuscrossaint">GitHub</a></footer>
+<footer>© 2026 Amarnath Patel · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a href="friends.html">Friends</a></footer>

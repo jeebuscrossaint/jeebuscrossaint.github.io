@@ -15,7 +15,7 @@ color-scheme:dark;--bg:#000;--fg:#e6e6e6;--d:#8c8c8c;--r:#262626}
 @media(prefers-contrast:more){:root{--fg:#fff;--d:#cfcfcf;--r:#8a8a8a}}
 
 *{box-sizing:border-box}
-body{max-width:52rem;margin:0 auto;padding:clamp(2.5rem,7vw,5rem) clamp(1.2rem,5vw,2.5rem) 5rem;
+body{max-width:76rem;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1rem,5vw,3rem) 3rem;
 background:var(--bg);color:var(--fg);font:17px/1.65 var(--sans);
 -webkit-font-smoothing:antialiased;
 font-variant-numeric:tabular-nums;-webkit-text-size-adjust:100%}
@@ -52,19 +52,21 @@ img{max-width:100%;height:auto;display:block}
 figure{margin:1.25rem 0;max-width:40rem}
 figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 
-#lede{display:grid;grid-template-columns:11rem 1fr;gap:2.5rem;align-items:start;
-margin-bottom:3rem}
+#lede{display:grid;grid-template-columns:9rem 1fr;gap:2rem;align-items:start}
 dl.c{gap:.5rem 1.5rem}
 dl.c dt{padding-top:.3rem}
-@media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:11rem}}
+@media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:9rem}}
 
 /* card front: the one-line work list */
 ul.w{list-style:none;padding:0;margin:0;max-width:40rem}
-ul.w li{margin:0 0 .85rem}
-ul.w i{font-style:normal;color:var(--d);font:.8rem var(--mono);white-space:nowrap}
-.tail{margin-top:2.5rem;color:var(--d);font-size:.9375rem}
-.x::after{content:"↗";font-size:.85em;opacity:.7}
-footer{margin-top:4.5rem;
+ul.w li{margin:0 0 1.1rem;line-height:1.5}
+ul.w a{text-decoration:none}
+ul.w a:hover{text-decoration:underline}
+ul.w i{font-style:normal;color:var(--d);font:.8rem var(--mono);white-space:nowrap;margin-left:.3rem}
+ul.w span{display:block;color:var(--d);font-size:.9375rem;margin-top:.1rem}
+.tail{margin-top:2rem;color:var(--d);font-size:.9375rem}
+h2 a{text-decoration:none}
+footer{margin-top:4rem;
 font:.75rem var(--mono);color:var(--d)}
 
 /* prose extras, used by the writing pages */
@@ -108,3 +110,24 @@ dl.log li i{color:var(--d)}
 @media(max-width:34rem){dl{grid-template-columns:1fr;gap:1.5rem}dt{padding-top:0}}
 /* contact labels are short: keep them beside the value even on a phone */
 @media(max-width:34rem){dl.c{grid-template-columns:5.5rem 1fr;gap:.5rem 1rem}dl.c dt{padding-top:.3rem}}
+
+/* the home page spreads across the width instead of stacking: bio and work on the left,
+   contact and writing on the right; work itself runs in two columns. */
+main.home{display:grid;gap:3rem;align-items:start}
+main.home h2{margin-top:0}
+@media(min-width:64rem){
+main.home{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:3.5rem clamp(3rem,6vw,6rem)}
+#lede,#work{grid-column:1}
+#contact,#writing{grid-column:2}
+#work ul.w{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 2.5rem;max-width:none}
+#work ul.w li{margin:0}
+}
+
+/* inner pages: title and date sit in a rail on the left that stays put while the text scrolls */
+@media(min-width:64rem){
+main.page{display:grid;grid-template-columns:16rem minmax(0,42rem);column-gap:clamp(3rem,6vw,6rem)}
+.rail{position:sticky;top:3rem;align-self:start}
+.rail h1{line-height:1.3;margin-bottom:.75rem}
+.rail .date{margin:0}
+.body>:first-child{margin-top:0}
+}
