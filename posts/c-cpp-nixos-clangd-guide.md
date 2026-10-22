@@ -1,50 +1,27 @@
 # Getting clangd to work on NixOS
 
-If you've tried using clangd on NixOS, you've probably hit `'vector' file not found` or `'iostream' file not found`. Here's how to actually fix them.
+If you've tried using clangd on NixOS, you've probably hit `'vector' file not found` or `'iostream' file not found`. NixOS doesn't put headers in `/usr/include` the way other distros do. Everything lives in isolated Nix store paths, so clangd has no idea where the C++ standard library headers are. On other distros it just works; here you have to hand clangd the same five include paths `clang++` uses, in the same order.
 
-## Why it breaks
+## 1. A dev shell
 
-NixOS doesn't put headers in `/usr/include` the way other distros do. Everything lives in isolated Nix store paths, so clangd has no idea where the C++ standard library headers are. You have to tell it.
-
-## Setup
-
-### Files you need
-
-Make a `flake.nix`:
+A `flake.nix` that brings in clang, clangd (from `clang-tools`) and gcc, for the standard library headers:
 
 ```nix
 {
-  description = "C++ development environment with clangd";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-  };
-
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+      let pkgs = nixpkgs.legacyPackages.${system}; in {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            clang
-            clang-tools  # includes clangd
-            gcc  # for standard library headers
-          ];
-
-          shellHook = ''
-            echo "C++ dev environment loaded"
-            echo "clangd: $(clangd --version | head -n1)"
-          '';
+          packages = with pkgs; [ clang clang-tools gcc ];
         };
-      }
-    );
+      });
 }
 ```
 
-Make a `.envrc`:
+And a `.envrc`, so direnv loads it whenever you `cd` in. Run `direnv allow` once.
 
 ```bash
 use flake
@@ -52,28 +29,23 @@ watch_file flake.nix
 watch_file flake.lock
 ```
 
-### Finding your include paths
+## 2. Find your include paths
 
-Run `direnv allow`, then:
+Ask the compiler where it looks:
 
 ```bash
 clang++ -E -x c++ - -v < /dev/null 2>&1 | grep -A 20 "search starts here"
 ```
 
-This prints the exact include paths your compiler uses. You need all five:
-- compiler-rt path (looks like `/nix/store/XXX-compiler-rt-libc-21.1.2-dev/include`)
-- GCC C++ headers (`/nix/store/XXX-gcc-14.3.0/include/c++/14.3.0`)
-- Platform-specific headers (`/nix/store/XXX-gcc-14.3.0/include/c++/14.3.0/x86_64-unknown-linux-gnu`)
-- Clang resource path (`/nix/store/XXX-clang-wrapper-21.1.2/resource-root/include`)
-- glibc headers (`/nix/store/XXX-glibc-2.40-66-dev/include`)
+It prints five paths: compiler-rt, the GCC C++ headers, the platform-specific headers, clang's resource directory, and glibc.
 
-### Configure clangd
+## 3. Tell clangd
 
-Make a `.clangd` file with your actual paths, in the same order the compiler lists them:
+Put them in a `.clangd`, in the order the compiler printed them. Order matters.
 
 ```yaml
 CompileFlags:
-  Add: 
+  Add:
     - -std=c++17
     - -isystem
     - /nix/store/YOUR-compiler-rt-libc-21.1.2-dev/include
@@ -95,11 +67,9 @@ InlayHints:
   DeducedTypes: Yes
 ```
 
-Order matters: it has to match the compiler's.
+## 4. VS Code
 
-### VS Code config
-
-`.vscode/settings.json`:
+Install the clangd extension, and turn off IntelliSense from Microsoft's C++ extension in `.vscode/settings.json` so the two don't fight. Then restart the language server (Ctrl+Shift+P → "clangd: Restart language server").
 
 ```json
 {
@@ -114,37 +84,6 @@ Order matters: it has to match the compiler's.
 }
 ```
 
-This turns off IntelliSense from Microsoft's C++ extension so it doesn't fight with clangd.
+## When it breaks again
 
-### Steps
-
-1. Install the clangd extension for VS Code
-2. Run `direnv allow`
-3. Get your nix store paths with that `clang++` command
-4. Update `.clangd` with your paths
-5. Open VS Code and restart the language server (Ctrl+Shift+P → "clangd: Restart language server")
-
-## New projects
-
-When you start a new C++ project:
-- Copy the `flake.nix` and `.envrc`
-- Run `direnv allow`
-- Get fresh paths, since they change whenever packages update
-- Make a new `.clangd` with the new paths
-
-## When it still doesn't work
-
-If you're getting header not found errors:
-- The paths in `.clangd` are probably wrong or out of date
-- Run the `clang++` command again to get fresh paths
-- Make sure all five paths are there, in the right order
-- Restart the language server
-
-If clangd itself isn't found:
-- Check you're in a directory with `.envrc`
-- Run `direnv allow`
-- `which clangd` should print a Nix store path
-
-## Why this works
-
-The whole problem is that clangd needs the same include paths `clang++` uses. On other distros everything's in `/usr/include`, so it just works. On NixOS you have to hand it all five paths explicitly, in order: compiler-rt, the C++ headers, the platform headers, clang's resource directory, and glibc.
+The store paths change whenever packages update. For a new project, copy the `flake.nix` and `.envrc` over, run step 2 again, and write a fresh `.clangd`. If headers go missing later, the paths are out of date: rerun step 2, check all five are there in the right order, and restart the language server. If clangd itself isn't found, you're outside the dev shell: run `direnv allow`, and `which clangd` should print a Nix store path.

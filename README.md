@@ -33,11 +33,16 @@ make them private. Anything in a public Pages repo is fetchable by anyone with t
 `posts/<slug>.md` is the source of truth. The site serves pre-rendered HTML, so after
 editing the markdown you must regenerate the page — the `.md` is not read at runtime:
 
-    pandoc -f gfm posts/<slug>.md -o /tmp/body.html
+    pandoc -f gfm -t html --wrap=none --syntax-highlighting=none posts/<slug>.md -o /tmp/body.html
 
-Paste the body into `writing-<slug>.html` (copy an existing one for the surrounding
-chrome), then add the post to `writing.html`, to the list on `index.html`, to
-`sitemap.xml`, and to `feed.xml`.
+Paste the body into the `<article>` of `writing-<slug>.html` (copy an existing one for
+the surrounding chrome), dropping the `h1` and the heading ids, and wrapping each run from
+one `h2` to the next in a `<section>`. On wide screens the sections flow in two columns,
+and the stylesheet uses them to keep headings, figures and code together. Write images as
+raw `<figure><img width height alt>` in the markdown so they pass through untouched.
+
+Then add the post to `writing.html`, to the list on `index.html`, to `sitemap.xml`, and
+to `feed.xml`.
 
 ## Regenerating images
 

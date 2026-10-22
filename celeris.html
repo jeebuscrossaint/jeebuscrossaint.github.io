@@ -26,7 +26,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › CELERIS</nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,17 +34,20 @@
 <p class=date>Independent · 2026</p>
 </header>
 <div class=body>
+<section>
 
 <p>A metalens focuses light with a dense array of subwavelength nanopillars rather than a curved
 surface. Designing one means solving Maxwell's equations in periodic subwavelength structures,
 over and over, for every candidate geometry. CELERIS is my own solver for that problem, written
 from the ground up rather than wrapped around an existing kernel.</p>
-
+</section>
+<section>
 <h3>The solver</h3>
 <p>Rigorous coupled-wave analysis via the Fourier modal method: 1D TE/TM multilayer gratings with
 Li and Liu–Fan inverse-rule factorisation, the full 2D-vectorial P·Q formulation for biperiodic
 nanopillar arrays, and stable Redheffer scattering-matrix layer recursion.</p>
-
+</section>
+<section>
 <h3>Validation</h3>
 <p>Every layer of the stack is checked against closed-form physics, an independent method, or
 energy conservation:</p>
@@ -58,7 +61,8 @@ energy conservation:</p>
 <p>Independently cross-validated against the grcwa and Stanford S<sup>4</sup> solvers to roughly
 1×10<sup>−7</sup>, and it reproduces canonical published metalenses (Khorasaninejad et al.,
 <i>Science</i> 2016; Chen et al., <i>Nat. Nanotechnol.</i> 2018).</p>
-
+</section>
+<section>
 <h3>Design and analysis</h3>
 <p>The physical capability standalone RCWA kernels lack: Sellmeier and tabulated <i>n,k</i>
 dispersion; meta-atom library sweeps with automatic etch-depth selection for full 2π phase
@@ -67,13 +71,15 @@ polarisation-multiplexed lenses exploiting form birefringence, reporting per-pol
 phase and focal isolation in dB. Analysis covers Strehl ratio, Zernike wavefront, MTF, chromatic
 focal shift, through-focus caustic, and fabrication-tolerance Monte Carlo — with
 fabrication-ready GDSII export.</p>
-
+</section>
+<section>
 <h3>Performance</h3>
 <p>Rayleigh–Sommerfeld far-field propagation is implemented as a CUDA kernel and benchmarked
 against the project's own optimised 16-core CPU path: 4.8–5.8× faster at 92,000 pillars, agreeing
 to machine precision, with automatic CPU fallback. The speedup declines as the grid grows, which
 is what identified the kernel as memory-bound rather than compute-bound.</p>
-
+</section>
+<section>
 <h2>Numbers</h2>
 <dl>
 <dt>10⁻¹⁵
@@ -88,6 +94,7 @@ is what identified the kernel as memory-bound rather than compute-bound.</p>
 
 <p><small>C++23 and CUDA, with Python bindings and a native desktop GUI. Sole-author manuscript
 in preparation for <i>Computer Physics Communications</i>.</small></p>
+</section>
 </div>
 </main>
 

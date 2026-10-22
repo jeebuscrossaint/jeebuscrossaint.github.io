@@ -26,7 +26,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › Photonic lanterns</nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,6 +34,7 @@
 <p class=date>UCF Astrophotonics Lab · CREOL · 2025 – present</p>
 </header>
 <div class=body>
+<section>
 
 <figure>
 <picture>
@@ -47,25 +48,29 @@
 astronomy — feeding starlight from a telescope into single-mode photonic devices — means knowing
 exactly how light entering each port emerges from the multimode end, in amplitude and phase, at
 every wavelength of interest. That relationship is the device's complex transfer matrix.</p>
-
+</section>
+<section>
 <h3>Measurement</h3>
 <p>The matrix is recovered by off-axis digital holography, extending the approach of Dobias et
 al., <i>Opt. Express</i> <b>34</b> (9), 17217 (2026). I align the interferometric bench and
 acquire holograms of the multimode output for each input port across the C-band, 1525–1575 nm —
 recovering full amplitude and phase, one row of the transfer matrix per measurement.</p>
-
+</section>
+<section>
 <h3>Analysis</h3>
 <p>I implemented the phase-retrieval and mode-decomposition pipeline: FFT sideband isolation and
 demodulation, a Butterworth low-pass, then joint numerical optimisation of mode-field diameter,
 defocus quadratic phase and field position. The recovered field is decomposed onto the LP basis
 to give complex modal amplitude and phase.</p>
-
+</section>
+<section>
 <h3>Automation</h3>
 <p>The acquisition chain runs four instruments together — tunable laser, InGaAs camera, fibre
 switch, and motorised polarisation control — so a complete all-port × C-band sweep runs
 unattended. Polarisation is optimised in-loop for peak fringe contrast and saturated frames are
 rejected as they arrive. A full sweep used to take days of manual bench time.</p>
-
+</section>
+<section>
 <h2>Results</h2>
 <dl>
 <dt>98%
@@ -80,6 +85,7 @@ rejected as they arrive. A full sweep used to take days of manual bench time.</p
 
 <p><small>Supervised by Dr. Stephen Eikenberry, UCF Astrophotonics Lab, CREOL — UCF's College of
 Optics and Photonics.</small></p>
+</section>
 </div>
 </main>
 

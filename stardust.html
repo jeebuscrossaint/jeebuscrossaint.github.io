@@ -26,7 +26,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › Stardust</nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,6 +34,7 @@
 <p class=date>Independent research · with Jossaya Camille · 2026–</p>
 </header>
 <div class=body>
+<section>
 
 <p>When a near-Earth asteroid is discovered, astronomers have only a few days of sightings, so its
 orbit is fuzzy and its odds of hitting Earth are fuzzy with it. In early 2025, 2024&nbsp;YR4
@@ -44,7 +45,8 @@ wait and keep looking.</p>
 <p>There's a faster way. Public sky surveys photograph the whole sky every few nights, so a newly
 found asteroid was usually already sitting in older photos that nobody had connected to it.
 Stardust goes back and finds it there, automatically.</p>
-
+</section>
+<section>
 <h3>How it works</h3>
 <ul class=b>
 <li><b>Early orbit.</b> Fit an orbit to only the sightings that existed four days after discovery.
@@ -58,7 +60,8 @@ asteroids, alongside a classic streak matched filter.
 <li><b>Link and check.</b> Keep a track only if it lines up on a single orbit across several photos
 and nights, and still fits the real discovery sightings once the orbit is refit with it.
 </ul>
-
+</section>
+<section>
 <h3>Results so far</h3>
 <p>We ran it on 72 asteroids that NASA had once listed as possible impactors, giving the pipeline
 only what was known four days after each discovery. It recovered <b>167 verified ZTF sightings of 22
@@ -77,17 +80,20 @@ sightings of 23 of them that had never been reported, each found independently b
 Our fitted orbit lands within 6&nbsp;km of JPL Horizons, the propagator stays within 4&nbsp;km per year
 of REBOUND+ASSIST, and the predicted 2032 Earth miss distance comes out at 279,443&nbsp;km against
 JPL's 278,333&nbsp;km.</p>
-
+</section>
+<section>
 <h3>Who did what</h3>
 <p>I built the orbit and detection side: the GPU propagator, the search and linking, the AI
 Spotter and its training data, and the checks against JPL. Jossaya built the
 <a class=x target=_blank href="https://stardust.apatel.co">live site</a>, a 3D dashboard that flies
 you to each asteroid and shows where Stardust saw it before anyone else did.</p>
-
+</section>
+<section>
 <h3>Where it's going</h3>
 <p>The work now is making every result rigorous enough to stand as research, and getting the
 recovered sightings to the Minor Planet Center.</p>
-
+</section>
+<section>
 <h2>Numbers</h2>
 <dl>
 <dt>167
@@ -106,6 +112,7 @@ recovered sightings to the Minor Planet Center.</p>
 IRSA/IPAC, the Minor Planet Center, and NASA JPL. Started in October 2026 at Knight Hacks IX. The model, dataset and results page are on
 <a class=x target=_blank href="https://huggingface.co/spaces/facehuggerenthusiast/stardust">Hugging Face</a>.
 See also <a href="polyoculus.html">PolyOculus</a> and <a href="celeris.html">CELERIS</a>.</small></p>
+</section>
 </div>
 </main>
 

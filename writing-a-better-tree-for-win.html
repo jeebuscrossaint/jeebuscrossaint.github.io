@@ -25,7 +25,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,207 +34,36 @@
 </header>
 <div class=body>
 <article>
+<section>
 <p>If you're anything like me, you only use Windows for the few programs that don't have good Linux alternatives. One of the things I hate most about it is the built-in <code>tree</code> command. It's slow, it's ugly, and it barely does anything.</p>
-<p>Those of us from the Unix side already know there's something better. The <code>tree</code> command on Linux is faster, has far more features, and looks better.</p>
-<p>The Windows version has, quite literally, three flags and two options:</p>
-<pre><code class="language-plaintext">Syntax:
-  tree [&lt;drive&gt;:][&lt;path&gt;] [/f] [/a]
-</code></pre>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;drive&gt;:</code></td>
-<td>Specifies the drive containing the disk for which you want the directory tree.</td>
-</tr>
-<tr>
-<td><code>&lt;path&gt;</code></td>
-<td>Specifies the directory to display the structure for.</td>
-</tr>
-<tr>
-<td><code>/f</code></td>
-<td>Displays the names of the files in each directory.</td>
-</tr>
-<tr>
-<td><code>/a</code></td>
-<td>Uses text characters instead of graphic lines for subdirectory links.</td>
-</tr>
-<tr>
-<td><code>/?</code></td>
-<td>Displays help at the command prompt.</td>
-</tr>
-</tbody>
-</table>
-<p>The Linux version, meanwhile, has dozens of flags for shaping the output however you like, down to color-coding by file type and size.</p>
-<p>So I wrote my own <code>tree</code> for Windows. It's also just called <code>tree</code>, and you can install it with Scoop:</p>
-<pre><code class="language-powershell">scoop bucket add tree https://github.com/jeebuscrossaint/tree
+<p>The Windows version has, quite literally, three flags and two options: <code>tree [&lt;drive&gt;:][&lt;path&gt;] [/f] [/a]</code>. <code>/f</code> adds file names, <code>/a</code> swaps the line drawing for plain text characters, and <code>/?</code> prints help. That's all of it.</p>
+<p>The <code>tree</code> on Linux is faster, looks better, and has dozens of flags for shaping the output, down to color-coding by file type and size. So I wrote my own <code>tree</code> for Windows. It's also just called <code>tree</code>, and you can install it with Scoop:</p>
+<pre class="powershell"><code>scoop bucket add tree https://github.com/jeebuscrossaint/tree
 scoop update
-scoop install tree
-</code></pre>
-<p>It matches the Linux version flag for flag, except for the HTML output options. I didn't see a need for those on Windows, and I doubt many people use them on Linux either.</p>
-<p>Here's everything <code>tree --help</code> lists:</p>
-<p><strong>Usage:</strong></p>
-<pre><code>tree [options] [directory...]
-</code></pre>
-<p><strong>Options:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--help</code></td>
-<td>Outputs a verbose usage listing.</td>
-</tr>
-<tr>
-<td><code>--version</code></td>
-<td>Outputs the version of tree.</td>
-</tr>
-<tr>
-<td><code>-a</code></td>
-<td>All files are printed (including hidden files).</td>
-</tr>
-<tr>
-<td><code>-d</code></td>
-<td>List directories only.</td>
-</tr>
-<tr>
-<td><code>-f</code></td>
-<td>Prints the full path prefix for each file.</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>Makes tree not print the indentation lines.</td>
-</tr>
-<tr>
-<td><code>-l</code></td>
-<td>Follows symbolic links if they point to directories.</td>
-</tr>
-<tr>
-<td><code>-x</code></td>
-<td>Stay on the current file-system only.</td>
-</tr>
-<tr>
-<td><code>-P pattern</code></td>
-<td>List only those files that match the wild-card pattern.</td>
-</tr>
-<tr>
-<td><code>-I pattern</code></td>
-<td>Do not list those files that match the wild-card pattern.</td>
-</tr>
-<tr>
-<td><code>--noreport</code></td>
-<td>Omits printing of the file and directory report.</td>
-</tr>
-<tr>
-<td><code>-p</code></td>
-<td>Print the file type and permissions for each file.</td>
-</tr>
-<tr>
-<td><code>-s</code></td>
-<td>Print the size of each file in bytes.</td>
-</tr>
-<tr>
-<td><code>-h</code></td>
-<td>Print the size in human readable format.</td>
-</tr>
-<tr>
-<td><code>-u</code></td>
-<td>Print the username or UID.</td>
-</tr>
-<tr>
-<td><code>-g</code></td>
-<td>Print the group name or GID.</td>
-</tr>
-<tr>
-<td><code>-D</code></td>
-<td>Print the date of last modification.</td>
-</tr>
-<tr>
-<td><code>--inodes</code></td>
-<td>Prints the inode number.</td>
-</tr>
-<tr>
-<td><code>--device</code></td>
-<td>Prints the device number.</td>
-</tr>
-<tr>
-<td><code>-F</code></td>
-<td>Append indicators for file types (<code>/</code>, <code>=</code>, <code>*</code>, <code>|</code>).</td>
-</tr>
-<tr>
-<td><code>-q</code></td>
-<td>Print non-printable characters as question marks.</td>
-</tr>
-<tr>
-<td><code>-N</code></td>
-<td>Print non-printable characters as is.</td>
-</tr>
-<tr>
-<td><code>-v</code></td>
-<td>Sort the output by version.</td>
-</tr>
-<tr>
-<td><code>-r</code></td>
-<td>Sort the output in reverse alphabetic order.</td>
-</tr>
-<tr>
-<td><code>-t</code></td>
-<td>Sort the output by last modification time.</td>
-</tr>
-<tr>
-<td><code>--dirsfirst</code></td>
-<td>List directories before files.</td>
-</tr>
-<tr>
-<td><code>-n</code></td>
-<td>Turn colorization off always.</td>
-</tr>
-<tr>
-<td><code>-C</code></td>
-<td>Turn colorization on always.</td>
-</tr>
-<tr>
-<td><code>-A</code></td>
-<td>Turn on ANSI line graphics.</td>
-</tr>
-<tr>
-<td><code>-S</code></td>
-<td>Turn on ASCII line graphics.</td>
-</tr>
-<tr>
-<td><code>-L level</code></td>
-<td>Max display depth of the directory tree.</td>
-</tr>
-<tr>
-<td><code>--filelimit #</code></td>
-<td>Do not descend directories with more than # entries.</td>
-</tr>
-</tbody>
-</table>
-<h2>Side by side</h2>
-<p>Here's the difference in practice. First, the built-in command:</p>
-<p><strong>Default Windows Tree:</strong>
-<img src="posts/assets/tree-default.png" width=351 height=384 loading=lazy decoding=async alt="Default Windows Tree Output"></p>
-<p>And here's mine, on the same directory:</p>
-<p><strong>This tree (Linux-style):</strong>
-<img src="posts/assets/tree-better.png" width=580 height=1518 loading=lazy decoding=async alt="Better Tree Output"></p>
-<p>What you get over the built-in one:</p>
+scoop install tree</code></pre>
+</section>
+<section>
+<h2>Flags</h2>
+<p>It matches the Linux version flag for flag, except for the HTML output options. I didn't see a need for those on Windows, and I doubt many people use them on Linux either. <code>tree --help</code> lists them all:</p>
 <ul>
-<li><strong>A clearer hierarchy</strong>, with proper indentation and line drawing</li>
-<li><strong>Color</strong>, so directories, files, and file types are easy to tell apart</li>
-<li><strong>Optional detail</strong> on demand: sizes, permissions, owners, and modification dates</li>
+<li><strong>What to list:</strong> <code>-a</code> hidden files too, <code>-d</code> directories only, <code>-P</code> and <code>-I</code> to include or exclude a wildcard pattern, <code>-L</code> max depth, <code>--filelimit</code> to skip directories with too many entries, <code>-l</code> to follow symlinks to directories, <code>-x</code> to stay on one file system.</li>
+<li><strong>What to show for each entry:</strong> <code>-f</code> full path, <code>-p</code> type and permissions, <code>-s</code> size in bytes or <code>-h</code> human-readable, <code>-u</code> owner, <code>-g</code> group, <code>-D</code> last modified, <code>--inodes</code>, <code>--device</code>, and <code>-F</code> for file-type indicators.</li>
+<li><strong>Order:</strong> <code>-v</code> by version, <code>-t</code> by modification time, <code>-r</code> reversed, <code>--dirsfirst</code>.</li>
+<li><strong>Drawing:</strong> <code>-i</code> no indentation lines, <code>-A</code> ANSI or <code>-S</code> ASCII line graphics, <code>-n</code> and <code>-C</code> to force color off or on, <code>-q</code> or <code>-N</code> to print non-printable characters as <code>?</code> or as they are, <code>--noreport</code> to skip the summary.</li>
+<li><strong>And</strong> <code>--help</code> and <code>--version</code>.</li>
 </ul>
-<p>The built-in command works, technically. This one is the <code>tree</code> you already know from Linux.</p>
+</section>
+<section>
+<h2>Side by side</h2>
+<p>The same directory, the built-in command on the left and mine on the right:</p>
+<figure class=pair>
+<img src="posts/assets/tree-default.png" width=351 height=384 loading=lazy decoding=async alt="The built-in Windows tree: folders only, drawn in plain box lines, under a volume serial number header.">
+<img src="posts/assets/tree-better-top.png" width=580 height=700 loading=lazy decoding=async alt="This tree: folders in blue, executables in green, files listed under each folder with Linux-style line drawing.">
+<figcaption>Mine is cut off after the first 34 lines; the full listing runs to 14 directories and 57 files.</figcaption>
+</figure>
+
+<p>Mine draws a clearer hierarchy, colors directories, files and file types so they're easy to tell apart, and adds sizes, permissions, owners and dates when you ask for them. The built-in command works, technically. This one is the <code>tree</code> you already know from Linux.</p>
+</section>
 </article>
 
 </div>

@@ -39,6 +39,7 @@ small{font-size:.8125rem;color:var(--d)}
 dl{display:grid;grid-template-columns:7rem 1fr;gap:1.35rem 1.5rem;margin:0}
 dt{font:.8rem/1.65 var(--mono);color:var(--d);padding-top:.15rem}
 dd{margin:0;max-width:40rem}
+p+dl{margin-top:2.25rem}
 dd>i{font-style:normal;color:var(--d)}
 dd p{color:var(--d);margin:.15rem 0 0;line-height:1.5}
 
@@ -50,25 +51,34 @@ nav a:hover,#lede a:hover,footer a:hover{color:var(--fg)}
    lazy ones below the fold cost nothing at first paint. */
 img{max-width:100%;height:auto;display:block}
 figure{margin:1.25rem 0;max-width:40rem}
+/* two images compared side by side, each column as wide as its image is */
+figure.pair{display:grid;grid-template-columns:351fr 580fr;gap:1rem;align-items:start;max-width:52rem}
+figure.pair figcaption{grid-column:1/-1}
+@media(max-width:40rem){figure.pair{grid-template-columns:1fr}}
 figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 
-#lede{display:grid;grid-template-columns:12rem 1fr;gap:2rem}
+#lede{display:grid;grid-template-columns:12rem 1fr;gap:calc(2rem + var(--f))}
 /* the photo takes the bio's height: it's laid out at zero size and stretched to the row,
    so the text alone decides how tall the header is, and the crop is never ragged */
-@media(min-width:40.01rem){#lede picture{position:relative}
+/* the portrait hangs in a line-drawn frame (assets/frame.svg), a 9-slice border-image on
+   an overlay that sits OUTSIDE the photo: the photo keeps its full box and the frame hangs
+   in the gutter around it without moving anything. Corners fixed and the
+   sides repeat, so it fits whatever height the bio gives the photo. */
+#lede{--f:28px}
+#lede picture{display:block;position:relative}
+#lede picture::after{content:"";position:absolute;inset:calc(-1*var(--f));pointer-events:none;
+border:var(--f) solid transparent;border-image:url(assets/frame.svg) 56 round}
+@media(min-width:40.01rem){
 #lede img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}}
-dl.c{gap:.5rem 1.5rem}
-dl.c dt{padding-top:.3rem}
-@media(max-width:40rem){#lede{grid-template-columns:1fr}#lede img{max-width:9rem}}
+@media(max-width:40rem){#lede{grid-template-columns:1fr;gap:1.25rem}#lede picture{width:12rem;margin:var(--f)}}
 
 /* card front: the one-line work list */
 ul.w{list-style:none;padding:0;margin:0;max-width:40rem}
 ul.w li{margin:0 0 1.1rem;line-height:1.5}
 ul.w a{text-decoration:none}
 ul.w a:hover{text-decoration:underline}
-ul.w i{font-style:normal;color:var(--d);font:.8rem var(--mono);white-space:nowrap;margin-left:.3rem}
 ul.w span{display:block;color:var(--d);font-size:.9375rem;margin-top:.1rem}
-.tail{margin-top:2rem;color:var(--d);font-size:.9375rem}
+.links{margin-top:1rem;color:var(--d)}
 h2 a{text-decoration:none}
 footer{margin-top:4rem;
 font:.75rem var(--mono);color:var(--d)}
@@ -80,10 +90,10 @@ border:0;padding:0;margin:2rem 0 .5rem}
 article h3{font:600 .95rem/1.3 var(--sans);margin:1.5rem 0 .4rem}
 article ul,article ol{margin:0 0 1rem;padding-left:1.4rem}
 article li{margin:0 0 .3rem}
-article img{margin:1.25rem 0;border:1px solid var(--r)}
+article img{margin:1.25rem 0}
 code{font:.85em var(--mono);background:color-mix(in srgb,var(--d) 16%,transparent);
 padding:.1em .35em;border-radius:2px}
-pre{background:color-mix(in srgb,var(--d) 12%,transparent);border:1px solid var(--r);
+pre{background:color-mix(in srgb,var(--d) 12%,transparent);
 padding:.8rem 1rem;overflow-x:auto;margin:0 0 1rem;max-width:40rem}
 :not(pre)>code{white-space:nowrap}
 pre code{display:block;background:none;padding:0;font-size:.8rem;line-height:1.5}
@@ -92,6 +102,9 @@ article th{font:400 .7rem var(--mono);letter-spacing:.08em;text-transform:upperc
 article th,article td{padding:.4rem 1rem .4rem 0;border-bottom:1px solid var(--r);vertical-align:top}
 article td:first-child{white-space:nowrap}
 .date{font:.75rem var(--mono);color:var(--d);margin:0 0 2rem}
+/* single column: the rail is a plain header, and the date is its last child, so it needs
+   the gap itself */
+.rail{margin-bottom:2rem}
 
 /* degree log: one square per course; filled done, half in progress, hollow left */
 .pips{display:inline-flex;flex-wrap:wrap;gap:3px;vertical-align:-.05em}
@@ -112,8 +125,6 @@ dl.log dd>i{display:block;font:.75rem/1.75 var(--mono);margin-bottom:.3rem}
 dl.log li i{color:var(--d)}
 
 @media(max-width:34rem){dl{grid-template-columns:1fr;gap:1.5rem}dt{padding-top:0}}
-/* contact labels are short: keep them beside the value even on a phone */
-@media(max-width:34rem){dl.c{grid-template-columns:5.5rem 1fr;gap:.5rem 1rem}dl.c dt{padding-top:.3rem}}
 
 /* the home page spreads across the width instead of stacking: bio and work on the left,
    contact and writing on the right; work itself runs in two columns. */
@@ -122,7 +133,7 @@ main.home h2{margin-top:0}
 @media(min-width:64rem){
 main.home{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:3.5rem clamp(3rem,6vw,6rem)}
 #lede,#work{grid-column:1}
-#contact,#writing{grid-column:2}
+#writing{grid-column:2;grid-row:1/span 2}
 #work ul.w{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 2.5rem;max-width:none}
 #work ul.w li{margin:0}
 }
@@ -130,8 +141,46 @@ main.home{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:3.5rem clamp(
 /* inner pages: title and date sit in a rail on the left that stays put while the text scrolls */
 @media(min-width:64rem){
 main.page{display:grid;grid-template-columns:16rem minmax(0,42rem);column-gap:clamp(3rem,6vw,6rem)}
-.rail{position:sticky;top:3rem;align-self:start}
+.rail{position:sticky;top:3rem;align-self:start;margin:0}
 .rail h1{line-height:1.3;margin-bottom:.75rem}
 .rail .date{margin:0}
 .body>:first-child{margin-top:0}
+}
+
+/* wide screens: an inner page flows in two balanced columns, newspaper-style, instead of
+   running down one. A section holding something wide (a figure, table, code, the degree
+   log) breaks out across both, and the columns resume below it. Headings stay with the
+   text they introduce. */
+@media(min-width:72rem){
+main.page{grid-template-columns:16rem minmax(0,1fr)}
+.body:has(>section),article:has(>section){columns:2;column-gap:clamp(2rem,4vw,3.5rem);max-width:none}
+section{margin:0 0 2.5rem}
+section:last-child{margin-bottom:0}
+section>figure,section>table,section>pre,section>.sourceCode{column-span:all;margin-bottom:1.5rem}
+section:has(>dl.log){column-span:all}
+/* a heading or a one-line lead-in ("Make a flake.nix:") goes wide with the block it introduces */
+section>:is(h2,h3,p):has(+:is(figure,table,pre,.sourceCode)),
+section>:is(h2,h3):has(+p+:is(figure,table,pre,.sourceCode)),
+section>h2:has(+h3+p+:is(pre,.sourceCode)){column-span:all}
+/* the columns above a full-width break end flush, so the break brings its own gap */
+section>:is(h2,h3):is(:has(+:is(figure,table,pre,.sourceCode)),:has(+p+:is(figure,table,pre,.sourceCode)),:has(+h3+p+:is(pre,.sourceCode))){margin-top:2.25rem}
+section>:is(figure,table,pre,.sourceCode){margin-top:1.25rem}
+/* a section ending on a full-width block leaves no margin behind it: it would land atop one
+   column only, and push that column below its neighbour */
+section:has(>:is(figure,table,pre,.sourceCode):last-child){margin-bottom:0}
+section>:is(figure,table,pre,.sourceCode):last-child{margin-bottom:1.75rem}
+/* short sections built around a list of figures stay in one piece */
+section:has(>dl:not(.log)){break-inside:avoid}
+/* the semester log runs in two columns of its own, each semester's label stacked over it */
+dl.log{display:block;columns:2;column-gap:clamp(2rem,4vw,3.5rem)}
+dl.log dt{break-after:avoid;padding:0}
+dl.log dd{break-inside:avoid;margin:0 0 1.5rem}
+.key{flex-wrap:wrap;white-space:nowrap;gap:.4rem 1.25rem}
+/* inline code never splits at its hyphens (--filelimit stays whole); only a snippet longer
+   than the column wraps, inside itself */
+section :not(pre)>code{display:inline-block;max-width:100%;white-space:normal;overflow-wrap:anywhere;vertical-align:baseline}
+section h2,section h3{break-after:avoid}
+section li,section dt,section dd,section figure,section pre,section table{break-inside:avoid}
+section>:first-child,section>article>:first-child{margin-top:0}
+section>:last-child{margin-bottom:0}
 }

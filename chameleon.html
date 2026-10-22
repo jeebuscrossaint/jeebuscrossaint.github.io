@@ -26,7 +26,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › AI detectors</nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,6 +34,7 @@
 <p class=date>Florida Atlantic University · 2024 – 2025</p>
 </header>
 <div class=body>
+<section>
 
 <p>If a detector can be talked out of its own verdict, how much is the verdict worth?
 <a class=x target=_blank href="ai-safety.pdf">Read the paper</a> (PDF, 3.5 MB)</p>
@@ -55,7 +56,8 @@ passage and re-checks it against a detector until it hits a target detectability
 <b>Coherence and Perplexity Based Optimization</b> (CPBO) builds a branching tree of candidate
 continuations and selects among them by weighting toward higher perplexity while pruning for
 coherence — perplexity being the signal most detectors lean on.</p>
-
+</section>
+<section>
 <h3>Method</h3>
 <p>Human-written corpora came from Kaggle. Three models — Gemini 2.0 Flash, Gemini 1.5 Pro and
 GPT-4o — paraphrased that text with no special prompting to produce 35 AI-augmented passages,
@@ -63,7 +65,8 @@ each then run through both evasion methods. Every iteration was scored against t
 (RoBERTa 105M, ZeroGPT, GPTZero) and evaluated on word frequency, perplexity, coherence following
 the entity-based approach of Barzilay and Lapata (2005), and text style transfer measured with
 BLEU.</p>
-
+</section>
+<section>
 <h3>What we found</h3>
 <ul class=b>
 <li>Iterative sampling reduces detectability most clearly on older detector architectures,
@@ -80,13 +83,15 @@ higher-perplexity continuations.
 </ul>
 <p>We proposed the iterative sampling approach independently in March 2024; in January 2025 we
 found that a closely related procedure had since been described by Sadasivan et al. (2025).</p>
-
+</section>
+<section>
 <h3>Limits</h3>
 <p>Compute was the binding constraint, and the CPBO conclusions in particular stay tentative
 until more data is collected. The findings are specific to the three detectors we tested and may
 not carry over to other architectures — watermarking approaches in particular, which embed a
 statistical signal at generation time rather than inferring one after the fact.</p>
-
+</section>
+<section>
 <h2>Credits</h2>
 <p><small><i>Assessing the Efficacy of AI Detectors and Countermeasures in Generative AI</i> —
 Jason Makai Pindell, Amarnath Patel, Alexander Castronovo, Jossaya Camille, Zachary Lopez and
@@ -94,6 +99,7 @@ Thandi Menelas. Florida Atlantic University High School, the H. L. Wilkes Honors
 High School in partnership with the Max Planck Academy for Neuroscience. Supervised by Tucker
 Hindle. Grant-funded, with HPC access. Presented at the Wilkes Honors College Undergraduate
 Research Symposium, March 2025.</small></p>
+</section>
 </div>
 </main>
 

@@ -11,21 +11,16 @@ The config for my computer. Everything lives in [one repo](https://github.com/je
 
 ## Arch Linux
 
-| What | Using |
-|---|---|
-| Compositor | [mango](https://github.com/DreamMaoMao/mangowc) (Wayland) |
-| Desktop readout | conky, no bar |
-| Terminal | kitty |
-| Shell | fish |
-| Editor | micro |
-| Launcher | fuzzel |
-| Notifications | dunst |
-| Lock | swaylock |
-| Files | yazi |
-| PDFs | zathura |
-| Video | mpv |
-| System monitor | btop |
-| Theme | onedark, applied to everything by [coat](https://github.com/jeebuscrossaint/coat) |
+- **Compositor:** [mango](https://github.com/DreamMaoMao/mangowc) (Wayland), with conky as a desktop readout and no bar
+- **Terminal and shell:** kitty and fish
+- **Editor:** micro
+- **Launcher:** fuzzel
+- **Notifications:** dunst
+- **Lock:** swaylock
+- **Files:** yazi
+- **PDFs and video:** zathura and mpv
+- **System monitor:** btop
+- **Theme:** onedark, applied to everything by [coat](https://github.com/jeebuscrossaint/coat)
 
 Scripts in `~/.local/bin`: `osd` (volume, brightness and media keys), `battery-watch`, `idle-guard`, `audio-ensure`, `theme-random`, `theme-pick`, `screenshot`, `screenshot-edit`, `pickcolor`, `layout`.
 

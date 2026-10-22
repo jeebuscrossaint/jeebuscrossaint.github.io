@@ -26,7 +26,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › ESTELA</nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,6 +34,7 @@
 <p class=date>UCF Physics · Physics-education research with Dr.&nbsp;Zhongzhou Chen</p>
 </header>
 <div class=body>
+<section>
 
 <p>If every student in a large intro course takes the same exam, the answers travel. The usual
 fix is to write several versions, but then you have to show the versions are equally hard, or a
@@ -43,7 +44,8 @@ only a different surface story. A cart on a track, a crate on a floor and a sled
 one problem in three costumes. The group writes banks of these for introductory mechanics with
 help from generative AI
 (<a class=x target=_blank href="https://arxiv.org/abs/2602.05114">Liu et al., 2026</a>).</p>
-
+</section>
+<section>
 <h3>The exam builder</h3>
 <p>A bank is only useful if an instructor can turn it into an exam, so I built the tool that
 does that. It's a desktop app (Rust and Tauri 2) that lets an instructor browse the banks by
@@ -58,12 +60,14 @@ Windows, macOS and Linux, so nobody has to install LaTeX or Python to use it. It
 instructors outside UCF.</p>
 <p><a class=x target=_blank href="https://jeebuscrossaint.github.io/ESTELA-html-builder/">Download</a> ·
 <a class=x target=_blank href="https://github.com/jeebuscrossaint/estela">source</a></p>
-
+</section>
+<section>
 <h3>Grading and generation at scale</h3>
 <p>I built a pipeline on the Azure OpenAI batch API that drafts candidate problems and checks
 them against instructor criteria, and presented batch-processing for automated grading at UCF's
 downtown campus in June 2026.</p>
-
+</section>
+<section>
 <h3>Checking what the model writes</h3>
 <p>The group's next step is a multi-agent pipeline that writes isomorphic variants on its own.
 I ran its first pilot runs and found that some generated problems shipped with answer keys that
@@ -77,7 +81,8 @@ can't fix is withheld from the bank.</p>
 mined every equation out of the mechanics banks into a single library of the relations the
 course actually uses, so future generators can be handed them directly. A paper is in
 preparation.</p>
-
+</section>
+<section>
 <h3 id=narvi>Narvi</h3>
 <p>A side project for the same audience. Narvi lets an educator who doesn't code build a
 PhET-style interactive demo by describing it in plain language. The agent asks one question at a
@@ -88,6 +93,7 @@ human in the loop at every stage.
 
 <p><small>See also <a href="holography.html">photonic lanterns</a> and
 <a href="celeris.html">CELERIS</a>.</small></p>
+</section>
 </div>
 </main>
 

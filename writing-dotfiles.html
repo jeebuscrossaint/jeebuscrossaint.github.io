@@ -25,7 +25,7 @@
 <link rel=preload as=font type=font/woff2 crossorigin href="fonts/plex-600-roman.woff2">
 <link rel=alternate type=application/atom+xml title="Amarnath Patel" href=feed.xml>
 <link rel=stylesheet href=s.css>
-<nav><a href="index.html">apatel.co</a> › <a href="writing.html">Writing</a></nav>
+<nav><a href="index.html">← apatel.co</a></nav>
 
 <main class=page>
 <header class=rail>
@@ -34,6 +34,7 @@
 </header>
 <div class=body>
 <article>
+<section>
 <p>The config for my computer. Everything lives in <a href="https://github.com/jeebuscrossaint/dotfiles">one repo</a>.</p>
 <figure>
 <picture>
@@ -41,76 +42,27 @@
 <img src="assets/desktop-1280.jpg" width=1280 height=800 decoding=async alt="The desktop: a dark kitty terminal centred over a purple dusk seascape, showing an ASCII-art steam locomotive.">
 </picture>
 </figure>
-
+</section>
+<section>
 <h2>Arch Linux</h2>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Using</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Compositor</td>
-<td><a href="https://github.com/DreamMaoMao/mangowc">mango</a> (Wayland)</td>
-</tr>
-<tr>
-<td>Desktop readout</td>
-<td>conky, no bar</td>
-</tr>
-<tr>
-<td>Terminal</td>
-<td>kitty</td>
-</tr>
-<tr>
-<td>Shell</td>
-<td>fish</td>
-</tr>
-<tr>
-<td>Editor</td>
-<td>micro</td>
-</tr>
-<tr>
-<td>Launcher</td>
-<td>fuzzel</td>
-</tr>
-<tr>
-<td>Notifications</td>
-<td>dunst</td>
-</tr>
-<tr>
-<td>Lock</td>
-<td>swaylock</td>
-</tr>
-<tr>
-<td>Files</td>
-<td>yazi</td>
-</tr>
-<tr>
-<td>PDFs</td>
-<td>zathura</td>
-</tr>
-<tr>
-<td>Video</td>
-<td>mpv</td>
-</tr>
-<tr>
-<td>System monitor</td>
-<td>btop</td>
-</tr>
-<tr>
-<td>Theme</td>
-<td>onedark, applied to everything by <a href="https://github.com/jeebuscrossaint/coat">coat</a></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Compositor:</strong> <a href="https://github.com/DreamMaoMao/mangowc">mango</a> (Wayland), with conky as a desktop readout and no bar</li>
+<li><strong>Terminal and shell:</strong> kitty and fish</li>
+<li><strong>Editor:</strong> micro</li>
+<li><strong>Launcher:</strong> fuzzel</li>
+<li><strong>Notifications:</strong> dunst</li>
+<li><strong>Lock:</strong> swaylock</li>
+<li><strong>Files:</strong> yazi</li>
+<li><strong>PDFs and video:</strong> zathura and mpv</li>
+<li><strong>System monitor:</strong> btop</li>
+<li><strong>Theme:</strong> onedark, applied to everything by <a href="https://github.com/jeebuscrossaint/coat">coat</a></li>
+</ul>
 <p>Scripts in <code>~/.local/bin</code>: <code>osd</code> (volume, brightness and media keys), <code>battery-watch</code>, <code>idle-guard</code>, <code>audio-ensure</code>, <code>theme-random</code>, <code>theme-pick</code>, <code>screenshot</code>, <code>screenshot-edit</code>, <code>pickcolor</code>, <code>layout</code>.</p>
 <p>Package lists are in <code>linux/packages/</code>: 170 from the official repos, 26 from the AUR.</p>
-<pre><code class="language-sh">git clone https://github.com/jeebuscrossaint/dotfiles ~/dotfiles
-~/dotfiles/install.fish
-</code></pre>
+<pre class="sh"><code>git clone https://github.com/jeebuscrossaint/dotfiles ~/dotfiles
+~/dotfiles/install.fish</code></pre>
 <p>This links everything into <code>~</code>, installs missing packages, and applies the theme. Add <code>--dry-run</code> to see what it would change first, or <code>--minecraft</code> to also set up a 1.8.9 PvP instance in PrismLauncher.</p>
+</section>
 </article>
 
 </div>
