@@ -57,19 +57,15 @@ figure.pair figcaption{grid-column:1/-1}
 @media(max-width:40rem){figure.pair{grid-template-columns:1fr}}
 figcaption{font:.6875rem/1.5 var(--mono);color:var(--d);margin-top:.5rem}
 
-#lede{display:grid;grid-template-columns:12rem 1fr;gap:calc(2rem + var(--f))}
-/* the photo takes the bio's height: it's laid out at zero size and stretched to the row,
-   so the text alone decides how tall the header is, and the crop is never ragged */
+#lede{display:grid;grid-template-columns:15rem 1fr;gap:calc(2rem + var(--f));align-items:start}
 /* the portrait hangs in a line-drawn frame (assets/frame.svg), a 9-slice border-image on
-   an overlay that sits OUTSIDE the photo: the photo keeps its full box and the frame hangs
-   in the gutter around it without moving anything. Corners fixed and the
-   sides repeat, so it fits whatever height the bio gives the photo. */
+   an overlay that sits OUTSIDE the photo: the photo is shown whole at its own aspect ratio,
+   never cropped, and the frame hangs in the gutter around it without moving anything.
+   Corners fixed and the sides repeat, so it fits the photo at any size. */
 #lede{--f:28px}
 #lede picture{display:block;position:relative}
 #lede picture::after{content:"";position:absolute;inset:calc(-1*var(--f));pointer-events:none;
 border:var(--f) solid transparent;border-image:url(assets/frame.svg) 56 round}
-@media(min-width:40.01rem){
-#lede img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}}
 @media(max-width:40rem){#lede{grid-template-columns:1fr;gap:1.25rem}#lede picture{width:12rem;margin:var(--f)}}
 
 /* card front: the one-line work list */
