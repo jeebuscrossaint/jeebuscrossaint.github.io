@@ -42,18 +42,12 @@ svg{--bg:#000;--fg:#e6e6e6;--d:#8c8c8c;--r:#333}
 <rect class="chip" x="326" y="232" width="116" height="28" rx="3"/><text class="c" x="384" y="250">home.lab</text>
 <rect class="chip" x="452" y="232" width="116" height="28" rx="3"/><text class="c" x="510" y="250">pdf.lab</text>
 <rect class="chip" x="578" y="232" width="116" height="28" rx="3"/><text class="c" x="636" y="250">convert.lab</text>
-<rect class="chip" x="326" y="268" width="116" height="28" rx="3"/><text class="c" x="384" y="286">search.lab</text>
-<rect class="chip" x="452" y="268" width="116" height="28" rx="3"/><text class="c" x="510" y="286">latex.lab</text>
-<rect class="chip" x="578" y="268" width="116" height="28" rx="3"/><text class="c" x="636" y="286">draw.lab</text>
-<rect class="chip" x="326" y="304" width="116" height="28" rx="3"/><text class="c" x="384" y="322">keep.lab</text>
-<rect class="chip" x="452" y="304" width="116" height="28" rx="3"/><text class="c" x="510" y="322">changes.lab</text>
-<rect class="chip" x="578" y="304" width="116" height="28" rx="3"/><text class="c" x="636" y="322">tools.lab</text>
-<rect class="chip hi" x="326" y="340" width="116" height="28" rx="3"/><text class="c" x="384" y="358">share.lab</text>
-<rect class="chip" x="452" y="340" width="116" height="28" rx="3"/><text class="c" x="510" y="358">term.lab</text>
-<rect class="chip" x="578" y="340" width="116" height="28" rx="3"/><text class="c" x="636" y="358">top.lab</text>
-<rect class="chip" x="326" y="376" width="116" height="28" rx="3"/><text class="c" x="384" y="394">stats.lab</text>
-<rect class="chip" x="452" y="376" width="116" height="28" rx="3"/><text class="c" x="510" y="394">logs.lab</text>
-<rect class="chip" x="578" y="376" width="116" height="28" rx="3"/><text class="c" x="636" y="394">dockge.lab</text>
+<rect class="chip" x="326" y="296" width="116" height="28" rx="3"/><text class="c" x="384" y="314">latex.lab</text>
+<rect class="chip" x="452" y="296" width="116" height="28" rx="3"/><text class="c" x="510" y="314">draw.lab</text>
+<rect class="chip" x="578" y="296" width="116" height="28" rx="3"/><text class="c" x="636" y="314">keep.lab</text>
+<rect class="chip hi" x="326" y="360" width="116" height="28" rx="3"/><text class="c" x="384" y="378">share.lab</text>
+<rect class="chip" x="452" y="360" width="116" height="28" rx="3"/><text class="c" x="510" y="378">term.lab</text>
+<rect class="chip" x="578" y="360" width="116" height="28" rx="3"/><text class="c" x="636" y="378">stats.lab</text>
 
 <rect class="chip" x="326" y="424" width="368" height="50" rx="3"/>
 <text class="m" x="340" y="444">in the background</text>
@@ -84,9 +78,9 @@ svg{--bg:#000;--fg:#e6e6e6;--d:#8c8c8c;--r:#333}
 <text class="m" x="18" y="364">anyone with a</text>
 <text class="m" x="18" y="380">share link</text>
 
-<path class="ln" d="M184,354H326" marker-end="url(#a)"/>
-<text class="m" x="192" y="346">Funnel :8443</text>
-<text class="m" x="192" y="370">share links only</text>
+<path class="ln" d="M184,374H326" marker-end="url(#a)"/>
+<text class="m" x="192" y="366">Funnel :8443</text>
+<text class="m" x="192" y="390">share links only</text>
 
 <!-- the campus Wi-Fi, which reaches no apps -->
 <rect class="box" x="4" y="430" width="180" height="72" rx="3"/>

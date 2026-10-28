@@ -5,13 +5,13 @@
 <link href="https://apatel.co/feed.xml" rel="self"/>
 <link href="https://apatel.co/"/>
 <id>https://apatel.co/</id>
-<updated>2026-10-21T00:00:00Z</updated>
+<updated>2026-10-28T00:00:00Z</updated>
 <author><name>Amarnath Patel</name><uri>https://apatel.co/</uri></author>
 <entry>
   <title>My homelab</title>
   <link href="https://apatel.co/writing-homelab.html"/>
   <id>https://apatel.co/writing-homelab.html</id>
-  <updated>2026-10-21T00:00:00Z</updated>
+  <updated>2026-10-28T00:00:00Z</updated>
   <summary>The used ThinkPad that runs my apps, and how I reach them.</summary>
 </entry>
 <entry>

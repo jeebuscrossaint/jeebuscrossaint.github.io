@@ -30,7 +30,7 @@
 <main class=page>
 <header class=rail>
 <h1>My homelab</h1>
-<p class=date>2026 · 10 · 20</p>
+<p class=date>Updated 2026 · 10 · 28</p>
 </header>
 <div class=body>
 <article>
@@ -39,7 +39,7 @@
 </section>
 <section>
 <h2>The machine</h2>
-<p>A ThinkPad X1 Carbon Gen 7 I bought used for about $100: an i5-8365U, 8 GB of RAM, and a 1 TB SSD. It runs Arch with no desktop. It boots to a text login, ignores the lid, never sleeps, and stops charging at 80% so the battery survives being plugged in all the time.</p>
+<p>A ThinkPad X1 Carbon Gen 7 I bought used for about $100: an i5-8365U, 8 GB of RAM, and a 1 TB SSD. It runs Arch with no desktop. It boots to a text login, ignores the lid, never sleeps, turns the screen off when idle, and swaps to compressed RAM (zram) before it touches the SSD.</p>
 <p>It sits on campus wifi. Nothing is port-forwarded, and nothing is reachable from the internet unless I say so. The campus wifi can't reach the apps either: they only listen on the server's Tailscale address.</p>
 </section>
 <section>
@@ -57,31 +57,35 @@
 <section>
 <h2>What runs on it</h2>
 <ul>
-<li><code>home.lab</code> <a href="https://gethomepage.dev">Homepage</a>, instead of a bookmarks folder</li>
-<li><code>pdf.lab</code> <a href="https://www.stirlingpdf.com">Stirling PDF</a>, instead of ilovepdf and friends</li>
+<li><code>home.lab</code> <a href="https://github.com/glanceapp/glance">Glance</a>, instead of a bookmarks folder</li>
+<li><code>pdf.lab</code> <a href="https://github.com/alam00000/bentopdf">BentoPDF</a>, instead of ilovepdf and friends</li>
 <li><code>convert.lab</code> <a href="https://transmute.sh">Transmute</a>, instead of sketchy file-converter sites</li>
-<li><code>search.lab</code> <a href="https://docs.searxng.org">SearXNG</a>, instead of Google</li>
 <li><code>latex.lab</code> <a href="https://github.com/overleaf/overleaf">Overleaf</a>, instead of Overleaf's compile timeout</li>
 <li><code>draw.lab</code> <a href="https://github.com/ZimengXiong/ExcaliDash">ExcaliDash</a>, instead of Excalidraw forgetting my drawings</li>
-<li><code>keep.lab</code> <a href="https://karakeep.app">Karakeep</a>, instead of bookmarks across three browsers</li>
-<li><code>share.lab</code> <a href="https://github.com/smp46/pingvin-share-x">Pingvin Share X</a>, instead of temp.sh and WeTransfer</li>
-<li><code>changes.lab</code> <a href="https://changedetection.io">changedetection.io</a>, instead of refreshing a page by hand</li>
-<li><code>tools.lab</code> <a href="https://it-tools.tech">IT-Tools</a>, instead of a dozen single-purpose websites</li>
-<li><code>term.lab</code> <a href="https://github.com/tsl0922/ttyd">ttyd</a>, instead of needing a laptop with SSH on it</li>
-<li><code>top.lab</code> <a href="https://nicolargo.github.io/glances/">Glances</a>, instead of btop</li>
+<li><code>keep.lab</code> <a href="https://readeck.org">Readeck</a>, instead of bookmarks across three browsers</li>
+<li><code>share.lab</code> <a href="https://github.com/Forceu/Gokapi">Gokapi</a>, instead of temp.sh and WeTransfer</li>
+<li><code>term.lab</code> <a href="https://github.com/gnmyt/Nexterm">Nexterm</a>, instead of needing a laptop with SSH on it</li>
 <li><code>stats.lab</code> <a href="https://beszel.dev">Beszel</a>, instead of wondering if the server is on fire</li>
-<li><code>logs.lab</code> <a href="https://dozzle.dev">Dozzle</a>, instead of <code>docker logs</code></li>
-<li><code>dockge.lab</code> <a href="https://dockge.kuma.pet">Dockge</a>, instead of <code>docker compose</code> by hand</li>
 </ul>
-<p>Beszel posts to a Discord channel when the server goes down, runs hot, or fills up. A <a href="https://snowflake.torproject.org">Tor Snowflake proxy</a> runs in the background and helps people in censored countries reach Tor; the dashboard counts how many. An <a href="https://i2pd.website">I2P</a> router relays traffic for the I2P network the same way.</p>
-<p>Pingvin Share is the one app with a public side. <a href="https://tailscale.com/kb/1223/funnel">Tailscale Funnel</a> forwards it to the internet, so a share link works for anyone, while uploading stays on my network. The public address skips Caddy, so outsiders get Pingvin's normal login page, and there's no account for them to make.</p>
+<p>It used to run more: search, page-change alerts, a log viewer, a Docker manager and a few single-purpose tool sites. I've cut them since.</p>
+<p>Beszel posts to a Discord channel when the server goes down, runs hot, or fills up. BentoPDF does all its work in the browser, so the server only hands out the page. Nexterm gives the terminal tabs, split panes and a file browser, and logs into the server over SSH with its own key, which only works from Docker's network.</p>
+<p>Gokapi is the one app with a public side. <a href="https://tailscale.com/kb/1223/funnel">Tailscale Funnel</a> forwards a second Caddy port to the internet, so a share link works for anyone. That port only passes downloads: the admin and upload pages answer 404, and it strips the header that would sign someone in. Uploading stays on my network.</p>
+</section>
+<section>
+<h2>Helping strangers</h2>
+<p>Two things run in the background with no page of their own, and lend my bandwidth to other people:</p>
+<ul>
+<li>A <strong><a href="https://snowflake.torproject.org">Tor Snowflake proxy</a></strong>. Someone in a country that blocks Tor connects to it from their browser, and it passes their already-encrypted traffic on to a Tor bridge. It isn't a relay or an exit, and it can't see what they're doing.</li>
+<li>An <strong><a href="https://i2pd.website">i2pd</a> router</strong>. It carries other people's encrypted tunnels through the I2P network as a middle hop, never an exit.</li>
+</ul>
+<p>The dashboard has a tile for each. Both would do more on an open connection: campus wifi is a symmetric NAT, so nobody can connect in, and I only carry traffic over connections I started.</p>
 </section>
 <section>
 <h2>Setting up a new one</h2>
 <pre class="sh"><code>git clone https://github.com/jeebuscrossaint/homelab
 cd homelab
 sudo ./install.sh</code></pre>
-<p>On a fresh Arch or Alpine install, this installs Docker and Tailscale, joins the tailnet, writes the settings and every secret, applies the server tweaks, and starts every app. Run it again any time; it only does what's missing.</p>
+<p>On a fresh Arch or Alpine install, this installs Docker and Tailscale, joins the tailnet, writes the settings and every secret, applies the server tweaks, starts every app, and makes each app's one user. Run it again any time; it only does what's missing. <code>--pull</code> also updates the apps.</p>
 </section>
 <section>
 <h2>Things that took me too long</h2>
@@ -90,10 +94,11 @@ sudo ./install.sh</code></pre>
 <li><strong>Campus wifi drops Docker Hub.</strong> The login server for Docker Hub timed out about half the time; GitHub's registry never did. The install script retries every download eight times.</li>
 <li><strong>Don't restart Docker from a terminal that runs in Docker.</strong> The web terminal is a container, so restarting Docker killed the shell running the install script halfway through. The script now ignores hangups, and Docker's <code>live-restore</code> keeps containers up through a restart.</li>
 <li><strong>Docker keeps every log forever by default.</strong> <code>"log-opts": {"max-size": "10m", "max-file": "3"}</code> in <code>/etc/docker/daemon.json</code> caps it.</li>
-<li><strong>Most apps want an admin account even when only you can reach them.</strong> None of mine ask any more. The install script makes one user per app with a random password, then either the app logs me in by itself (Beszel's <code>AUTO_LOGIN</code>, Dockge's "disable auth" setting) or Caddy does it. For Overleaf, Pingvin and Transmute, Caddy swaps the login page for a tiny page that posts the password and reloads. That's only OK because nobody else can reach those pages.</li>
+<li><strong>Most apps want an admin account even when only you can reach them.</strong> None of mine ask any more. The install script makes one user per app with a random password, then something signs me in: Beszel by itself (<code>AUTO_LOGIN</code>), Gokapi by trusting a header Caddy sets, and the rest through Caddy. For Overleaf, Readeck, Transmute and Nexterm, Caddy swaps the login page for a tiny page that posts the password and reloads. That's only OK because nobody else can reach those pages.</li>
 <li><strong>Docker publishes ports on every network, not just the one you meant.</strong> <code>ports: - 443:443</code> listened on the campus wifi too, so anyone there could have reached the passwordless web terminal. Write the address in: <code>${TAILSCALE_IP}:443:443</code>. Then set <code>net.ipv4.ip_nonlocal_bind=1</code>, or Caddy fails to start at boot when Docker comes up before Tailscale has its address.</li>
-<li><strong>An app that runs a setup page on first visit is open until you visit it.</strong> Zipline, Dockge and Transmute all sat unclaimed, Zipline on a public Funnel address. Whoever opened it first would have been the admin. Have the install script make the account.</li>
+<li><strong>An app that runs a setup page on first visit is open until you visit it.</strong> Zipline, Dockge and Transmute all sat unclaimed at one point, Zipline on a public Funnel address. Whoever opened it first would have been the admin. Now the install script fills in every setup page itself.</li>
 <li><strong>Reloading Caddy after a <code>git pull</code> reloads the old Caddyfile.</strong> A single-file bind mount keeps pointing at the old file once git replaces it. Restart the container instead.</li>
+<li><strong>Snowflake's traffic counters aren't in bytes.</strong> The metric is called <code>traffic_inbound_bytes_total</code>, but the proxy adds kilobytes to it, so my dashboard showed a thousandth of the real traffic. The help text says "(KB)"; the name doesn't.</li>
 <li><strong>Rebooting through the firmware is slow.</strong> <code>kexec</code> boots the new kernel straight from the running one. Arch's mkinitcpio can pack the initramfs into one kernel image, though, and kexec can't load that, so my <code>kexec-reboot</code> script pulls it back out with <code>objcopy --only-section=.initrd</code>.</li>
 </ul>
 </section>
@@ -103,7 +108,7 @@ sudo ./install.sh</code></pre>
 </main>
 
 <script type=application/ld+json>
-{"@context":"https://schema.org","@type":"BlogPosting","headline":"My homelab","datePublished":"2026-10-20","author":{"@type":"Person","name":"Amarnath Patel","url":"https://apatel.co/","identifier":"https://orcid.org/0009-0008-9460-082X"}}
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"My homelab","datePublished":"2026-10-20","dateModified":"2026-10-28","author":{"@type":"Person","name":"Amarnath Patel","url":"https://apatel.co/","identifier":"https://orcid.org/0009-0008-9460-082X"}}
 </script>
 
 <footer>© 2026 Amarnath Patel · <a href="index.html">Home</a> · <a href="writing.html">Writing</a> · <a href="friends.html">Friends</a></footer>
